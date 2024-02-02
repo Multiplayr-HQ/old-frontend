@@ -9,7 +9,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next export",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "dev:inspect": "NODE_OPTIONS='--inspect' next dev",
