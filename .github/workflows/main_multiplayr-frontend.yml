@@ -24,7 +24,7 @@ jobs:
       - name: npm install, build, and test
         run: |
           yarn
-          yarn build && yarn start --if-present
+          yarn build --if-present
 
       - name: Zip artifact for deployment
         run: zip release.zip ./.next/* -r
