@@ -21,10 +21,10 @@ jobs:
         with:
           node-version: '18.x'
 
-      - name: npm install, build, and test
+      - name: yarn install, build
         run: |
-          npm install
-          npm run build
+          yarn
+          yarn build
 
       - name: Zip Release
         uses: TheDoctor0/zip-release@0.7.6
