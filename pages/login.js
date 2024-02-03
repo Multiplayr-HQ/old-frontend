@@ -8,6 +8,7 @@ import { postData } from '@utils/fetchData';
 import baseURL from '@utils/baseURL';
 import cookie from 'js-cookie';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const SignIn = () => {
   const [user, setUser] = useState({
@@ -224,9 +225,9 @@ const SignIn = () => {
                     <span className="form-check-label terms"> Remember Me</span>{' '}
                   </label>
 
-                  <a href="/user/forgotpassword" className="link-primary fs-6 ">
+                  <Link href="/user/forgotpassword" className="link-primary fs-6 ">
                     Forgot Password ?
-                  </a>
+                  </Link>
                 </div>
 
                 <div className="text-center">
@@ -275,11 +276,11 @@ const SignIn = () => {
                   <div className="mb-10 text-center">
                     <div className="text-gray-400 already">
                       {' '}
-                      Don't have an account?
-                      <a className="link-primary fw-bolder" href="/signup">
+                      Don&apos;t have an account?
+                      <Link className="link-primary fw-bolder" href="/signup">
                         {' '}
                         Sign Up{' '}
-                      </a>{' '}
+                      </Link>{' '}
                     </div>
                   </div>
                 </div>

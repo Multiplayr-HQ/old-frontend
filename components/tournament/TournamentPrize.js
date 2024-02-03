@@ -44,10 +44,10 @@ const TournamentPrize = ({
 
   return (
     <>
-      <a href="#!" class="rules_form">
-        <button class="btn">
+      <a href="#!" className="rules_form">
+        <button className="btn">
           {' '}
-          <i class="fa fa-plus-circle" aria-hidden="true"></i>
+          <i className="fa fa-plus-circle" aria-hidden="true"></i>
           Add Prizes
         </button>
       </a>

@@ -3,7 +3,7 @@ import { patchData } from '@utils/fetchData'
 import {DataContext} from '@store/GlobalState'
 import {updateItem} from '@store/Actions'
 
-const paypalBtn = ({order}) => {
+const PaypalBtn = ({order}) => {
     const refPaypalBtn = useRef()
     const {state, dispatch} = useContext(DataContext)
     const { auth, orders} = state
@@ -51,4 +51,4 @@ const paypalBtn = ({order}) => {
     )
 }
 
-export default paypalBtn
+export default PaypalBtn

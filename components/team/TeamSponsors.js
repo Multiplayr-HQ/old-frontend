@@ -104,7 +104,7 @@ const TeamSponsors = ({
               </a>
 
               <div className="inner_model_box">
-                <h3>Sponsor's</h3>
+                <h3>Sponsor&apos;s</h3>
 
                 <form className="common_form" onSubmit={handleSubmit}>
                   <SponsorCard states={state} sponsors={sponsors} />

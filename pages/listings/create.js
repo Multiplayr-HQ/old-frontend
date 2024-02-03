@@ -87,16 +87,16 @@ const CreateListing = ({ user }) => {
 
               <div className="create_heads">
                 <h1>Create a Listing</h1>
-                <p>Sell your product, services or NFT's</p>
+                <p>Sell your product, services or NFT&apos;s</p>
               </div>
             </div>
             <div className="create_tournament">
               <form encType="multipart/form-data" onSubmit={handleSubmit}>
                 <div className="form-group">
-                  <label for="exampleFormControlTextarea1">Type</label>
+                  <label htmlFor="exampleFormControlTextarea1">Type</label>
                   <div className="btn_selection">
                     <div className="big_btn">
-                      <span class="form-check-label terms">Product</span>
+                      <span className="form-check-label terms">Product</span>
                       <input
                         type="radio"
                         name="Type"
@@ -106,7 +106,7 @@ const CreateListing = ({ user }) => {
                     </div>
 
                     <div className="big_btn">
-                      <span class="form-check-label terms">NFT</span>
+                      <span className="form-check-label terms">NFT</span>
                       <input
                         type="radio"
                         name="Type"
@@ -116,7 +116,7 @@ const CreateListing = ({ user }) => {
                     </div>
 
                     <div className="big_btn">
-                      <span class="form-check-label terms">Service</span>
+                      <span className="form-check-label terms">Service</span>
                       <input
                         type="radio"
                         name="Type"
@@ -165,7 +165,7 @@ const CreateListing = ({ user }) => {
                   </div>
                   {state.Type === 'Product' ? (
                     <div className="colm">
-                      <label for="exampleFormControlInput1">Quantity</label>
+                      <label htmlFor="exampleFormControlInput1">Quantity</label>
                       <input
                         type="text"
                         name="quantity"
@@ -177,7 +177,7 @@ const CreateListing = ({ user }) => {
                     </div>
                   ) : state.Type === 'NFT' ? (
                     <div className="colm">
-                      <label for="exampleFormControlInput1">Collection</label>
+                      <label htmlFor="exampleFormControlInput1">Collection</label>
                       <input
                         type="text"
                         name="collection"
@@ -203,7 +203,7 @@ const CreateListing = ({ user }) => {
                   </div>
                   {state.Type === 'Product' || state.Type === 'Service' ? (
                     <div className="colm">
-                      <label for="exampleFormControlInput1">Offers</label>
+                      <label htmlFor="exampleFormControlInput1">Offers</label>
                       <select
                         className="form-control text-capitalize"
                         multiple={false}

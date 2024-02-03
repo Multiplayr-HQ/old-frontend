@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 
 const Error = ({ statusCode }) => {
   return (
@@ -17,11 +18,11 @@ const Error = ({ statusCode }) => {
             <h2 className="purple-bg">Something went wrong</h2>
           </div>
           <p>400 ERROR - Why not try refreshing your page? or you can contact </p>
-          <a href="#">support@multiplayr.gg</a>
+          <Link href="#">support@multiplayr.gg</Link>
 
           <p>
             {' '}
-            <a href="/dashboard">Go back to home </a>
+            <Link href="/dashboard">Go back to home </Link>
           </p>
         </section>
       </body>

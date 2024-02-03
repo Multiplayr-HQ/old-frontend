@@ -67,7 +67,7 @@ const BrandDisplay = ({ brandData, user }) => {
                     {brandData.brand.social?.facebook ? (
                       <a
                         href={`https://www.facebook.com/${brandData.brand?.social?.facebook}`}
-                        target="_blank"
+                        target="_blank" rel="noreferrer"
                       >
                         <i
                           className="fa fa-facebook-official"
@@ -78,7 +78,7 @@ const BrandDisplay = ({ brandData, user }) => {
                     {brandData.brand.social?.instagram ? (
                       <a
                         href={`https://www.instagram.com/${brandData.brand?.social?.instagram}`}
-                        target="_blank"
+                        target="_blank" rel="noreferrer"
                       >
                         <i className="fa fa-instagram" aria-hidden="true"></i>
                       </a>
@@ -87,7 +87,7 @@ const BrandDisplay = ({ brandData, user }) => {
                     {brandData.brand.social?.twitch ? (
                       <a
                         href={`https://www.twitch.tv/${brandData.brand?.social?.twitch}`}
-                        target="_blank"
+                        target="_blank" rel="noreferrer"
                       >
                         <i className="fa fa-twitch" aria-hidden="true"></i>
                       </a>
@@ -96,7 +96,7 @@ const BrandDisplay = ({ brandData, user }) => {
                     {brandData.brand.social?.youtube ? (
                       <a
                         href={`https://www.youtube.com/c/${brandData.brand.social?.youtube}`}
-                        target="_blank"
+                        target="_blank" rel="noreferrer"
                       >
                         <i className="fa fa-youtube" aria-hidden="true"></i>
                       </a>
@@ -105,7 +105,7 @@ const BrandDisplay = ({ brandData, user }) => {
                     {brandData.brand.social?.discord ? (
                       <a
                         href={`https://${brandData.brand.social?.discord}`}
-                        target="_blank"
+                        target="_blank" rel="noreferrer"
                       >
                         <img
                           src="/assets/media/social/discord.png"
@@ -118,7 +118,7 @@ const BrandDisplay = ({ brandData, user }) => {
                     {brandData.brand.social?.website ? (
                       <a
                         href={`https://${brandData.brand.social?.website}`}
-                        target="_blank"
+                        target="_blank" rel="noreferrer"
                       >
                         <i className="fa fa-globe" aria-hidden="true"></i>
                       </a>
@@ -141,17 +141,17 @@ const BrandDisplay = ({ brandData, user }) => {
                 <div className="profile_left_post">
                   {' '}
                   {brandData.brandPosts.length !== 0 &&
-                    brandData.brandPosts.map((post) =>
+                    brandData.brandPosts.map((post,i) =>
                       post.user._id !== user._id ? (
                         <>
                           <AllPosts
                             post={post}
                             user={user}
-                            followData={followData.followers}
+                            followData={followData.followers} key={i}
                           />
                         </>
                       ) : (
-                        <AllPosts post={post} user={user} />
+                        <AllPosts post={post} user={user} key={i} />
                       )
                     )}{' '}
                 </div>

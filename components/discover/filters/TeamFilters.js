@@ -213,7 +213,7 @@ const TeamFilters = ({
                   </ul>
                 </div>
               ) : (
-                <div className="button-group">
+                <div className="button-group" key={idx}>
                   {' '}
                   <span className="drop_name">{filter.key}</span>
                   <div className="custom-control custom-checkbox">

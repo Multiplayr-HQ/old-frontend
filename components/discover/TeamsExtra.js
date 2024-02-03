@@ -253,8 +253,8 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                   <img src="/assets/media/discover/translator.png" alt="" />{' '}
                   {team.attributes?.language.length > 0 ? (
                     <>
-                      {team.attributes?.language.map((tem) => (
-                        <b>{tem}</b>
+                      {team.attributes?.language.map((tem,i) => (
+                        <b key={i}>{tem}</b>
                       ))}
                     </>
                   ) : (
@@ -311,9 +311,9 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                   <h4>Manager</h4>
                   {team.employees.length !== 0 ? (
                     team.employees.map(
-                      (role) =>
+                      (role,i) =>
                         role.role === 'manager' && (
-                          <p>{role.employeeId.username}</p>
+                          <p key={i}>{role.employeeId.username}</p>
                         )
                     )
                   ) : (
@@ -418,8 +418,8 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                   <img src="/assets/media/discover/translator.png" alt="" />{' '}
                   {team.attributes?.language?.length > 0 ? (
                     <>
-                      {team.attributes?.language.map((tem) => (
-                        <b>{tem.substring(0, 2).toUpperCase()}</b>
+                      {team.attributes?.language.map((tem,i) => (
+                        <b key={i}>{tem.substring(0, 2).toUpperCase()}</b>
                       ))}
                     </>
                   ) : (
@@ -487,9 +487,9 @@ const Teams = ({ user, profile, myState, selectedGame }) => {
                   {team.employees && team.employees.length !== 0 ? (
                     team.employees &&
                     team.employees.map(
-                      (role) =>
+                      (role,i) =>
                         role.role === 'manager' && (
-                          <p>{role.employeeId.username}</p>
+                          <p key={i}>{role.employeeId.username}</p>
                         )
                     )
                   ) : (

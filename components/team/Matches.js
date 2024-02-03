@@ -57,7 +57,7 @@ const Matches = ({ teamMatches, isMatchPlayersSet }) => {
                 <div className="team_vs">
                   <p>
                     {Moment(tm.startDate).format('MMMM, DD, YYYY hh:mm A')}
-                    <a href={tm.streamsList[0]?.embed_url} target="_blank">
+                    <a href={tm.streamsList[0]?.embed_url}  target="_blank" rel="noreferrer">
                       View Match{' '}
                       <i className="fa fa-play" aria-hidden="true"></i>
                     </a>
@@ -118,7 +118,7 @@ const Matches = ({ teamMatches, isMatchPlayersSet }) => {
                 <div className="team_vs">
                   <p>
                     {Moment(tm.createdAt).format('MMMM, DD, YYYY hh:mm A')}
-                    <a href={tm.streamsList[0]?.embed_url} target="_blank">
+                    <a href={tm.streamsList[0]?.embed_url} target="_blank" rel="noreferrer">
                       View Match{' '}
                       <i className="fa fa-play" aria-hidden="true"></i>
                     </a>
@@ -198,7 +198,7 @@ const Matches = ({ teamMatches, isMatchPlayersSet }) => {
                 <div className="team_vs">
                   <p>
                     {Moment(tm.startDate).format('MMMM, DD, YYYY hh:mm A')}
-                    <a href={tm.streamsList[0]?.embed_url} target="_blank">
+                    <a href={tm.streamsList[0]?.embed_url} target="_blank" rel="noreferrer">
                       View Match{' '}
                       <i className="fa fa-play" aria-hidden="true"></i>
                     </a>
@@ -273,7 +273,7 @@ const Matches = ({ teamMatches, isMatchPlayersSet }) => {
                 <div className="team_vs">
                   <p>
                     {Moment(tm.createdAt).format('MMMM, DD, YYYY hh:mm A')}
-                    <a href={tm.streamsList[0]?.embed_url} target="_blank">
+                    <a href={tm.streamsList[0]?.embed_url} target="_blank" rel="noreferrer">
                       View Match{' '}
                       <i className="fa fa-play" aria-hidden="true"></i>
                     </a>

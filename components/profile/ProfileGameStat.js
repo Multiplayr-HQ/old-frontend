@@ -39,7 +39,7 @@ const ProfileGameStat = ({ user, games }) => {
                   <option value="">Select Your IGN...</option>
                   {games &&
                     games.map((game, index) => (
-                      <option value={game.player}>
+                      <option key={index} value={game.player}>
                         {game.game?.name}-{game.userign}
                       </option>
                     ))}

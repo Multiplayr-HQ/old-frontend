@@ -98,7 +98,7 @@ const PostChallenge = ({ games, teams }) => {
             <form className="common_form" onSubmit={handleEditStat}>
               <div className="btn_selection">
                 <div className="big_btn">
-                  <span class="form-check-label terms">Solo</span>
+                  <span className="form-check-label terms">Solo</span>
                   <input
                     type="radio"
                     name="ChallType"
@@ -108,7 +108,7 @@ const PostChallenge = ({ games, teams }) => {
                 </div>
 
                 <div className="big_btn">
-                  <span class="form-check-label terms">Team</span>
+                  <span className="form-check-label terms">Team</span>
                   <input
                     type="radio"
                     name="ChallType"
@@ -131,8 +131,8 @@ const PostChallenge = ({ games, teams }) => {
                 <select name="maps" onChange={onChange}>
                   <option value="">Choose Map...</option>
                   {gotMaps &&
-                    gotMaps.map((map) => (
-                      <option value={map._id}>{map.name}</option>
+                    gotMaps.map((map,i) => (
+                      <option value={map._id} key={i}>{map.name}</option>
                     ))}
                 </select>
               </div>
@@ -159,8 +159,8 @@ const PostChallenge = ({ games, teams }) => {
                     <select name="game" id="game" onChange={onChange}>
                       <option value="">Choose a game...</option>
                       {UserTeam &&
-                        UserTeam[0]?.games.map((game) => (
-                          <option value={game.gameId._id}>
+                        UserTeam[0]?.games.map((game,i) => (
+                          <option value={game.gameId._id} key={i}>
                             {game.gameId.name}
                           </option>
                         ))}
@@ -173,8 +173,8 @@ const PostChallenge = ({ games, teams }) => {
                   <select name="game" id="game" onChange={onChange}>
                     <option value="">Choose a game...</option>
                     {games &&
-                      games.map((game) => (
-                        <option value={game._id}>{game.name}</option>
+                      games.map((game,i) => (
+                        <option key={i} value={game._id}>{game.name}</option>
                       ))}
                   </select>
                 </div>

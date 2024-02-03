@@ -71,8 +71,8 @@ const Coaches = ({ user, profile, myState }) => {
           <LoadingSpinner />
         </div>
       ) : (
-        coach.map((coach) => (
-          <div className="team_row">
+        coach.map((coach,i) => (
+          <div className="team_row" key={i}>
             <div className="stars">
               <i className="fa fa-star" aria-hidden="true"></i>
             </div>
@@ -119,8 +119,8 @@ const Coaches = ({ user, profile, myState }) => {
                   <img src="/assets/media/discover/translator.png" alt="" />
                   {coach.coaches.attributes.language?.length > 0 ? (
                     <>
-                      {coach.coaches.attributes.language.map((lan) => (
-                        <b>{lan}</b>
+                      {coach.coaches.attributes.language.map((lan,i) => (
+                        <b key={i}>{lan}</b>
                       ))}
                     </>
                   ) : (

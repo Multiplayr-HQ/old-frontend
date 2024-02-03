@@ -162,7 +162,7 @@ const CustomPost = ({ post, user }) => {
                   accept="image/*"
                   multiple=""
                 />
-                <label for="files">
+                <label htmlFor="files">
                   <span>
                     <i className="fa fa-picture-o" aria-hidden="true"></i>
                   </span>

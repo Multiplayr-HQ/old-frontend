@@ -9,6 +9,7 @@ import { DataContext } from '@store/GlobalState';
 import countryList from 'react-select-country-list';
 import VerifyToken from '../components/VerifyToken';
 import AllScript from './AllScript';
+import Link from 'next/link';
 
 const usernameRegex = /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/;
 let cancel;
@@ -582,10 +583,10 @@ const Signup = ({ games, avatars }) => {
                         <div className="text-gray-400 already">
                           {' '}
                           Already have an account?{' '}
-                          <a className="link-primary fw-bolder" href="/login">
+                          <Link className="link-primary fw-bolder" href="/login">
                             {' '}
                             Sign in{' '}
-                          </a>{' '}
+                          </Link>{' '}
                         </div>
                       </div>
                     </div>
@@ -637,8 +638,8 @@ const Signup = ({ games, avatars }) => {
                         </li>
 
                         {avatars &&
-                          avatars.map((avatar) => (
-                            <li className="">
+                          avatars.map((avatar,i) => (
+                            <li className="" key={i}>
                               <div className="form-group">
                                 <a
                                   href="#!"
@@ -656,8 +657,8 @@ const Signup = ({ games, avatars }) => {
                       <h2>Games (Optional) </h2>
                       <ul>
                         {games &&
-                          games.slice(0, 4).map((game) => (
-                            <li>
+                          games.slice(0, 4).map((game,i) => (
+                            <li key={i}>
                               <a
                                 href="#!"
                                 onClick={() => handleSelectGame(game)}
@@ -702,8 +703,8 @@ const Signup = ({ games, avatars }) => {
                           <div className="poup_height msScroll_all">
                             <ul>
                               {games &&
-                                games.map((game) => (
-                                  <li>
+                                games.map((game,i) => (
+                                  <li key={i}>
                                     <a
                                       href="#!"
                                       onClick={() => handleSelectGame(game)}

@@ -5,6 +5,7 @@ import SignedHeader from '@components/SignedHeader';
 import LeftNav from '@components/LeftNav';
 
 import AllScript from './AllScript';
+import Link from 'next/link';
 
 const NFTGamesList = ({ user }) => {
   return (
@@ -21,12 +22,12 @@ const NFTGamesList = ({ user }) => {
 
           <ul className="play_games">
             <li>
-              <a href="/nft/carslane">
+              <Link href="/nft/carslane">
                 <button className="">
                   <img src="/assets/media/play/cars.jpg" alt="" />
                 </button>
                 <h2> Cars Lane</h2>
-              </a>
+              </Link>
             </li>
 
             <li>

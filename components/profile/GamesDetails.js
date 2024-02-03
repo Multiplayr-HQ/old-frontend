@@ -90,8 +90,8 @@ const GamesDetails = ({ user, Userdata, teams }) => {
           <ul>
             <li>
               <span className="nm">Game: </span>{' '}
-              {attributeData.games?.map((game) => (
-                <img
+              {attributeData.games?.map((game,i) => (
+                <img key={i}
                   src={game.gameId?.imgUrl}
                   style={{ height: '35px', width: '35px' }}
                 />
@@ -138,7 +138,7 @@ const GamesDetails = ({ user, Userdata, teams }) => {
           <div className="top_btn">
             {attributeData.attributeId === user._id ? (
               <button className="btn" onClick={handleDelete}>
-                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                <i className="fa fa-trash-o" aria-hidden="true"></i>
               </button>
             ) : null}
             {attributeData.attributeId === user._id ? (
@@ -178,8 +178,8 @@ const GamesDetails = ({ user, Userdata, teams }) => {
                       <h2> Select Team</h2>
                       <div className="select-option">
                         {teams &&
-                          teams.map((team) => (
-                            <div className="options">
+                          teams.map((team,i) => (
+                            <div className="options" key={i}>
                               <input
                                 type="radio"
                                 name="teamId"

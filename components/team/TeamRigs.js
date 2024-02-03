@@ -81,10 +81,10 @@ const TeamRigs = ({
 
             <form className="common_form" onSubmit={handleSubmit}>
               <div className="form-group">
-                <label for="exampleFormControlTextarea1">Platform</label>
+                <label htmlFor="exampleFormControlTextarea1">Platform</label>
                 <div className="btn_selection">
                   <div className="big_btn">
-                    <span class="form-check-label terms">PC</span>
+                    <span className="form-check-label terms">PC</span>
                     <input
                       type="radio"
                       name="rigsType"
@@ -94,7 +94,7 @@ const TeamRigs = ({
                   </div>
 
                   <div className="big_btn">
-                    <span class="form-check-label terms">Console</span>
+                    <span className="form-check-label terms">Console</span>
                     <input
                       type="radio"
                       name="rigsType"
@@ -104,7 +104,7 @@ const TeamRigs = ({
                   </div>
 
                   <div className="big_btn">
-                    <span class="form-check-label terms">Mobile</span>
+                    <span className="form-check-label terms">Mobile</span>
                     <input
                       type="radio"
                       name="rigsType"
@@ -203,8 +203,8 @@ const TeamRigs = ({
             <p>No rigs available for the team.</p>
           ) : (
             teamRigs.type === 'RIGS' &&
-            teamRigs.rigs.map((rig) => (
-              <li>
+            teamRigs.rigs.map((rig,i) => (
+              <li key={i}>
                 <TeamRigsDel
                   rigId={rig._id}
                   team={data.team}

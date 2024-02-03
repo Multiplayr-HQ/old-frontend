@@ -116,8 +116,8 @@ const Home = (props) => {
               {products?.length === 0 ? (
                 <h2>No Products</h2>
               ) : (
-                products?.map((product) => (
-                  <li>
+                products?.map((product,i) => (
+                  <li key={i}>
                     <ProductItem
                       key={product._id}
                       product={product}

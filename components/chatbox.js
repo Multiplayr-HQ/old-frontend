@@ -141,9 +141,9 @@ return fetch(`${baseURL}/api/friendrequests/list/${user._id}`)
                {!data || data.length === 0 ? (
                  <p>No users found..</p>
                ) : (
-                 data.map((resultuser) => (
+                 data.map((resultuser,i) => (
 
-           <ul className="contacts">
+           <ul className="contacts" key={i}>
              <li className="active dlab-chat-user">
                <div className="d-flex bd-highlight">
                  <div className="img_cont">

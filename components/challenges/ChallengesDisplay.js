@@ -33,8 +33,8 @@ const ChallengesDisplay = ({ chall, user, profile, type }) => {
             </div>
           ) : chall.ChallType === 'Solo' ? (
             chall.players &&
-            chall.players.slice(0, 1).map((ply) => (
-              <div className="card_img">
+            chall.players.slice(0, 1).map((ply,i) => (
+              <div className="card_img" key={i}>
                 <div className="img">
                   <img
                     src={

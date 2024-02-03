@@ -29,8 +29,8 @@ const Badges = ({ Userdata }) => {
           <p>Coming Soon</p>
         ) : (
           <>
-            {Userdata.badges.map((bdg) => (
-              <img src={bdg.image} alt="" />
+            {Userdata.badges.map((bdg,i) => (
+              <img src={bdg.image} alt="" key={i} />
             ))}
 
             <a href="#more_badges" className="common_poup">
@@ -47,8 +47,8 @@ const Badges = ({ Userdata }) => {
             <h3>BADGES</h3>
 
             <ul>
-              {Userdata.badges.map((bdg) => (
-                <li>
+              {Userdata.badges.map((bdg,i) => (
+                <li key={i}>
                   {' '}
                   <img src={bdg.image} alt="" />{' '}
                 </li>

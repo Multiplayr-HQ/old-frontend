@@ -16,8 +16,8 @@ const TaskList = ({ week, battlepass, user }) => {
         <p>Complete previous week tasks to unlock.</p>
       ) : (
         tasks &&
-        tasks.map((task) => (
-          <li>
+        tasks.map((task,i) => (
+          <li key={i}>
             <span>{task.desc}</span>
             <CollectReward battlepass={battlepass} task={task} user={user} />
           </li>

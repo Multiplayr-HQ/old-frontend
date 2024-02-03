@@ -3,6 +3,7 @@ import { ServerStyleSheet } from 'styled-components';
 
 import React from 'react';
 import themeOptions from '@components/theme/theme-options';
+// import Script from 'next/script';
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -66,7 +67,7 @@ export default class MyDocument extends Document {
     const { theme, themeMap } = this.props;
     const themeFileName = themeOptions[theme] || themeOptions.LIGHT;
     const themeCss = themeMap ? themeMap[themeFileName] : '';
-    /* eslint-disable react/no-danger, jam3/no-sanitizer-with-danger */
+    // /* eslint-disable react/no-danger, jam3/no-sanitizer-with-danger */
     return (
       <Html>
         <Head>
@@ -129,14 +130,14 @@ export default class MyDocument extends Document {
           />
           <link href="/assets/css/error.css" rel="stylesheet" type="text/css" />
 
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-          <script src="/assets/js/dash/bootstrap.bundle.min.js" />
-          <script src="/assets/js/dash/jquery.mCustomScrollbar.js" />
-          <script src="/assets/js/dash/slick.js" />
-          <script src="/assets/js/dash/jquery.fancybox.js" />
-          <script src="/assets/js/dash/jquery.fancybox-media.js" />
-          <script src="/assets/js/dash/pixelarity-faceless.js" />
-          <script
+          <script async src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+          <script async src="/assets/js/dash/bootstrap.bundle.min.js" />
+          <script async  src="/assets/js/dash/jquery.mCustomScrollbar.js" />
+          <script async src="/assets/js/dash/slick.js" />
+          <script async src="/assets/js/dash/jquery.fancybox.js" />
+          <script async src="/assets/js/dash/jquery.fancybox-media.js" />
+          <script async src="/assets/js/dash/pixelarity-faceless.js" />
+          <script async
             src={`https://www.paypal.com/sdk/js?client-id=${process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID}`}
           ></script>
           <link

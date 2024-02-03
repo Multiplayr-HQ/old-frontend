@@ -200,7 +200,7 @@ const TeamCreate = ({ isClaim, user }) => {
                           className="inputfile"
                           onChange={handleChange}
                         />
-                        <label for="imgUrl">
+                        <label htmlFor="imgUrl">
                           <span>Upload Logo</span>
                         </label>
                       </div>
@@ -212,7 +212,7 @@ const TeamCreate = ({ isClaim, user }) => {
                           className="inputfile"
                           onChange={handleChange}
                         />
-                        <label for="coverPhoto">
+                        <label htmlFor="coverPhoto">
                           <span>Upload Cover Photo</span>
                         </label>
                       </div> */}
@@ -236,8 +236,8 @@ const TeamCreate = ({ isClaim, user }) => {
                       <h2>Games</h2>
                       <ul className="game_search_result create_team_thumb">
                         {games &&
-                          games.map((game) => (
-                            <li onClick={() => handlemultiplegames(game)}>
+                          games.map((game,i) => (
+                            <li onClick={() => handlemultiplegames(game)} key={i}>
                               <img src={game.imgUrl} alt={game.name} />
 
                               <i className="fa fa-check" aria-hidden="true"></i>

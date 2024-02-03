@@ -27,7 +27,7 @@
         </thead>
         <tbody>
           <tr>
-            <td col="11" className="bdr_clr_green">THE WEREWOLVES [TWW]</td>
+            <td colSpan="11" className="bdr_clr_green">THE WEREWOLVES [TWW]</td>
           </tr>
           <tr>
             <td><span className="dp"><img src="/assets/media/user.jpg" alt="" /></span> <span className="dp_name">FayeDBebop<b>Sarah Valentine</b></span></td>
@@ -69,7 +69,7 @@
             <td><span className="star"><i className="fa fa-star" aria-hidden="true"></i></span></td>
           </tr>
           <tr>
-            <td col="11" className="bdr_clr_blue">TEAM EGO [EGO]</td>
+            <td colSpan="11" className="bdr_clr_blue">TEAM EGO [EGO]</td>
           </tr>
           <tr>
             <td><span className="dp"><img src="/assets/media/user.jpg" alt="" /></span> <span className="dp_name">FayeDBebop<b>Sarah Valentine</b></span></td>

@@ -485,7 +485,7 @@ const TeamProfileBox = ({
               {data.team.social?.facebook ? (
                 <a
                   href={`https://www.facebook.com/${data.team.social?.facebook}`}
-                  target="_blank"
+                  target="_blank" rel="noreferrer"
                 >
                   <i className="fa fa-facebook-official" aria-hidden="true"></i>
                 </a>
@@ -493,7 +493,7 @@ const TeamProfileBox = ({
               {data.team.social?.instagram ? (
                 <a
                   href={`https://www.instagram.com/${data.team.social?.instagram}`}
-                  target="_blank"
+                  target="_blank" rel="noreferrer"
                 >
                   <i className="fa fa-instagram" aria-hidden="true"></i>
                 </a>
@@ -502,7 +502,7 @@ const TeamProfileBox = ({
               {data.team.social?.twitch ? (
                 <a
                   href={`https://www.twitch.tv/${data.team.social?.twitch}`}
-                  target="_blank"
+                  target="_blank" rel="noreferrer"
                 >
                   <i className="fa fa-twitch" aria-hidden="true"></i>
                 </a>
@@ -511,7 +511,7 @@ const TeamProfileBox = ({
               {data.team.social?.youtube ? (
                 <a
                   href={`https://www.youtube.com/c/${data.team.social?.youtube}`}
-                  target="_blank"
+                  target="_blank" rel="noreferrer"
                 >
                   <i className="fa fa-youtube" aria-hidden="true"></i>
                 </a>
@@ -520,7 +520,7 @@ const TeamProfileBox = ({
               {data.team.social?.discord ? (
                 <a
                   href={`https://${data.team.social?.discord}`}
-                  target="_blank"
+                  target="_blank" rel="noreferrer"
                 >
                   <img
                     src="/assets/media/social/discord.png"
@@ -533,7 +533,7 @@ const TeamProfileBox = ({
               {data.team.social?.website ? (
                 <a
                   href={`https://${data.team.social?.website}`}
-                  target="_blank"
+                  target="_blank" rel="noreferrer"
                 >
                   <i className="fa fa-globe" aria-hidden="true"></i>
                 </a>
@@ -553,8 +553,8 @@ const TeamProfileBox = ({
                 <span className="position">MANAGER:</span>{' '}
                 {empManager.length > 0 ? (
                   <>
-                    {empManager.map((emply) => (
-                      <span className="pos_name">
+                    {empManager.map((emply,i) => (
+                      <span className="pos_name" key={i}>
                         <span className="imgs">
                           <img src={emply.employeeId.profilePicUrl} alt="" />
                         </span>
@@ -571,8 +571,8 @@ const TeamProfileBox = ({
                 <span className="position">Coach:</span>{' '}
                 {empCoach.length > 0 ? (
                   <>
-                    {empCoach.map((emply) => (
-                      <span className="pos_name">
+                    {empCoach.map((emply,i) => (
+                      <span key={i} className="pos_name">
                         <span className="imgs">
                           <img src={emply.employeeId?.profilePicUrl} alt="" />
                         </span>

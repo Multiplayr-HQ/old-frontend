@@ -68,8 +68,8 @@ const BracketCard = ({ tournaments, user }) => {
       {tournaments && tournaments.length === 0 ? (
         <p>No data</p>
       ) : (
-        tournaments.map((tour) => (
-          <li>
+        tournaments.map((tour,i) => (
+          <li key={i}>
             <div className="row1">
               <div className="card_img">
                 <div className="img">

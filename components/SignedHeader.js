@@ -116,7 +116,7 @@ const SignedHeader = ({ user, profile }) => {
 
               <ul className="">
                 <li>
-                  <a href="/team/create">
+                  <Link href="/team/create">
                     <span>
                       <i className="fa fa-users" aria-hidden="true"></i>{' '}
                     </span>
@@ -125,10 +125,10 @@ const SignedHeader = ({ user, profile }) => {
                       <b>Team</b>
                       <p>Create a team, compete and rank yourself globally.</p>
                     </span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/tour/create">
+                  <Link href="/tour/create">
                     <span>
                       {' '}
                       <i className="fa fa-trophy" aria-hidden="true"></i>{' '}
@@ -139,10 +139,10 @@ const SignedHeader = ({ user, profile }) => {
                       <b> Tournament</b>
                       <p>Create a tournament and invite participants.</p>
                     </span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#">
+                  <Link href="#">
                     <span>
                       {' '}
                       <i
@@ -155,10 +155,10 @@ const SignedHeader = ({ user, profile }) => {
                       <b>Community</b>
                       <p>Create a community and connect with people.</p>
                     </span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/brand/create">
+                  <Link href="/brand/create">
                     <span>
                       {' '}
                       <i className="fa fa-file" aria-hidden="true"></i>{' '}
@@ -168,10 +168,10 @@ const SignedHeader = ({ user, profile }) => {
                       <b>Brand/Company</b>
                       <p>Start selling your products and services.</p>
                     </span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/arena/create">
+                  <Link href="/arena/create">
                     <span>
                       <i className="fa fa-sign-out" aria-hidden="true"></i>{' '}
                     </span>
@@ -179,13 +179,13 @@ const SignedHeader = ({ user, profile }) => {
                       <b> Arena</b>
                       <p>Create arena, invite gamers and increase walk-ins.</p>
                     </span>
-                  </a>
+                  </Link>
                 </li>
                 {/* <li>
-                  <a href="/company/create">
+                  <Link href="/company/create">
                     <i className="fa fa-building" aria-hidden="true"></i>
                     Create a company page
-                  </a>
+                  </Link>
                 </li> */}
               </ul>
 
@@ -193,7 +193,7 @@ const SignedHeader = ({ user, profile }) => {
 
               <ul className="">
                 <li>
-                  <a href="/">
+                  <Link href="/">
                     <span>
                       <i className="fa fa-shopping-cart" aria-hidden="true"></i>
                     </span>
@@ -202,10 +202,10 @@ const SignedHeader = ({ user, profile }) => {
                       <b>Marketplace</b>
                       <p>Make a listing of your services and products.</p>
                     </span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/jobs/create" onClick={() => setFilterType('JOBS')}>
+                  <Link href="/jobs/create" onClick={() => setFilterType('JOBS')}>
                     <span>
                       {' '}
                       <i className="fa fa-briefcase" aria-hidden="true"></i>
@@ -216,10 +216,10 @@ const SignedHeader = ({ user, profile }) => {
                       <b> Jobs</b>
                       <p>Make a job listing.</p>
                     </span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#">
+                  <Link href="#">
                     <span>
                       {' '}
                       <i className="fa fa-university" aria-hidden="true"></i>
@@ -229,16 +229,16 @@ const SignedHeader = ({ user, profile }) => {
                       <b>Masterclass</b>
                       <p>List your masterclass and earn.</p>
                     </span>
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
           </li>
           <li className="chat_box">
-            <a href="#" className="open_chat_box">
+            <Link href="#" className="open_chat_box">
               <img src="/assets/media/icons/message.png" alt="" />
               <span className="pop">2</span>
-            </a>
+            </Link>
 
             <ChatSection user={user} />
           </li>
@@ -248,15 +248,15 @@ const SignedHeader = ({ user, profile }) => {
           </li>
 
           {/* <li>
-            <a href="/cart">
+            <Link href="/cart">
               {' '}
               <i className="fa fa-shopping-cart" aria-hidden="true"></i>{' '}
               <span className="pop">{cart.length}</span>
-            </a>
+            </Link>
           </li> */}
 
           <li className="profile">
-            <a href="#!">
+            <Link href="#!">
               <span className="dps">
                 <img src={user?.profilePicUrl} alt={user?.name} />
               </span>
@@ -278,7 +278,7 @@ const SignedHeader = ({ user, profile }) => {
               <span className="drop">
                 <i className="fa fa-sort-desc" aria-hidden="true"></i>
               </span>
-            </a>
+            </Link>
             <div className="drop_down_bg profile_drop_down">
               <ul>
                 <li>
@@ -303,30 +303,30 @@ const SignedHeader = ({ user, profile }) => {
                   <Link href="#">Support</Link>
                 </li>
                 <li>
-                  <a href="#" onClick={() => setRefModal(true)}>
+                  <Link href="#" onClick={() => setRefModal(true)}>
                     Refer a friend
-                  </a>
+                  </Link>
                 </li>
 
                 <li>
-                  <a href="/buypremium">
+                  <Link href="/buypremium">
                     {' '}
                     <img src="/assets/media/login/go.png" alt="" />
-                  </a>
+                  </Link>
                 </li>
 
                 <li>
-                  <a href="/login" onClick={logoutUser}>
+                  <Link href="/login" onClick={logoutUser}>
                     <img src="/assets/media/login/logout.png" alt="" />
                     Logout
-                  </a>
+                  </Link>
                 </li>
                 {refModal && (
                   <div className="delete_post">
                     <form onSubmit={sendEmail} id="refForm">
                       <div className="delete_post_div">
                         <h3 className="">
-                          Enter your friend's email to invite
+                          Enter your friend&apos;s email to invite
                         </h3>
                         <input
                           type="text"
@@ -358,7 +358,7 @@ const SignedHeader = ({ user, profile }) => {
           </li>
 
           <li className="wallet">
-            <a href="/mywallet">
+            <Link href="/mywallet">
               <span className="dps">
                 {' '}
                 <img src="/assets/media/login/wallet.png" alt="" />
@@ -366,7 +366,7 @@ const SignedHeader = ({ user, profile }) => {
               <span>
                 <MPNumberFormat value={coin} />
               </span>
-            </a>
+            </Link>
             <div className="drop_down_bg wallet_drop_down">
               <h2>Wallet</h2>{' '}
               <i className="fa fa-info-circle" aria-hidden="true"></i>
@@ -439,7 +439,7 @@ const SignedHeader = ({ user, profile }) => {
 
                 <li>
                   {' '}
-                  <a href="/mywallet">View all transactions</a>
+                  <Link href="/mywallet">View all transactions</Link>
                 </li>
               </ul>
             </div>

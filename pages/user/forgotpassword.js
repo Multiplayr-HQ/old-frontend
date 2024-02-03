@@ -8,6 +8,8 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import baseURL from '../../utils/baseURL';
 import { useMutation } from 'react-query';
+import Link from 'next/link';
+import Script from 'next/script';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
@@ -130,12 +132,12 @@ const ForgotPassword = () => {
                     </span>
                   </button>
 
-                  <a
+                  <Link
                     href="/login"
                     className="btn btn-lg btn-light-primary fw-bolder"
                   >
                     Cancel
-                  </a>
+                  </Link>
                 </div>
               </form>
             </div>
@@ -143,8 +145,8 @@ const ForgotPassword = () => {
         </div>
       </div>
 
-      <script src="/assets/plugins/global/plugins.bundle.js" />
-      <script src="/assets/js/scripts.bundle.js" />
+      <Script src="/assets/plugins/global/plugins.bundle.js" />
+      <Script src="/assets/js/scripts.bundle.js" />
     </div>
   );
 };

@@ -93,8 +93,8 @@ const DateCal = ({ gameId }) => {
           </p>
         </div>
       ) : (
-        tournaments.map((tour) => (
-          <div className="all_matches">
+        tournaments.map((tour,i) => (
+          <div className="all_matches" key={i}>
             <h2>{tour.name}</h2>
             <div className="match_box">
               <div className="match_table" key={tour._id}>

@@ -5,7 +5,7 @@ import baseURL from '@utils/baseURL';
 import { useForm } from "react-hook-form";
 
 
-const friendRequests = ({user}) => { 
+const FriendRequests = ({user}) => { 
 
   const [senderId, setSenderId] = useState('');
   const [senderName, setSenderName] = useState('');
@@ -95,4 +95,4 @@ return (
 
 }
 
-export default friendRequests;
+export default FriendRequests;

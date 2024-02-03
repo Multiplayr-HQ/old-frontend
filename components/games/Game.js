@@ -106,8 +106,8 @@ const Game = ({ user, data }) => {
               {tournaments.length > 0 ? (
                 <>
                   {tournaments &&
-                    tournaments.slice(0, 3).map((tournament) => (
-                      <span>
+                    tournaments.slice(0, 3).map((tournament,i) => (
+                      <span key={i}>
                         <img
                           src={tournament.tournament.imgUrl}
                           alt={tournament.tournament.name}
@@ -126,22 +126,22 @@ const Game = ({ user, data }) => {
                 <h3>ABOUT THE GAME</h3>
                 <div className="socail">
                   {' '}
-                  <a href="https://www.facebook.com/" target="_blank">
+                  <a href="https://www.facebook.com/" target="_blank" rel="noreferrer">
                     {' '}
                     <i
                       className="fa fa-facebook-official"
                       aria-hidden="true"
                     ></i>{' '}
                   </a>{' '}
-                  <a href="https://www.instagram.com/" target="_blank">
+                  <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
                     {' '}
                     <i className="fa fa-instagram" aria-hidden="true"></i>{' '}
                   </a>{' '}
-                  <a href="https://www.twitch.tv/" target="_blank">
+                  <a href="https://www.twitch.tv/" target="_blank" rel="noreferrer">
                     {' '}
                     <i className="fa fa-twitch" aria-hidden="true"></i>{' '}
                   </a>{' '}
-                  <a href="https://store.steampowered.com/" target="_blank">
+                  <a href="https://store.steampowered.com/" target="_blank" rel="noreferrer">
                     {' '}
                     <i
                       className="fa fa-steam-square"
@@ -174,7 +174,7 @@ const Game = ({ user, data }) => {
             <div className="right_team_bio">
               {/* <div className="games">
                 <h2>PLAYERS: </h2>
-                <a href="#" target="_blank">
+                <a href="#" target="_blank" rel="noreferrer">
                   {' '}
                   <img src={newPlyr[0]?.current_team?.image_url} alt="" />{' '}
                 </a>{' '}
@@ -182,7 +182,7 @@ const Game = ({ user, data }) => {
                   {' '}
                   <img src={newPlyr[1]?.current_team?.image_url} alt="" />{' '}
                 </a>{' '}
-                <a href="#" target="_blank">
+                <a href="#" target="_blank" rel="noreferrer">
                   {' '}
                   <img src={newPlyr[2]?.current_team?.image_url} alt="" />{' '}
                 </a>{' '}

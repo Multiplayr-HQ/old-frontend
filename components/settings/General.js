@@ -129,7 +129,7 @@ const GeneralSettings = ({ user, profile }) => {
           <div className="white_bg">
             <div className="left_setting_menu">
               <div className="menu_bloc">
-                <i class="fa fa-cog" aria-hidden="true"></i>
+                <i className="fa fa-cog" aria-hidden="true"></i>
                 <Link href="/settings/general" className="active">
                   General
                 </Link>
@@ -152,7 +152,7 @@ const GeneralSettings = ({ user, profile }) => {
               </div>
 
               <div className="menu_bloc">
-                <i class="fa fa-user" aria-hidden="true"></i>
+                <i className="fa fa-user" aria-hidden="true"></i>
                 <Link href="/settings/accounts">Accounts</Link>
                 <ul>
                   <li>
@@ -168,7 +168,7 @@ const GeneralSettings = ({ user, profile }) => {
               </div>
 
               <div className="menu_bloc">
-                <i class="fa fa-shield" aria-hidden="true"></i>
+                <i className="fa fa-shield" aria-hidden="true"></i>
                 <Link href={`/settings/security`}>Security & Privacy</Link>
                 <ul>
                   <li>
@@ -236,8 +236,8 @@ const GeneralSettings = ({ user, profile }) => {
                       </li>
 
                       {avatars &&
-                        avatars.map((avatar) => (
-                          <li className="">
+                        avatars.map((avatar,i) => (
+                          <li className="" key={i}>
                             <div className="form-group">
                               <a
                                 href="#!"
@@ -281,7 +281,7 @@ const GeneralSettings = ({ user, profile }) => {
               <form className="common_form">
                 <div className="two_btn">
                   <div className="form-group">
-                    <label for="">First name</label>
+                    <label htmlFor="">First name</label>
                     <input
                       type="text"
                       className="form-control"
@@ -291,7 +291,7 @@ const GeneralSettings = ({ user, profile }) => {
                     />
                   </div>
                   <div className="form-group">
-                    <label for=""> Last Name</label>
+                    <label htmlFor=""> Last Name</label>
                     <input
                       type="text"
                       className="form-control"
@@ -302,7 +302,7 @@ const GeneralSettings = ({ user, profile }) => {
                   </div>
                 </div>
                 <div className="form-group">
-                  <label for="">Username</label>
+                  <label htmlFor="">Username</label>
                   <input
                     type="text"
                     className="form-control"
@@ -313,7 +313,7 @@ const GeneralSettings = ({ user, profile }) => {
                 </div>
 
                 <div className="form-group">
-                  <label for="">Bio</label>
+                  <label htmlFor="">Bio</label>
                   <textarea
                     type="textarea"
                     className="form-control"
@@ -324,7 +324,7 @@ const GeneralSettings = ({ user, profile }) => {
                 </div>
 
                 <div className="form-group">
-                  <label for="">Gender</label>
+                  <label htmlFor="">Gender</label>
                   <select
                     name="gender"
                     id="gender"
@@ -340,7 +340,7 @@ const GeneralSettings = ({ user, profile }) => {
                 </div>
 
                 <div className="form-group">
-                  <label for="">Date of Birth</label>
+                  <label htmlFor="">Date of Birth</label>
                   <input
                     type="date"
                     className="form-control"
@@ -351,7 +351,7 @@ const GeneralSettings = ({ user, profile }) => {
                 </div>
 
                 <div className="form-group">
-                  <label for="">Country</label>
+                  <label htmlFor="">Country</label>
                   <select
                     value={states.country}
                     name="country"
@@ -368,7 +368,7 @@ const GeneralSettings = ({ user, profile }) => {
                 </div>
 
                 <div className="form-group">
-                  <label for="">Timezone</label>
+                  <label htmlFor="">Timezone</label>
                   <input
                     disabled={true}
                     type="text"
@@ -381,7 +381,7 @@ const GeneralSettings = ({ user, profile }) => {
               <h2 id="contact">Contact Details</h2>
               <form className="common_form">
                 <div className="form-group">
-                  <label for="">Phone No.</label>
+                  <label htmlFor="">Phone No.</label>
                   <input
                     type="number"
                     className="form-control"
@@ -391,7 +391,7 @@ const GeneralSettings = ({ user, profile }) => {
                   />
                 </div>
                 <div className="form-group">
-                  <label for="">Email Id:</label>
+                  <label htmlFor="">Email Id:</label>
                   <input
                     type="text"
                     disabled={true}

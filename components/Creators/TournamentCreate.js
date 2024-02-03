@@ -298,7 +298,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                     <label htmlFor="exampleFormControlInput1">Type</label>
                     <div className="btn_selection">
                       <div className="big_btn">
-                        <span class="form-check-label terms"> Ladder</span>
+                        <span className="form-check-label terms"> Ladder</span>
                         <input
                           type="radio"
                           name="Type"
@@ -309,7 +309,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                       </div>
 
                       <div className="big_btn">
-                        <span class="form-check-label terms"> Challenge</span>
+                        <span className="form-check-label terms"> Challenge</span>
                         <input
                           type="radio"
                           name="Type"
@@ -320,7 +320,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                       </div>
 
                       <div className="big_btn">
-                        <span class="form-check-label terms"> Tournament</span>
+                        <span className="form-check-label terms"> Tournament</span>
                         <input
                           type="radio"
                           name="Type"
@@ -351,7 +351,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                           className="inputfile"
                           onChange={handleChange}
                         />
-                        <label for="imgUrl">
+                        <label htmlFor="imgUrl">
                           <span>Upload Logo</span>
                         </label>
                       </div>
@@ -363,26 +363,26 @@ const TournamentCreate = ({ user, isClaim }) => {
                           className="inputfile inputfile-2"
                           onChange={handleChange}
                         />
-                        <label for="coverPhoto">
+                        <label htmlFor="coverPhoto">
                           <span>Upload Cover Photo</span>
                         </label>
                       </div> */}
                     </div>
 
-                    <label for="exampleFormControlInput1">Games</label>
+                    <label htmlFor="exampleFormControlInput1">Games</label>
                     <ul className="game_search_result game-selection">
                       {games.map((game) => (
                         <>
                           <li onClick={(e) => handleGame(e, game._id)}>
                             <img src={game.imgUrl} alt={game.name} />
-                            <i class="fa fa-check" aria-hidden="true"></i>
+                            <i className="fa fa-check" aria-hidden="true"></i>
                           </li>
                         </>
                       ))}
                     </ul>
 
                     {/* <div className="form-group">
-                      <label for="exampleFormControlInput1">
+                      <label htmlFor="exampleFormControlInput1">
                         Series (Optional)
                       </label>
                       <select
@@ -402,7 +402,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                     </div> */}
 
                     <div className="form-group">
-                      <label for="exampleFormControlInput1">Prize Pool</label>
+                      <label htmlFor="exampleFormControlInput1">Prize Pool</label>
                       <div className="prize_boxs">
                         {gamePlatform &&
                           gamePlatform.map((game) => (
@@ -498,7 +498,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                     state.game === 26 ||
                     state.game === 1 ? (
                       <div className="form-group">
-                        <label for="exampleFormControlInput1">Match type</label>
+                        <label htmlFor="exampleFormControlInput1">Match type</label>
                         <select
                           name="matchType"
                           value={state.matchType}
@@ -506,8 +506,8 @@ const TournamentCreate = ({ user, isClaim }) => {
                         >
                           <option value="">Select Match Type...</option>
                           {matchData &&
-                            matchData.map((match) => (
-                              <option value={match}>{match}</option>
+                            matchData.map((match,i) => (
+                              <option value={match} key={i}>{match}</option>
                             ))}
                         </select>
                       </div>
@@ -515,10 +515,10 @@ const TournamentCreate = ({ user, isClaim }) => {
 
                     {state.game === 20 ? (
                       <div className="form-group">
-                        <label for="exampleFormControlTextarea1">Mode</label>
+                        <label htmlFor="exampleFormControlTextarea1">Mode</label>
                         <div className="btn_selection">
                           <div className="big_btn">
-                            <span class="form-check-label terms"> FPP</span>
+                            <span className="form-check-label terms"> FPP</span>
                             <input
                               type="radio"
                               name="mode"
@@ -529,7 +529,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                           </div>
 
                           <div className="big_btn">
-                            <span class="form-check-label terms"> TPP</span>
+                            <span className="form-check-label terms"> TPP</span>
                             <input
                               type="radio"
                               name="mode"
@@ -542,12 +542,12 @@ const TournamentCreate = ({ user, isClaim }) => {
                     ) : null}
 
                     <div className="form-group">
-                      <label for="exampleFormControlTextarea1">
+                      <label htmlFor="exampleFormControlTextarea1">
                         Tournament Category
                       </label>
                       <div className="btn_selection">
                         <div className="big_btn">
-                          <span class="form-check-label terms"> Online</span>
+                          <span className="form-check-label terms"> Online</span>
                           <input
                             type="radio"
                             name="category"
@@ -558,7 +558,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                         </div>
 
                         <div className="big_btn">
-                          <span class="form-check-label terms"> LAN</span>
+                          <span className="form-check-label terms"> LAN</span>
                           <input
                             type="radio"
                             name="category"
@@ -569,12 +569,12 @@ const TournamentCreate = ({ user, isClaim }) => {
                       </div>
                     </div>
                     <div className="form-group">
-                      <label for="exampleFormControlTextarea1">
+                      <label htmlFor="exampleFormControlTextarea1">
                         Tournament Format
                       </label>
                       <div className="btn_selection">
                         <div className="big_btn">
-                          <span class="form-check-label terms">Solo</span>
+                          <span className="form-check-label terms">Solo</span>
                           <input
                             type="radio"
                             name="playType"
@@ -584,7 +584,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                         </div>
 
                         <div className="big_btn">
-                          <span class="form-check-label terms">Teams</span>
+                          <span className="form-check-label terms">Teams</span>
                           <input
                             type="radio"
                             name="playType"
@@ -613,7 +613,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                       <>
                         <div className="form-group">
                           <div className="colm">
-                            <label for="exampleFormControlTextarea1">
+                            <label htmlFor="exampleFormControlTextarea1">
                               Number of Participants
                             </label>
                             <input
@@ -627,7 +627,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                           </div>
 
                           <div className="colm">
-                            <label for="exampleFormControlTextarea1">
+                            <label htmlFor="exampleFormControlTextarea1">
                               Minimum Participants
                             </label>
                             <input
@@ -647,7 +647,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                         <div className="form-group">
                           <div className="date_time">
                             <div className="date_box">
-                              <label for="exampleFormControlTextarea1">
+                              <label htmlFor="exampleFormControlTextarea1">
                                 Number of Teams
                               </label>
                               <input
@@ -660,7 +660,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                             </div>
 
                             <div className="time_box">
-                              <label for="exampleFormControlTextarea1">
+                              <label htmlFor="exampleFormControlTextarea1">
                                 Minimum Teams
                               </label>
                               <input
@@ -681,12 +681,12 @@ const TournamentCreate = ({ user, isClaim }) => {
                     <h2>Step2</h2>
 
                     <div className="form-group">
-                      <label for="exampleFormControlTextarea1">
+                      <label htmlFor="exampleFormControlTextarea1">
                         Tourament Type
                       </label>
                       <div className="btn_selection">
                         <div className="big_btn">
-                          <span class="form-check-label terms">
+                          <span className= "form-check-label terms">
                             {' '}
                             Single Elimination
                           </span>
@@ -700,7 +700,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                         </div>
 
                         {/* <div className="big_btn">
-                          <span class="form-check-label terms">
+                          <span className="form-check-label terms">
                             {' '}
                             Double Elimination
                           </span>
@@ -714,7 +714,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                         </div>
 
                         <div className="big_btn">
-                          <span class="form-check-label terms">
+                          <span className="form-check-label terms">
                             {' '}
                             Round Robin
                           </span>
@@ -733,7 +733,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                       <>
                         <div className="form-group">
                           <div className="colm">
-                            <label for="exampleFormControlTextarea1">
+                            <label htmlFor="exampleFormControlTextarea1">
                               Number of Participants
                             </label>
                             <input
@@ -751,7 +751,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                     <div className="form-group">
                       <div className="date_time">
                         <div className="date_box">
-                          <label for="exampleFormControlTextarea1">
+                          <label htmlFor="exampleFormControlTextarea1">
                             Entrance fee
                           </label>
                           <input
@@ -765,7 +765,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                           <p>{formErrors.entranceFee}</p>
                         </div>
                         <div className="time_box">
-                          <label for="exampleFormControlTextarea1">
+                          <label htmlFor="exampleFormControlTextarea1">
                             Check-in period
                           </label>
                           <input
@@ -783,7 +783,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                     <div className="form-group">
                       <div className="date_time">
                         <div className="date_box">
-                          <label for="exampleFormControlTextarea1">
+                          <label htmlFor="exampleFormControlTextarea1">
                             Session Start Date
                           </label>
                           <input
@@ -796,7 +796,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                           <p>{formErrors.startDate}</p>
                         </div>
                         <div className="time_box">
-                          <label for="exampleFormControlTextarea1">
+                          <label htmlFor="exampleFormControlTextarea1">
                             Session Start Time
                           </label>
                           <input
@@ -812,7 +812,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                     <div className="form-group">
                       <div className="date_time">
                         <div className="date_box">
-                          <label for="exampleFormControlTextarea1">
+                          <label htmlFor="exampleFormControlTextarea1">
                             Session End Date
                           </label>
                           <input
@@ -825,7 +825,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                           <p>{formErrors.endDate}</p>
                         </div>
                         <div className="time_box">
-                          <label for="exampleFormControlTextarea1">
+                          <label htmlFor="exampleFormControlTextarea1">
                             Session End Time
                           </label>
                           <input
@@ -840,7 +840,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                     </div>
                     <div className="form-group">
                       <div className="colm">
-                        <label for="exampleFormControlInput1">
+                        <label htmlFor="exampleFormControlInput1">
                           Sponsors (Optional)
                         </label>
                         <TournamentAddSponsor
@@ -851,7 +851,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                       </div>
 
                       <div className="colm">
-                        <label for="exampleFormControlInput1">
+                        <label htmlFor="exampleFormControlInput1">
                           Organizer (Optional)
                         </label>
                         <TournamentAddSponsor
@@ -877,7 +877,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                       </div>
 
                       <div className="colm">
-                        <label for="exampleFormControlInput1">Location</label>
+                        <label htmlFor="exampleFormControlInput1">Location</label>
                         <select name="location" onChange={handleChangeCheck}>
                           <option value="">Select Location...</option>
                           {options &&
@@ -891,7 +891,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                       </div>
 
                       <div className="colm">
-                        <label for="exampleFormControlInput1">
+                        <label htmlFor="exampleFormControlInput1">
                           Eligible Countries (Optional)
                         </label>
                         <select
@@ -909,7 +909,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                       </div>
 
                       <div className="colm">
-                        <label for="exampleFormControlInput1">
+                        <label htmlFor="exampleFormControlInput1">
                           Description
                         </label>
                         <input
@@ -923,7 +923,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                         <p>{formErrors.description}</p>
                       </div>
                       {/* <div className="colm">
-                        <label for="exampleFormControlInput1">
+                        <label htmlFor="exampleFormControlInput1">
                           Tickets (Optional)
                         </label>
                         <input
@@ -936,7 +936,7 @@ const TournamentCreate = ({ user, isClaim }) => {
                         />
                       </div> */}
                       <div className="colm colm100">
-                        <label for="exampleFormControlInput1">
+                        <label htmlFor="exampleFormControlInput1">
                           Website (Optional)
                         </label>
                         <input

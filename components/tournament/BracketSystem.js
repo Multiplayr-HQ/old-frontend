@@ -49,8 +49,8 @@ const BracketSystem = ({ data }) => {
               roundOneMatches.map(
                 (match) =>
                   match.opponents &&
-                  match.opponents.map((opponent) => (
-                    <li>
+                  match.opponents.map((opponent,i) => (
+                    <li key={i}>
                       <div className="team_name">
                         {' '}
                         <span className="dp">
@@ -73,8 +73,8 @@ const BracketSystem = ({ data }) => {
             {roundTwoMatches &&
               firstHalf.map((match) =>
                 match.opponents && match.opponents.length === 2 ? (
-                  match.opponents.map((opponent) => (
-                    <li>
+                  match.opponents.map((opponent,i) => (
+                    <li key={i}>
                       <div className="team_name">
                         {' '}
                         <span className="dp">
@@ -128,8 +128,8 @@ const BracketSystem = ({ data }) => {
             {roundTwoMatches &&
               secondHalf.map((match) =>
                 match.opponents && match.opponents.length === 2 ? (
-                  match.opponents.map((opponent) => (
-                    <li>
+                  match.opponents.map((opponent,i) => (
+                    <li key={i}>
                       <div className="team_name">
                         {' '}
                         <span className="dp">
@@ -186,9 +186,9 @@ const BracketSystem = ({ data }) => {
               SemiFinals.map(
                 (match) =>
                   match.opponents &&
-                  match.opponents.map((opponent) =>
+                  match.opponents.map((opponent,i) =>
                     opponent.isPlayer === false ? (
-                      <li>
+                      <li key={i}>
                         <div className="team_name">
                           {' '}
                           <span className="dp">
@@ -204,7 +204,7 @@ const BracketSystem = ({ data }) => {
                         {/* <div className="points">7</div> */}
                       </li>
                     ) : (
-                      <li>
+                      <li key={i}>
                         <div className="team_name">
                           {' '}
                           <span className="dp">
@@ -229,9 +229,9 @@ const BracketSystem = ({ data }) => {
               Finals.map(
                 (match) =>
                   match.opponents &&
-                  match.opponents.map((opponent) =>
+                  match.opponents.map((opponent,i) =>
                     opponent.isPlayer === false ? (
-                      <li>
+                      <li key={i}>
                         <div className="team_name">
                           {' '}
                           <span className="dp">
@@ -247,7 +247,7 @@ const BracketSystem = ({ data }) => {
                         {/* <div className="points">7</div> */}
                       </li>
                     ) : (
-                      <li>
+                      <li key={i}>
                         <div className="team_name">
                           {' '}
                           <span className="dp">

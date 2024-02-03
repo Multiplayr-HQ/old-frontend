@@ -29,8 +29,8 @@ const TeamJoines = ({
         {isAdmin || isOwner || isCEO || isManager || isSupportAdmin ? (
           <ul>
             {joines &&
-              joines?.map((req) => (
-                <li>
+              joines?.map((req,i) => (
+                <li key={i}>
                   <div className="dp">
                     {req.playerId.apidata?.data?.platformInfo ? (
                       <img

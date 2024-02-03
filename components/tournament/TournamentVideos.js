@@ -172,7 +172,7 @@ const TournamentVideos = ({ user, tournament, isUser, isSupportAdmin }) => {
           </ul>
         ))
       ) : (
-        <p>No Clip's Available</p>
+        <p>No Clip&apos;s Available</p>
       )}
     </div>
   );

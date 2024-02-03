@@ -11,7 +11,8 @@ import TaskList from '../components/battlepass/TaskList';
 import Moment from 'moment';
 import SubcriptionCard from '../components/common/SubcriptionCard';
 
-const battlepass = ({ user, data, profile }) => {
+const Battlepass = ({ user, data, profile }) => {
+
   const [bpData, setBpData] = useState(data);
   const [pageNumber, setPageNumber] = useState(0);
   const rewardPerPage = 5;
@@ -122,7 +123,7 @@ const battlepass = ({ user, data, profile }) => {
                     disabled={pageNumber === 0 ? true : false}
                     onClick={(e) => handleNext(e, 'Prev')}
                   >
-                    <i class="fa fa-chevron-left" aria-hidden="true" />
+                    <i className="fa fa-chevron-left" aria-hidden="true" />
                   </button>
                 </span>
                 <span>
@@ -132,7 +133,7 @@ const battlepass = ({ user, data, profile }) => {
                     disabled={displayRewards.length < 5 ? true : false}
                     onClick={(e) => handleNext(e, 'Next')}
                   >
-                    <i class="fa fa-chevron-right" aria-hidden="true" />
+                    <i className="fa fa-chevron-right" aria-hidden="true" />
                   </button>
                 </span>
               </div>
@@ -146,9 +147,9 @@ const battlepass = ({ user, data, profile }) => {
                   <b>
                     BATTLE PASS{' '}
                     {battlepass.isBPUser ? (
-                      <i class="fa fa-lock" aria-hidden="true"></i>
+                      <i className="fa fa-lock" aria-hidden="true"></i>
                     ) : (
-                      <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                      <i className="fa fa-unlock-alt" aria-hidden="true"></i>
                     )}
                   </b>
                 </span>
@@ -158,15 +159,15 @@ const battlepass = ({ user, data, profile }) => {
                   {freelevels
                     .slice(rewardVisited, rewardVisited + rewardPerPage)
                     .map((display) => {
-                      return display.reward.map((rwd) =>
+                      return display.reward.map((rwd,i) =>
                         rwd.rewardId.type === 'free' ? (
-                          <RewardList
+                          <RewardList key={i}
                             battlepass={battlepass}
                             rewards={battlepass.completed_rewards}
                             reward={rwd.rewardId}
                           />
                         ) : (
-                          <li></li>
+                          <li key={i}></li>
                         )
                       );
                     })}
@@ -174,8 +175,8 @@ const battlepass = ({ user, data, profile }) => {
 
                 <ul className="step_line">
                   {displayLevels &&
-                    displayLevels.map((lev) => (
-                      <li
+                    displayLevels.map((lev,i) => (
+                      <li key={i}
                         className={`${
                           lev._id <= battlepass?.level ? 'active' : ''
                         }`}
@@ -189,15 +190,15 @@ const battlepass = ({ user, data, profile }) => {
                   {paidlevels
                     .slice(rewardVisited, rewardVisited + rewardPerPage)
                     .map((display) => {
-                      return display.reward.map((rwd) =>
+                      return display.reward.map((rwd,i) =>
                         rwd.rewardId.type === 'paid' ? (
-                          <RewardList
+                          <RewardList key={i}
                             battlepass={battlepass}
                             rewards={battlepass.completed_rewards}
                             reward={rwd.rewardId}
                           />
                         ) : (
-                          <li></li>
+                          <li key={i}></li>
                         )
                       );
                     })}
@@ -209,28 +210,28 @@ const battlepass = ({ user, data, profile }) => {
           <div className="right_season">
             <h2>Tasks</h2>
 
-            <ul class="profile_tab_btn three_nav">
-              <li class="active">
+            <ul className="profile_tab_btn three_nav">
+              <li className="active">
                 <a href="#!" rel="week1">
                   Week1
                 </a>
               </li>
-              <li class="">
+              <li className="">
                 <a href="#!" rel="week2">
                   Week2
                 </a>
               </li>
-              <li class="">
+              <li className="">
                 <a href="#!" rel="week3">
                   Week3
                 </a>
               </li>
-              <li class="">
+              <li className="">
                 <a href="#!" rel="week4">
                   Week4
                 </a>
               </li>
-              <li class="">
+              <li className="">
                 <a href="#!" rel="week5">
                   Week5
                 </a>
@@ -297,4 +298,4 @@ export const getServerSideProps = async (context) => {
     props: { data }
   };
 };
-export default battlepass;
+export default Battlepass;

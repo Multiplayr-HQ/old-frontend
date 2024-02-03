@@ -132,8 +132,8 @@ const NFTGamesList = ({ user, challenge, profile }) => {
               {challenge.isOpenMatch === false ? (
                 <ul>
                   {teamOne.length > 0 &&
-                    teamOne.map((team) => (
-                      <li>
+                    teamOne.map((team,i) => (
+                      <li key={i}>
                         <div className="games_names">
                           <div className="img">
                             <img
@@ -170,8 +170,8 @@ const NFTGamesList = ({ user, challenge, profile }) => {
                 challenge.ChallType === 'Team' ? (
                 <ul>
                   {teamOne.length > 0 &&
-                    teamOne.map((team) => (
-                      <li>
+                    teamOne.map((team,i) => (
+                      <li key={i}>
                         <div className="games_names">
                           <div className="img">
                             <img
@@ -231,8 +231,8 @@ const NFTGamesList = ({ user, challenge, profile }) => {
               {challenge.isOpenMatch === false ? (
                 <ul>
                   {teamTwo.length > 0 &&
-                    teamTwo.map((team) => (
-                      <li>
+                    teamTwo.map((team,i) => (
+                      <li key={i}>
                         <div className="games_names">
                           <div className="img">
                             <img
@@ -268,8 +268,8 @@ const NFTGamesList = ({ user, challenge, profile }) => {
                 challenge.ChallType === 'Team' ? (
                 <ul>
                   {teamTwo.length > 0 &&
-                    teamTwo.map((team) => (
-                      <li>
+                    teamTwo.map((team,i) => (
+                      <li key={i}>
                         <div className="games_names">
                           <div className="img">
                             <img

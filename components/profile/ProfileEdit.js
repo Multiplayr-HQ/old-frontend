@@ -181,12 +181,12 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
               <h3>Profile Edit</h3>
               <form className="common_form" onSubmit={handleProfileEdit}>
                 <div className="form-group">
-                  <label for="exampleFormControlTextarea1">
+                  <label htmlFor="exampleFormControlTextarea1">
                     Profile Category
                   </label>
                   <div className="btn_selection">
                     <div className="big_btn">
-                      <span class="form-check-label terms">Gamer</span>
+                      <span className="form-check-label terms">Gamer</span>
                       <input
                         type="radio"
                         name="profileType"
@@ -196,7 +196,7 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
                     </div>
 
                     <div className="big_btn">
-                      <span class="form-check-label terms">Coach</span>
+                      <span className="form-check-label terms">Coach</span>
                       <input
                         type="radio"
                         name="profileType"
@@ -206,7 +206,7 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
                     </div>
 
                     <div className="big_btn">
-                      <span class="form-check-label terms">Streamer</span>
+                      <span className="form-check-label terms">Streamer</span>
                       <input
                         type="radio"
                         name="profileType"
@@ -215,7 +215,7 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
                       />
                     </div>
                     <div className="big_btn">
-                      <span class="form-check-label terms">Business</span>
+                      <span className="form-check-label terms">Business</span>
                       <input
                         type="radio"
                         name="profileType"
@@ -302,8 +302,8 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
                         >
                           <option value="">Select Team...</option>
                           {allteams &&
-                            allteams.map((tem) => (
-                              <option value={tem.team?._id}>
+                            allteams.map((tem,i) => (
+                              <option key={i} value={tem.team?._id}>
                                 {tem.team?.name}
                               </option>
                             ))}
@@ -372,8 +372,8 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
                         >
                           <option value="">Select Game...</option>
                           {User_team &&
-                            User_team[0]?.team?.games.map((game) => (
-                              <option value={game.gameId._id}>
+                            User_team[0]?.team?.games.map((game,i) => (
+                              <option key={i} value={game.gameId._id}>
                                 {game.gameId.name}
                               </option>
                             ))}
@@ -393,8 +393,8 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
                         >
                           <option value="">Select Game...</option>
                           {games &&
-                            games.map((game) => (
-                              <option value={game._id}>{game.name}</option>
+                            games.map((game,i) => (
+                              <option key={i} value={game._id}>{game.name}</option>
                             ))}
                         </select>
                         <p>{formErrors.Sgame}</p>
@@ -440,8 +440,8 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
                         >
                           <option value="">Select Role...</option>
                           {allroles &&
-                            allroles.map((role) => (
-                              <option value={role}>{role}</option>
+                            allroles.map((role,i) => (
+                              <option key={i} value={role}>{role}</option>
                             ))}
                         </select>
                         {/* <p>{formErrors.Grole}</p> */}
@@ -457,8 +457,8 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
                         >
                           <option value="">Select Role...</option>
                           {allroles &&
-                            allroles.map((role) => (
-                              <option value={role}>{role}</option>
+                            allroles.map((role,i) => (
+                              <option key={i} value={role}>{role}</option>
                             ))}
                         </select>
                         <p>{formErrors.b_role}</p>
@@ -540,8 +540,8 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
                                   <div className="poup_height msScroll_all">
                                     <ul>
                                       {addgames &&
-                                        addgames.map((game) => (
-                                          <li>
+                                        addgames.map((game,i) => (
+                                          <li key={i}>
                                             <div className="game_pic">
                                               <a
                                                 href="#!"

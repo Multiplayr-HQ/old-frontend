@@ -47,8 +47,8 @@ const TeamGameDetails = ({
           <ul>
             <li>
               <span className="nm">Game: </span>{' '}
-              {attributeData.games?.map((game) => (
-                <img
+              {attributeData.games?.map((game,i) => (
+                <img key={i}
                   src={game.gameId?.imgUrl}
                   style={{ height: '35px', width: '35px' }}
                 />

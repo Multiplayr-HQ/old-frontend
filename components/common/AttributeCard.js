@@ -126,8 +126,8 @@ const AttributeCard = ({ type, attributeId, profile }) => {
                         className="form-control"
                       >
                         <option value="">Select Game</option>
-                        {allgames.map((game) => (
-                          <option value={game?._id}>{game.name}</option>
+                        {allgames.map((game,i) => (
+                          <option key={i} value={game?._id}>{game.name}</option>
                         ))}
                       </select>
                     </div>
@@ -212,8 +212,8 @@ const AttributeCard = ({ type, attributeId, profile }) => {
                         >
                           <option value="">Select Region</option>
                           {regionsData &&
-                            regionsData.map((role) => (
-                              <option value={role}>{role}</option>
+                            regionsData.map((role,i) => (
+                              <option key={i} value={role}>{role}</option>
                             ))}
                         </select>
                       </div>
@@ -245,8 +245,8 @@ const AttributeCard = ({ type, attributeId, profile }) => {
                         className="form-control"
                       >
                         {LanguageData &&
-                          LanguageData.map((lang) => (
-                            <option value={lang}>{lang}</option>
+                          LanguageData.map((lang,i) => (
+                            <option key={i} value={lang}>{lang}</option>
                           ))}
                       </select>
                     </div>

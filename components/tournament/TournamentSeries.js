@@ -77,7 +77,7 @@ const TournamentSeries = ({ user, tournament }) => {
                 <td>URL </td>
                 <td>
                   <strong>
-                    <a href={`result.leagueId.url`} target="_blank">
+                    <a href={`result.leagueId.url`} target="_blank" rel="noreferrer">
                       {result.leagueId.url}
                     </a>
                   </strong>

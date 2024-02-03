@@ -69,7 +69,7 @@ const AccountSettings = ({ user, profile }) => {
           <div className="white_bg">
             <div className="left_setting_menu">
               <div className="menu_bloc">
-                <i class="fa fa-cog" aria-hidden="true"></i>
+                <i className="fa fa-cog" aria-hidden="true"></i>
                 <Link href={`/settings/general`}> General</Link>
                 <ul>
                   <li>
@@ -90,7 +90,7 @@ const AccountSettings = ({ user, profile }) => {
               </div>
 
               <div className="menu_bloc">
-                <i class="fa fa-user" aria-hidden="true"></i>
+                <i className="fa fa-user" aria-hidden="true"></i>
                 <Link href={`/settings/accounts`} className="active">
                   Accounts
                 </Link>
@@ -108,7 +108,7 @@ const AccountSettings = ({ user, profile }) => {
               </div>
 
               <div className="menu_bloc">
-                <i class="fa fa-shield" aria-hidden="true"></i>
+                <i className="fa fa-shield" aria-hidden="true"></i>
                 <Link href={`/settings/security`}>Security & Privacy</Link>
                 <ul>
                   <li>
@@ -161,8 +161,8 @@ const AccountSettings = ({ user, profile }) => {
 
               <div className="blokes">
                 {addgames &&
-                  addgames.map((game) => (
-                    <div className="flex1 accountbg">
+                  addgames.map((game,i) => (
+                    <div className="flex1 accountbg" key={i}>
                       <div className="game_pic">
                         <a href="#!">
                           <img
@@ -206,7 +206,7 @@ const AccountSettings = ({ user, profile }) => {
               <h2 id="social">Social Links</h2>
               <form className="common_form">
                 <div className="form-group">
-                  <label for="">Facebook</label>
+                  <label htmlFor="">Facebook</label>
                   <input
                     type="text"
                     name="facebook"
@@ -216,7 +216,7 @@ const AccountSettings = ({ user, profile }) => {
                   />
                 </div>
                 <div className="form-group">
-                  <label for="">Instagram</label>
+                  <label htmlFor="">Instagram</label>
                   <input
                     type="text"
                     name="instagram"
@@ -226,7 +226,7 @@ const AccountSettings = ({ user, profile }) => {
                   />
                 </div>
                 <div className="form-group">
-                  <label for="">Twitch</label>
+                  <label htmlFor="">Twitch</label>
                   <input
                     type="text"
                     name="twitch"
@@ -236,7 +236,7 @@ const AccountSettings = ({ user, profile }) => {
                   />
                 </div>
                 <div className="form-group">
-                  <label for="">Youtube</label>
+                  <label htmlFor="">Youtube</label>
                   <input
                     type="text"
                     name="youtube"
@@ -246,7 +246,7 @@ const AccountSettings = ({ user, profile }) => {
                   />
                 </div>
                 <div className="form-group">
-                  <label for="">Discord</label>
+                  <label htmlFor="">Discord</label>
                   <input
                     type="text"
                     name="discord"
@@ -256,7 +256,7 @@ const AccountSettings = ({ user, profile }) => {
                   />
                 </div>
                 <div className="form-group">
-                  <label for="">Website</label>
+                  <label htmlFor="">Website</label>
                   <input
                     type="text"
                     name="website"

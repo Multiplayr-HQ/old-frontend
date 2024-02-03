@@ -109,8 +109,8 @@ const TournamentDisplay = ({
                     {result?.playType === 'SOLO' ||
                     result.registered.length > 0 ? (
                       <>
-                        {result.registered.slice(0, 4).map((ppl) => (
-                          <li>
+                        {result.registered.slice(0, 4).map((ppl,i) => (
+                          <li key={i}>
                             {' '}
                             <img
                               src={ppl.user?.profilePicUrl}
@@ -124,8 +124,8 @@ const TournamentDisplay = ({
                       </>
                     ) : (
                       <>
-                        {result.teams.slice(0, 4).map((team) => (
-                          <li>
+                        {result.teams.slice(0, 4).map((team,i) => (
+                          <li key={i}>
                             <img
                               src={team.teamId?.imgUrl}
                               alt={team.teamId?.name}
@@ -274,8 +274,8 @@ const TournamentDisplay = ({
                     {result.tournament?.playType === 'SOLO' ||
                     result.tournament.registered.length > 0 ? (
                       <>
-                        {result.tournament.registered.slice(0, 4).map((ppl) => (
-                          <li>
+                        {result.tournament.registered.slice(0, 4).map((ppl,i) => (
+                          <li key={i}>
                             {' '}
                             <img
                               src={ppl.user?.profilePicUrl}
@@ -289,8 +289,8 @@ const TournamentDisplay = ({
                       </>
                     ) : (
                       <>
-                        {result.tournament.teams.slice(0, 4).map((team) => (
-                          <li>
+                        {result.tournament.teams.slice(0, 4).map((team,i) => (
+                          <li key={i}>
                             <img
                               src={team.teamId?.imgUrl}
                               alt={team.teamId?.name}
@@ -443,8 +443,8 @@ const TournamentDisplay = ({
                     {result.tournament?.playType === 'SOLO' ||
                     result.tournament.registered.length > 0 ? (
                       <>
-                        {result.tournament.registered.slice(0, 4).map((ppl) => (
-                          <li>
+                        {result.tournament.registered.slice(0, 4).map((ppl,i) => (
+                          <li key={i}>
                             {' '}
                             <img
                               src={ppl.user?.profilePicUrl}
@@ -458,8 +458,8 @@ const TournamentDisplay = ({
                       </>
                     ) : (
                       <>
-                        {result.tournament.teams.slice(0, 4).map((team) => (
-                          <li>
+                        {result.tournament.teams.slice(0, 4).map((team,i) => (
+                          <li key={i}>
                             <img
                               src={team.teamId?.imgUrl}
                               alt={team.teamId?.name}

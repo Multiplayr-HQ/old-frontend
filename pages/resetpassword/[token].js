@@ -7,6 +7,8 @@ import axios from 'axios';
 import baseURL from '../../utils/baseURL';
 import { useMutation } from 'react-query';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
+import Script from 'next/script';
 
 const ResetPassword = () => {
   const [password, setPassword] = useState('');
@@ -77,7 +79,7 @@ const ResetPassword = () => {
             <div className="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
               <form
                 className="form w-100"
-                novalidate="novalidate"
+                noValidate
                 id="kt_new_password_form"
                 onSubmit={handleSubmit}
               >
@@ -85,9 +87,9 @@ const ResetPassword = () => {
                   <h1 className="text-dark mb-3">Setup New Password</h1>
                   <div className="text-gray-400 fw-bold fs-4">
                     Already have reset your password ?
-                    <a href="/login" className="link-primary fw-bolder">
+                    <Link href="/login" className="link-primary fw-bolder">
                       Sign in here
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="mb-10 fv-row" data-kt-password-meter="true">
@@ -100,7 +102,7 @@ const ResetPassword = () => {
                         className="form-control form-control-lg form-control-solid"
                         type={passwordShown ? 'text' : 'password'}
                         name="password"
-                        autocomplete="off"
+                        autoComplete="off"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
@@ -159,7 +161,7 @@ const ResetPassword = () => {
                     className="form-control form-control-lg form-control-solid"
                     type="password"
                     name="confirmPassword"
-                    autocomplete="off"
+                    autoComplete="off"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     required
@@ -183,8 +185,8 @@ const ResetPassword = () => {
 
           <FooterMain> </FooterMain>
 
-          <script src="/assets/plugins/global/plugins.bundle.js" />
-          <script src="/assets/js/scripts.bundle.js" />
+          <Script src="/assets/plugins/global/plugins.bundle.js" />
+          <Script src="/assets/js/scripts.bundle.js" />
         </div>
       </div>
     </main>

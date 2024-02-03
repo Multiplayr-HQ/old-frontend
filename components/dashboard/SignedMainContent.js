@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
+import Link from 'next/link';
 import { useMutation } from 'react-query';
 import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
@@ -207,40 +208,40 @@ const SignedMainContent = ({ posts, user, profile }) => {
         <div className="create_menu">
           <ul>
             <li>
-              <a href="/team/create">
+              <Link href="/team/create">
                 <i className="fa fa-users" aria-hidden="true"></i>
                 <p>create a Team </p>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/tour/create">
+              <Link href="/tour/create">
                 <i className="fa fa-trophy" aria-hidden="true"></i>
                 <p> create a Tournament</p>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#">
+              <Link href="#">
                 <i className="fa fa-comments" aria-hidden="true"></i>
                 <p> create a Community </p>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/brand/create">
+              <Link href="/brand/create">
                 <i className="fa fa-briefcase" aria-hidden="true"></i>
                 <p> create a Brand </p>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/arena/create">
+              <Link href="/arena/create">
                 <i className="fa fa-gamepad" aria-hidden="true"></i>
                 <p> create an Arena </p>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/company/create">
+              <Link href="/company/create">
                 <i className="fa fa-shopping-cart" aria-hidden="true"></i>
                 <p> create a Company </p>
-              </a>
+              </Link>
             </li>
           </ul>
           <div className="message">
@@ -251,9 +252,9 @@ const SignedMainContent = ({ posts, user, profile }) => {
             </p>
           </div>
 
-          <a href="#" onClick={menu_close} className="close">
-            <i class="fa fa-times-circle" aria-hidden="true"></i>
-          </a>
+          <Link href="#" onClick={menu_close} className="close">
+            <i className="fa fa-times-circle" aria-hidden="true"></i>
+          </Link>
         </div>
       ) : null}
 
@@ -408,8 +409,8 @@ const SignedMainContent = ({ posts, user, profile }) => {
         <div className="tab hide" id="Following">
           <div>
             <div className="post" style={{ padding: 0 }}>
-              {followingPosts.map((post) => (
-                <AllPosts user={user} post={post} profiledata={profiledata} />
+              {followingPosts.map((post,i) => (
+                <AllPosts user={user} post={post} profiledata={profiledata} key={i}/>
               ))}
             </div>
           </div>
@@ -417,8 +418,8 @@ const SignedMainContent = ({ posts, user, profile }) => {
 
         <div className="tab" id="Discover">
           <div>
-            {posts.map((post) => (
-              <AllPosts
+            {posts.map((post,i) => (
+              <AllPosts key={i}
                 user={user}
                 post={post}
                 profiledata={profiledata}

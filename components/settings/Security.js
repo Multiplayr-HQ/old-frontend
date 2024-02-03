@@ -108,7 +108,7 @@ const SecuritySettings = ({ user, profile }) => {
           <div className="white_bg">
             <div className="left_setting_menu">
               <div className="menu_bloc">
-                <i class="fa fa-cog" aria-hidden="true"></i>
+                <i className="fa fa-cog" aria-hidden="true"></i>
                 <Link href="/settings/general" className="active">
                   General
                 </Link>
@@ -131,7 +131,7 @@ const SecuritySettings = ({ user, profile }) => {
               </div>
 
               <div className="menu_bloc">
-                <i class="fa fa-user" aria-hidden="true"></i>
+                <i className="fa fa-user" aria-hidden="true"></i>
                 <Link href="/settings/accounts">Accounts</Link>
                 <ul>
                   <li>
@@ -147,7 +147,7 @@ const SecuritySettings = ({ user, profile }) => {
               </div>
 
               <div className="menu_bloc">
-                <i class="fa fa-shield" aria-hidden="true"></i>
+                <i className="fa fa-shield" aria-hidden="true"></i>
                 <Link href={`/settings/security`} className="active">
                   Security & Privacy
                 </Link>
@@ -195,8 +195,8 @@ const SecuritySettings = ({ user, profile }) => {
                     className={passwordShown ? '' : ' eyehide'}
                     onClick={togglePassword}
                   >
-                    <i class="fa fa-eye" aria-hidden="true"></i>
-                    <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                    <i className="fa fa-eye" aria-hidden="true"></i>
+                    <i className="fa fa-eye-slash" aria-hidden="true"></i>
                   </span>
                 </div>
                 <div className="form-group eyesbox">
@@ -212,8 +212,8 @@ const SecuritySettings = ({ user, profile }) => {
                     className={newPasswordShown ? '' : ' eyehide'}
                     onClick={(e) => togglePassword(e, 'new')}
                   >
-                    <i class="fa fa-eye" aria-hidden="true"></i>
-                    <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                    <i className="fa fa-eye" aria-hidden="true"></i>
+                    <i className="fa fa-eye-slash" aria-hidden="true"></i>
                   </span>
                 </div>
                 <div className="form-group">
@@ -249,13 +249,13 @@ const SecuritySettings = ({ user, profile }) => {
                       </a>
                       <div className="inner_model_box">
                         <div className="add_job_height">
-                          <h3>Blocked User's</h3>
+                          <h3>Blocked User&apos;s</h3>
                           <form className="common_form" onSubmit="">
                             {blockData && blockData.length > 0 ? (
                               <ul className="unblock">
                                 {blockData &&
-                                  blockData.map((block) => (
-                                    <li>
+                                  blockData.map((block,i) => (
+                                    <li key={i}>
                                       <div className="flex">
                                         <img
                                           src={block.user.profilePicUrl}
@@ -297,9 +297,9 @@ const SecuritySettings = ({ user, profile }) => {
                 <div className="flex1 mb-5">
                   <p>Review our Teams of Service</p>
                   <div className="rightBox">
-                    <a href="/legal/terms">
+                    <Link href="/legal/terms">
                       <button className="btn">Review</button>
-                    </a>
+                    </Link>
                   </div>
                 </div>
 

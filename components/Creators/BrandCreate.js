@@ -119,7 +119,7 @@ const BrandCreate = ({ isClaim, user }) => {
                         className="inputfile"
                         onChange={(e) => setImage(e.target.files[0])}
                       />
-                      <label for="logoUrl">
+                      <label htmlFor="logoUrl">
                         <span>Upload Logo</span>
                       </label>
                     </div>

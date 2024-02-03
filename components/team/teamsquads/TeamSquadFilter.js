@@ -64,8 +64,8 @@ const TeamSquadFilter = ({ playerData, players }) => {
         <label htmlFor="role">Role</label>
         <select name="role" onChange={onChange} value={squadPlayers.role}>
           <option value="--">--</option>
-          {teamroles.map((team) => (
-            <option value={team}>{team}</option>
+          {teamroles.map((team,i) => (
+            <option key={i} value={team}>{team}</option>
           ))}
         </select>
       </div>

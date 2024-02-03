@@ -91,7 +91,7 @@ const TeamJobCreate = ({ user, profile, teams }) => {
       <form onSubmit={handleSubmit} className="common_form">
         <>
           <div className="form-group">
-            <label for="exampleFormControlInput1">Job Title</label>
+            <label htmlFor= "exampleFormControlInput1">Job Title</label>
             <input
               type="text"
               className="form-control"
@@ -104,7 +104,7 @@ const TeamJobCreate = ({ user, profile, teams }) => {
           </div>
 
           <div className="form-group">
-            <label for="exampleFormControlInput1">Job Type</label>
+            <label htmlFor="exampleFormControlInput1">Job Type</label>
             <select
               name="role"
               className="form-control"
@@ -123,7 +123,7 @@ const TeamJobCreate = ({ user, profile, teams }) => {
           </div>
 
           <div className="form-group">
-            <label for="exampleFormControlInput1">Job Category</label>
+            <label htmlFor="exampleFormControlInput1">Job Category</label>
             <select
               name="category"
               className="form-control"
@@ -149,7 +149,7 @@ const TeamJobCreate = ({ user, profile, teams }) => {
           </div>
 
           <div className="form-group">
-            <label for="exampleFormControlInput1">Job Owner</label>
+            <label htmlFor="exampleFormControlInput1">Job Owner</label>
             <select
               className="game_search_result mscrollbar"
               name="owner"
@@ -158,15 +158,15 @@ const TeamJobCreate = ({ user, profile, teams }) => {
             >
               <option value="">Select Job Owner...</option>
               {teams &&
-                teams.map((team) => (
-                  <option value={team._id}>{team?.name}</option>
+                teams.map((team,i) => (
+                  <option key={i} value={team._id}>{team?.name}</option>
                 ))}
             </select>
             <p className="error">{formErrors.owner}</p>
           </div>
 
           <div className="form-group">
-            <label for="exampleFormControlInput1">
+            <label htmlFor="exampleFormControlInput1">
               Location <span>Optional</span>
             </label>
             <select
@@ -213,7 +213,7 @@ const TeamJobCreate = ({ user, profile, teams }) => {
             </div>
 
             <div className="form-group" style={{ height: '70px' }}>
-              <label for="exampleFormControlInput1">
+              <label htmlFor="exampleFormControlInput1">
                 Money Included <span>Optional</span>
               </label>
               <div className="prize_boxs">
@@ -252,7 +252,7 @@ const TeamJobCreate = ({ user, profile, teams }) => {
           </div>
 
           <div className="form-group">
-            <label for="exampleFormControlInput1">Description</label>
+            <label htmlFor="exampleFormControlInput1">Description</label>
 
             <Editor
               editorState={editorState}

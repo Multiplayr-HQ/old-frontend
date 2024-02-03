@@ -121,8 +121,8 @@ const Tournament_Reg = ({ user, tournament, profile, teams }) => {
                           >
                             <option value="--">--</option>
                             {teams &&
-                              teams.map((tem) => (
-                                <option value={tem._id}>{tem.name}</option>
+                              teams.map((tem,i) => (
+                                <option key={i} value={tem._id}>{tem.name}</option>
                               ))}
                           </select>
                           <button className="btn" onClick={reghandlesubmit}>
@@ -169,8 +169,8 @@ const Tournament_Reg = ({ user, tournament, profile, teams }) => {
                               >
                                 <option value="--">--</option>
                                 {teams &&
-                                  teams.map((tem) => (
-                                    <option value={tem._id}>{tem.name}</option>
+                                  teams.map((tem,i) => (
+                                    <option key={i} value={tem._id}>{tem.name}</option>
                                   ))}
                               </select>
                               <button className="btn" onClick={reghandlesubmit}>

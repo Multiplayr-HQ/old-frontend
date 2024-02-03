@@ -383,8 +383,8 @@ const ProfileTournament = ({
 
         <div className="new_tournament test">
           {tournamentData.Alltournaments &&
-            tournamentData.Alltournaments.map((tournament) => (
-              <div className="tournamnet_new_row">
+            tournamentData.Alltournaments.map((tournament,i) => (
+              <div className="tournamnet_new_row" key={i}>
                 <div className="tour_img_name">
                   <span className="imgs">
                     <img

@@ -20,10 +20,10 @@ const GameMaps = ({ gameId, maps, states }) => {
           style={{ display: 'flex' }}
         >
           {maps &&
-            maps.map((map) => (
-              <li onClick={() => handleMapSubmit(map._id)} id={map._id}>
+            maps.map((map,i) => (
+              <li onClick={() => handleMapSubmit(map._id)} id={map._id} key={i}>
                 <img src={map.imgUrl} alt={map.name} />
-                <i class="fa fa-check" aria-hidden="true"></i>
+                <i className= "fa fa-check" aria-hidden="true"></i>
                 <p>{map.name}</p>
               </li>
             ))}

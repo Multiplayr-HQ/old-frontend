@@ -73,8 +73,8 @@ const AllPosts = ({ post, user, profiledata, followData, type, team }) => {
                 {filtered &&
                   filtered
                     .slice(0, 1)
-                    .map((usr) => (
-                      <a href={`/user/${usr.user.username}`}>
+                    .map((usr,i) => (
+                      <a href={`/user/${usr.user.username}`} key={i}>
                         {usr.user.username}
                       </a>
                     ))}
@@ -94,8 +94,8 @@ const AllPosts = ({ post, user, profiledata, followData, type, team }) => {
                         <h3>Shares User</h3>
                         <ul>
                           {filtered &&
-                            filtered.slice(1).map((usr) => (
-                              <li>
+                            filtered.slice(1).map((usr,i) => (
+                              <li key={i}>
                                 <img
                                   src={usr.user.profilePicUrl}
                                   alt={usr.user.username}
@@ -117,7 +117,7 @@ const AllPosts = ({ post, user, profiledata, followData, type, team }) => {
                   {' '}
                   has shared{' '}
                   {post.post_type === 'user' ? post.user?.name : post.username}
-                  's post{' '}
+                  &apos;s post{' '}
                 </p>
               </>
             ) : null}
@@ -283,8 +283,8 @@ const AllPosts = ({ post, user, profiledata, followData, type, team }) => {
             ) : (
               <div className="more_user">
                 {post.shares &&
-                  post.shares.slice(0, 2).map((share) => (
-                    <a href="#">
+                  post.shares.slice(0, 2).map((share,i) => (
+                    <a href="#" key={i}>
                       <img
                         src={share.user?.profilePicUrl}
                         alt={share.user?.username}
@@ -307,8 +307,8 @@ const AllPosts = ({ post, user, profiledata, followData, type, team }) => {
                     <h3>Shares</h3>
                     <ul>
                       {post.shares &&
-                        post.shares.map((ppl) => (
-                          <li>
+                        post.shares.map((ppl,i) => (
+                          <li key={i}>
                             {' '}
                             <div className="game_pic">
                               <img
@@ -328,8 +328,8 @@ const AllPosts = ({ post, user, profiledata, followData, type, team }) => {
 
                 <span className="others">
                   {post.shares &&
-                    post.shares.slice(0, 2).map((share) => (
-                      <span>
+                    post.shares.slice(0, 2).map((share,i) => (
+                      <span key={i}>
                         <a href={`/user/${share.user?.username}`}>
                           {share.user?.username}
                         </a>

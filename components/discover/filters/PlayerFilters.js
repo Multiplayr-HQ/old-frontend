@@ -210,7 +210,7 @@ const PlayerFilters = ({ filterType, myState, selectedGame }) => {
                   </ul>
                 </div>
               ) : (
-                <div className="button-group">
+                <div className="button-group" key={idx}>
                   {' '}
                   <span className="drop_name">{filter.key}</span>
                   <div className="custom-control custom-checkbox">
@@ -251,7 +251,7 @@ const PlayerFilters = ({ filterType, myState, selectedGame }) => {
               <div className="filter_list">
                 {' '}
                 {selectedMapFilters.map((filter, idx) => (
-                  <span className="filter1">
+                  <span className="filter1" key={idx}>
                     {' '}
                     {filter.key}:
                     {Array.from(filter.values).map((filval, idxv) => (

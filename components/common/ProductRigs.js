@@ -139,10 +139,10 @@ const ProductRigs = ({ user, productList, Userdata }) => {
 
             <form className="common_form" onSubmit={handleSubmit}>
               <div className="form-group">
-                <label for="exampleFormControlTextarea1">Platform</label>
+                <label htmlFor="exampleFormControlTextarea1">Platform</label>
                 <div className="btn_selection">
                   <div className="big_btn">
-                    <span class="form-check-label terms">PC</span>
+                    <span className="form-check-label terms">PC</span>
                     <input
                       type="radio"
                       name="rigsType"
@@ -152,7 +152,7 @@ const ProductRigs = ({ user, productList, Userdata }) => {
                   </div>
 
                   <div className="big_btn">
-                    <span class="form-check-label terms">Console</span>
+                    <span className="form-check-label terms">Console</span>
                     <input
                       type="radio"
                       name="rigsType"
@@ -162,7 +162,7 @@ const ProductRigs = ({ user, productList, Userdata }) => {
                   </div>
 
                   <div className="big_btn">
-                    <span class="form-check-label terms">Mobile</span>
+                    <span className="form-check-label terms">Mobile</span>
                     <input
                       type="radio"
                       name="rigsType"
@@ -260,9 +260,9 @@ const ProductRigs = ({ user, productList, Userdata }) => {
           {Userdata.profile.rigs.length === 0 ? (
             <p>No Rigs available for you.</p>
           ) : (
-            Userdata.profile.rigs.map((rig) => (
-              <li>
-                <ProfileRigsDelete
+            Userdata.profile.rigs.map((rig,i) => (
+              <li key={i}>
+                <ProfileRigsDelete key={i}
                   rigId={rig._id}
                   profile={Userdata.profile}
                   user={user}
@@ -279,7 +279,7 @@ const ProductRigs = ({ user, productList, Userdata }) => {
                   <a
                     href={rig.rigId?.link}
                     className="quickpoup"
-                    target="_blank"
+                    target="_blank" rel="noreferrer"
                   >
                     Buy Now
                   </a>{' '}

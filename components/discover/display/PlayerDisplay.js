@@ -70,8 +70,8 @@ const PlayerDisplay = ({ isLoading, playerData, user }) => {
                   {plyr.players.attributes &&
                   plyr.players.attributes.roles?.length > 0 ? (
                     <>
-                      {plyr.players.attributes.roles.map((rol) => (
-                        <p>{rol} </p>
+                      {plyr.players.attributes.roles.map((rol,i) => (
+                        <p key={i}>{rol} </p>
                       ))}
                     </>
                   ) : (
@@ -113,8 +113,8 @@ const PlayerDisplay = ({ isLoading, playerData, user }) => {
                     <img src="/assets/media/discover/translator.png" alt="" />{' '}
                     {plyr.players.attributes?.language.length > 0 ? (
                       <>
-                        {plyr.players.attributes?.language.map((tem) => (
-                          <b>{tem}</b>
+                        {plyr.players.attributes?.language.map((tem,i) => (
+                          <b key={i}>{tem}</b>
                         ))}
                       </>
                     ) : (

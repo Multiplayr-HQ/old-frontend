@@ -118,8 +118,8 @@ const DetailProduct = ({ user, productItem }) => {
 
               <ul className="prod_thumb_box">
                 {product.images.map((img, index) => (
-                  <li>
-                    <span className={`small_thumb ${isActive(index)}`} c>
+                  <li key={index}>
+                    <span className={`small_thumb ${isActive(index)}`} >
                       <img
                         key={index}
                         src={img.url}

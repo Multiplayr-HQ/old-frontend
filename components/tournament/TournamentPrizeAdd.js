@@ -116,11 +116,11 @@ const TournamentPrizeAdd = ({
 
   return (
     <>
-      <div class="form-group">
-        <label for="exampleFormControlInput1">{prizes} Prize</label>
+      <div className="form-group">
+        <label htmlFor="exampleFormControlInput1">{prizes} Prize</label>
         <input
           type="text"
-          class="form-control"
+          className="form-control"
           value={states.prizeName}
           onChange={(e) => handleFilter(e, 'PLAYER')}
           name="prizeName"
@@ -179,39 +179,39 @@ const TournamentPrizeAdd = ({
         ) : null}
       </div>
 
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Prize Won</label>
+      <div className="form-group">
+        <label htmlFor="exampleFormControlInput1">Prize Won</label>
         <input
           type="number"
-          class="form-control"
+          className="form-control"
           name="winnings"
           value={states.winnings}
           onChange={handleChange}
         />
       </div>
 
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Goodies</label>
+      <div className="form-group">
+        <label htmlFor="exampleFormControlInput1">Goodies</label>
         <input
           type="text"
-          class="form-control"
+          className="form-control"
           name="goodies"
           value={states.goodies}
           onChange={handleChange}
         />
       </div>
 
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Upload Image of Trophy</label>
-        <div class="style_file_upload">
-          <input type="file" name="imgUrl" id="imgUrl" class="inputfile" />
-          <label for="imgUrl">
+      <div className="form-group">
+        <label htmlFor="exampleFormControlInput1">Upload Image of Trophy</label>
+        <div className="style_file_upload">
+          <input type="file" name="imgUrl" id="imgUrl" className="inputfile" />
+          <label htmlFor="imgUrl">
             <span>PNG Image</span>
           </label>
         </div>
       </div>
 
-      <div class="form-group">
+      <div className="form-group">
         <label htmlFor="exampleFormControlInput1">Sponsor</label>
         <input
           type="search"

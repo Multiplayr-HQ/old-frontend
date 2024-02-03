@@ -20,8 +20,8 @@ const ClaimCard = ({ data }) => {
       {data && data.length === 0 ? (
         <p>No data</p>
       ) : (
-        data.map((item) => (
-          <li>
+        data.map((item,i) => (
+          <li key={i}>
             <div className="row1">
               <div className="card_img">
                 <div className="img">

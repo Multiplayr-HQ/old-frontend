@@ -169,7 +169,7 @@ const TeamProfileData = ({
             ) : (
               data.teamPosts.length !== 0 &&
               data.teamPosts.map((post, index) => (
-                <AllPosts
+                <AllPosts key={index}
                   post={post}
                   user={user}
                   followData={followData.followers}

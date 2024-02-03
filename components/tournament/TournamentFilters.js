@@ -218,7 +218,7 @@ const TournamentFilters = ({
                   </ul>
                 </div>
               ) : (
-                <div className="button-group">
+                <div className="button-group" key={Date.now()}>
                   {' '}
                   <span className="drop_name">{filter.key}</span>
                   <div className="custom-control custom-checkbox">
@@ -259,11 +259,11 @@ const TournamentFilters = ({
             <div className="filter_list">
               {' '}
               {selectedMapFilters.map((filter, idx) => (
-                <span className="filter1">
+                <span key={idx} className="filter1">
                   {' '}
                   {filter.key}:
                   {Array.from(filter.values).map((filval, idxv) => (
-                    <>
+                    < >
                       {filval}{' '}
                       <a
                         href="#!"

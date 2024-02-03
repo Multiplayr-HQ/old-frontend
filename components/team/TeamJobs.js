@@ -38,7 +38,7 @@ const TeamJobs = ({
             </a>
 
             <div className="inner_model_box">
-              <h3>Job Detail's</h3>
+              <h3>Job Detail&apos;s</h3>
 
               <div className="">
                 <TeamJobCreate user={user} profile={profile} teams={team} />

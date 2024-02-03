@@ -62,7 +62,7 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
             </div>
           ) : (
             challenges.map((result, idx) => (
-              <Challengelist result={result} profile={profile} user={user} />
+              <Challengelist result={result} profile={profile} user={user} key={idx}/>
             ))
           )}
         </div>
@@ -160,7 +160,7 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
               )}
               <p>
                 {' '}
-                <a href="/discover"> Discover </a> More Teams
+                <Link href="/discover"> Discover </Link> More Teams
               </p>
             </div>
             <div className="overlay"></div>
@@ -302,7 +302,7 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
                   </div>
                   <div className="match_time">
                     <span>
-                      <a href={match.officialStreamUrl} target="_blank">
+                      <a href={match.officialStreamUrl}  target="_blank" rel="noreferrer">
                         {match.officialStreamUrl}
                       </a>
                     </span>

@@ -88,8 +88,8 @@ const TeamChallenge = ({ teams, team }) => {
                   onChange={onChange}
                 >
                   <option value="">Select Your Team...</option>
-                  {teams.map((team) => (
-                    <option value={team._id}>{team.name}</option>
+                  {teams.map((team,i) => (
+                    <option key={i} value={team._id}>{team.name}</option>
                   ))}
                 </select>
               </div>
@@ -106,8 +106,8 @@ const TeamChallenge = ({ teams, team }) => {
                       No games available between the teams.
                     </option>
                   ) : (
-                    commonGames?.map((cG) => (
-                      <option value={cG.gameId?._id}>{cG.gameId?.name}</option>
+                    commonGames?.map((cG,i) => (
+                      <option key={i} value={cG.gameId?._id}>{cG.gameId?.name}</option>
                     ))
                   )}
                 </select>
@@ -124,8 +124,8 @@ const TeamChallenge = ({ teams, team }) => {
                   {specialPlayers && specialPlayers.length === 0 ? (
                     <option value="">No Common Players.</option>
                   ) : (
-                    specialPlayers?.map((plyr) => (
-                      <option value={plyr?.playerId?._id}>
+                    specialPlayers?.map((plyr,i) => (
+                      <option key={i} value={plyr?.playerId?._id}>
                         {plyr.playerId?.apidata
                           ? plyr.playerId.apidata.data.platformInfo
                               .platformUserHandle

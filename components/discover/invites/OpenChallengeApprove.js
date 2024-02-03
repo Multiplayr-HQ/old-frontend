@@ -116,8 +116,8 @@ const Open_ChallengeApprove = ({ challenge, profile }) => {
                       >
                         <option value="--">--</option>
                         {commonTeams &&
-                          commonTeams.map((tem) => (
-                            <option value={tem._id}>{tem.name}</option>
+                          commonTeams.map((tem,i) => (
+                            <option value={tem._id} key={i}>{tem.name}</option>
                           ))}
                       </select>
                     </>

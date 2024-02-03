@@ -238,13 +238,13 @@ function Customjs() {
           fileReader.onload = function (e) {
             var file = e.target;
             $(
-              '<span class="image_box">' +
-                '<img class="imageThumb" src="' +
+              '<span className="image_box">' +
+                '<img className="imageThumb" src="' +
                 e.target.result +
                 '" title="' +
                 file.name +
                 '"/>' +
-                '<br/><span class="remove">X</span>' +
+                '<br/><span className="remove">X</span>' +
                 '</span>'
             ).insertAfter('#files');
             $('.remove').click(function () {

@@ -26,7 +26,7 @@ const SponsorCard = ({ states, sponsors }) => {
       </div>
 
       {[...Array(count)].map((e, index) => (
-        <div className="form-group">
+        <div className="form-group" key={index}>
           <TournamentAddSponsor
             sponsors={sponsors}
             states={states}

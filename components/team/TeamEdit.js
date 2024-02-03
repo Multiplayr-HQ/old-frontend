@@ -154,8 +154,8 @@ const TeamEdit = ({
                     multiple={true}
                   >
                     {allarena &&
-                      allarena.map((are) => (
-                        <option value={are._id}>{are.name}</option>
+                      allarena.map((are,i) => (
+                        <option key={i} value={are._id}>{are.name}</option>
                       ))}
                   </select>
                 </div>
@@ -188,8 +188,8 @@ const TeamEdit = ({
                     multiple={true}
                   >
                     {allgames &&
-                      allgames.map((game) => (
-                        <option value={game._id}>{game.name}</option>
+                      allgames.map((game,i) => (
+                        <option key={i} value={game._id}>{game.name}</option>
                       ))}
                   </select>
                 </div>

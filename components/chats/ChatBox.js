@@ -159,8 +159,8 @@ const ChatBox = ({ user }) => {
                         .filter(
                           (resultuser) => resultuser.username !== user.username
                         )
-                        .map((resultuser) => (
-                          <ul className="contact_list">
+                        .map((resultuser,i) => (
+                          <ul className="contact_list" key={i}>
                             <li
                               className="active dlab-chat-user"
                               onClick={() => accessChat(resultuser._id)}

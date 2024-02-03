@@ -4,8 +4,8 @@ const TournamentPrizeDetail = ({ tournament }) => {
       <div className="new_result">
         <div className="top_three_prize">
           {tournament &&
-            tournament.prizes.slice(0, 3).map((tourPrize) => (
-              <div className="prize_box">
+            tournament.prizes.slice(0, 3).map((tourPrize,i) => (
+              <div className="prize_box" key={i}>
                 <div className="first_symb">
                   {tourPrize.place ? (
                     <>
@@ -57,8 +57,8 @@ const TournamentPrizeDetail = ({ tournament }) => {
 
         <div className="more_prizes">
           {tournament &&
-            tournament.prizes.slice(3).map((tourPrize) => (
-              <div className="prize_box">
+            tournament.prizes.slice(3).map((tourPrize,i) => (
+              <div className="prize_box" key={i}>
                 <div className="first_symb">
                   {tourPrize.place ? (
                     <>

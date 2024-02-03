@@ -1,6 +1,10 @@
 {
-  "extends": "next/core-web-vitals",
-  "eslint" : {
-    "ignoreDuringBuilds": true
+  "extends": "next/core-web-vitals"
+
 }
-}
+
+
+
+// "eslint" : {
+//   "ignoreDuringBuilds": true
+// }

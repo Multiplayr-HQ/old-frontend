@@ -180,9 +180,9 @@ function ListDrag() {
           {' '}
           <span className="iconbg sub">
             {columns['1230193'].items.length === 3 ? (
-              <i class="fa fa-minus" aria-hidden="true"></i>
+              <i className="fa fa-minus" aria-hidden="true"></i>
             ) : (
-              <i class="fa fa-plus" aria-hidden="true"></i>
+              <i className="fa fa-plus" aria-hidden="true"></i>
             )}
           </span>
         </a>

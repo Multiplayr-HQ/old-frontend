@@ -329,8 +329,8 @@ const TeamTournaments = ({
 
       <div className="new_tournament test">
         {data.Alltournaments &&
-          data.Alltournaments.map((tournament) => (
-            <div className="tournamnet_new_row">
+          data.Alltournaments.map((tournament,i) => (
+            <div className="tournamnet_new_row" key={i}>
               <div className="tour_img_name">
                 <span className="imgs">
                   <img

@@ -100,10 +100,10 @@ const TournamentRules = ({ tourRules, tournament }) => {
 
   return (
     <>
-      <a href="#!" class="rules_form">
-        <button class="btn">
+      <a href="#!" className="rules_form">
+        <button className="btn">
           {' '}
-          <i class="fa fa-plus-circle" aria-hidden="true"></i>
+          <i className="fa fa-plus-circle" aria-hidden="true"></i>
           {tourRules.tournamentId == router.query.tournamentid &&
           tourRules.tournamentId
             ? 'Edit Rules'
@@ -119,7 +119,7 @@ const TournamentRules = ({ tourRules, tournament }) => {
         <h3>Rules</h3>
         <form className="common_form" onSubmit={handleTournamentRules}>
           <div className="form-group">
-            <label for="exampleFormControlInput1">Advance Match Check In</label>
+            <label htmlFor="exampleFormControlInput1">Advance Match Check In</label>
             <select
               name="check_in"
               id="check_in"
@@ -135,8 +135,8 @@ const TournamentRules = ({ tourRules, tournament }) => {
             <p>{formErrors.check_in}</p>
           </div>
 
-          <div class="form-group">
-            <label for="exampleFormControlInput1">Automatic Forfeit</label>
+          <div className="form-group">
+            <label htmlFor="exampleFormControlInput1">Automatic Forfeit</label>
             <select
               name="forfeit"
               id="forfeit"
@@ -152,8 +152,8 @@ const TournamentRules = ({ tourRules, tournament }) => {
             <p>{formErrors.forfeit}</p>
           </div>
 
-          <div class="form-group">
-            <label for="exampleFormControlInput1">
+          <div className="form-group">
+            <label htmlFor="exampleFormControlInput1">
               Prize Distribution Rules
             </label>
             <textarea
@@ -164,8 +164,8 @@ const TournamentRules = ({ tourRules, tournament }) => {
             <p>{formErrors.prizeRules}</p>
           </div>
 
-          <div class="form-group">
-            <label for="matchSettings">Match Settings</label>
+          <div className="form-group">
+            <label htmlFor="matchSettings">Match Settings</label>
             <textarea
               name="matchSettings"
               onChange={onChange}
@@ -174,8 +174,8 @@ const TournamentRules = ({ tourRules, tournament }) => {
             <p>{formErrors.matchSettings}</p>
           </div>
 
-          <div class="form-group">
-            <label for="general">General Info</label>
+          <div className="form-group">
+            <label htmlFor="general">General Info</label>
             <textarea
               name="general"
               onChange={onChange}
@@ -184,8 +184,8 @@ const TournamentRules = ({ tourRules, tournament }) => {
             <p>{formErrors.general}</p>
           </div>
 
-          <div class="form-group">
-            <label for="compete">How To Compete</label>
+          <div className="form-group">
+            <label htmlFor="compete">How To Compete</label>
             <textarea
               name="compete"
               onChange={onChange}
@@ -194,8 +194,8 @@ const TournamentRules = ({ tourRules, tournament }) => {
             <p>{formErrors.compete}</p>
           </div>
 
-          <div class="form-group">
-            <label for="cusRuleHead">Add more rules</label>
+          <div className="form-group">
+            <label htmlFor="cusRuleHead">Add more rules</label>
             <input
               type="text"
               name="cusRuleHead"
@@ -206,7 +206,7 @@ const TournamentRules = ({ tourRules, tournament }) => {
             <p>{formErrors.cusRuleHead}</p>
           </div>
 
-          <div class="form-group">
+          <div className="form-group">
             <textarea
               name="cusRuleBody"
               cols="30"
@@ -219,7 +219,7 @@ const TournamentRules = ({ tourRules, tournament }) => {
           </div>
 
           <div className="form-group">
-            <label for="exampleFormControlInput1">Eligible Countries</label>
+            <label htmlFor="exampleFormControlInput1">Eligible Countries</label>
             <select
               className="game_search_result mscrollbar"
               name="country"
@@ -236,8 +236,8 @@ const TournamentRules = ({ tourRules, tournament }) => {
             <p>{formErrors.country}</p>
           </div>
 
-          <div class="form-group">
-            <label for="exampleFormControlInput1">Admin</label>
+          <div className="form-group">
+            <label htmlFor="exampleFormControlInput1">Admin</label>
             <input
               type="search"
               name="admins"
@@ -288,8 +288,8 @@ const TournamentRules = ({ tourRules, tournament }) => {
             <p>{formErrors.admins}</p>
           </div>
 
-          <div class="form-group">
-            <label for="contact">Contact Details</label>
+          <div className="form-group">
+            <label htmlFor="contact">Contact Details</label>
             <input
               type="text"
               name="contact"

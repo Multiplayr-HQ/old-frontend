@@ -38,6 +38,7 @@ import { parseCookies } from 'nookies';
 import TournamentGroups from '../../components/tournament/TournamentGroups';
 import { isMember } from '../../utils/functionsHelper';
 import BracketSystem from '../../components/tournament/BracketSystem';
+import Link from 'next/link';
 
 const TournamentDetail = ({
   user,
@@ -47,23 +48,24 @@ const TournamentDetail = ({
   profile,
   teams
 }) => {
+  const router = useRouter();
+  const [later, setLater] = useState(false);
+  const [followData, setFollowData] = useState([]);
+  const isRegisteredMember = isMember(data, user);
+
+  useEffect(async () => {
+    await axios
+      .get(`${baseURL}/api/tournaments/${data.tournament.name}/followers`)
+      .then((res) => setFollowData(res.data));
+  }, []);
   if (data) {
     const isUser = data.tournament?.user?._id === user._id;
     const isSupportAdmin =
       data.tournament.isClaimed === false && user.isSupportAdmin;
-    const router = useRouter();
+
     const refreshData = () => {
       router.replace(router.asPath);
     };
-    const [later, setLater] = useState(false);
-    const [followData, setFollowData] = useState([]);
-    const isRegisteredMember = isMember(data, user);
-
-    useEffect(async () => {
-      await axios
-        .get(`${baseURL}/api/tournaments/${data.tournament.name}/followers`)
-        .then((res) => setFollowData(res.data));
-    }, []);
 
     const handleDeleteSubmit = async (e) => {
       e.preventDefault();
@@ -298,7 +300,7 @@ const TournamentDetail = ({
                         </span>
                       ))
                     ) : (
-                      <p>No Sponsor's Yet </p>
+                      <p>No Sponsor&apos;s Yet </p>
                     )}
                   </>
                 </div>
@@ -327,6 +329,7 @@ const TournamentDetail = ({
                         <a
                           href={`https://www.facebook.com/${data.tournament.social?.facebook}`}
                           target="_blank"
+                          rel="noreferrer"
                         >
                           <i
                             className="fa fa-facebook-official"
@@ -338,6 +341,7 @@ const TournamentDetail = ({
                         <a
                           href={`https://www.instagram.com/${data.tournament.social?.instagram}`}
                           target="_blank"
+                          rel="noreferrer"
                         >
                           <i className="fa fa-instagram" aria-hidden="true"></i>
                         </a>
@@ -347,6 +351,7 @@ const TournamentDetail = ({
                         <a
                           href={`https://www.twitch.tv/${data.tournament.social?.twitch}`}
                           target="_blank"
+                          rel="noreferrer"
                         >
                           <i className="fa fa-twitch" aria-hidden="true"></i>
                         </a>
@@ -356,6 +361,7 @@ const TournamentDetail = ({
                         <a
                           href={`https://www.youtube.com/c/${data.tournament.social?.youtube}`}
                           target="_blank"
+                          rel="noreferrer"
                         >
                           <i className="fa fa-youtube" aria-hidden="true"></i>
                         </a>
@@ -365,6 +371,7 @@ const TournamentDetail = ({
                         <a
                           href={`https://${data.tournament.social?.discord}`}
                           target="_blank"
+                          rel="noreferrer"
                         >
                           <img
                             src="/assets/media/social/discord.png"
@@ -378,6 +385,7 @@ const TournamentDetail = ({
                         <a
                           href={`https://${data.tournament?.website}`}
                           target="_blank"
+                          rel="noreferrer"
                         >
                           <i className="fa fa-globe" aria-hidden="true"></i>
                         </a>
@@ -425,14 +433,14 @@ const TournamentDetail = ({
                         : 'PARTICIPANTS:'}{' '}
                     </h3>
                     {data.tournament.playType === 'TEAMS'
-                      ? data.tournament.teams?.slice(0, 3).map((team) => (
-                          <span>
+                      ? data.tournament.teams?.slice(0, 3).map((team,i) => (
+                          <span key={i}>
                             {' '}
                             <img src={team?.teamId.imgUrl} alt="" />
                           </span>
                         ))
-                      : data.tournament.registered?.slice(0, 3).map((reg) => (
-                          <span>
+                      : data.tournament.registered?.slice(0, 3).map((reg,i) => (
+                          <span key={i}>
                             {' '}
                             <img src={reg?.user?.profilePicUrl} alt="" />
                           </span>
@@ -465,8 +473,8 @@ const TournamentDetail = ({
                         <ul>
                           {data.tournament.playType === 'SOLO' ? (
                             <>
-                              {data.tournament.registered.map((ppl) => (
-                                <li>
+                              {data.tournament.registered.map((ppl,i) => (
+                                <li key={i}>
                                   <div className="game_pic">
                                     {' '}
                                     <img
@@ -474,16 +482,16 @@ const TournamentDetail = ({
                                       alt={ppl.user?.name}
                                     />
                                   </div>
-                                  <a href={`/user/${ppl.user?._id}`}>
+                                  <Link href={`/user/${ppl.user?._id}`}>
                                     <p>{ppl.user?.name}</p>
-                                  </a>
+                                  </Link>
                                 </li>
                               ))}
                             </>
                           ) : (
                             <>
-                              {data.tournament.teams.map((team) => (
-                                <li>
+                              {data.tournament.teams.map((team,i) => (
+                                <li key={i}>
                                   <div className="game_pic">
                                     {' '}
                                     <img
@@ -712,7 +720,7 @@ const TournamentDetail = ({
                   ) : (
                     data.tourPosts.length !== 0 &&
                     data.tourPosts.map((post, index) => (
-                      <AllPosts
+                      <AllPosts key={index}
                         post={post}
                         user={user}
                         followData={followData.followers}
@@ -761,8 +769,8 @@ const TournamentDetail = ({
                     <h2> ELIGIBLE COUNTRIES</h2>
                     <ul>
                       {data.tournament.eligibleCountries &&
-                        data.tournament.eligibleCountries?.map((cty) => (
-                          <li>
+                        data.tournament.eligibleCountries?.map((cty,i) => (
+                          <li key={i}>
                             <ReactCountryFlag
                               countryCode={cty.iso}
                               svg

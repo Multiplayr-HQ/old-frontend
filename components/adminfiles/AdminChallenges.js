@@ -65,9 +65,9 @@ const AdminChallenges = ({ challenges }) => {
                     <div className="cols">{result._id.substring(0, 14)}</div>
                     <div className="cols">{result.ChallType}</div>
                     {result.players.map(
-                      (ply) =>
+                      (ply,i) =>
                         ply.teamId !== null && (
-                          <div className="cols">
+                          <div className="cols" key={i}>
                             {
                               ply?.playerId?.apidata?.data.platformInfo
                                 .platformUserHandle
@@ -79,9 +79,9 @@ const AdminChallenges = ({ challenges }) => {
                       <div className="cols">---</div>
                     ) : (
                       result.players.map(
-                        (ply) =>
+                        (ply,i) =>
                           ply.teamId === null && (
-                            <div className="cols">
+                            <div className="cols" key={i}>
                               {
                                 ply?.playerId?.apidata?.data.platformInfo
                                   .platformUserHandle

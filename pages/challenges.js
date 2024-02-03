@@ -11,7 +11,7 @@ import ChallengesDisplay from '../components/challenges/ChallengesDisplay';
 import { parseCookies } from 'nookies';
 import PostChallenge from '../components/challenges/PostChallenge';
 
-const challenges = ({ user, teams, profile, games }) => {
+const Challenges = ({ user, teams, profile, games }) => {
   const [challenges, setChallenges] = useState([]);
   const [selectedGame, setSelectedGame] = useState(null);
   const [playergames, setPlayergames] = useState([]);
@@ -171,8 +171,8 @@ const challenges = ({ user, teams, profile, games }) => {
                     </span>
                   </div>
                 ) : (
-                  challenges.map((chall) => (
-                    <ChallengesDisplay
+                  challenges.map((chall,i) => (
+                    <ChallengesDisplay key={i}
                       user={user}
                       chall={chall}
                       profile={profile}
@@ -189,8 +189,8 @@ const challenges = ({ user, teams, profile, games }) => {
                     </span>
                   </div>
                 ) : (
-                  challenges.map((chall) => (
-                    <ChallengesDisplay
+                  challenges.map((chall,i) => (
+                    <ChallengesDisplay key={i}
                       user={user}
                       chall={chall}
                       profile={profile}
@@ -373,4 +373,4 @@ export const getServerSideProps = async (context) => {
   };
 };
 
-export default challenges;
+export default Challenges;

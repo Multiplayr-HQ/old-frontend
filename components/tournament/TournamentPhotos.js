@@ -83,7 +83,7 @@ const TournamentPhotos = ({ user, tournament, isUser, isSupportAdmin }) => {
           </div>
         ))
       ) : (
-        <p>No Photo's Available</p>
+        <p>No Photo&apos;s Available</p>
       )}
     </div>
   );

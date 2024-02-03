@@ -242,8 +242,8 @@ const ProfileTeams = ({ Userdata, user, teamsData, allGames, teamroles }) => {
               <p>{Userdata.user.name} has no teams.</p>
             ) : (
               teamsData &&
-              teamsData.map((team) => (
-                <li>
+              teamsData.map((team,i) => (
+                <li key={i}>
                   <div className="card_img">
                     {' '}
                     <img src={team.team.imgUrl} alt="" />{' '}

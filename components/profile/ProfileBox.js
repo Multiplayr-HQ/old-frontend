@@ -186,9 +186,9 @@ const ProfileBox = ({ user, Userdata, profile, games, teams }) => {
     <>
       <div className="profile_box for_profile">
         <div className="profile_cover_photo">
-          <div class="report">
+          <div className="report">
             <a href="#">
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+              <i className="fa fa-ellipsis-v" aria-hidden="true"></i>
             </a>
           </div>
           <form>
@@ -359,7 +359,7 @@ const ProfileBox = ({ user, Userdata, profile, games, teams }) => {
                 {Userdata.profile.social?.facebook ? (
                   <a
                     href={`https://www.facebook.com/${Userdata.profile.social?.facebook}`}
-                    target="_blank"
+                   target="_blank" rel="noreferrer"
                   >
                     <i
                       className="fa fa-facebook-official"
@@ -370,7 +370,7 @@ const ProfileBox = ({ user, Userdata, profile, games, teams }) => {
                 {Userdata.profile.social?.instagram ? (
                   <a
                     href={`https://www.instagram.com/${Userdata.profile.social?.instagram}`}
-                    target="_blank"
+                   target="_blank" rel="noreferrer"
                   >
                     <i className="fa fa-instagram" aria-hidden="true"></i>
                   </a>
@@ -379,7 +379,7 @@ const ProfileBox = ({ user, Userdata, profile, games, teams }) => {
                 {Userdata.profile.social?.twitch ? (
                   <a
                     href={`https://www.twitch.tv/${Userdata.profile.social?.twitch}`}
-                    target="_blank"
+                   target="_blank" rel="noreferrer"
                   >
                     <i className="fa fa-twitch" aria-hidden="true"></i>
                   </a>
@@ -388,7 +388,7 @@ const ProfileBox = ({ user, Userdata, profile, games, teams }) => {
                 {Userdata.profile.social?.youtube ? (
                   <a
                     href={`https://www.youtube.com/c/${Userdata.profile.social?.youtube}`}
-                    target="_blank"
+                   target="_blank" rel="noreferrer"
                   >
                     <i className="fa fa-youtube" aria-hidden="true"></i>
                   </a>
@@ -397,7 +397,7 @@ const ProfileBox = ({ user, Userdata, profile, games, teams }) => {
                 {Userdata.profile.social?.discord ? (
                   <a
                     href={`https://${Userdata.profile.social?.discord}`}
-                    target="_blank"
+                   target="_blank" rel="noreferrer"
                   >
                     <img
                       src="/assets/media/social/discord.png"
@@ -410,7 +410,7 @@ const ProfileBox = ({ user, Userdata, profile, games, teams }) => {
                 {Userdata.profile.social?.website ? (
                   <a
                     href={`https://${Userdata.profile.social?.website}`}
-                    target="_blank"
+                   target="_blank" rel="noreferrer"
                   >
                     <i className="fa fa-globe" aria-hidden="true"></i>
                   </a>

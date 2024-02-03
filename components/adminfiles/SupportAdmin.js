@@ -90,7 +90,7 @@ const SupportAdmin = ({ user, data, profile }) => {
         </div>
 
         <a href="#" className="close">
-          <i class="fa fa-times-circle" aria-hidden="true"></i>
+          <i className="fa fa-times-circle" aria-hidden="true"></i>
         </a>
       </div>
       {show === true ? (
@@ -176,8 +176,8 @@ const SupportAdmin = ({ user, data, profile }) => {
                   <span>No Wagers here.</span>
                 </div>
               ) : (
-                data.challenges.map((chall) => (
-                  <ChallengesDisplay
+                data.challenges.map((chall,i) => (
+                  <ChallengesDisplay key={i}
                     user={user}
                     chall={chall}
                     profile={profile}

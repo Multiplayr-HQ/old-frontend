@@ -135,13 +135,13 @@ const TournamentEdit = ({ data, user }) => {
               <h3>Edit Tournament </h3>
               <form className="common_form" onSubmit={handleEditSubmit}>
                 <div className="form-group">
-                  <label for="exampleFormControlTextarea1">
+                  <label htmlFor="exampleFormControlTextarea1">
                     Tournament Category
                   </label>
 
                   <div className="btn_selection">
                     <div className="big_btn">
-                      <span class="form-check-label terms">Tournament</span>
+                      <span className="form-check-label terms">Tournament</span>
                       <input
                         type="radio"
                         name="tourType"
@@ -151,7 +151,7 @@ const TournamentEdit = ({ data, user }) => {
                     </div>
 
                     <div className="big_btn">
-                      <span class="form-check-label terms">Ladder</span>
+                      <span className="form-check-label terms">Ladder</span>
                       <input
                         type="radio"
                         name="tourType"
@@ -161,7 +161,7 @@ const TournamentEdit = ({ data, user }) => {
                     </div>
 
                     <div className="big_btn">
-                      <span class="form-check-label terms">Challenge</span>
+                      <span className="form-check-label terms">Challenge</span>
                       <input
                         type="radio"
                         name="tourType"
@@ -170,7 +170,7 @@ const TournamentEdit = ({ data, user }) => {
                       />
                     </div>
                     {/* <div className="big_btn">
-                      <span class="form-check-label terms">League</span>
+                      <span className="form-check-label terms">League</span>
                       <input
                         type="radio"
                         name="tourType"
@@ -291,7 +291,7 @@ const TournamentEdit = ({ data, user }) => {
                   </div>
 
                   <div className="colm">
-                    <label for="exampleFormControlInput1">
+                    <label htmlFor="exampleFormControlInput1">
                       Eligible Countries (Optional)
                     </label>
                     <select
@@ -368,8 +368,8 @@ const TournamentEdit = ({ data, user }) => {
                     >
                       <option value="">Select Game...</option>
                       {allgames &&
-                        allgames.map((game) => (
-                          <option value={game._id}>{game.name}</option>
+                        allgames.map((game,i) => (
+                          <option key={i} value={game._id}>{game.name}</option>
                         ))}
                     </select>
                     <p>{formErrors.games}</p>
@@ -389,8 +389,8 @@ const TournamentEdit = ({ data, user }) => {
                       >
                         <option value="">Select Map...</option>
                         {gotMaps &&
-                          gotMaps.map((map) => (
-                            <option value={map._id}>{map.name}</option>
+                          gotMaps.map((map,i) => (
+                            <option key={i} value={map._id}>{map.name}</option>
                           ))}
                       </select>
                       <p>{formErrors.games}</p>
@@ -415,8 +415,8 @@ const TournamentEdit = ({ data, user }) => {
                         >
                           <option value="">Select Match Type...</option>
                           {matchData &&
-                            matchData.map((match) => (
-                              <option value={match}>{match}</option>
+                            matchData.map((match,i) => (
+                              <option key={i} value={match}>{match}</option>
                             ))}
                         </select>
                       </div>

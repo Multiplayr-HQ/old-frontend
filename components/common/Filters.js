@@ -185,7 +185,7 @@ const Filters = ({ filterType , myState, selectedGame}) => {
                 </ul>
               </div>
             ) : (
-              <div className="button-group">
+              <div className="button-group" key={Date.now()}>
                 {' '}
                 <span className="drop_name">{filter.key}</span>
                 <div className="custom-control custom-checkbox">
@@ -226,7 +226,7 @@ const Filters = ({ filterType , myState, selectedGame}) => {
             <div className="filter_list">
               {' '}
               {selectedMapFilters.map((filter, idx) => (
-                <span className="filter1">
+                <span className="filter1" key={idx}>
                   {' '}
                   {filter.key}:
                   {Array.from(filter.values).map((filval, idxv) => (
