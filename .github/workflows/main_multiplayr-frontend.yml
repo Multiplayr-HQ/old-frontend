@@ -58,4 +58,4 @@ jobs:
           app-name: 'multiplayr-frontend'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_37689992B88F4B72B03A850D67D5EE99 }}
-          package: ./.next
+          package: release.zip
