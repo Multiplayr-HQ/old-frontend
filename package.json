@@ -11,11 +11,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "dev:inspect": "NODE_OPTIONS='--inspect' next dev",
-    "start-platformsh": "NODE_ENV=production next start -p $PORT",
-    "prod": "npm run build && npm run start",
-    "validate": "lint-staged"
+    "lint": "next lint"
+
   },
   "husky": {
     "hooks": {
