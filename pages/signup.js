@@ -583,9 +583,11 @@ const Signup = ({ games, avatars }) => {
                         <div className="text-gray-400 already">
                           {' '}
                           Already have an account?{' '}
-                          <Link className="link-primary fw-bolder" href="/login">
+                          <Link  href="/login">
+                          <a className="link-primary fw-bolder">
                             {' '}
                             Sign in{' '}
+                          </a>
                           </Link>{' '}
                         </div>
                       </div>

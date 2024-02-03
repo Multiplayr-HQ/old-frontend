@@ -277,10 +277,11 @@ const SignIn = () => {
                     <div className="text-gray-400 already">
                       {' '}
                       Don&apos;t have an account?
-                      <Link className="link-primary fw-bolder" href="/signup">
+                      <Link href="/signup">
+                      <a className="link-primary fw-bolder" >
                         {' '}
                         Sign Up{' '}
-                      </Link>{' '}
+                      </a></Link>{' '}
                     </div>
                   </div>
                 </div>

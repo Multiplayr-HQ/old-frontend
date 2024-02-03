@@ -117,68 +117,82 @@ const SignedHeader = ({ user, profile }) => {
               <ul className="">
                 <li>
                   <Link href="/team/create">
-                    <span>
-                      <i className="fa fa-users" aria-hidden="true"></i>{' '}
-                    </span>
-                    <span>
-                      {' '}
-                      <b>Team</b>
-                      <p>Create a team, compete and rank yourself globally.</p>
-                    </span>
+                    <a>
+                      <span>
+                        <i className="fa fa-users" aria-hidden="true"></i>{' '}
+                      </span>
+                      <span>
+                        {' '}
+                        <b>Team</b>
+                        <p>
+                          Create a team, compete and rank yourself globally.
+                        </p>
+                      </span>
+                    </a>
                   </Link>
                 </li>
                 <li>
                   <Link href="/tour/create">
-                    <span>
-                      {' '}
-                      <i className="fa fa-trophy" aria-hidden="true"></i>{' '}
-                    </span>
+                    <a>
+                      <span>
+                        {' '}
+                        <i className="fa fa-trophy" aria-hidden="true"></i>{' '}
+                      </span>
 
-                    <span>
-                      {' '}
-                      <b> Tournament</b>
-                      <p>Create a tournament and invite participants.</p>
-                    </span>
+                      <span>
+                        {' '}
+                        <b> Tournament</b>
+                        <p>Create a tournament and invite participants.</p>
+                      </span>
+                    </a>
                   </Link>
                 </li>
                 <li>
                   <Link href="#">
-                    <span>
-                      {' '}
-                      <i
-                        className="fa fa-handshake-o"
-                        aria-hidden="true"
-                      ></i>{' '}
-                    </span>
-                    <span>
-                      {' '}
-                      <b>Community</b>
-                      <p>Create a community and connect with people.</p>
-                    </span>
+                    <a>
+                      <span>
+                        {' '}
+                        <i
+                          className="fa fa-handshake-o"
+                          aria-hidden="true"
+                        ></i>{' '}
+                      </span>
+                      <span>
+                        {' '}
+                        <b>Community</b>
+                        <p>Create a community and connect with people.</p>
+                      </span>
+                    </a>
                   </Link>
                 </li>
                 <li>
                   <Link href="/brand/create">
-                    <span>
-                      {' '}
-                      <i className="fa fa-file" aria-hidden="true"></i>{' '}
-                    </span>
-                    <span>
-                      {' '}
-                      <b>Brand/Company</b>
-                      <p>Start selling your products and services.</p>
-                    </span>
+                    <a>
+                      <span>
+                        {' '}
+                        <i className="fa fa-file" aria-hidden="true"></i>{' '}
+                      </span>
+                      <span>
+                        {' '}
+                        <b>Brand/Company</b>
+                        <p>Start selling your products and services.</p>
+                      </span>
+                    </a>
                   </Link>
                 </li>
                 <li>
                   <Link href="/arena/create">
-                    <span>
-                      <i className="fa fa-sign-out" aria-hidden="true"></i>{' '}
-                    </span>
-                    <span>
-                      <b> Arena</b>
-                      <p>Create arena, invite gamers and increase walk-ins.</p>
-                    </span>
+                    <a>
+                      <span>
+                        <i className="fa fa-sign-out" aria-hidden="true"></i>{' '}
+                      </span>
+                      <span>
+                        <b> Arena</b>
+                        <p>
+                          Create arena, invite gamers and increase walk-ins.
+                        </p>
+                      </span>
+                    </a>
                   </Link>
                 </li>
                 {/* <li>
@@ -194,41 +208,53 @@ const SignedHeader = ({ user, profile }) => {
               <ul className="">
                 <li>
                   <Link href="/">
-                    <span>
-                      <i className="fa fa-shopping-cart" aria-hidden="true"></i>
-                    </span>
-                    <span>
-                      {' '}
-                      <b>Marketplace</b>
-                      <p>Make a listing of your services and products.</p>
-                    </span>
+                    <a>
+                      <span>
+                        <i
+                          className="fa fa-shopping-cart"
+                          aria-hidden="true"
+                        ></i>
+                      </span>
+                      <span>
+                        {' '}
+                        <b>Marketplace</b>
+                        <p>Make a listing of your services and products.</p>
+                      </span>
+                    </a>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/jobs/create" onClick={() => setFilterType('JOBS')}>
-                    <span>
-                      {' '}
-                      <i className="fa fa-briefcase" aria-hidden="true"></i>
-                    </span>
+                  <Link
+                    href="/jobs/create"
+                    onClick={() => setFilterType('JOBS')}
+                  >
+                    <a>
+                      <span>
+                        {' '}
+                        <i className="fa fa-briefcase" aria-hidden="true"></i>
+                      </span>
 
-                    <span>
-                      {' '}
-                      <b> Jobs</b>
-                      <p>Make a job listing.</p>
-                    </span>
+                      <span>
+                        {' '}
+                        <b> Jobs</b>
+                        <p>Make a job listing.</p>
+                      </span>
+                    </a>
                   </Link>
                 </li>
                 <li>
                   <Link href="#">
-                    <span>
-                      {' '}
-                      <i className="fa fa-university" aria-hidden="true"></i>
-                    </span>
-                    <span>
-                      {' '}
-                      <b>Masterclass</b>
-                      <p>List your masterclass and earn.</p>
-                    </span>
+                    <a>
+                      <span>
+                        {' '}
+                        <i className="fa fa-university" aria-hidden="true"></i>
+                      </span>
+                      <span>
+                        {' '}
+                        <b>Masterclass</b>
+                        <p>List your masterclass and earn.</p>
+                      </span>
+                    </a>
                   </Link>
                 </li>
               </ul>
@@ -236,8 +262,10 @@ const SignedHeader = ({ user, profile }) => {
           </li>
           <li className="chat_box">
             <Link href="#" className="open_chat_box">
-              <img src="/assets/media/icons/message.png" alt="" />
-              <span className="pop">2</span>
+              <a>
+                <img src="/assets/media/icons/message.png" alt="" />
+                <span className="pop">2</span>
+              </a>
             </Link>
 
             <ChatSection user={user} />
@@ -257,27 +285,29 @@ const SignedHeader = ({ user, profile }) => {
 
           <li className="profile">
             <Link href="#!">
-              <span className="dps">
-                <img src={user?.profilePicUrl} alt={user?.name} />
-              </span>
-              <span>
-                {user?.name}{' '}
-                <p className="">
-                  {' '}
-                  {profile?.online_status === true ? (
-                    <>
-                      <div className="online"></div> Online
-                    </>
-                  ) : (
-                    <>
-                      <div className="offline"></div> Offline
-                    </>
-                  )}
-                </p>
-              </span>
-              <span className="drop">
-                <i className="fa fa-sort-desc" aria-hidden="true"></i>
-              </span>
+              <a>
+                <span className="dps">
+                  <img src={user?.profilePicUrl} alt={user?.name} />
+                </span>
+                <span>
+                  {user?.name}{' '}
+                  <p className="">
+                    {' '}
+                    {profile?.online_status === true ? (
+                      <>
+                        <div className="online"></div> Online
+                      </>
+                    ) : (
+                      <>
+                        <div className="offline"></div> Offline
+                      </>
+                    )}
+                  </p>
+                </span>
+                <span className="drop">
+                  <i className="fa fa-sort-desc" aria-hidden="true"></i>
+                </span>
+              </a>
             </Link>
             <div className="drop_down_bg profile_drop_down">
               <ul>
@@ -310,15 +340,19 @@ const SignedHeader = ({ user, profile }) => {
 
                 <li>
                   <Link href="/buypremium">
-                    {' '}
-                    <img src="/assets/media/login/go.png" alt="" />
+                    <a>
+                      {' '}
+                      <img src="/assets/media/login/go.png" alt="" />
+                    </a>
                   </Link>
                 </li>
 
                 <li>
                   <Link href="/login" onClick={logoutUser}>
-                    <img src="/assets/media/login/logout.png" alt="" />
-                    Logout
+                    <a>
+                      <img src="/assets/media/login/logout.png" alt="" />
+                      Logout
+                    </a>
                   </Link>
                 </li>
                 {refModal && (
@@ -359,13 +393,15 @@ const SignedHeader = ({ user, profile }) => {
 
           <li className="wallet">
             <Link href="/mywallet">
-              <span className="dps">
-                {' '}
-                <img src="/assets/media/login/wallet.png" alt="" />
-              </span>
-              <span>
-                <MPNumberFormat value={coin} />
-              </span>
+              <a>
+                <span className="dps">
+                  {' '}
+                  <img src="/assets/media/login/wallet.png" alt="" />
+                </span>
+                <span>
+                  <MPNumberFormat value={coin} />
+                </span>
+              </a>
             </Link>
             <div className="drop_down_bg wallet_drop_down">
               <h2>Wallet</h2>{' '}
