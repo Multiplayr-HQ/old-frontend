@@ -28,7 +28,7 @@ jobs:
 
       - name: yarn install, build
         run: |
-          yarn
+          yarn install --force --no-lockfile
           yarn build
 
       - name: Zip Release
