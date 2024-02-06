@@ -272,11 +272,14 @@ const ProfileTournament = ({
                         ))}
 
                       {profile.teams &&
-                        profile.teams.map((tem) => (
-                          <option key={tem.teamId._id} value={tem.teamId?._id}>
-                            {tem.teamId?.name}
-                          </option>
-                        ))}
+                        profile.teams.map(
+                          (tem) =>
+                            console.log(profile.teams) && (
+                              <option key={tem._id} value={tem.teamId?._id}>
+                                {tem.teamId?.name}
+                              </option>
+                            )
+                        )}
                     </select>
                     <p>{formErrors.team}</p>
                   </div>
@@ -383,7 +386,7 @@ const ProfileTournament = ({
 
         <div className="new_tournament test">
           {tournamentData.Alltournaments &&
-            tournamentData.Alltournaments.map((tournament,i) => (
+            tournamentData.Alltournaments.map((tournament, i) => (
               <div className="tournamnet_new_row" key={i}>
                 <div className="tour_img_name">
                   <span className="imgs">

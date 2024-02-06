@@ -36,7 +36,8 @@ const Videos = ({ Userdata, user, data }) => {
 
     formdata.append('videodisc', videodisc);
     formdata.append('model', 'PROFILE');
-    formdata.append('id', Userdata.profile.user._id);
+    console.log('Profile - ' + Userdata.user._id);
+    formdata.append('id', Userdata.user._id);
 
     try {
       await mutation.mutateAsync(formdata);
