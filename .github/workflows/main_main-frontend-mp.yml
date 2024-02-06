@@ -21,6 +21,10 @@ jobs:
         with:
           node-version: '18.x'
 
+      - name: install yarn
+        run: |
+          npm install -g yarn
+
       - name: yarn install, build
         run: |
           yarn
@@ -30,7 +34,7 @@ jobs:
         uses: TheDoctor0/zip-release@0.7.6
         with:
           filename: release.zip
-          path: ./build/standalone/*
+          path: ./.next/standalone/*
         
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
