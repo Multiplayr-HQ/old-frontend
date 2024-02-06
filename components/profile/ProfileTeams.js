@@ -74,6 +74,10 @@ const ProfileTeams = ({ Userdata, user, teamsData, allGames, teamroles }) => {
 
   const handleAddTeamSubmit = async (e) => {
     e.preventDefault();
+
+    const errors = profileTeam(team);
+    setFormErrors(errors);
+
     if (Object.keys(formErrors).length === 0) {
       try {
         axios.post(`${baseURL}/api/profile/team/${Userdata?._id}`, team);
@@ -224,10 +228,7 @@ const ProfileTeams = ({ Userdata, user, teamsData, allGames, teamroles }) => {
                     />
                     <p>{formErrors.teamEndDate}</p>
                   </div>
-                  <button
-                    className="btn"
-                    onClick={() => setFormErrors(profileTeam(team))}
-                  >
+                  <button className="btn" type="submit">
                     Update
                   </button>
                 </div>
@@ -242,7 +243,7 @@ const ProfileTeams = ({ Userdata, user, teamsData, allGames, teamroles }) => {
               <p>{Userdata.user.name} has no teams.</p>
             ) : (
               teamsData &&
-              teamsData.map((team,i) => (
+              teamsData.map((team, i) => (
                 <li key={i}>
                   <div className="card_img">
                     {' '}
