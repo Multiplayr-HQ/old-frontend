@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
+  output:"standalone",
   reactStrictMode: true,
   typescript: {
     // !! WARN !!
@@ -7,7 +8,9 @@ module.exports = {
     // your project has type errors.
     // !! WARN !!
     ignoreBuildErrors: true,
+   
   },
+  distDir: 'build',
 
   images: {
     unoptimized: true,
