@@ -10,7 +10,6 @@ module.exports = {
     ignoreBuildErrors: true,
    
   },
-  distDir: 'build',
 
   images: {
     unoptimized: true,
