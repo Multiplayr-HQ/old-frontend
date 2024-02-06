@@ -113,7 +113,8 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
         await axios.put(`${baseURL}/api/profile/type/${profile?._id}`, states);
         toast.success('Profile Updated');
         $('a.model_close').parent().removeClass('show_model');
-        router.push(`/dashboard`);
+        // router.push(`/dashboard`);
+        refreshData();
       } catch (err) {
         toast.error(err.response?.data?.msg || 'Please recheck your inputs');
       }
