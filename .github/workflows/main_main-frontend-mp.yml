@@ -24,6 +24,7 @@ jobs:
       - name: install yarn
         run: |
           npm install -g yarn
+          yarn --version
 
       - name: yarn install, build
         run: |
