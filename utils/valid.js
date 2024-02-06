@@ -163,7 +163,7 @@ export const profileformvalidate = (values) => {
     errors.bio = 'Bio Cannot exceed more than 250 characters';
   }
 
-  if (values.profileType === 'Business' && values.b_role.length === 0) {
+  if (values.profileType === 'Business' && values.b_role?.length === 0) {
     errors.b_role = 'Business Role is Required';
   }
 
@@ -191,26 +191,26 @@ export const profileformvalidate = (values) => {
   //   errors.Cgame = 'Game Required';
   // }
 
-  if (values.profileType === 'Streamer' && values.game.length === 0) {
+  if (values.profileType === 'Streamer' && values.game?.length === 0) {
     errors.Sgame = 'Game Required';
   }
 
-  if (values.profileType === 'Business' && values.company.length === 0) {
+  if (values.profileType === 'Business' && values.company?.length === 0) {
     errors.company = 'Company name Required';
   }
 
-  if (values.profileType === 'Business' && values.industry.length === 0) {
+  if (values.profileType === 'Business' && values.industry?.length === 0) {
     errors.industry = 'Industry name Required';
   }
 
   if (
     values.profileType === 'Streamer' &&
-    values.streamingPlatform.length === 0
+    values.streamingPlatform?.length === 0
   ) {
     errors.platform = 'Platform Required';
   }
 
-  if (values.profileType === 'Streamer' && values.link.length === 0) {
+  if (values.profileType === 'Streamer' && values.link?.length === 0) {
     errors.link = 'Stream Link Required';
   }
 
