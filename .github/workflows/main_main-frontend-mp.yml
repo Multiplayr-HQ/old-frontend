@@ -29,7 +29,7 @@ jobs:
       - name: yarn install, build
         run: |
           npm install --force --no-lockfile
-          npm build
+          npm run build
 
       - name: Zip Release
         uses: TheDoctor0/zip-release@0.7.6
