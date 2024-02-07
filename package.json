@@ -4,8 +4,9 @@
   "license": "Multiplayr",
   "description": "Multiplayr headless platform using next.js",
   "engines": {
-    "node": ">=v16.13.2"
+    "yarn": "*"
   },
+  "engineStrict": true,
   "private": true,
   "scripts": {
     "dev": "next dev",
