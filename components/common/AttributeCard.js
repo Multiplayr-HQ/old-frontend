@@ -7,7 +7,7 @@ import { regionsData } from '../../utils/functionsHelper';
 import { LanguageData } from '../../utils/functionsHelper';
 import ToggleButton from 'react-toggle-button';
 
-const AttributeCard = ({ type, attributeId, profile }) => {
+const AttributeCard =({ type, attributeId, profile }) => {
   const [allgames, setAllgames] = useState([]);
 
   const [states, setStates] = useState({
@@ -26,7 +26,10 @@ const AttributeCard = ({ type, attributeId, profile }) => {
   });
 
   useEffect(() => {
-    axios.get(`${baseURL}/api/all/games`).then((res) => setAllgames(res.data));
+    async function FetchData(){
+      axios.get(`${baseURL}/api/all/games`).then((res) => setAllgames(res.data));
+    }
+    FetchData()
   }, []);
 
   const onChange = (e) => {
@@ -60,13 +63,18 @@ const AttributeCard = ({ type, attributeId, profile }) => {
     e.preventDefault();
     try {
       await axios.post(`${baseURL}/api/attribute/`, states);
+      
       toast.success('Added Recruitment card');
       $('a.model_close').parent().removeClass('show_model');
+      router.reload()
     } catch (err) {
       console.log(err);
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
     refreshData();
+    // router.reload()
+    // console.log("from attribute card i am profile \t\t ",router.asPath);
+    // router.push(router.asPath)
   };
 
   return (

@@ -43,6 +43,7 @@ const GamesDetails = ({ user, Userdata, teams }) => {
     try {
       axios.delete(`${baseURL}/api/attribute/${attributeData._id}`);
       toast.success('Deleted Card Successfully');
+      ;router.reload();
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Error Deleting the Card');
     }

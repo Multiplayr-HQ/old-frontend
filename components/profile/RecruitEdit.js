@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import { regionsData } from '../../utils/functionsHelper';
 import { LanguageData } from '../../utils/functionsHelper';
 import ToggleButton from 'react-toggle-button';
+import {useRouter } from 'next/router';
 
 const RecruitEdit = ({ attributeData, profile }) => {
   const [allgames, setAllgames] = useState([]);
@@ -49,6 +50,8 @@ const RecruitEdit = ({ attributeData, profile }) => {
     setStates({ ...states, [e.target.name]: e.target.value });
   };
 
+  const router= useRouter();
+
   const handleEdit = async (e) => {
     e.preventDefault();
     try {
@@ -56,6 +59,8 @@ const RecruitEdit = ({ attributeData, profile }) => {
         `${baseURL}/api/attribute/${attributeData.attributeId}`,
         states
       );
+      router.reload();
+      
       toast.success('Recruitment card Edited Successfully');
       $('a.model_close').parent().removeClass('show_model');
     } catch (err) {

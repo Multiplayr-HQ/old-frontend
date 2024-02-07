@@ -27,6 +27,11 @@ const Videos = ({ Userdata, user, data }) => {
     }, 5000);
   }
 
+  const handleSelectAgain =()=>{
+    setVideos([])
+
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formdata = new FormData();
@@ -84,6 +89,13 @@ const Videos = ({ Userdata, user, data }) => {
 
                         <a href="#!" onClick={handleSubmit} className="btn">
                           UPLOAD NOW{' '}
+                        </a>
+
+                        <br/>
+                        <br/>
+
+                        <a href="#!" onClick={handleSelectAgain} className="btn">
+                          SELECT AGAIN{' '}
                         </a>
                       </form>
                     </div>

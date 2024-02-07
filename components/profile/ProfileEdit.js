@@ -108,18 +108,26 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
 
   const handleProfileEdit = async (e) => {
     e.preventDefault();
-    if (Object.keys(formErrors).length === 0) {
+    if (Object.keys(formErrors)?.length === 0) {
       try {
+       
         await axios.put(`${baseURL}/api/profile/type/${profile?._id}`, states);
         toast.success('Profile Updated');
-        $('a.model_close').parent().removeClass('show_model');
-        // router.push(`/dashboard`);
-        refreshData();
+  
+       
+        $('a.modal_close').click();
+       
+        router.reload();
       } catch (err) {
-        toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+       
+        toast.error(err.response?.data?.msg || 'An error occurred, please try again.');
       }
+    } else {
+      
+      toast.error('Please correct the errors in the form.');
     }
   };
+  
 
   const User_team =
     allteams &&
@@ -676,6 +684,7 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
                   onClick={() => {
                     setFormErrors(profileformvalidate(states));
                     setTrigger(!trigger);
+          
                   }}
                 >
                   Update
