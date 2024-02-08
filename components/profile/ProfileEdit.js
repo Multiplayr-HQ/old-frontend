@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useContext } from 'react';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import { toast } from 'react-toastify';
@@ -8,8 +8,12 @@ import SocialLink from '../common/SocialLink';
 import { profileformvalidate } from '@utils/valid';
 import Moment from 'moment';
 import ToggleButton from 'react-toggle-button';
+import { DataContext } from '@store/GlobalState';
+
 
 const ProfileEdit = ({ Userdata, user, games, allteams }) => {
+  const { setLoader } = useContext(DataContext);
+
   const name = user.name.split(' ');
   const [allroles, setAllroles] = useState([]);
   const [profile, setProfile] = useState(Userdata);
@@ -22,6 +26,10 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
   const [trigger, setTrigger] = useState(false);
 
   const router = useRouter();
+  
+
+  
+  
 
   const refreshData = () => {
     router.replace(router.asPath);
@@ -83,6 +91,7 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
       .get(`${baseURL}/api/all/teamroles`)
       .then((res) => setAllroles(res.data));
   }, []);
+  
 
   const handleChangeCheck = (e) => {
     setStates({ ...states, [e.target.name]: e.target.value });
@@ -106,18 +115,24 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
     }
   }
 
+
+  
+
   const handleProfileEdit = async (e) => {
     e.preventDefault();
     if (Object.keys(formErrors)?.length === 0) {
       try {
-       
+        setLoader(true);
         await axios.put(`${baseURL}/api/profile/type/${profile?._id}`, states);
+        // router.reload();
+        ;refreshData();
         toast.success('Profile Updated');
   
        
-        $('a.modal_close').click();
+        $('a.model_close').trigger("click");
+        setLoader(false);
        
-        router.reload();
+        
       } catch (err) {
        
         toast.error(err.response?.data?.msg || 'An error occurred, please try again.');
@@ -127,6 +142,23 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
       toast.error('Please correct the errors in the form.');
     }
   };
+
+
+    // const handleProfileEdit = async (e) => {
+  //   e.preventDefault();
+  //   if (Object.keys(formErrors).length === 0) {
+  //     try {
+  //       await axios.put(`${baseURL}/api/profile/type/${profile?._id}`, states);
+  //       toast.success('Profile Updated');
+  //       $('a.model_close').parent().removeClass('show_model');
+  //       // router.push(`/dashboard`);
+  //       // refreshData();
+  //       router.reload();
+  //     } catch (err) {
+  //       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+  //     }
+  //   }
+  // };
   
 
   const User_team =

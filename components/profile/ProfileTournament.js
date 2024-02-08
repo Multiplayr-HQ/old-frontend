@@ -266,7 +266,7 @@ const ProfileTournament = ({
                       <option value="">Select Team...</option>
                       {teams &&
                         teams.map((tem) => (
-                          <option value={tem._id} key={tem._id}>
+                          <option value={tem?._id} key={tem?._id}>
                             {tem.name}
                           </option>
                         ))}
@@ -275,13 +275,13 @@ const ProfileTournament = ({
                         profile.teams.map(
                           (tem) =>
                             console.log(profile.teams) && (
-                              <option key={tem._id} value={tem.teamId?._id}>
-                                {tem.teamId?.name}
+                              <option key={tem?._id} value={tem?.teamId?._id}>
+                                {tem?.teamId?.name}
                               </option>
                             )
                         )}
                     </select>
-                    <p>{formErrors.team}</p>
+                    <p>{formErrors?.team}</p>
                   </div>
                   <div className="form-group">
                     <label htmlFor="exampleFormControlInput1">Roles</label>
@@ -425,11 +425,11 @@ const ProfileTournament = ({
                       <b>Team:</b>
                       {tournament.type === 'TeamTournament' ? (
                         <>
-                          {tournament.tournament.teams.map((team) => (
+                          {tournament?.tournament?.teams.map((team) => (
                             <>
                               <img
-                                src={team.teamId.imgUrl}
-                                alt={team.teamId.name}
+                                src={team?.teamId?.imgUrl}
+                                alt={team?.teamId?.name}
                               />
                               {team.teamId.name}
                             </>

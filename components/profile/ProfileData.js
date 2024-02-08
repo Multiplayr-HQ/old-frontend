@@ -33,7 +33,12 @@ const ProfileData = ({ user, Userdata, products, teams }) => {
 
   const refreshData = () => {
     router.replace(router.asPath);
+    document.body.scrollTo(100,100);
   };
+
+  useEffect(() => {
+      refreshData();
+  }, []);
 
   useEffect(() => {}, [profile]);
   useEffect(() => {}, [Userdata]);
@@ -49,7 +54,8 @@ const ProfileData = ({ user, Userdata, products, teams }) => {
           }
         }
       )
-      .then((res) => setTabData(res.data));
+      .then((res) => setTabData(res.data))
+      .then(refreshData());
   };
 
   return (
@@ -122,7 +128,7 @@ const ProfileData = ({ user, Userdata, products, teams }) => {
           <div className="profile_left_post">
             {' '}
             {Userdata.posts.length !== 0 &&
-              Userdata.posts.map((post,i) =>
+              Userdata.posts.map((post, i) =>
                 post.user._id !== user._id ? (
                   <>
                     <AllPosts
@@ -133,14 +139,14 @@ const ProfileData = ({ user, Userdata, products, teams }) => {
                     />
                   </>
                 ) : (
-                  <AllPosts post={post} user={user} key={i}/>
+                  <AllPosts post={post} user={user} key={i} />
                 )
               )}{' '}
           </div>
           <div className="profile_match_details">
             {' '}
             {Userdata.teamMatchesList?.map((result, index) => (
-              <TeamAllStats teamId={result.team._id}  key={index}/>
+              <TeamAllStats teamId={result.team._id} key={index} />
             ))}
             <GamesDetails user={user} Userdata={profile} teams={teams} />
           </div>
@@ -236,7 +242,7 @@ const ProfileData = ({ user, Userdata, products, teams }) => {
                 </div>
               </div>
               <div className="comp_btn">
-                <i className= "fa fa-compress" aria-hidden="true"></i> Compare
+                <i className="fa fa-compress" aria-hidden="true"></i> Compare
               </div>
             </li>
           </ul>

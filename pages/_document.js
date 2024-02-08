@@ -1,7 +1,9 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
+// import Loader from '@components/common/loader';
 
-import React from 'react';
+import React,{useContext} from 'react';
+
 import themeOptions from '@components/theme/theme-options';
 // import Script from 'next/script';
 
@@ -15,6 +17,8 @@ export default class MyDocument extends Document {
     const { req: request = {} } = ctx;
     const { cookies = {} } = request || {};
     const initialProps = await Document.getInitialProps(ctx);
+
+    
 
     /* Colors */
     const themeBaseDirPath = path.join(
@@ -31,10 +35,17 @@ export default class MyDocument extends Document {
 
       global.themeCss = themeMap;
     }
+    // const {loader}=()=>{
+    //   const { loader } = useContext(DataContext);
+    //   return {loader};
+
+    // }
+
+
     return {
       ...initialProps,
       theme: cookies['g-theme'],
-      themeMap
+      themeMap,
     };
 
     try {
@@ -64,9 +75,11 @@ export default class MyDocument extends Document {
   }
 
   render() {
-    const { theme, themeMap } = this.props;
+    const { theme, themeMap} = this.props;
     const themeFileName = themeOptions[theme] || themeOptions.LIGHT;
     const themeCss = themeMap ? themeMap[themeFileName] : '';
+
+    
     // /* eslint-disable react/no-danger, jam3/no-sanitizer-with-danger */
     return (
       <Html>
@@ -130,14 +143,18 @@ export default class MyDocument extends Document {
           />
           <link href="/assets/css/error.css" rel="stylesheet" type="text/css" />
 
-          <script async src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+          <script
+            async
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"
+          ></script>
           <script async src="/assets/js/dash/bootstrap.bundle.min.js" />
-          <script async  src="/assets/js/dash/jquery.mCustomScrollbar.js" />
+          <script async src="/assets/js/dash/jquery.mCustomScrollbar.js" />
           <script async src="/assets/js/dash/slick.js" />
           <script async src="/assets/js/dash/jquery.fancybox.js" />
           <script async src="/assets/js/dash/jquery.fancybox-media.js" />
           <script async src="/assets/js/dash/pixelarity-faceless.js" />
-          <script async
+          <script
+            async
             src={`https://www.paypal.com/sdk/js?client-id=${process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID}`}
           ></script>
           <link
@@ -149,6 +166,7 @@ export default class MyDocument extends Document {
           <style></style>
         </Head>
         <body className="DarkPage">
+          
           {themeCss ? (
             <style
               dangerouslySetInnerHTML={{
