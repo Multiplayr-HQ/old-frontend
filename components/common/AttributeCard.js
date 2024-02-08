@@ -1,11 +1,12 @@
 import axios from 'axios';
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo,useContext } from 'react';
 import baseURL from '../../utils/baseURL';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import { regionsData } from '../../utils/functionsHelper';
 import { LanguageData } from '../../utils/functionsHelper';
 import ToggleButton from 'react-toggle-button';
+import { DataContext } from '@store/GlobalState';
 
 const AttributeCard =({ type, attributeId, profile }) => {
   const [allgames, setAllgames] = useState([]);
@@ -53,26 +54,30 @@ const AttributeCard =({ type, attributeId, profile }) => {
       setStates({ ...states, [e.target.name]: e.target.value });
     }
   }
+  const { setLoader } = useContext(DataContext);
 
   const router = useRouter();
   const refreshData = () => {
-    router.replace(router.asPath);
+    // router.replace(router.asPath);
+    router.reload();
   };
 
   const handleSubmitAttribute = async (e) => {
     e.preventDefault();
+    setLoader(true);
     try {
       await axios.post(`${baseURL}/api/attribute/`, states);
       
       toast.success('Added Recruitment card');
       $('a.model_close').parent().removeClass('show_model');
-      router.reload()
+
     } catch (err) {
       console.log(err);
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
-    refreshData();
-    // router.reload()
+    // refreshData();
+    setLoader(false);
+    router.reload()
     // console.log("from attribute card i am profile \t\t ",router.asPath);
     // router.push(router.asPath)
   };

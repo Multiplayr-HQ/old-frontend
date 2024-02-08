@@ -36,8 +36,8 @@ const AddImage = ({ type, typeId }) => {
     // setTimeout(function () {
     //   window.location.reload(false);
     // }, 5000);
-    // router.reload();
-    router.replace(router.asPath);
+    router.reload();
+    // router.replace(router.asPath);
   
     
   }
@@ -61,7 +61,7 @@ const AddImage = ({ type, typeId }) => {
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please upload your images again');
     }
-    ;refreshPage();
+    // ;refreshPage();
     setLoader(false);
   };
 
@@ -78,6 +78,7 @@ const AddImage = ({ type, typeId }) => {
               name="title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
+              required
             />
             <a href="#!" onClick={handlePhotosSubmit} className="btn">
               UPLOAD NOW{' '}

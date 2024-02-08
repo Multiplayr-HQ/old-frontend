@@ -134,7 +134,7 @@ const ProfileTournament = ({
       <div className="tab hide" id="tournaments">
         <div className="sponser_btn">
           {' '}
-          {profile.user._id === user._id ? (
+          {profile?.user?._id === user._id ? (
             <a href="#!" className="model_show_btn">
               <button className="btn">
                 {' '}
@@ -271,10 +271,10 @@ const ProfileTournament = ({
                           </option>
                         ))}
 
-                      {profile.teams &&
-                        profile.teams.map(
+                      {profile?.teams &&
+                        profile?.teams?.map(
                           (tem) =>
-                            console.log(profile.teams) && (
+                            console.log(profile?.teams) && (
                               <option key={tem?._id} value={tem?.teamId?._id}>
                                 {tem?.teamId?.name}
                               </option>

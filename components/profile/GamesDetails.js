@@ -3,19 +3,20 @@ import Head from 'next/head';
 import AttributeCard from '../common/AttributeCard';
 import axios from 'axios';
 import baseURL from '../../utils/baseURL';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import cookie from 'js-cookie';
 import RecruitEdit from './RecruitEdit';
+import { DataContext } from '@store/GlobalState';
 
 const GamesDetails = ({ user, Userdata, teams }) => {
   const [attributeData, setAttributeData] = useState();
   const [trigger, setTrigger] = useState(true);
 
   const isReq =
-    Userdata.playergames.filter((pro) => {
-      return Userdata.request.some((req) => {
+    Userdata?.playergames?.filter((pro) => {
+      return Userdata?.request?.some((req) => {
         return pro.player === req.playerId;
       });
     }).length > 0;
@@ -27,36 +28,43 @@ const GamesDetails = ({ user, Userdata, teams }) => {
   const handleChangeCheck = (e) => {
     setSelectTeam({ ...selectTeam, [e.target.name]: e.target.value });
   };
+  const { setLoader } = useContext(DataContext);
 
   const refreshData = () => {
-    router.replace(router.asPath);
+    // router.replace(router.asPath);
+
   };
 
   useEffect(() => {
     axios
-      .get(`${baseURL}/api/attribute/PROFILE/${Userdata.user._id}`)
+      .get(`${baseURL}/api/attribute/PROFILE/${Userdata?.user?._id}`)
       .then((res) => setAttributeData(res.data));
   }, [Userdata]);
 
   const handleDelete = (e) => {
     e.preventDefault();
+    setLoader(true);
     try {
       axios.delete(`${baseURL}/api/attribute/${attributeData._id}`);
       // refreshData();
-      ;router.reload();
+      
       toast.success('Deleted Card Successfully');
       
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Error Deleting the Card');
-      refreshData();
+      // refreshData();
+      
     }
+
+    setLoader(false);
+      ;router.reload();
     
   };
 
   const handleGameData = async (e) => {
     e.preventDefault();
     let gameId = attributeData.games[0].gameId._id;
-    let userId = Userdata.user._id;
+    let userId = Userdata?.user?._id;
     let teamId = selectTeam.teamId;
 
     try {
@@ -78,11 +86,11 @@ const GamesDetails = ({ user, Userdata, teams }) => {
   };
 
   useEffect(() => {
-    $('a.model_show_btn').click(function () {
+    $('a.model_show_btn').on("click",function () {
       $(this).next().addClass('show_model');
     });
 
-    $('a.model_close').click(function () {
+    $('a.model_close').on("click",function () {
       $(this).parent().removeClass('show_model');
     });
   }, [trigger]);
@@ -119,7 +127,7 @@ const GamesDetails = ({ user, Userdata, teams }) => {
               <span className="nm">Language:</span>{' '}
               <span className="task">
                 {' '}
-                {attributeData.language?.map((lang) => lang.slice(0, 3))}
+                {attributeData.language?.map((lang) => lang.slice(0, 3)).join(", ")}
               </span>
             </li>
             <li>
@@ -177,7 +185,7 @@ const GamesDetails = ({ user, Userdata, teams }) => {
                 </a>
                 <div className="inner_model_box">
                   <div className="add_job_height">
-                    <h3>Invite {Userdata.user.username} To Team</h3>
+                    <h3>Invite {Userdata.user?.username} To Team</h3>
                     <form action="">
                       <h2> Select Team</h2>
                       <div className="select-option">
@@ -214,7 +222,7 @@ const GamesDetails = ({ user, Userdata, teams }) => {
 
       {attributeData?.attributeId === user._id ? null : (
         <>
-          {Userdata.user?._id === user?._id ? (
+          {Userdata?.user?._id === user?._id ? (
             <AttributeCard
               type="PROFILE"
               attributeId={user?._id}

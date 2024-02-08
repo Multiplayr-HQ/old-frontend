@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Moment from 'moment';
 import axios from 'axios';
 import baseURL from '../../utils/baseURL';
@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import { profileTeam } from '../../utils/valid';
 import ProfileRigsDelete from './ProfileRigsDelete';
+import { DataContext } from '@store/GlobalState';
 
 const ProfileTeams = ({ Userdata, user, teamsData, allGames, teamroles }) => {
   const [filteredData, setFilteredData] = useState([]);
@@ -14,9 +15,11 @@ const ProfileTeams = ({ Userdata, user, teamsData, allGames, teamroles }) => {
   const [formErrors, setFormErrors] = useState({});
   const [teamNameIndicator, setTeamNameIndicator] = useState(false);
   const router = useRouter();
+  const { setLoader } = useContext(DataContext);
 
   const refreshData = () => {
-    router.replace(router.asPath);
+    // router.replace(router.asPath);
+    router.reload();
   };
 
   useEffect(() => {
@@ -75,6 +78,7 @@ const ProfileTeams = ({ Userdata, user, teamsData, allGames, teamroles }) => {
 
   const handleAddTeamSubmit = async (e) => {
     e.preventDefault();
+    setLoader(true);
 
     console.log("setAllTeams \t\t",allTeams );
     const teamExists = allTeams.some(team => team.name === searchText);
@@ -87,6 +91,7 @@ const ProfileTeams = ({ Userdata, user, teamsData, allGames, teamroles }) => {
     }else{
       // console.log(" Not in list \t\t",searchText );
       setTeamNameIndicator(true);
+      setLoader(false);
       return;
     }
 
@@ -101,6 +106,7 @@ const ProfileTeams = ({ Userdata, user, teamsData, allGames, teamroles }) => {
       } catch (err) {
         toast.error(err.response?.data?.msg || 'Please recheck your inputs');
       }
+      setLoader(false);
       refreshData();
     }
   };
@@ -262,7 +268,7 @@ const ProfileTeams = ({ Userdata, user, teamsData, allGames, teamroles }) => {
         <div>
           <ul className="stats_card stats_team">
             {teamsData && teamsData?.length === 0 ? (
-              <p>{Userdata?.user.name} has no teams.</p>
+              <p>{Userdata?.user?.name} has no teams.</p>
             ) : (
               teamsData &&
               teamsData.map((team, i) => (

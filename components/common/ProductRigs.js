@@ -106,7 +106,7 @@ const ProductRigs = ({ user, productList, Userdata }) => {
   };
 
   useEffect(() => {
-    $('.profile_tab_btn li a').click(function () {
+    $('.profile_tab_btn li a').on("click",function () {
       $('.prfoile_tab_data .tab').addClass('hide');
       var rel = jQuery(this).attr('rel');
       $('#' + rel).removeClass('hide');
@@ -260,7 +260,7 @@ const ProductRigs = ({ user, productList, Userdata }) => {
           {Userdata.profile.rigs.length === 0 ? (
             <p>No Rigs available for you.</p>
           ) : (
-            Userdata.profile.rigs.map((rig,i) => (
+            Userdata?.profile?.rigs.map((rig,i) => (
               <li key={i}>
                 <ProfileRigsDelete key={i}
                   rigId={rig._id}

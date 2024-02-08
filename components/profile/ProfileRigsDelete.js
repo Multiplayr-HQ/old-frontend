@@ -1,19 +1,23 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useContext } from 'react';
 import baseURL from '../../utils/baseURL';
 import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
+import { DataContext } from '@store/GlobalState';
 
 const ProfileRigsDelete = ({ rigId, profile, user, type, teamId }) => {
   const router = useRouter();
+  const { setLoader } = useContext(DataContext);
 
   const refreshData = () => {
-    router.replace(router.asPath);
+    // router.replace(router.asPath);
+    router.reload();
   };
 
   const handleDeleteSubmit = async (e) => {
     e.preventDefault();
+    setLoader(true)
     try {
       let url = '';
       if (type === 'ProfileTeamDel') {
@@ -26,12 +30,14 @@ const ProfileRigsDelete = ({ rigId, profile, user, type, teamId }) => {
           Authorization: cookie.get('token')
         }
       });
-      refreshData();
+      
       toast.success('Deleted Successfully');
     } catch (error) {
       console.log(error);
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
+    setLoader(false)
+    refreshData();
   };
 
   return (

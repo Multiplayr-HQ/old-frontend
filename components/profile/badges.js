@@ -26,11 +26,11 @@ const Badges = ({ Userdata }) => {
     <>
       <div className="badges">
         <h5>BADGES:</h5>
-        {Userdata.badges.length === 0 ? (
+        {Userdata?.badges?.length === 0 ? (
           <p>Coming Soon</p>
         ) : (
           <>
-            {Userdata.badges.map((bdg,i) => (
+            {Userdata?.badges?.map((bdg,i) => (
               <img src={bdg.image} alt="" key={i} />
             ))}
 
@@ -48,7 +48,7 @@ const Badges = ({ Userdata }) => {
             <h3>BADGES</h3>
 
             <ul>
-              {Userdata.badges.map((bdg,i) => (
+              {Userdata?.badges?.map((bdg,i) => (
                 <li key={i}>
                   {' '}
                   <img src={bdg.image} alt="" />{' '}

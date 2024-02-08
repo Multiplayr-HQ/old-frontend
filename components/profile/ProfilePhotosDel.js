@@ -1,19 +1,23 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useContext } from 'react';
 import baseURL from '../../utils/baseURL';
 import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
+import { DataContext } from '@store/GlobalState';
 
 const ProfilePhotosDel = ({ collectionId, profile, user }) => {
   const router = useRouter();
+  const { setLoader } = useContext(DataContext);
 
   const refreshData = () => {
-    router.replace(router.asPath);
+    // router.replace(router.asPath);
+    router.reload();
   };
 
   const handleDeleteSubmit = async (e) => {
     e.preventDefault();
+    setLoader(true);
     try {
       axios.delete(
         `${baseURL}/api/profile/images/${profile?._id}/${collectionId}`,
@@ -29,6 +33,7 @@ const ProfilePhotosDel = ({ collectionId, profile, user }) => {
       console.log(error);
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
+    setLoader(false);
   };
   return (
     <>

@@ -116,7 +116,7 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
   }
 
 
-  
+
 
   const handleProfileEdit = async (e) => {
     e.preventDefault();
@@ -124,8 +124,8 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
       try {
         setLoader(true);
         await axios.put(`${baseURL}/api/profile/type/${profile?._id}`, states);
-        // router.reload();
-        ;refreshData();
+        router.reload();
+        // ;refreshData();
         toast.success('Profile Updated');
   
        

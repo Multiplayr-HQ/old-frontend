@@ -22,7 +22,7 @@ const RigsFilter = ({ val, data, states }) => {
   };
 
   const handleSelectedRig = (data) => {
-    setSearchText(data.name);
+    setSearchText(data.name); 
     const keys = Object.keys(states);
     keys.forEach((key, index) => {
       if (key === val) {
