@@ -1,4 +1,4 @@
-import { createContext, useReducer, useEffect } from 'react'
+import { createContext, useReducer, useEffect, useState } from 'react'
 import reducers from './Reducers'
 import { getData } from '@utils/fetchData'
 
@@ -8,9 +8,9 @@ export const DataContext = createContext()
 
 export const DataProvider = ({children}) => {
     const initialState = { 
-        notify: {}, auth: {}, cart: [], modal: [], orders: [], users: [], categories: []
+        notify: {}, auth: {}, cart: [], modal: [], orders: [], users: [], categories: [],
     }
-
+    const [loader,setLoader]=useState(false);
     const [state, dispatch] = useReducer(reducers, initialState)
     const { cart, auth } = state
 
@@ -80,7 +80,7 @@ export const DataProvider = ({children}) => {
     },[auth.token])
 
     return(
-        <DataContext.Provider value={{state, dispatch}}>
+        <DataContext.Provider value={{state, dispatch,loader,setLoader}}>
             {children}
         </DataContext.Provider>
     )

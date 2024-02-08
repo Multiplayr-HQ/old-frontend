@@ -1,4 +1,5 @@
 import '../styles/globals.css';
+import "../styles/loader.css";
 
 import App from 'next/app';
 import { DefaultSeo } from 'next-seo';

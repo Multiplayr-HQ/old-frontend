@@ -9,9 +9,10 @@ const ProfileVideosDel = ({ collectionId, profile, user }) => {
   const router = useRouter();
 
   const refreshData = () => {
-    setTimeout(function () {
-      window.location.reload(false);
-    }, 1000);
+    // setTimeout(function () {
+    //   window.location.reload(false);
+    // }, 1000);
+    router.reload();
   };
 
   const handleDeleteSubmit = async (e) => {

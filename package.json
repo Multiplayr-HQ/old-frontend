@@ -13,11 +13,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
-
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run validate"
+      "pre-commit": ""
     }
   },
   "lint-staged": {
@@ -27,6 +26,7 @@
   },
   "dependencies": {
     "@emailjs/browser": "^3.6.2",
+    "@fancyapps/fancybox": "^3.5.7",
     "@headlessui/react": "^1.4.2",
     "@heroicons/react": "^1.0.5",
     "@stripe/react-stripe-js": "^1.5.0",

@@ -6,6 +6,8 @@ export const ACTIONS = {
     ADD_ORDERS: 'ADD_ORDERS',
     ADD_USERS: 'ADD_USERS',
     ADD_CATEGORIES: 'ADD_CATEGORIES',
+    SHOW_LOADER: 'SHOW_LOADER',
+    HIDE_LOADER: 'HIDE_LOADER',
 }
 
 export const addToCart = (product, cart) => {

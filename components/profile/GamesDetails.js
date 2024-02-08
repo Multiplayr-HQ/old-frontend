@@ -42,12 +42,15 @@ const GamesDetails = ({ user, Userdata, teams }) => {
     e.preventDefault();
     try {
       axios.delete(`${baseURL}/api/attribute/${attributeData._id}`);
-      toast.success('Deleted Card Successfully');
+      // refreshData();
       ;router.reload();
+      toast.success('Deleted Card Successfully');
+      
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Error Deleting the Card');
+      refreshData();
     }
-    refreshData();
+    
   };
 
   const handleGameData = async (e) => {
@@ -121,11 +124,11 @@ const GamesDetails = ({ user, Userdata, teams }) => {
             </li>
             <li>
               <span className="nm">Win rate/KDA:</span>{' '}
-              <span className="task"> -- </span>
+              <span className="task"> 00 </span>
             </li>
             <li>
               <span className="nm">MMR:</span>{' '}
-              <span className="task"> -- </span>
+              <span className="task"> 00 </span>
             </li>
             {/* <li>
               <span className="nm">Availablilty:</span>{' '}

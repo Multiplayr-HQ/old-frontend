@@ -7,6 +7,7 @@ import baseURL from '@utils/baseURL';
 import VideoDropzone from '@components/common/VideosDropzone';
 import { Video } from 'cloudinary-react';
 import ProfileVideosDel from './ProfileVideosDel';
+import { useRouter } from 'next/router';
 
 const Videos = ({ Userdata, user, data }) => {
   const [videos, setVideos] = useState([]);
@@ -21,11 +22,16 @@ const Videos = ({ Userdata, user, data }) => {
     });
   });
 
+  const router = useRouter();
+
   function refreshPage() {
-    setTimeout(function () {
-      window.location.reload(false);
-    }, 5000);
+    // setTimeout(function () {
+    //   document.body.location.reload(false);
+    // }, 1000);
+    router.replace(router.asPath);
   }
+
+
 
   const handleSelectAgain =()=>{
     setVideos([])
@@ -95,7 +101,7 @@ const Videos = ({ Userdata, user, data }) => {
                         <br/>
 
                         <a href="#!" onClick={handleSelectAgain} className="btn">
-                          SELECT AGAIN{' '}
+                          CANCEL{' '}
                         </a>
                       </form>
                     </div>

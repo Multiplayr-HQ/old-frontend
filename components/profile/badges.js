@@ -1,25 +1,26 @@
 import { size } from 'lodash';
 import { useEffect, useState } from 'react';
+// import '@fancyapps/fancybox';
 
 const more = { fontSize: '12px', color: '#000' };
 
 const Badges = ({ Userdata }) => {
   useEffect(() => {
-    $('a.model_show_btn').click(function () {
+    $('a.model_show_btn').on("click",function () {
       $(this).next().addClass('show_model');
     });
 
-    $('a.model_close').click(function () {
+    $('a.model_close').on("click",function () {
       $(this).parent().removeClass('show_model');
     });
   }, []);
 
-  useEffect(() => {
-    $('.common_poup').fancybox({
-      wrapCSS: 'common_poup_wrap',
-      autoSize: true
-    });
-  }, []);
+  // useEffect(() => {
+  //   $('.common_poup').fancybox({
+  //     wrapCSS: 'common_poup_wrap',
+  //     autoSize: true
+  //   });
+  // }, []);
 
   return (
     <>
