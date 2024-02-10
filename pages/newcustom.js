@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import $ from 'jquery';
+// import $ from 'jquery';
 
 function Customjs() {
   

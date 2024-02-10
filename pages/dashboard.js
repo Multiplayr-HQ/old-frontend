@@ -46,8 +46,33 @@ const Dashboard = ({ user, profile, teams, posts, suggplayers }) => {
   );
 };
 
+// export const getServerSideProps = async (context) => {
+//   const { token } = parseCookies(context);
+//   const response = await fetch(`${baseURL}/api/posts`, {
+//     method: 'get',
+//     headers: {
+//       Authorization: token
+//     }
+//   });
+//   const data = await response.json();
+//   const posts = data.posts;
+
+//   const res = await fetch(`${baseURL}/api/profile/suggested/players`, {
+//     method: 'post',
+//     headers: {
+//       Authorization: token
+//     }
+//   });
+//   const suggplayers = await res.json();
+
+//   return {
+//     props: { posts, suggplayers }
+//   };
+// };
+
 export const getServerSideProps = async (context) => {
   const { token } = parseCookies(context);
+  const {teamId} = parseCookies(context);
   const response = await fetch(`${baseURL}/api/posts`, {
     method: 'get',
     headers: {
@@ -56,6 +81,10 @@ export const getServerSideProps = async (context) => {
   });
   const data = await response.json();
   const posts = data.posts;
+
+  const respons = await fetch(`${baseURL}/api/all/teams`);
+    const teams = await respons.json();
+
 
   const res = await fetch(`${baseURL}/api/profile/suggested/players`, {
     method: 'post',
@@ -66,8 +95,11 @@ export const getServerSideProps = async (context) => {
   const suggplayers = await res.json();
 
   return {
-    props: { posts, suggplayers }
+    props: { posts, suggplayers,teams }
   };
 };
+
+
+
 
 export default Dashboard;
