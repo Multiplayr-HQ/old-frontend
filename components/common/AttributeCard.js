@@ -254,7 +254,7 @@ const AttributeCard =({ type, attributeId, profile }) => {
                         name="language"
                         onChange={handleSubmit}
                         multiple={true}
-                        value={states.language}
+                        value={states.language.slice(0,5)}
                         className="form-control"
                       >
                         {LanguageData &&

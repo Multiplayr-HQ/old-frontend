@@ -69,10 +69,10 @@ const VerifyToken = ({ verificationToken, finishsubmit }) => {
           X
         </a>
 
-        <div className="inner_model_box">
+        <div className="inner_model_box rounded-lg ">
           <div className="verify_box">
             <a href="#" className="logos">
-              <img alt="Logo" src="/assets/media/logos/logo.png" />
+              <img alt="Logo" src="/assets/media/logo.png" />
             </a>
             <div className="pt-lg-10 mb-10">
               <h1>Verify Your Email</h1>
@@ -115,9 +115,9 @@ const VerifyToken = ({ verificationToken, finishsubmit }) => {
                   </div>
                   <div className="fs-5">
                     <span className="fw-bold text-gray-700">
-                      Did’t receive an email?
+                      Did’t receive an email? {" "}
                     </span>
-                    <a href="signup.html" className="link-primary fw-bolder">
+                    <a href="signup.html" className=" text-[#d2fe24] fw-bolder">
                       Resend
                     </a>
                   </div>

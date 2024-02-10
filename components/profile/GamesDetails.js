@@ -94,6 +94,7 @@ const GamesDetails = ({ user, Userdata, teams }) => {
       $(this).parent().removeClass('show_model');
     });
   }, [trigger]);
+  
 
   return (
     <>
@@ -125,7 +126,7 @@ const GamesDetails = ({ user, Userdata, teams }) => {
             </li>
             <li>
               <span className="nm">Language:</span>{' '}
-              <span className="task">
+              <span className="task flex items-end">
                 {' '}
                 {attributeData.language?.map((lang) => lang.slice(0, 3)).join(", ")}
               </span>

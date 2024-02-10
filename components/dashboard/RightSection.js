@@ -62,7 +62,12 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
             </div>
           ) : (
             challenges.map((result, idx) => (
-              <Challengelist result={result} profile={profile} user={user} key={idx}/>
+              <Challengelist
+                result={result}
+                profile={profile}
+                user={user}
+                key={idx}
+              />
             ))
           )}
         </div>
@@ -165,10 +170,9 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
             </div>
             <div className="overlay"></div>
           </div>
-
-          <a href={`/team/create`} className="create_team">
-            + Create a team
-          </a>
+          <Link href={`/team/create`}>
+            <a className="create_team">+ Create a team</a>
+          </Link>
           <>
             {requestData &&
               requestData.map((req) => (
@@ -302,7 +306,11 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
                   </div>
                   <div className="match_time">
                     <span>
-                      <a href={match.officialStreamUrl}  target="_blank" rel="noreferrer">
+                      <a
+                        href={match.officialStreamUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
                         {match.officialStreamUrl}
                       </a>
                     </span>

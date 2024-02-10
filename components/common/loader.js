@@ -1,9 +1,4 @@
-
-
 import React from "react";
-
-
-
 const Loader = () => {
   return (
     <div>
@@ -16,5 +11,4 @@ const Loader = () => {
     </div>
   );
 };
-
 export default Loader;

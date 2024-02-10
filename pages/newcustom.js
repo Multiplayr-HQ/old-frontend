@@ -1,8 +1,11 @@
 import { useEffect } from 'react';
+import $ from 'jquery';
 
 function Customjs() {
+  
   useEffect(() => {
     try {
+      
       
       $('.overhight').mCustomScrollbar({
         autoHideScrollbar: true
