@@ -640,8 +640,9 @@ const Signup = ({ games, avatars }) => {
                         </li>
 
                         {avatars &&
-                          avatars.map((avatar,i) => (
-                            <li className="" key={i}>
+                          avatars.map((avatar,i) => ((user?.gender==avatar?.gender)?
+                            (<li className="" key={i}>
+                            { console.log("inside signup user gender is ", user.gender,"avatar gender is ")}
                               <div className="form-group">
                                 <a
                                   href="#!"
@@ -650,7 +651,17 @@ const Signup = ({ games, avatars }) => {
                                   <img src={avatar.image} alt={avatar.title} />
                                 </a>
                               </div>
-                            </li>
+                            </li>):(<li className="" key={i}>
+                            { console.log("inside signup else section user gender  is ", user.gender,"avatar gender is ")}
+                              <div className="form-group">
+                                <a
+                                  href="#!"
+                                  onClick={() => handleSelectAvatar(avatar)}
+                                >
+                                  <img src={avatar.image} alt={avatar.title} />
+                                </a>
+                              </div>
+                            </li>)
                           ))}
                       </ul>
                     </div>

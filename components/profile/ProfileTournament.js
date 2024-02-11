@@ -477,4 +477,17 @@ const ProfileTournament = ({
   );
 };
 
+export const getServerSideProps = async (context) => {
+  const { token } = parseCookies(context);
+
+
+  const respons = await fetch(`${baseURL}/api/all/teams`);
+    const teams = await respons.json();
+
+
+  return {
+    props: {teams }
+  };
+};
+
 export default ProfileTournament;

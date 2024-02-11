@@ -21,7 +21,13 @@ const ProfileRigsDelete = ({ rigId, profile, user, type, teamId }) => {
     try {
       let url = '';
       if (type === 'ProfileTeamDel') {
-        url = `${baseURL}/api/profile/profileteam/${profile?._id}/${teamId}`;
+        profile.teams.map(
+          (tem) =>{
+            if(tem.teamId._id===teamId){
+              url = `${baseURL}/api/profile/profileteam/${profile?._id}/${teamId}/${tem._id}`;
+            }
+          }
+        )
       } else {
         url = `${baseURL}/api/profile/rigs/${profile?._id}/${rigId}`;
       }

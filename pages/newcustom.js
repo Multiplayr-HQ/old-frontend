@@ -15,9 +15,9 @@ function Customjs() {
         autoHideScrollbar: true
       });
   
-      $('.msScroll_all').mCustomScrollbar({
-        autoHideScrollbar: true
-      });
+      // $('.msScroll_all').mCustomScrollbar({
+      //   autoHideScrollbar: true
+      // });
   
       $('.tab_data_scroll').mCustomScrollbar({
         autoHideScrollbar: true
