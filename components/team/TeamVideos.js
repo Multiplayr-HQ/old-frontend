@@ -32,8 +32,8 @@ const TeamVideos = ({
 
   function refreshPage() {
     setTimeout(function () {
-      window.location.reload(false);
-    }, 3000);
+      document.body.location.reload(false);
+    }, 1000);
   }
 
   const handleSubmit = async (e) => {

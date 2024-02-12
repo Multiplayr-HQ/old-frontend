@@ -7541,15 +7541,47 @@ article .social_bar img {
 	margin-bottom: 5px;
 }
 
-.imagess_box li a:nth-child(2),
-.imagess_box li a:nth-child(3),
-.imagess_box li a:nth-child(4) {
+.imagess_box li a:nth-child(2){
 	display: block;
-	float: left;
-	width: 32%;
-	margin-right: 2%;
+	/* float: left; */
+	position:absolute;
+	top: calc(225px - 80px);
+	left:0;
+	width: 34%;
+	/* margin-right: 2%; */
 	height: 80px;
 	overflow: hidden;
+	background: #21212293;
+	/* border-radius: 5px; */
+}
+
+
+.imagess_box li a:nth-child(3){
+	display: block;
+	/* float: left; */
+	position:absolute;
+	top: calc(225px - 80px);
+	left:34%;
+	width: 34%;
+	/* margin-right: 2%; */
+	height: 80px;
+	overflow: hidden;
+	background: #21212293;
+	/* border-radius: 5px; */
+}
+
+.imagess_box li a:nth-child(4) {
+	display: block;
+	/* float: left; */
+	position:absolute;
+	top: calc(225px - 80px);
+	left:68%;
+	width: 32%;
+	/* margin-right: 2%; */
+	height: 80px;
+	overflow: hidden;
+	background: #21212293;
+	border-radius: 5px;
 }
 
 .imagess_box li a:nth-child(4) {

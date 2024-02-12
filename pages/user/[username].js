@@ -5,9 +5,13 @@ import ProfileBox from '@components/profile/ProfileBox';
 import ProfileData from '@components/profile/ProfileData';
 import AllScript from '../AllScript';
 import baseURL from '@utils/baseURL';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { getData } from '@utils/fetchData';
+
+import Loader from "@components/common/loader"; 
+import { DataContext } from '@store/GlobalState';
+
 
 const Profile = ({
   user,
@@ -20,10 +24,14 @@ const Profile = ({
 }) => {
   const router = useRouter();
 
+  const{loader,setLoader}=useContext(DataContext);
+
+
   if (Userdata) {
     return (
       <>
         <MetaDash />
+        {loader && <Loader></Loader>}
         <SignedHeader user={user} profile={Userdata.profile} />
         <LeftNav user={user} />
 

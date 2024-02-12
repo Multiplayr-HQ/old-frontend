@@ -35,7 +35,7 @@ const ProfileBox = ({ user, Userdata, profile, games, teams }) => {
       .length > 0;
 
   const isBlocked =
-    profile.blockList?.filter((y) => y.user._id === Userdata.profile.user._id)
+    profile.blockList?.filter((y) => y.user._id === Userdata?.profile?.user._id)
       .length > 0;
 
   const isfollower =
@@ -62,7 +62,7 @@ const ProfileBox = ({ user, Userdata, profile, games, teams }) => {
 
   const { mutate } = useMutation(addFollow);
 
-  const SrhUser = Userdata.profile?.user;
+  const SrhUser = Userdata?.profile?.user;
   const isLoggedInUser = user._id === SrhUser?._id;
 
   const mutation = useMutation(
@@ -157,7 +157,7 @@ const ProfileBox = ({ user, Userdata, profile, games, teams }) => {
   const handleTabs = async (Type) => {
     await axios
       .get(
-        `${baseURL}/api/profile/profiledata/${Type}/${Userdata.profile._id}`,
+        `${baseURL}/api/profile/profiledata/${Type}/${Userdata?.profile?._id}`,
         {
           headers: {
             Authorization: cookie.get('token')
@@ -285,7 +285,7 @@ const ProfileBox = ({ user, Userdata, profile, games, teams }) => {
                 <span className="name">
                   {SrhUser?.name}{' '}
                   <span className="follower">
-                    {Userdata.followers.length} Followers
+                    {Userdata?.followers?.length} Followers
                   </span>
                 </span>
               </div>
@@ -327,24 +327,39 @@ const ProfileBox = ({ user, Userdata, profile, games, teams }) => {
               <div className="current_status">
                 <div className="current_team">
                   <span className="ct"> Current Team</span>
-                  <a href={`/team/${Userdata?.profile?.current_team}`}>
-                    <span className="were">
-                      {Userdata?.currentTeam}{' '}
-                      <i className="fa fa-arrow-right" aria-hidden="true"></i>
-                    </span>
-                  </a>
-                </div>
-                <div className="game_role">
-                  {Userdata.profile?.headline.team ? (
-                    <>
-                      <span className="ct"> In Game Role</span>
+
+                  {Userdata?.currentTeam ? (
+                    <a href={`/team/${Userdata?.profile?.current_team}`}>
                       <span className="were">
-                        {Userdata.profile?.headline.inGameRole} -{' '}
-                        {Userdata.profile?.headline.game?.name}
+                        {Userdata?.currentTeam}{' '}
+                        <i className="fa fa-arrow-right" aria-hidden="true"></i>
                       </span>
-                    </>
-                  ) : null}
+                    </a>
+                  ) : (
+                    <a href={`#`}>
+                      <span className="were">
+                        {Userdata?.currentTeam}{' '}
+                        <i className="fa fa-arrow-right" aria-hidden="true"></i>
+                      </span>
+                    </a>
+                  )}
                 </div>
+                {Userdata?.profile?.headline.team ? (
+                  <div className="game_role">
+                    <span className="ct"> In Game Role</span>
+                    <a>
+                      <span className="were">
+                        {Userdata?.currentTeam &&
+                          Userdata?.profile?.headline.inGameRole}{' '}
+                        -{' '}
+                        {Userdata?.currentTeam &&
+                          Userdata?.profile?.headline.game?.name}
+                      </span>
+                    </a>
+                  </div>
+                ) : (
+                  ' '
+                )}
               </div>
 
               <Badges Userdata={Userdata} />
@@ -356,10 +371,11 @@ const ProfileBox = ({ user, Userdata, profile, games, teams }) => {
             <div className="top_bio">
               <h3>BIO</h3>
               <div className="socail">
-                {Userdata.profile.social?.facebook ? (
+                {Userdata?.profile?.social?.facebook ? (
                   <a
-                    href={`https://www.facebook.com/${Userdata.profile.social?.facebook}`}
-                   target="_blank" rel="noreferrer"
+                    href={`https://www.facebook.com/${Userdata?.profile?.social?.facebook}`}
+                    target="_blank"
+                    rel="noreferrer"
                   >
                     <i
                       className="fa fa-facebook-official"
@@ -367,37 +383,41 @@ const ProfileBox = ({ user, Userdata, profile, games, teams }) => {
                     ></i>
                   </a>
                 ) : null}
-                {Userdata.profile.social?.instagram ? (
+                {Userdata?.profile?.social?.instagram ? (
                   <a
-                    href={`https://www.instagram.com/${Userdata.profile.social?.instagram}`}
-                   target="_blank" rel="noreferrer"
+                    href={`https://www.instagram.com/${Userdata?.profile?.social?.instagram}`}
+                    target="_blank"
+                    rel="noreferrer"
                   >
                     <i className="fa fa-instagram" aria-hidden="true"></i>
                   </a>
                 ) : null}
 
-                {Userdata.profile.social?.twitch ? (
+                {Userdata?.profile?.social?.twitch ? (
                   <a
-                    href={`https://www.twitch.tv/${Userdata.profile.social?.twitch}`}
-                   target="_blank" rel="noreferrer"
+                    href={`https://www.twitch.tv/${Userdata?.profile?.social?.twitch}`}
+                    target="_blank"
+                    rel="noreferrer"
                   >
                     <i className="fa fa-twitch" aria-hidden="true"></i>
                   </a>
                 ) : null}
 
-                {Userdata.profile.social?.youtube ? (
+                {Userdata?.profile?.social?.youtube ? (
                   <a
-                    href={`https://www.youtube.com/c/${Userdata.profile.social?.youtube}`}
-                   target="_blank" rel="noreferrer"
+                    href={`https://www.youtube.com/c/${Userdata?.profile?.social?.youtube}`}
+                    target="_blank"
+                    rel="noreferrer"
                   >
                     <i className="fa fa-youtube" aria-hidden="true"></i>
                   </a>
                 ) : null}
 
-                {Userdata.profile.social?.discord ? (
+                {Userdata?.profile?.social?.discord ? (
                   <a
-                    href={`https://${Userdata.profile.social?.discord}`}
-                   target="_blank" rel="noreferrer"
+                    href={`https://${Userdata?.profile?.social?.discord}`}
+                    target="_blank"
+                    rel="noreferrer"
                   >
                     <img
                       src="/assets/media/social/discord.png"
@@ -407,10 +427,11 @@ const ProfileBox = ({ user, Userdata, profile, games, teams }) => {
                   </a>
                 ) : null}
 
-                {Userdata.profile.social?.website ? (
+                {Userdata?.profile?.social?.website ? (
                   <a
-                    href={`https://${Userdata.profile.social?.website}`}
-                   target="_blank" rel="noreferrer"
+                    href={`https://${Userdata?.profile?.social?.website}`}
+                    target="_blank"
+                    rel="noreferrer"
                   >
                     <i className="fa fa-globe" aria-hidden="true"></i>
                   </a>
@@ -420,7 +441,7 @@ const ProfileBox = ({ user, Userdata, profile, games, teams }) => {
               {isLoggedInUser ? (
                 <div onClick={() => handleTabs('TEAMS')}>
                   <ProfileEdit
-                    Userdata={Userdata.profile}
+                    Userdata={Userdata?.profile}
                     allteams={tabData?.teams}
                     user={user}
                     games={games}
@@ -429,14 +450,14 @@ const ProfileBox = ({ user, Userdata, profile, games, teams }) => {
               ) : null}
             </div>
 
-            <p> {Userdata.profile ? Userdata.profile.bio : ''} </p>
+            <p> {Userdata?.profile ? Userdata?.profile?.bio : ''} </p>
 
             <div className="prof_games">
               <div className="games">
                 <h3>GAMES</h3>
-                {Userdata.profile.playergames.length !== 0 ? (
+                {Userdata?.profile?.playergames.length !== 0 ? (
                   <div className="tit">
-                    {Userdata.profile.playergames.map((game) => (
+                    {Userdata?.profile?.playergames.map((game) => (
                       <>
                         <span>
                           {' '}
@@ -454,8 +475,11 @@ const ProfileBox = ({ user, Userdata, profile, games, teams }) => {
               </div>
             </div>
           </div>
-          {Userdata.profile?.isStatVisible !== true ? (
-            <ProfileGameStat user={user} games={Userdata.profile.playergames} />
+          {Userdata?.profile?.isStatVisible !== true ? (
+            <ProfileGameStat
+              user={user}
+              games={Userdata?.profile?.playergames}
+            />
           ) : null}
         </div>
       </div>

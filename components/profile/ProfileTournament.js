@@ -134,7 +134,7 @@ const ProfileTournament = ({
       <div className="tab hide" id="tournaments">
         <div className="sponser_btn">
           {' '}
-          {profile.user._id === user._id ? (
+          {profile?.user?._id === user._id ? (
             <a href="#!" className="model_show_btn">
               <button className="btn">
                 {' '}
@@ -266,22 +266,22 @@ const ProfileTournament = ({
                       <option value="">Select Team...</option>
                       {teams &&
                         teams.map((tem) => (
-                          <option value={tem._id} key={tem._id}>
+                          <option value={tem?._id} key={tem?._id}>
                             {tem.name}
                           </option>
                         ))}
 
-                      {profile.teams &&
-                        profile.teams.map(
+                      {profile?.teams &&
+                        profile?.teams?.map(
                           (tem) =>
-                            console.log(profile.teams) && (
-                              <option key={tem._id} value={tem.teamId?._id}>
-                                {tem.teamId?.name}
+                            console.log(profile?.teams) && (
+                              <option key={tem?._id} value={tem?.teamId?._id}>
+                                {tem?.teamId?.name}
                               </option>
                             )
                         )}
                     </select>
-                    <p>{formErrors.team}</p>
+                    <p>{formErrors?.team}</p>
                   </div>
                   <div className="form-group">
                     <label htmlFor="exampleFormControlInput1">Roles</label>
@@ -425,11 +425,11 @@ const ProfileTournament = ({
                       <b>Team:</b>
                       {tournament.type === 'TeamTournament' ? (
                         <>
-                          {tournament.tournament.teams.map((team) => (
+                          {tournament?.tournament?.teams.map((team) => (
                             <>
                               <img
-                                src={team.teamId.imgUrl}
-                                alt={team.teamId.name}
+                                src={team?.teamId?.imgUrl}
+                                alt={team?.teamId?.name}
                               />
                               {team.teamId.name}
                             </>
@@ -475,6 +475,19 @@ const ProfileTournament = ({
       </div>
     </>
   );
+};
+
+export const getServerSideProps = async (context) => {
+  const { token } = parseCookies(context);
+
+
+  const respons = await fetch(`${baseURL}/api/all/teams`);
+    const teams = await respons.json();
+
+
+  return {
+    props: {teams }
+  };
 };
 
 export default ProfileTournament;

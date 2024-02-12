@@ -15,7 +15,7 @@ const PhotosDelete = ({
 }) => {
   const refreshData = () => {
     setTimeout(function () {
-      window.location.reload(false);
+      document.body.location.reload(false);
     }, 1000);
   };
 

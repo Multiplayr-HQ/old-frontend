@@ -21,9 +21,10 @@ const GameVideos = ({ user, game }) => {
   });
 
   function refreshPage() {
-    setTimeout(function () {
-      window.location.reload(false);
-    }, 5000);
+    // setTimeout(function () {
+    //   window.location.reload(false);
+    // }, 5000);
+    router.reload();
   }
 
   const handleSubmit = async (e) => {

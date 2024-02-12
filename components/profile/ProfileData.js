@@ -16,7 +16,7 @@ import ProfileTournament from './ProfileTournament';
 import ProfileTeams from './ProfileTeams';
 
 const ProfileData = ({ user, Userdata, products, teams }) => {
-  const profile = Userdata.profile;
+  const profile = Userdata?.profile;
   let [tabData, setTabData] = useState([]);
   const [allGames, setAllGames] = useState([]);
   const [teamroles, setTeamRoles] = useState([]);
@@ -35,6 +35,12 @@ const ProfileData = ({ user, Userdata, products, teams }) => {
     router.replace(router.asPath);
   };
 
+
+
+  // useEffect(() => {
+  //     refreshData();
+  // }, []);
+
   useEffect(() => {}, [profile]);
   useEffect(() => {}, [Userdata]);
 
@@ -42,7 +48,7 @@ const ProfileData = ({ user, Userdata, products, teams }) => {
     console.log(Type);
     await axios
       .get(
-        `${baseURL}/api/profile/profiledata/${Type}/${Userdata.profile._id}`,
+        `${baseURL}/api/profile/profiledata/${Type}/${Userdata?.profile._id}`,
         {
           headers: {
             Authorization: cookie.get('token')
@@ -50,6 +56,7 @@ const ProfileData = ({ user, Userdata, products, teams }) => {
         }
       )
       .then((res) => setTabData(res.data));
+      
   };
 
   return (
@@ -121,26 +128,26 @@ const ProfileData = ({ user, Userdata, products, teams }) => {
         <div className="tab" id="feed">
           <div className="profile_left_post">
             {' '}
-            {Userdata.posts.length !== 0 &&
-              Userdata.posts.map((post,i) =>
+            {Userdata?.posts?.length !== 0 &&
+              Userdata?.posts?.map((post, i) =>
                 post.user._id !== user._id ? (
                   <>
                     <AllPosts
                       post={post}
                       user={user}
-                      profiledata={Userdata.profile}
+                      profiledata={Userdata?.profile}
                       key={i}
                     />
                   </>
                 ) : (
-                  <AllPosts post={post} user={user} key={i}/>
+                  <AllPosts post={post} user={user} key={i} />
                 )
               )}{' '}
           </div>
           <div className="profile_match_details">
             {' '}
-            {Userdata.teamMatchesList?.map((result, index) => (
-              <TeamAllStats teamId={result.team._id}  key={index}/>
+            {Userdata?.teamMatchesList?.map((result, index) => (
+              <TeamAllStats teamId={result.team._id} key={index} />
             ))}
             <GamesDetails user={user} Userdata={profile} teams={teams} />
           </div>
@@ -236,14 +243,14 @@ const ProfileData = ({ user, Userdata, products, teams }) => {
                 </div>
               </div>
               <div className="comp_btn">
-                <i className= "fa fa-compress" aria-hidden="true"></i> Compare
+                <i className="fa fa-compress" aria-hidden="true"></i> Compare
               </div>
             </li>
           </ul>
         </div>
 
         <ProfileTeams
-          Userdata={Userdata.profile}
+          Userdata={Userdata?.profile}
           user={user}
           allGames={allGames}
           teamroles={teamroles}
@@ -352,13 +359,13 @@ const ProfileData = ({ user, Userdata, products, teams }) => {
         <ProductList user={user} productList={products} />
 
         <Photos
-          Userdata={Userdata.profile}
+          Userdata={Userdata?.profile}
           user={user}
           photosData={tabData?.photos}
         />
 
         <Videos
-          Userdata={Userdata.profile}
+          Userdata={Userdata?.profile}
           user={user}
           data={tabData?.videos}
         />

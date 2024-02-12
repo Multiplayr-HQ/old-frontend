@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState,useContext } from 'react';
 import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
 import cookie from 'js-cookie';
@@ -7,6 +7,8 @@ import baseURL from '@utils/baseURL';
 import VideoDropzone from '@components/common/VideosDropzone';
 import { Video } from 'cloudinary-react';
 import ProfileVideosDel from './ProfileVideosDel';
+import { useRouter } from 'next/router';
+import { DataContext } from '@store/GlobalState';
 
 const Videos = ({ Userdata, user, data }) => {
   const [videos, setVideos] = useState([]);
@@ -21,11 +23,17 @@ const Videos = ({ Userdata, user, data }) => {
     });
   });
 
+  const router = useRouter();
+  const { setLoader } = useContext(DataContext);
+
   function refreshPage() {
     setTimeout(function () {
-      window.location.reload(false);
-    }, 5000);
+      document.body.location.reload(false);
+    }, 1000);
+    // router.replace(router.asPath);
   }
+
+
 
   const handleSelectAgain =()=>{
     setVideos([])
@@ -34,6 +42,7 @@ const Videos = ({ Userdata, user, data }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoader(true)
     const formdata = new FormData();
     for (const key of Object.keys(videos)) {
       formdata.append('videos', videos[key]);
@@ -51,6 +60,7 @@ const Videos = ({ Userdata, user, data }) => {
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please upload your videos again');
     }
+    setLoader(false)
     refreshPage();
   };
 
@@ -95,7 +105,7 @@ const Videos = ({ Userdata, user, data }) => {
                         <br/>
 
                         <a href="#!" onClick={handleSelectAgain} className="btn">
-                          SELECT AGAIN{' '}
+                          CANCEL{' '}
                         </a>
                       </form>
                     </div>

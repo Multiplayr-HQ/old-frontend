@@ -615,7 +615,7 @@ const Signup = ({ games, avatars }) => {
                         )}
                       </div>
                       <ul>
-                        <li className="uploads active">
+                        <li className="uploads active flex flex-col items-center justify-center">
                           <div className="style_file_upload1">
                             <input
                               type="file"
@@ -626,8 +626,8 @@ const Signup = ({ games, avatars }) => {
                                 setCoverPic(e.target.files[0]);
                               }}
                             />
-                            <label htmlFor="coverPhoto">
-                              <span>
+                            <label htmlFor="coverPhoto" >
+                              <span className='flex flex-col items-center justify-center'>
                                 {' '}
                                 <i
                                   className="fa fa-cloud-upload"
@@ -640,8 +640,9 @@ const Signup = ({ games, avatars }) => {
                         </li>
 
                         {avatars &&
-                          avatars.map((avatar,i) => (
-                            <li className="" key={i}>
+                          avatars.map((avatar,i) => ((user?.gender==avatar?.gender)?
+                            (<li className="" key={i}>
+                            { console.log("inside signup user gender is ", user.gender,"avatar gender is ")}
                               <div className="form-group">
                                 <a
                                   href="#!"
@@ -650,7 +651,17 @@ const Signup = ({ games, avatars }) => {
                                   <img src={avatar.image} alt={avatar.title} />
                                 </a>
                               </div>
-                            </li>
+                            </li>):(<li className="" key={i}>
+                            { console.log("inside signup else section user gender  is ", user.gender,"avatar gender is ")}
+                              <div className="form-group">
+                                <a
+                                  href="#!"
+                                  onClick={() => handleSelectAvatar(avatar)}
+                                >
+                                  <img src={avatar.image} alt={avatar.title} />
+                                </a>
+                              </div>
+                            </li>)
                           ))}
                       </ul>
                     </div>

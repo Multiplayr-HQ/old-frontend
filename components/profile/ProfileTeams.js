@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Moment from 'moment';
 import axios from 'axios';
 import baseURL from '../../utils/baseURL';
@@ -6,16 +6,20 @@ import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import { profileTeam } from '../../utils/valid';
 import ProfileRigsDelete from './ProfileRigsDelete';
+import { DataContext } from '@store/GlobalState';
 
 const ProfileTeams = ({ Userdata, user, teamsData, allGames, teamroles }) => {
   const [filteredData, setFilteredData] = useState([]);
   const [allTeams, setAllTeams] = useState([]);
   const [searchText, setSearchText] = useState('');
   const [formErrors, setFormErrors] = useState({});
+  const [teamNameIndicator, setTeamNameIndicator] = useState(false);
   const router = useRouter();
+  const { setLoader } = useContext(DataContext);
 
   const refreshData = () => {
-    router.replace(router.asPath);
+    // router.replace(router.asPath);
+    router.reload();
   };
 
   useEffect(() => {
@@ -74,6 +78,22 @@ const ProfileTeams = ({ Userdata, user, teamsData, allGames, teamroles }) => {
 
   const handleAddTeamSubmit = async (e) => {
     e.preventDefault();
+    setLoader(true);
+
+    console.log("setAllTeams \t\t",allTeams );
+    const teamExists = allTeams.some(team => team.name === searchText);
+
+    if (teamExists){
+      setTeamNameIndicator(false);
+      // console.log(" correct pass in list \t\t",searchText );
+      
+
+    }else{
+      // console.log(" Not in list \t\t",searchText );
+      setTeamNameIndicator(true);
+      setLoader(false);
+      return;
+    }
 
     const errors = profileTeam(team);
     setFormErrors(errors);
@@ -86,6 +106,7 @@ const ProfileTeams = ({ Userdata, user, teamsData, allGames, teamroles }) => {
       } catch (err) {
         toast.error(err.response?.data?.msg || 'Please recheck your inputs');
       }
+      setLoader(false);
       refreshData();
     }
   };
@@ -95,7 +116,7 @@ const ProfileTeams = ({ Userdata, user, teamsData, allGames, teamroles }) => {
       <div className="tab hide" id="teams">
         <div className="sponser_btn">
           {' '}
-          {Userdata.user._id === user._id ? (
+          {Userdata?.user?._id === user?._id ? (
             <a href="#!" className="model_show_btn">
               <button className="btn">
                 {' '}
@@ -123,10 +144,17 @@ const ProfileTeams = ({ Userdata, user, teamsData, allGames, teamroles }) => {
                     value={searchText}
                     onChange={handleFilter}
                     autoComplete="off"
+                    required
                   />
-                  {searchText.length !== 0 ? (
+                  { teamNameIndicator && (
+                            <small className="text-xs text-red-600">
+                              {' '}
+                              This Team is invalid or not available{' '}
+                            </small>
+                          )}
+                  {searchText?.length !== 0 ? (
                     <>
-                      {filteredData.length > 0 ? (
+                      {filteredData?.length > 0 ? (
                         <>
                           <div className="custom-rig-tag">
                             <div className="rigs_items">
@@ -136,7 +164,7 @@ const ProfileTeams = ({ Userdata, user, teamsData, allGames, teamroles }) => {
                                 filteredData.map((data) => (
                                   <div
                                     onClick={() => handleSelected(data)}
-                                    key={data._id}
+                                    key={data?._id}
                                     className="items"
                                   >
                                     <span>
@@ -147,9 +175,9 @@ const ProfileTeams = ({ Userdata, user, teamsData, allGames, teamroles }) => {
                                       />
                                     </span>
                                     <p>
-                                      {data.name.length > 20
-                                        ? data.name.substring(0, 20) + '...'
-                                        : data.name}
+                                      {data?.name?.length > 20
+                                        ? data?.name.substring(0, 20) + '...'
+                                        : data?.name}
                                     </p>
                                   </div>
                                 ))
@@ -160,7 +188,7 @@ const ProfileTeams = ({ Userdata, user, teamsData, allGames, teamroles }) => {
                       ) : null}
                     </>
                   ) : null}
-                  <p>{formErrors.team}</p>
+                  <p>{formErrors?.team}</p>
                 </div>
 
                 <div className="form-group">
@@ -239,23 +267,23 @@ const ProfileTeams = ({ Userdata, user, teamsData, allGames, teamroles }) => {
         </div>
         <div>
           <ul className="stats_card stats_team">
-            {teamsData && teamsData.length === 0 ? (
-              <p>{Userdata.user.name} has no teams.</p>
+            {teamsData && teamsData?.length === 0 ? (
+              <p>{Userdata?.user?.name} has no teams.</p>
             ) : (
               teamsData &&
               teamsData.map((team, i) => (
                 <li key={i}>
                   <div className="card_img">
                     {' '}
-                    <img src={team.team.imgUrl} alt="" />{' '}
+                    <img src={team?.team?.imgUrl} alt="" />{' '}
                   </div>
                   <div className="right_data">
                     <div className="card_games_tit">
                       <h3>
-                        <a href={`/team/${team.team._id}`}>
-                          Team {team.team.name} <br />{' '}
+                        <a href={`/team/${team?.team?._id}`}>
+                          Team {team?.team?.name} <br />{' '}
                         </a>
-                        {Moment(team.team.founded).format('MMM YYYY')}
+                        {Moment(team?.team?.founded).format('MMM YYYY')}
                       </h3>
                       <div className="gamer_pos">
                         <b>Caption</b> | <b>Assault</b>
@@ -283,7 +311,7 @@ const ProfileTeams = ({ Userdata, user, teamsData, allGames, teamroles }) => {
                   {team.type === 'ProfileTeam' ? (
                     <ProfileRigsDelete
                       type="ProfileTeamDel"
-                      teamId={team.team._id}
+                      teamId={team?.team?._id}
                       profile={Userdata}
                       user={user}
                     />
