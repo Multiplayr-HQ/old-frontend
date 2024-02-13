@@ -7547,12 +7547,13 @@ article .social_bar img {
 	position:absolute;
 	top: calc(225px - 80px);
 	left:0;
-	width: 34%;
-	/* margin-right: 2%; */
+	width: 32%;
+	margin-left: 1%;
+	margin-right: 1%;
 	height: 80px;
 	overflow: hidden;
 	background: #21212293;
-	/* border-radius: 5px; */
+	border-radius: 5px;
 }
 
 
@@ -7561,13 +7562,14 @@ article .social_bar img {
 	/* float: left; */
 	position:absolute;
 	top: calc(225px - 80px);
-	left:34%;
-	width: 34%;
-	/* margin-right: 2%; */
+	left:33%;
+	width: 32%;
+	margin-left: 1%;
+	margin-right: 1%;
 	height: 80px;
 	overflow: hidden;
 	background: #21212293;
-	/* border-radius: 5px; */
+	border-radius: 5px;
 }
 
 .imagess_box li a:nth-child(4) {
@@ -7575,9 +7577,9 @@ article .social_bar img {
 	/* float: left; */
 	position:absolute;
 	top: calc(225px - 80px);
-	left:68%;
+	left:67%;
 	width: 32%;
-	/* margin-right: 2%; */
+	margin-right: 2%;
 	height: 80px;
 	overflow: hidden;
 	background: #21212293;

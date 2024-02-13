@@ -23,7 +23,8 @@ const ProfileTeams = ({ Userdata, user, teamsData, allGames, teamroles }) => {
   };
 
   useEffect(() => {
-    axios.get(`${baseURL}/api/all/teams`).then((res) => setAllTeams(res.data));
+   const fetData= async()=> { await axios.get(`${baseURL}/api/all/teams`).then((res) => setAllTeams(res.data));};
+   fetData();
   }, []);
 
   const [team, setTeam] = useState({
@@ -286,7 +287,7 @@ const ProfileTeams = ({ Userdata, user, teamsData, allGames, teamroles }) => {
                         {Moment(team?.team?.founded).format('MMM YYYY')}
                       </h3>
                       <div className="gamer_pos">
-                        <b>Caption</b> | <b>Assault</b>
+                        <b>Captain</b> | <b>Assault</b>
                       </div>
                     </div>
                     <div className="card_details">

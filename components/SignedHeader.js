@@ -348,8 +348,8 @@ const SignedHeader = ({ user, profile }) => {
                 </li>
 
                 <li>
-                  <Link href="/login" onClick={logoutUser}>
-                    <a>
+                  <Link href="/login" >
+                    <a onClick={logoutUser}>
                       <img src="/assets/media/login/logout.png" alt="" />
                       Logout
                     </a>

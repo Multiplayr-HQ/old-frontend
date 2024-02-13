@@ -92,7 +92,9 @@ export const getServerSideProps = async (context) => {
       Authorization: token
     }
   });
-  const suggplayers = await res.json();
+  // const suggplayers = await res.json();
+  const suggplayers =[];
+
 
   return {
     props: { posts, suggplayers,teams }
