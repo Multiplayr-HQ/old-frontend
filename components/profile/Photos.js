@@ -42,25 +42,24 @@ const Photos = ({ Userdata, user, photosData }) => {
               <div className="imagess">
                 <ul>
                   <li>
-                    {imgg.images &&
-                      imgg.images.map((imag, idex) => (
-                        <a
-                          className="fancybox"
-                          href={imag.path}
-                          data-fancybox-group="idex"
-                          title={imag.originalname}
-                          key={idex}
-                        >
-                          <img src={imag.path} alt={imag.originalname} />{' '}
-                          {imag.length < 5 ? null : (
-                            <>
-                              <span className="total_images">
-                                +{imgg.images.length - 4}
-                              </span>
-                            </>
-                          )}
-                        </a>
-                      ))}
+                    {imgg.images && imgg.images.map((imag, idex) => (
+                      <a
+                        className="fancybox"
+                        href={imag.path}
+                        data-fancybox-group="idex"
+                        title={imag.originalname}
+                        key={idex}
+                      >
+                        <img src={imag.path} alt={imag.originalname} style={{ width: '100%', height: '300px' }} />
+                        {imag.length < 5 ? null : (
+                          <>
+                            <span className="total_images">
+                              +{imgg.images.length - 4}
+                            </span>
+                          </>
+                        )}
+                      </a>
+                    ))}
                   </li>
                 </ul>
               </div>
@@ -68,8 +67,8 @@ const Photos = ({ Userdata, user, photosData }) => {
                 <span className="img_icon">
                   <i className="fa fa-picture-o" aria-hidden="true"></i>
                 </span>
-
-                <h2>
+          
+                <h2 style={{overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis'}}>
                   {imgg.title}
                   <span className="update">
                     {Moment(imgg.createdAt).format('MMMM, DD, YYYY hh:mm A')}
