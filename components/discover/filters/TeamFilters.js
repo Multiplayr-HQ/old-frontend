@@ -168,10 +168,10 @@ const TeamFilters = ({
         }
       }
       //myState.setFilteredResults(team);
-      //console.log(team);
+     
     }
   }, [myState, team]);
-
+ console.log('teams',team);
   if (data && data.filter) {
     return (
       <>

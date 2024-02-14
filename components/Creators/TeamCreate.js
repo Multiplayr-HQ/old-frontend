@@ -132,13 +132,17 @@ const TeamCreate = ({ isClaim, user }) => {
       Object.entries(state).map(([key, value]) => {
         formdata.append(key, value);
       });
+
+      // setTeams((prevTeams) => [...prevTeams, { formdata }]);
       formdata.append('games', selectedGame);
       try {
         await mutation.mutateAsync(formdata);
         toast.success('Your Team has been successfully created! ');
         isClaim === true ? router.push('/dashboard') : null;
+        console.log('formdata',formdata);
       } catch (err) {
         console.log(err);
+        
         toast.error(err.response?.data?.msg || 'Please recheck your inputs');
       }
     }
@@ -158,11 +162,11 @@ const TeamCreate = ({ isClaim, user }) => {
   };
 
   useEffect(() => {
-    $('.create_team_thumb li').click(function () {
+    $('.game-selection li').click(function () {
       $(this).toggleClass('slc_img');
     });
   });
-
+ console.log('setnewteam ',newTeam);
   return (
     <>
       <div className="main_middle create_main_middle">
@@ -212,7 +216,7 @@ const TeamCreate = ({ isClaim, user }) => {
                           className="inputfile"
                           onChange={handleChange}
                         />
-                        <label htmlFor="coverPhoto">
+                        <label for="coverPhoto">
                           <span>Upload Cover Photo</span>
                         </label>
                       </div> */}
@@ -234,14 +238,17 @@ const TeamCreate = ({ isClaim, user }) => {
                     </div>
                     <div className="pick_game">
                       <h2>Games</h2>
-                      <ul className="game_search_result create_team_thumb">
+                      <ul className="game_search_result create_team_thumb game-selection">
                         {games &&
-                          games.map((game,i) => (
-                            <li onClick={() => handlemultiplegames(game)} key={i}>
+                          games.map((game) => (
+                            <>
+                            <li onClick={() => handlemultiplegames(game)} >
                               <img src={game.imgUrl} alt={game.name} />
 
                               <i className="fa fa-check" aria-hidden="true"></i>
                             </li>
+                            </>
+                            
                           ))}
                       </ul>
                     </div>

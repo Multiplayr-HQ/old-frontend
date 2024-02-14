@@ -68,7 +68,7 @@ const ProfileTournament = ({
       formdata.append('winnings', tournament.winnings);
       formdata.append('currency', tournament.currency);
       try {
-        axios.post(
+        await axios.post(
           `${baseURL}/api/profile/tournaments/${profile?._id}`,
           formdata
         );

@@ -2440,9 +2440,14 @@ article .social_bar img {
 	height: 100%;
 	z-index: 9;
 	padding-bottom: 100px;
+	overflow-y:scroll;
+	/* scrollbar-: 0px; */
+	/* overflow: hidden !important; */
+	
 }
 
-.right_side.fixed{ top:-100px}
+
+/* .right_side.fixed{ top:-100px} */
 
 .recent_activity {
 	float: left;
@@ -7117,7 +7122,7 @@ article .social_bar img {
 	justify-content: space-between;
 	align-items: center;
 	background: #ddd;
-	padding: 40px;
+	padding: 10px;
 	margin: 20px 0;
 }
 

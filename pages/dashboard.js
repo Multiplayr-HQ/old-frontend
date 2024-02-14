@@ -23,6 +23,8 @@ const Dashboard = ({ user, profile, teams, posts, suggplayers }) => {
   const { chat } = router.query;
 
   const [messages, setMessages] = useState([]);
+  console.log('team in dashboard page :',teams);
+  console.log('suggested player',suggplayers);
 
   return (
     <>
@@ -46,30 +48,6 @@ const Dashboard = ({ user, profile, teams, posts, suggplayers }) => {
   );
 };
 
-// export const getServerSideProps = async (context) => {
-//   const { token } = parseCookies(context);
-//   const response = await fetch(`${baseURL}/api/posts`, {
-//     method: 'get',
-//     headers: {
-//       Authorization: token
-//     }
-//   });
-//   const data = await response.json();
-//   const posts = data.posts;
-
-//   const res = await fetch(`${baseURL}/api/profile/suggested/players`, {
-//     method: 'post',
-//     headers: {
-//       Authorization: token
-//     }
-//   });
-//   const suggplayers = await res.json();
-
-//   return {
-//     props: { posts, suggplayers }
-//   };
-// };
-
 export const getServerSideProps = async (context) => {
   const { token } = parseCookies(context);
   const {teamId} = parseCookies(context);
@@ -92,18 +70,11 @@ export const getServerSideProps = async (context) => {
       Authorization: token
     }
   });
-  let suggplayers = await res.json();
-  console.log(res.status);
-  if(res.status===404){
-    suggplayers=[];
-  }
+  const suggplayers = await res.json();
 
   return {
     props: { posts, suggplayers,teams }
   };
 };
-
-
-
 
 export default Dashboard;

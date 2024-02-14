@@ -2,11 +2,16 @@ import { MPNumberFormat } from '../../utils/helpers';
 import { format } from 'date-fns';
 import LoadingSpinner from '../LoadingSpinner';
 
-const RankingTable = ({ teamranking, searchResults }) => {
-  if (teamranking) {
+const RankingTable = ({ teamrankingss, searchResults ,favshow}) => {
+  console.log('search :', searchResults);
+  // console.log( 'team ranking  :',teamrankingss);
+
+
+  if (teamrankingss) {
     return (
-      <div className="ranking_table">
-        {teamranking.length == 0 ? (
+      
+      <div className="ranking_table ">
+        {teamrankingss.length == 0 ? (
           <div className="team_row">
             <LoadingSpinner />
           </div>
@@ -17,27 +22,29 @@ const RankingTable = ({ teamranking, searchResults }) => {
               <div className="heads">team</div>
               <div className="heads">Points</div>
               <div className="heads">TOURNAMENTS </div>
-              {/* <div className="heads">MATCHES WON</div>
+              {/* <div className="heads">TOURNAMENTS WON </div> */}
+              <div className="heads">MATCHES WON/loss</div>
               <div className="heads">win%</div>
-              <div className="heads">form</div> */}
+              <div className="heads">form</div>
               <div className="heads">PRIZE MONEY</div>
             </div>
 
-            {!teamranking || teamranking.length === 0 ? (
+            {(!teamrankingss || teamrankingss.length) && searchResults === 0 ? (
               <div className="activity_tag">
                 <span className="act_name">No teams are ranked yet ...</span>
               </div>
             ) : searchResults.length > 0 ? (
               searchResults.map((result, idx) => (
+                
                 <div className="row_box" key={idx}>
                   <div className="cols_box">
                     <div className="cols">
                       {result.rank ? result.rank : 'Not Ranked'}
                     </div>
                     <div className="cols">
-                      <a href={`/team/${result.team._id}`}>
+                      {/* <a href={`/team/${result.team._id}`}>
                         {result.team.name}
-                      </a>
+                      </a> */}
                     </div>
                     <div className="cols">
                       {result.team_points ? result.team_points : 'Not Defined'}
@@ -60,7 +67,7 @@ const RankingTable = ({ teamranking, searchResults }) => {
                     <div className="cols">$45,000</div>
                   </div>
 
-                  {!result.tournament || result.tournament.length === 0 ? (
+                  {/* {!result.tournament || result.tournament.length === 0 ? (
                     <div className="more_data">
                       <div className="activity_tag">
                         <span className="act_name">
@@ -111,11 +118,11 @@ const RankingTable = ({ teamranking, searchResults }) => {
                         </div>
                       </div>
                     ))
-                  )}
+                  )} */}
                 </div>
               ))
             ) : (
-              teamranking.map((result, idx) => (
+              teamrankingss.map((result, idx) => (
                 <div className="row_box" key={idx}>
                   <div className="cols_box">
                     <div className="cols">
@@ -130,12 +137,13 @@ const RankingTable = ({ teamranking, searchResults }) => {
                       {result.points ? result.points : 'Not Defined'}
                     </div>
                     <div className="cols">{result.totalTournaments}</div>
-                    {/* <div className="cols">
+                    <div className="cols">{result.teamWinCount}</div>
+                    <div className="cols">
                       {result.points ? result.points : '0'}
                       ---
                       / 0
-                    </div> */}
-                    {/* <div className="cols">tdb</div>
+                    </div>
+                    {/* <div className="cols">tdb</div> */}
                     <div className="cols">
                       {' '}
                       <span className="round green"></span>{' '}
@@ -143,7 +151,7 @@ const RankingTable = ({ teamranking, searchResults }) => {
                       <span className="round red"></span>{' '}
                       <span className="round red"></span>{' '}
                       <span className="round green"></span>{' '}
-                    </div> */}
+                    </div>
                     {result.team.team_winnings ? (
                       <div className="cols">
                         Rs: {result.team.team_winnings}
@@ -153,31 +161,22 @@ const RankingTable = ({ teamranking, searchResults }) => {
                     )}
                   </div>
 
-                  {!result.tournament || result.tournament.length === 0 ? (
-                    <div className="more_data">
-                      <div className="activity_tag">
-                        <span className="act_name">
-                          No TOURNAMENTS played yet by this team ...
-                        </span>
-                      </div>
-                    </div>
-                  ) : (
-                    result.tournament.map((tresult, idx) => (
-                      <div className="more_data" key={idx}>
+                  {/* {!result.team || result.team.length >= 0 ? ( */}
+                    <div className="more_data" key={idx}>
                         <div className="pic">
                           <div className="tumb">
-                            <img src={tresult.imgUrl} alt="" />
+                            <img src={result.team.imgUrl} alt="" />
                           </div>
-                          <h3>{tresult.name}</h3>
+                          <h3>{result.team.name}</h3>
                         </div>
                         <div className="total">
                           <p>
                             <MPNumberFormat
-                              value={tresult.prizepool}
+                              value={result.team.prizepool}
                               currency={result.currency}
                             />
                           </p>
-                          <p>TOTAL PRIZE POOL EARNED</p>
+                          {/* <p>TOTAL PRIZE POOL EARNED</p> */}
                         </div>
                         <div className="chart">
                           <img src="/assets/media/ranking/chart.png" alt="" />
@@ -186,25 +185,29 @@ const RankingTable = ({ teamranking, searchResults }) => {
                           <button>Follow</button>
                           <div className="ate">
                             {' '}
-                            {result.matches[0]
+                            {/* {result.matches[0]
                               ? result.matches[0].teams[0].teamName.substring(
                                   0,
                                   7
                                 ) + '...'
-                              : 'Not Mentioned'}{' '}
+                              : 'Not Mentioned'}{' '} */}
                             <span className="circle"></span> 16-3{' '}
                             <span className="circle"></span>{' '}
-                            {result.matches[0]
+                            {/* {result.matches[0]
                               ? result.matches[0].teams[1].teamName.substring(
                                   0,
                                   7
                                 ) + '...'
-                              : 'Not Mentioned'}{' '}
+                              : 'Not Mentioned'}{' '} */}
                           </div>
                         </div>
                       </div>
-                    ))
-                  )}
+                  {/* ) : (
+                    result.team.map((tresult, idx) => (
+                     
+                    )) */}
+                  {/* )
+                  } */}
                 </div>
               ))
             )}

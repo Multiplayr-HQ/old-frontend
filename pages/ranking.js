@@ -17,6 +17,7 @@ import cookie from 'js-cookie';
 import { useQuery, useMutation } from 'react-query';
 import Filters from '@components/common/Filters';
 import { searchTeams } from '@utils/functionsHelper';
+import RankingPage from '../components/ranking/RankingPage';
 
 const Ranking = ({ user, games, profile }) => {
   const [searchObj, setSearchObj] = useState({
@@ -38,55 +39,118 @@ const Ranking = ({ user, games, profile }) => {
   const [error, setError] = useState(null);
   const [formLoading, setFormLoading] = useState(false);
   const [submitDisabled, setSubmitDisabled] = useState(true);
-  const [selectedGame, setSelectedGame] = useState(undefined);
+  const [selectedGame, setSelectedGame] = useState(20);
+
 
   const { search, filters } = searchObj;
+  const [page , setPage] = useState(1);
 
-  const handleChange = (e) => {
-    setSearchObj((prevState) => ({
-      ...prevState,
-      [e.target.name]: e.target.value
-    }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    sdata = await searchTeams(
-      searchObj,
-      setError,
-      setFormLoading,
-      toast,
-      setStatus
-    );
-    setSearchResults(sdata);
-  };
+  // const arr=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
 
   const handleSelectGame = async (obj) => {
     setSelectedGame(obj);
-    //myState.setFilteredResults([]);
+    // setPage(1);
+    
     $('a.model_close').parent().removeClass('show_model');
-    axios
-      .get(`${baseURL}/api/rankings/bywinnings100/${selectedGame?._id}`)
-      .then((res) => setTeamsRanks(res.data));
+    await axios
+    // .get(`${baseURL}/api/rankings/bywinnings100/${selectedGame?._id}?page=${page}`)
+    .get(`${baseURL}/api/rankings/bywinnings100/${selectedGame?._id}?page=1`)
+    // .then((res) => setTeamsRanks((prev) => [...prev , ...res.data]));
+      
+      // .then((res) => setTeamsRanks((prev) => [...prev , ...res.data]));
+    .then((res) => setTeamsRanks(res.data));
+      
+    // //   console.log('new team data',teamsRanks);
   };
 
-  useEffect(() => {
-    $('a.model_show_btn').click(function () {
-      $(this).next().addClass('show_model');
-    });
 
-    $('a.model_close').click(function () {
-      $(this).parent().removeClass('show_model');
-    });
-  }, []);
+  // useEffect(async () => {
+  //   if (selectedGame) {
+  //     const response = await axios.get(
+  //       `${baseURL}/api/rankings/bywinnings100/${selectedGame?._id}?page=${page}`
+  //     );
+  //     setTeamsRanks((prev) => [...prev, ...response.data]);
+  //     }
+  // }, [page, selectedGame]);
 
-  useEffect(() => {
-    axios
-      .get(`${baseURL}/api/rankings/bywinnings100/${selectedGame?._id}`)
-      .then((res) => setTeamsRanks(res.data));
-  }, [selectedGame]);
+  // useEffect(async () => {
+  //   // if (selectedGame) {
+  //     const response = await axios.get(
+  //       `${baseURL}/api/rankings/bywinnings100/${selectedGame?._id}?page=${page}`
+  //     );
+  //     setTeamsRanks((prev) => [...prev, ...response.data]);
+  //     // }
+  // }, [page]);
 
+  // const handleChange = (e) => {
+  //   setSearchObj((prevState) => ({
+  //     ...prevState,
+  //     [e.target.name]: e.target.value
+
+  //   }));
+  // };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   sdata = await searchTeams(
+  //     searchObj,
+  //     setError,
+  //     setFormLoading,
+  //     toast,
+  //     setStatus
+  //   );
+  //   setSearchResults(sdata);
+  // };
+
+
+ 
+  
+
+  // useEffect (async () => {
+  //   const response = await axios.get(`${baseURL}/api/rankings/bywinnings100/${selectedGame?._id}?page=${page}`);
+  //   setTeamsRanks((prev ) => [...prev,...response.data]);
+  // },[page]);
+
+ 
+
+  
+
+  // useEffect(() => {
+  //   $('a.model_show_btn').click(function () {
+  //     $(this).next().addClass('show_model');
+  //   });
+
+  //   $('a.model_close').click(function () {
+  //     $(this).parent().removeClass('show_model');
+  //   });
+  // }, []);
+
+  // useEffect(() => {
+  //   console.log("page in useeffect in ",page)
+  //   handleSelectGame();
+  //   // setPage((prev) => prev + 1);
+  // },[page]);
+   
+  
+
+  
+
+  const handleScrollTop = () => {
+    if ((window.innerHeight + document.documentElement.scrollTop + 1) >= document.documentElement.scrollHeight) {
+      console.log("page before setPage in handleTop ",page);
+      setPage((prev) => prev + 1);
+      console.log("page after setPage in handleTop",page)
+    }
+  };
+
+  useEffect (()=>{
+    window.addEventListener("scroll",handleScrollTop);
+    return () => window.removeEventListener("scroll",handleScrollTop);
+  },[]);
+  // console.log('ranking page :', searchResults);
+  // console.log('selectGame', selectedGame);
   return (
+
     <>
       <MetaDash />
 
@@ -153,7 +217,7 @@ const Ranking = ({ user, games, profile }) => {
                 <div className="overlay"></div>
               </div>
             </div>
-
+            {/* 
             <div className="white_bg">
               <div className="team_search">
                 <div className="searchbox">
@@ -177,15 +241,25 @@ const Ranking = ({ user, games, profile }) => {
                 </div>
               </div>
 
-              {/*
+              
              <Filters filterType={'RANKINGS'} />   
-          */}
-            </div>
+             
+            
+            </div> */}
           </div>
-          <RankingTable
+          {/* <RankingTable
             teamranking={teamsRanks}
             searchResults={searchResults}
-          />
+
+           
+          /> */}
+          <div className="prfoile_tab_data ">
+            <RankingPage
+              selectedGame={selectedGame}
+              teamranking={teamsRanks}
+            // searchResults={searchResults}
+            />
+          </div>
         </div>
       </div>
 

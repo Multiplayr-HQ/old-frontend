@@ -65,7 +65,7 @@ const AccountSettings = ({ user, profile }) => {
   return (
     <>
       <div className="main_middle profile_middle">
-        <div className="setting_pages">
+        <div className="AccountSettings">
           <div className="white_bg">
             <div className="left_setting_menu">
               <div className="menu_bloc">

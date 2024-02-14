@@ -6,8 +6,17 @@ import Moment from 'moment';
 import Challengelist from '../challenges/ChallengeList';
 import ApproveRequest from '../discover/invites/ApproveRequest';
 import DeclineRequest from '../discover/invites/DeclineRequest';
+import RecentActivity from './RecentActivity';
 
-const RightSection = ({ user, suggestedplayers, teams, profile }) => {
+
+
+
+
+
+
+
+
+const RightSection = ({ user,  teams, profile }) => {
   const [matches, setMatches] = useState([]);
   const [later, setLater] = useState(false);
   const [myPageData, setMypageData] = useState([]);
@@ -32,24 +41,124 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
       });
   }, []);
 
-  const [challenges, setChallenges] = useState([]);
+  // const [challenges, setChallenges] = useState([]);
   let type = 'User_team';
   useEffect(() => {
     axios
       .get(`${baseURL}/api/challenges/userchallenges/${type}/${profile._id}`)
       .then((res) => {
-        setChallenges(res.data);
+        // setChallenges(res.data);
       });
     axios
       .get(`${baseURL}/api/tournaments/usertournament/${user._id}`)
       .then((res) => setMypageData(res.data));
   }, []);
 
+
+
+// Sample data for suggestedplayers
+const suggestedplayersData = [
+  {
+    user: {
+      username: '789456123',
+      profilePicUrl: '/assets/media/dash/user.jpg',
+    },
+    player: [
+      {
+        nickName: 'Player1',
+      },
+      {
+        nickName : 'raj',
+      },
+      {
+        nickName : 'abhishek',
+      },{
+        nickName : 'gaurav',
+      },{
+        nickName : 'om',
+      },{
+        nickName : 'swayam',
+      }
+      // Add more players if needed
+    ],
+  },
+  // Add more objects for additional suggested players
+];
+
+// ----data
+const suggestedplayers = suggestedplayersData;
+
+
+
+// Sample data for challenges
+const challengesData = [
+  {
+    _id: '1',
+    name: 'Challenge 1',
+    description: 'Description of Challenge 1',
+    startDate: '2024-02-10T12:00:00Z',
+    endDate: '2024-02-15T23:59:59Z',
+    User_team : {
+        name : 'raj',
+    },
+    game: {
+      name: "Counter-Strike",
+    },
+    participants: [
+      {
+        teamName: 'Team A',
+        imgUrl: '/assets/media/teams/team2.png',
+      },
+      {
+        teamName: 'Team B',
+        imgUrl: '/assets/media/teams/team1.png',
+      },
+      // Add more participants if needed
+    ],
+  },
+  {
+    _id: '2',
+    name: 'Challenge 2',
+    description: 'Description of Challenge 2',
+    startDate: '2024-02-20T12:00:00Z',
+    endDate: '2024-02-25T23:59:59Z',
+    User_team : {
+      name : 'raj',
+  },
+    game: {
+      name: 'Game 2',
+    },
+    participants: [
+      {
+        teamName: 'Team C',
+        imgUrl: '/path/to/teamC_logo.jpg',
+      },
+      {
+        teamName: 'Team D',
+        imgUrl: '/path/to/teamD_logo.jpg',
+      },
+      // Add more participants if needed
+    ],
+  },
+  // Add more challenge objects as needed
+];
+
+// ----data
+const challenges = challengesData;
+
+
+  console.log('profile : ', profile)
+  console.log('user : ', user);
+  console.log('teams :', teams);
+  console.log('suggestedplayers : ', suggestedplayers);
+  console.log('challenges :', challenges);
+  console.log('matches : ', matches);
+
   return (
     <div className="right_side">
       {/* <RecentActivity user={user} /> */}
 
-      <div className="recent_activity">
+      {/* <div className="recent_activity">
         <h2>Challenge List</h2>
         <a href="#!" className="hideShow">
           Hide <i className="fa fa-angle-down" aria-hidden="true"></i>{' '}
@@ -62,18 +171,13 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
             </div>
           ) : (
             challenges.map((result, idx) => (
-              <Challengelist
-                result={result}
-                profile={profile}
-                user={user}
-                key={idx}
-              />
+              <Challengelist result={result} profile={profile} user={user} />
             ))
           )}
         </div>
-      </div>
+      </div> */}
 
-      <div className="recent_activity suggested_player">
+      {/* <div className="recent_activity suggested_player">
         <h2>Suggested Players</h2>
         <a href="#!" className="all">
           ALL
@@ -112,7 +216,7 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
             )}
           </ul>
         </div>
-      </div>
+      </div> */}
       <div className="recent_activity my_team">
         <h2>My Team </h2>
         <a href="#" className="mng">
@@ -120,6 +224,7 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
         </a>
         <div className="white_box">
           <ul className="team">
+          {/* {console.log("inside right section i am team \t\t",teams)} */}
             {teams.length > 0 ? (
               teams.slice(0, 2).map((tm, idx) => (
                 <li key={idx}>
@@ -170,9 +275,10 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
             </div>
             <div className="overlay"></div>
           </div>
-          <Link href={`/team/create`}>
-            <a className="create_team">+ Create a team</a>
-          </Link>
+
+          <a href={`/team/create`} className="create_team">
+            + Create a team
+          </a>
           <>
             {requestData &&
               requestData.map((req) => (
@@ -213,9 +319,8 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
               myPageData.slice(0, 2).map((page, idx) => (
                 <li key={idx}>
                   <Link
-                    href={`/${page.logoUrl ? 'brand' : 'tour'}/${
-                      page.logoUrl ? page._id : page.name
-                    }`}
+                    href={`/${page.logoUrl ? 'brand' : 'tour'}/${page.logoUrl ? page._id : page.name
+                      }`}
                   >
                     <div>
                       <img
@@ -251,9 +356,8 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
                       myPageData.map((page, idx) => (
                         <li key={idx}>
                           <Link
-                            href={`/${page.logoUrl ? 'brand' : 'tour'}/${
-                              page.logoUrl ? page._id : page.name
-                            }`}
+                            href={`/${page.logoUrl ? 'brand' : 'tour'}/${page.logoUrl ? page._id : page.name
+                              }`}
                           >
                             <div className="game_pic">
                               <img
@@ -282,63 +386,77 @@ const RightSection = ({ user, suggestedplayers, teams, profile }) => {
       </div>
 
       <div className="recent_activity team_match">
-        {later === false ? null : (
-          <>
-            <h2>UPCOMING MATCHES </h2>
-            {matches && matches.length > 0 ? (
-              matches.map((match, idx) => (
-                <div className="white_box" key={idx}>
-                  <div className="match_name">
-                    {match.name}{' '}
-                    <i
-                      className="fa fa-long-arrow-right"
-                      aria-hidden="true"
-                    ></i>{' '}
-                    <br />
-                    <span>
-                      {Moment(match.scheduledAt).format(
-                        'MMMM, DD, YYYY hh:mm A'
-                      )}
-                    </span>
-                  </div>
-                  <div className="match_time">
-                    <b>status: {match.status}</b>
-                  </div>
-                  <div className="match_time">
-                    <span>
-                      <a
-                        href={match.officialStreamUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        {match.officialStreamUrl}
-                      </a>
-                    </span>
-                  </div>
+        {/* {later === false ? null : ( */}
 
-                  {/*    <ul className="team">
-                  <li>
-                    <a href="#">
-                      <img src="/assets/media/dash/team1.png" alt="" />
-                      Fnatic
+        <h2>UPCOMING MATCHES </h2>
+        <>
+          {matches && matches.length > 0 ? (
+            matches.map((match, idx) => (
+              <div className="white_box" key={idx}>
+                <div className="match_name">
+                  {match.name}{' '}
+                  <i
+                    className="fa fa-long-arrow-right"
+                    aria-hidden="true"
+                  ></i>{' '}
+                  <br />
+                  <div className="date-time">
+                  <span className='match-game'>
+                    {match?.game?.name}
+                  </span>
+                  <span>
+                    {Moment(match.scheduledAt).format(
+                      'DD/MM/YYYY hh:mm A'
+                    )
+                    }
+                  </span>
+                  </div>
+                  
+                </div>
+                <div className="match_time">
+                  <b>status: {match.status}</b>
+                </div>
+                <div className="match_time">
+                  <span>
+                    <a href={match.officialStreamUrl} target="_blank" rel="noreferrer">
+                      {match.officialStreamUrl}
                     </a>
-                  </li>
-                  <li>
+                  </span>
+                </div>
+
+                <ul className="team">
+
+                  {match.opponents && match.opponents.length > 0 ? (
+                    match.opponents.map((oppo, idx) => (
+                      <li key={idx}>
+                        <a href="#">
+                          <img src={oppo.opponent.image_url} alt="" />
+                          {' '}
+                          {oppo.opponent.name}
+                        </a>
+                      </li>
+                    ))) : (
+                    <p> No New Matches</p>
+                  )
+                  }
+
+
+                  {/* <li>
                     <a href="#">
                       <img src="/assets/media/dash/team2.png" alt="" />
                       Cloud9
                     </a>
-                  </li>
+                  </li> */}
                 </ul>
 
-            */}
-                </div>
-              ))
-            ) : (
-              <p> No New Matches</p>
-            )}
-          </>
-        )}
+
+              </div>
+            ))
+          ) : (
+            <p> No New Matches</p>
+          )}
+        </>
+        {/* )} */}
       </div>
     </div>
   );
