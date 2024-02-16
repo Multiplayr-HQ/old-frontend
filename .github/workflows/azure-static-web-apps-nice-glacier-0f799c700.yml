@@ -17,6 +17,11 @@ jobs:
         with:
           submodules: true
           lfs: false
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20' # replace '20' with your desired Node.js version
+
 
       - name: Build And Deploy
         id: builddeploy
