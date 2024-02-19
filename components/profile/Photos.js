@@ -1,8 +1,25 @@
+import React, { useState,useRef } from 'react';
 import Moment from 'moment';
+import Lightbox from 'yet-another-react-lightbox';
+import Slideshow from "yet-another-react-lightbox/plugins/slideshow";
+import Zoom from 'yet-another-react-lightbox/plugins/zoom';
+import Counter from "yet-another-react-lightbox/plugins/counter";
+import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
+
+import 'yet-another-react-lightbox/styles.css';
+import "yet-another-react-lightbox/plugins/counter.css";
+import "yet-another-react-lightbox/plugins/thumbnails.css";
+
 import ProfilePhotosDel from './ProfilePhotosDel';
 import AddImage from '../common/AddImage';
 
 const Photos = ({ Userdata, user, photosData }) => {
+  const [open, setOpen] = useState(false);
+  const slideshowRef = useRef(null);
+  const thumbnailsRef = useRef(null);
+  const [srcData, setSrcData] = useState([]);
+  let a=[];
+
   return (
     <div className="tab hide" id="photos">
       <div className="gallery_box">
@@ -37,29 +54,43 @@ const Photos = ({ Userdata, user, photosData }) => {
           <p>No photosData</p>
         ) : (
           photosData &&
-          photosData.map((imgg, idx) => (
-            <div className="imagess_box" key={idx}>
+          photosData.map((imgg, idx) =>{ 
+            {/* let a=[{src:"image.jpg",alt :"img"}]; */}
+            return (
+            <div className="imagess_box z-50" key={idx} onClick={ () => {  }}>
               <div className="imagess">
                 <ul>
                   <li>
-                    {imgg.images && imgg.images.map((imag, idex) => (
-                      <a
-                        className="fancybox"
-                        href={imag.path}
-                        data-fancybox-group="idex"
-                        title={imag.originalname}
-                        key={idex}
-                      >
-                        <img src={imag.path} alt={imag.originalname} style={{ width: '100%', height: '300px' }} />
-                        {imag.length < 5 ? null : (
-                          <>
-                            <span className="total_images">
-                              +{imgg.images.length - 4}
-                            </span>
-                          </>
-                        )}
-                      </a>
-                    ))}
+                    {imgg.images &&
+                      imgg.images.map((imag, idex) => {
+                        
+                        a.push({src:imag.path, alt:imag.originalname});
+
+                        return (
+                          <a
+                            className="fancybox"
+                            onClick={() => setOpen(true)}
+                            data-fancybox-group={idex}
+                            title={imag.originalname}
+                            key={idex}
+                          >
+                            <img
+                              src={imag.path}
+                              alt={imag.originalname}
+                              style={{ width: '100%', height: '300px' }}
+                            />
+                            {imag.length < 5 ? null : (
+                              <>
+                                {imgg.images.length > 4 && (
+                                  <span className="total_images">
+                                    +{imgg.images.length - 4}
+                                  </span>
+                                )}
+                              </>
+                            )}
+                          </a>
+                        );
+                      })}
                   </li>
                 </ul>
               </div>
@@ -67,9 +98,17 @@ const Photos = ({ Userdata, user, photosData }) => {
                 <span className="img_icon">
                   <i className="fa fa-picture-o" aria-hidden="true"></i>
                 </span>
-          
-                <h2 style={{overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis'}}>
-                  {imgg.title}
+
+                <h2
+                  style={{
+                    overflow: 'hidden',
+                    whiteSpace: 'nowrap',
+                    textOverflow: 'ellipsis'
+                  }}
+                >
+                  {imgg.title.length >= 15
+                    ? imgg.title.slice(0, 15) + ' ...'
+                    : imgg.title}
                   <span className="update">
                     {Moment(imgg.createdAt).format('MMMM, DD, YYYY hh:mm A')}
                   </span>
@@ -81,9 +120,35 @@ const Photos = ({ Userdata, user, photosData }) => {
                 />
               </div>
             </div>
-          ))
+        )})
         )}
       </div>
+
+      <button type="button" onClick={() => setOpen(true)}>
+        Open Lightbox
+      </button>
+
+      <Lightbox
+        open={open}
+        close={() => setOpen(false)}
+        plugins={[Zoom,Slideshow,Counter,Thumbnails]}
+        slides={[...a]}
+        counter={{ container: { style: { top: "unset", bottom: 0 } } }}
+        slideshow={{ ref: slideshowRef }}
+        thumbnails={{ ref: thumbnailsRef }}
+        on={{
+        click: () => {
+        (slideshowRef.current?.playing
+          ? slideshowRef.current?.pause
+          : slideshowRef.current?.play)?.();
+      },
+      click: () => {
+        (thumbnailsRef.current?.visible
+          ? thumbnailsRef.current?.hide
+          : thumbnailsRef.current?.show)?.();
+      },
+    }}
+      />
     </div>
   );
 };

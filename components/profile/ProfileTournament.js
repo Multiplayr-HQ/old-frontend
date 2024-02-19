@@ -274,7 +274,7 @@ const ProfileTournament = ({
                       {profile?.teams &&
                         profile?.teams?.map(
                           (tem) =>
-                            console.log(profile?.teams) && (
+                           (
                               <option key={tem?._id} value={tem?.teamId?._id}>
                                 {tem?.teamId?.name}
                               </option>
