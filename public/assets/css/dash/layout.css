@@ -2443,11 +2443,10 @@ article .social_bar img {
 	overflow-y:scroll;
 	/* scrollbar-: 0px; */
 	/* overflow: hidden !important; */
-	
 }
 
 
-/* .right_side.fixed{ top:-100px} */
+.right_side.fixed{ top:-100px}
 
 .recent_activity {
 	float: left;
@@ -2604,8 +2603,12 @@ article .social_bar img {
 	position: relative;
 }
 
-.suggested_player li a:hover {
+
+/* .suggested_player li a:hover {
 	box-shadow: 0px 0px 10px #ddd;
+} */
+.suggested_player li a .img_thumb:hover{
+	box-shadow: 0px 0px 10px var(--yellow);
 }
 
 .suggested_player li a .online {
@@ -2744,7 +2747,8 @@ article .social_bar img {
 
 .team_match .match_name {
 	font-size: 12px;
-	color: #202028;
+	/* color: #202028; */
+	color: #fff;
 	font-weight: 600;
 }
 
@@ -5615,14 +5619,43 @@ article .social_bar img {
 }
 
 .more_data .pic h3 {
-	font-size: 14px;
+	font-size: 12px;
 }
 
 .more_data .total {
-	font-size: 14px;
+	font-size: 12px;
 	text-transform: uppercase;
-	text-align: center;
+	/* text-align: center; */
+	display: flex;
+	justify-content: space-between;
 }
+.more_data .total .team-prize{
+	display: flex;
+	flex-direction: column;
+	/* float: left; */
+}
+.more_data .total .team-prize .prize span{
+	font-size: 8px;
+	font-weight: 600;
+	margin-bottom: 10px;
+	
+}
+.more_data .total .team-prize .prize_2 {
+	display: flex;
+	flex-direction: row;
+}
+.more_data .total .team-prize .prize_2 .team-stablish{
+	margin-right: 10px;
+}
+.more_data .total .team-prize .prize_2 span{
+	font-size: 8px;
+	font-weight: 600;
+	margin-bottom: 10px;
+}
+/* .more_data .total .team-prize .prize p{
+	font-size: 14px;
+	
+} */
 
 .more_data .total p {
 	padding: 5px 0;
@@ -5636,7 +5669,7 @@ article .social_bar img {
 	background: var(--yellow);
 	padding: 10px 20px;
 	text-align: center;
-	color: #fff;
+	color: #000;
 	font-size: 14px;
 	border: 0;
 	width: 100%;

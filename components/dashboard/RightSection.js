@@ -10,15 +10,9 @@ import RecentActivity from './RecentActivity';
 
 
 
-
-
-
-
-
-
 const RightSection = ({ user,  teams, profile }) => {
   const [matches, setMatches] = useState([]);
-  const [later, setLater] = useState(false);
+  // const [later, setLater] = useState(false);
   const [myPageData, setMypageData] = useState([]);
   const [requestData, setRequestData] = useState(profile.request);
 
@@ -41,13 +35,13 @@ const RightSection = ({ user,  teams, profile }) => {
       });
   }, []);
 
-  // const [challenges, setChallenges] = useState([]);
+  const [challenges, setChallenges] = useState([]);
   let type = 'User_team';
   useEffect(() => {
     axios
       .get(`${baseURL}/api/challenges/userchallenges/${type}/${profile._id}`)
       .then((res) => {
-        // setChallenges(res.data);
+        setChallenges(res.data);
       });
     axios
       .get(`${baseURL}/api/tournaments/usertournament/${user._id}`)
@@ -91,60 +85,60 @@ const suggestedplayers = suggestedplayersData;
 
 
 // Sample data for challenges
-const challengesData = [
-  {
-    _id: '1',
-    name: 'Challenge 1',
-    description: 'Description of Challenge 1',
-    startDate: '2024-02-10T12:00:00Z',
-    endDate: '2024-02-15T23:59:59Z',
-    User_team : {
-        name : 'raj',
-    },
-    game: {
-      name: "Counter-Strike",
-    },
-    participants: [
-      {
-        teamName: 'Team A',
-        imgUrl: '/assets/media/teams/team2.png',
-      },
-      {
-        teamName: 'Team B',
-        imgUrl: '/assets/media/teams/team1.png',
-      },
-      // Add more participants if needed
-    ],
-  },
-  {
-    _id: '2',
-    name: 'Challenge 2',
-    description: 'Description of Challenge 2',
-    startDate: '2024-02-20T12:00:00Z',
-    endDate: '2024-02-25T23:59:59Z',
-    User_team : {
-      name : 'raj',
-  },
-    game: {
-      name: 'Game 2',
-    },
-    participants: [
-      {
-        teamName: 'Team C',
-        imgUrl: '/path/to/teamC_logo.jpg',
-      },
-      {
-        teamName: 'Team D',
-        imgUrl: '/path/to/teamD_logo.jpg',
-      },
-      // Add more participants if needed
-    ],
-  },
-  // Add more challenge objects as needed
-];
+// const challengesData = [
+//   {
+//     _id: '1',
+//     name: 'Challenge 1',
+//     description: 'Description of Challenge 1',
+//     startDate: '2024-02-10T12:00:00Z',
+//     endDate: '2024-02-15T23:59:59Z',
+//     User_team : {
+//         name : 'raj',
+//     },
+//     game: {
+//       name: "Counter-Strike",
+//     },
+//     participants: [
+//       {
+//         teamName: 'Team A',
+//         imgUrl: '/assets/media/teams/team2.png',
+//       },
+//       {
+//         teamName: 'Team B',
+//         imgUrl: '/assets/media/teams/team1.png',
+//       },
+//       // Add more participants if needed
+//     ],
+//   },
+//   {
+//     _id: '2',
+//     name: 'Challenge 2',
+//     description: 'Description of Challenge 2',
+//     startDate: '2024-02-20T12:00:00Z',
+//     endDate: '2024-02-25T23:59:59Z',
+//     User_team : {
+//       name : 'raj',
+//   },
+//     game: {
+//       name: 'Game 2',
+//     },
+//     participants: [
+//       {
+//         teamName: 'Team C',
+//         imgUrl: '/path/to/teamC_logo.jpg',
+//       },
+//       {
+//         teamName: 'Team D',
+//         imgUrl: '/path/to/teamD_logo.jpg',
+//       },
+//       // Add more participants if needed
+//     ],
+//   },
+//   // Add more challenge objects as needed
+// ];
 
 // ----data
-const challenges = challengesData;
+// const challenges = challengesData;
 
 
   console.log('profile : ', profile)
@@ -158,7 +152,7 @@ const challenges = challengesData;
     <div className="right_side">
       {/* <RecentActivity user={user} /> */}
 
-      {/* <div className="recent_activity">
+      <div className="recent_activity">
         <h2>Challenge List</h2>
         <a href="#!" className="hideShow">
           Hide <i className="fa fa-angle-down" aria-hidden="true"></i>{' '}
@@ -175,9 +169,9 @@ const challenges = challengesData;
             ))
           )}
         </div>
-      </div> */}
+      </div>
 
-      {/* <div className="recent_activity suggested_player">
+      <div className="recent_activity suggested_player">
         <h2>Suggested Players</h2>
         <a href="#!" className="all">
           ALL
@@ -216,7 +210,7 @@ const challenges = challengesData;
             )}
           </ul>
         </div>
-      </div> */}
+      </div>
       <div className="recent_activity my_team">
         <h2>My Team </h2>
         <a href="#" className="mng">
