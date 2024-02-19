@@ -164,7 +164,7 @@
     .game_pos::after{ display: none;}
     .right_game_details{ float: left; width: 100%;}
     .row_box:hover .more_data{ flex-wrap: wrap;}
-    .row_box:hover .more_data .chart{ margin: 10px 0;}
+    .row_box:hover .more_data .chart{ margin: 8px 0;}
     .game_pos{ border: 0; border-bottom: 1px solid #fff;}
     .game_pos .game_loc img {
         height: 100%;

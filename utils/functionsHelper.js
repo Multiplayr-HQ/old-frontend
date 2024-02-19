@@ -56,6 +56,7 @@ export const searchTeams = async (
 // search ranking
 export const searchRanks = async (
   { search, filters },
+  selectedGame,
   setError,
   setLoading,
   toast,
@@ -63,7 +64,7 @@ export const searchRanks = async (
 ) => {
   setLoading(true);
   try {
-    const res = await axios.post(`${baseURL}/api/rankings/search`, {
+    const res = await axios.post(`${baseURL}/api/rankings/bywinnings100/${selectedGame?._id}`, {
       search,
       filters
     });

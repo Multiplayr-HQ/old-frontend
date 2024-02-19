@@ -150,20 +150,20 @@ const SignedMainContent = ({ posts, user, profile }) => {
     arrows: true
   };
 
-  useEffect(() => {
-    setTimeout(() => {
-      $('.user_slider').slick({
-        infinite: false,
-        vertical: true,
-        verticalSwiping: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: true,
-        prevArrow: $('.slick-prev'),
-        nextArrow: $('.slick-next')
-      });
-    }, 4000);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     $('.user_slider').slick({
+  //       infinite: false,
+  //       vertical: true,
+  //       verticalSwiping: true,
+  //       slidesToShow: 1,
+  //       slidesToScroll: 1,
+  //       arrows: true,
+  //       prevArrow: $('.slick-prev'),
+  //       nextArrow: $('.slick-next')
+  //     });
+  //   }, 4000);
+  // }, []);
 
   useEffect(() => {
     $('a.model_show_btn').click(function () {
