@@ -263,7 +263,7 @@ const SignedHeader = ({ user, profile }) => {
               </ul>
             </div>
           </li>
-          <li className="chat_box">
+          {/* <li className="chat_box">
             <Link href="#" className="open_chat_box">
               <a>
                 <img src="/assets/media/icons/message.png" alt="" />
@@ -272,7 +272,7 @@ const SignedHeader = ({ user, profile }) => {
             </Link>
 
             <ChatSection user={user} />
-          </li>
+          </li> */}
 
           <li className="noti">
             <NotificationItem user={user} />
