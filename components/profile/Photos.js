@@ -124,9 +124,9 @@ const Photos = ({ Userdata, user, photosData }) => {
         )}
       </div>
 
-      <button type="button" onClick={() => setOpen(true)}>
+      {/* <button type="button" onClick={() => setOpen(true)}>
         Open Lightbox
-      </button>
+      </button> */}
 
       <Lightbox
         open={open}
