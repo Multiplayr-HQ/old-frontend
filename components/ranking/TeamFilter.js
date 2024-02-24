@@ -240,13 +240,13 @@ const TeamFilter = ({ filterType, myState, selectedGame , showfavs , searchData,
       //     setIsLoading(false);
       //   });
       // } else {
-        // if (sessionTeam.key != sg) {
-        //   axios.get(`${baseURL}/api/rankings/bywinnings100/${sg}`).then((res) => {
-        //     setTeam(res.data);
-        //     setSessionTeam({ key: sg, value: team });
-        //     setIsLoading(false);
-        //   });
-        // } 
+        if (sessionTeam.key != sg) {
+          axios.get(`${baseURL}/api/rankings/bywinnings100/${sg}`).then((res) => {
+            setTeam(res.data);
+            setSessionTeam({ key: sg, value: team });
+            setIsLoading(false);
+          });
+        } 
         // else {
         //   //setTeam (sessionTeam.get(sg));
         //   setIsLoading(false);

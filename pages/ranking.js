@@ -40,7 +40,9 @@ const Ranking = ({ user, games, profile }) => {
   // const [error, setError] = useState(null);
   // const [formLoading, setFormLoading] = useState(false);
   // const [submitDisabled, setSubmitDisabled] = useState(true);
-  const [selectedGame, setSelectedGame] = useState();
+  const [selectedGame, setSelectedGame] = useState({
+    _id : 20
+  });
 
 
   // const { search, filters } = searchObj;
@@ -50,7 +52,7 @@ const Ranking = ({ user, games, profile }) => {
 
   useEffect (() => {
     const fet=async()=>{
-     const res= await axios.get(`${baseURL}/api/rankings/bywinnings100/${selectedGame?._id}`)
+     const res= await axios.get(`${baseURL}/api/rankings/bywinnings100/${selectedGame?._id}?page=1`)
       await setTeamsRanks(res.data);
 
     }
@@ -70,7 +72,7 @@ const Ranking = ({ user, games, profile }) => {
     console.log("i am inhandle selectgame \t",obj)
     // setPage(1);
     $('a.model_close').parent().removeClass('show_model');
-    // const response = await axios.get(`${baseURL}/api/rankings/bywinnings100/${selectedGame?._id}`);
+    // const response = await axios.get(`${baseURL}/api/rankings/bywinnings100/20`);
     // await setTeamsRanks(response.data);
     
    
