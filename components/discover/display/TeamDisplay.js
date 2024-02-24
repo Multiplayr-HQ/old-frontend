@@ -33,6 +33,7 @@ const TeamDisplay = ({
       });
   }, []);
 
+console.log("filter team  data in discover page ",team);
   return (
     <>
       <div className="team_row_box">
@@ -220,8 +221,8 @@ const TeamDisplay = ({
                   <div className="role_pic">
                     <img src={team.team?.imgUrl} alt="" />
                   </div>
-                  <a href={`/team/${team.team._id}`}>
-                    <h3>{team.team.name}</h3>
+                  <a href={`/team/${team.team?._id}`}>
+                    <h3>{team.team?.name}</h3>
                   </a>
                   <ReactCountryFlag
                     countryCode={team.team.region}

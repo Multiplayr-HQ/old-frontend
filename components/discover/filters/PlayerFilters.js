@@ -169,6 +169,8 @@ const PlayerFilters = ({ filterType, myState, selectedGame }) => {
     }
   }, [myState, playerData]);
 
+  console.log("player data :",playerData);
+
   if (data && data.filter) {
     return (
       <>

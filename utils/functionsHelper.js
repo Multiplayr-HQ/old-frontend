@@ -56,6 +56,7 @@ export const searchTeams = async (
 // search ranking
 export const searchRanks = async (
   { search, filters },
+  selectedGame,
   setError,
   setLoading,
   toast,
@@ -63,13 +64,13 @@ export const searchRanks = async (
 ) => {
   setLoading(true);
   try {
-    const res = await axios.post(`${baseURL}/api/rankings/search`, {
+    const res = await axios.post(`${baseURL}/api/rankings/bywinnings100/${selectedGame?._id}?searchText`, {
       search,
       filters
     });
     toast.info(res.data.msg);
     setStatus('confirm');
-    return res.data;
+    return res?.data;
   } catch (error) {
     const errorMsg = catchErrors(error);
     setError(errorMsg);
@@ -123,7 +124,7 @@ export const getTeamsRankingTournaments = async (filters) => {
     {}
   );
 
-  return teamIds.data;
+  return teamIds?.data;
 };
 
 export const getTournament = async (tournamentid) => {

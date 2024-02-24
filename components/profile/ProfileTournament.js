@@ -41,7 +41,8 @@ const ProfileTournament = ({
   const router = useRouter();
 
   const refreshData = () => {
-    router.replace(router.asPath);
+    // router.replace(router.asPath);
+    router.reload()
   };
 
   useEffect(() => {

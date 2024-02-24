@@ -35,6 +35,8 @@ const TournamentDisplay = ({
       });
   }, []);
 
+  console.log("tournament for filter ",tournament);
+
   return (
     <>
       <div className="team_row_box">
@@ -380,45 +382,45 @@ const TournamentDisplay = ({
                 <div className="game_loc">
                   {' '}
                   <img
-                    src={result.tournament.coverPhoto}
-                    alt={result.tournament.name}
+                    src={result.tournament?.coverPhoto}
+                    alt={result.tournament?.name}
                   />
                 </div>
 
                 <span className="tour_logo">
                   {' '}
-                  <img src={result.tournament.imgUrl} alt="" />
+                  <img src={result.tournament?.imgUrl} alt="" />
                 </span>
               </div>
               <div className="right_game_details tour_row">
                 <div className="top_game">
                   <div className="date">
                     <div>
-                      <Link href={`/tour/${result.tournament.name}`}>
+                      <Link href={`/tour/${result.tournament?.name}`}>
                         <a>
-                          <h3>{result.tournament.name}</h3>
+                          <h3>{result.tournament?.name}</h3>
                         </a>
                       </Link>
-                      {result.tournament.startDate
+                      {result.tournament?.startDate
                         ? format(
                             new Date(result.tournament.startDate),
                             'dd.MMM.yyyy'
                           )
                         : 'Not defined'}
                     </div>
-                    {result.tournament.Type &&
-                    result.tournament.Type === 'Ladder' ? (
+                    {result.tournament?.Type &&
+                    result.tournament?.Type === 'Ladder' ? (
                       <span className="type_img">
                         <img src="/assets/media/tournament/ladder.png" alt="" />
                       </span>
-                    ) : result?.tournament.Type === 'Tournament' ? (
+                    ) : result?.tournament?.Type === 'Tournament' ? (
                       <span className="type_img">
                         <img
                           src="/assets/media/tournament/tournament.png"
                           alt=""
                         />
                       </span>
-                    ) : result.tournament.Type === 'Competition' ? (
+                    ) : result.tournament?.Type === 'Competition' ? (
                       <span className="type_img">
                         <img
                           src="/assets/media/tournament/competition.png"
@@ -441,9 +443,9 @@ const TournamentDisplay = ({
                 <div className="bottom_game">
                   <ul className="users">
                     {result.tournament?.playType === 'SOLO' ||
-                    result.tournament.registered.length > 0 ? (
+                    result.tournament?.registered.length > 0 ? (
                       <>
-                        {result.tournament.registered.slice(0, 4).map((ppl,i) => (
+                        {result.tournament?.registered.slice(0, 4).map((ppl,i) => (
                           <li key={i}>
                             {' '}
                             <img
@@ -458,7 +460,7 @@ const TournamentDisplay = ({
                       </>
                     ) : (
                       <>
-                        {result.tournament.teams.slice(0, 4).map((team,i) => (
+                        {result.tournament?.teams.slice(0, 4).map((team,i) => (
                           <li key={i}>
                             <img
                               src={team.teamId?.imgUrl}
@@ -473,22 +475,22 @@ const TournamentDisplay = ({
                       </>
                     )}
 
-                    {result.tournament.playType === 'TEAMS' ? (
+                    {result.tournament?.playType === 'TEAMS' ? (
                       <li>
                         <p>
-                          {result.tournament.teams.length} /{' '}
-                          {result.tournament.numberOfTeam}
+                          {result.tournament?.teams?.length} /{' '}
+                          {result.tournament?.numberOfTeam}
                           <b>Signed</b>
                         </p>
                       </li>
                     ) : (
                       <>
-                        {result.tournament.participants > 0 ||
-                        result.tournament.numberOfTeam > 0 ? (
+                        {result.tournament?.participants > 0 ||
+                        result.tournament?.numberOfTeam > 0 ? (
                           <li>
                             <p>
-                              {result.tournament.registered.length} /{' '}
-                              {result.tournament.participants}
+                              {result.tournament?.registered.length} /{' '}
+                              {result.tournament?.participants}
                               <b>Signed</b>
                             </p>
                           </li>
@@ -511,9 +513,9 @@ const TournamentDisplay = ({
                   <div className="prize">
                     <div>
                       <h3>ENTRY FEE</h3>
-                      {result.tournament.entranceFee === 0 ? (
+                      {result.tournament?.entranceFee === 0 ? (
                         <span>Free</span>
-                      ) : result.tournament.entranceFee !== 0 ? (
+                      ) : result.tournament?.entranceFee !== 0 ? (
                         <span>
                           <MPNumberFormat
                             value={result.tournament?.entranceFee}
@@ -526,10 +528,10 @@ const TournamentDisplay = ({
                     </div>
                     <div>
                       <h3>PRIZE POOL</h3>
-                      {result.tournament.prizepool ? (
+                      {result.tournament?.prizepool ? (
                         <MPNumberFormat
-                          value={result.tournament.prizepool}
-                          currency={result.tournament.currency}
+                          value={result.tournament?.prizepool}
+                          currency={result.tournament?.currency}
                         />
                       ) : (
                         'Not Available'

@@ -1,10 +1,16 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { searchRanks } from '@utils/functionsHelper';
 import { toast } from 'react-toastify';
 import TeamFilter from './TeamFilter';
+import axios from 'axios';
+import baseURL from '../../utils/baseURL';
 
-const RankingPage = ({ selectedGame, teamranking }) => {
+const RankingPage = ({ selectedGame, teamranking, user,gameChange }) => {
+
+    
+
+    const [newGame,setNewGame] = useState();
 
     let myState = {};
 
@@ -38,23 +44,55 @@ const RankingPage = ({ selectedGame, teamranking }) => {
         }));
     };
 
+    // console.log('Selected game ', selectedGame);
+
+    useEffect(() => {
+        const fetchRankings = async () => {
+            // setLoading(true);
+            try {
+                const response = await axios.get(
+                    `${baseURL}/api/rankings/bywinnings100/${selectedGame._id}?searchText=${searchObj.search}`
+                );
+                setSearchData(response.data);
+                // setLoading(false);
+            } catch (err) {
+                setError(err);
+                // setLoading(false);
+                // toast.error('Error fetching rankings');
+            }
+        };
+
+        fetchRankings();
+    }, [selectedGame, searchObj]);
+
+
+    // console.log("Searchobject" , searchObj.search);
     const handleSubmit = async (e) => {
         e.preventDefault();
-        sdata = await searchRanks(
-            searchObj,
-            setError,
-            setFormLoading,
-            toast,
-            setStatus
-        );
-
-        // const response = await axios.get(
-        //     `${baseURL}/api/rankings/search/${searchObj}`
+        // sdata = await searchRanks(
+        //     selectedGame,
+        //     searchObj.search,
+        //     setError,
+        //     setFormLoading,
+        //     toast,
+        //     setStatus
         // );
-        // setTeamsRanks((prev) => [...prev, ...response.data]);
+   
+            // const response = await axios.get(
+            //     `${baseURL}/api/rankings/bywinnings100/${selectedGame._id}?searchText=${searchObj.search}`
+            // );
+            // // setTeamsRanks((prev) => [...prev, ...response.data]);
+    
+            // // setSearchData(sdata);
+    
+            // setSearchData(response.data);
+        // }
 
-        setSearchData(sdata);
+        
     };
+
+    // if()
+    console.log("Search data" , searchData);
 
     return (
 
@@ -81,7 +119,7 @@ const RankingPage = ({ selectedGame, teamranking }) => {
                         </form>
                     </div>
                     <div className="advance">
-                        <div className="views">
+                        {/* <div className="views">
                             <h3>ADVANCED FILTER </h3>
                             EXCLUDE “ALREADY VIEWED”
                             <div className="custom-control custom-checkbox">
@@ -95,7 +133,7 @@ const RankingPage = ({ selectedGame, teamranking }) => {
                                     htmlFor="customCheck1"
                                 ></label>
                             </div>
-                        </div>
+                        </div> */}
                         <h3>Favourite</h3>
                         <div className="custom-control custom-switch">
                             <input
@@ -122,7 +160,7 @@ const RankingPage = ({ selectedGame, teamranking }) => {
                     teamrankings={teamranking}
 
                     searchData={searchData}
-                // user={user}
+                    user={user}
                 />
             </div>
         </div>

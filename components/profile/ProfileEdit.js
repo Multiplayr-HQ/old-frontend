@@ -92,7 +92,7 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
       .then((res) => setAllroles(res.data));
   }, []);
   
-
+  
   const handleChangeCheck = (e) => {
     setStates({ ...states, [e.target.name]: e.target.value });
   };
