@@ -14,11 +14,11 @@ const SignedMainContent = ({ posts, user, profile }) => {
   const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
   const [followingPosts, setFollowingPosts] = useState([]);
-  const [profilepic, setProfilePic] = useState(user.profilePicUrl);
-  const [username, setUsername] = useState(user.name);
+  // const [profilepic, setProfilePic] = useState(user.profilePicUrl);
+  // const [username, setUsername] = useState(user.name);
   const [personas, setPersonas] = useState({});
   const [allgames, setAllGames] = useState([]);
-  const [postType, setPostType] = useState('User');
+  // const [postType, setPostType] = useState('User');
   const [gameTag, setGameTag] = useState({
     name: '',
     gameId: ''
@@ -35,7 +35,7 @@ const SignedMainContent = ({ posts, user, profile }) => {
   useEffect(() => {
     axios
       .get(`${baseURL}/api/profile/${user.username}`)
-      .then((res) => setProfileData(res.data));
+      .then((res) => setProfileData(res?.data));
   }, []);
 
   const mutation = useMutation(
@@ -114,7 +114,7 @@ const SignedMainContent = ({ posts, user, profile }) => {
       })
       .then((res) => {
         // console.log(res)
-        setFollowingPosts(res.data.posts);
+        setFollowingPosts(res?.data?.posts);
       })
       .catch((err) => {
         console.log(err);
@@ -123,7 +123,7 @@ const SignedMainContent = ({ posts, user, profile }) => {
     await axios
       .get(`${baseURL}/api/all/games`)
       .then((res) => {
-        setAllGames(res.data);
+        setAllGames(res?.data);
       })
       .catch((err) => {
         console.log(err);
@@ -131,7 +131,7 @@ const SignedMainContent = ({ posts, user, profile }) => {
 
     await axios
       .get(`${baseURL}/api/profile/${user.username}/followers`)
-      .then((res) => setFollowData(res.data));
+      .then((res) => setFollowData(res?.data));
   }, []);
 
   const selectgameTag = (x) => {
@@ -199,7 +199,7 @@ const SignedMainContent = ({ posts, user, profile }) => {
           }
         }
       )
-      .then((res) => toast.success(res.data.msg));
+      .then((res) => toast.success(res?.data?.msg));
   };
 
   return (
@@ -209,38 +209,56 @@ const SignedMainContent = ({ posts, user, profile }) => {
           <ul>
             <li>
               <Link href="/team/create">
+              <a>
+
                 <i className="fa fa-users" aria-hidden="true"></i>
                 <p>create a Team </p>
+              </a>
               </Link>
             </li>
             <li>
               <Link href="/tour/create">
+              <a>
                 <i className="fa fa-trophy" aria-hidden="true"></i>
                 <p> create a Tournament</p>
+
+              </a>
               </Link>
             </li>
             <li>
               <Link href="#">
+              <a>
+
                 <i className="fa fa-comments" aria-hidden="true"></i>
                 <p> create a Community </p>
+              </a>
               </Link>
             </li>
             <li>
               <Link href="/brand/create">
+              <a>
+
                 <i className="fa fa-briefcase" aria-hidden="true"></i>
                 <p> create a Brand </p>
+              </a>
               </Link>
             </li>
             <li>
               <Link href="/arena/create">
+              <a>
+
                 <i className="fa fa-gamepad" aria-hidden="true"></i>
                 <p> create an Arena </p>
+              </a>
               </Link>
             </li>
             <li>
               <Link href="/company/create">
+              <a>
+
                 <i className="fa fa-shopping-cart" aria-hidden="true"></i>
                 <p> create a Company </p>
+              </a>
               </Link>
             </li>
           </ul>
@@ -418,7 +436,7 @@ const SignedMainContent = ({ posts, user, profile }) => {
 
         <div className="tab" id="Discover">
           <div>
-            {posts.map((post,i) => (
+            {posts?.map((post,i) => (
               <AllPosts key={i}
                 user={user}
                 post={post}

@@ -62,7 +62,10 @@ const SignedHeader = ({ user, profile }) => {
   };
 
   const logoutUser = () => {
+    router.push('/login');
+    console.log("router to push inside login executed")
     cookie.remove('token');
+    router.reload()
   };
 
   const sendEmail = (e) => {

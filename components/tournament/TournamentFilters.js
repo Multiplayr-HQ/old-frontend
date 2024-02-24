@@ -129,7 +129,7 @@ const TournamentFilters = ({
 
     try {
       axios
-        .post(`${baseURL}/api/discover/tournaments`, params, {
+        .post(`https://9de1-106-212-173-61.ngrok-free.app/api/discover/tournaments`, params, {
           headers: {
             'Content-Type': 'application/json'
           }
@@ -172,10 +172,12 @@ const TournamentFilters = ({
         }
       }
 
-      //myState.setFilteredResults(team);
+      // myState.setFilteredResults(team);
       //console.log(team);
     }
   }, [myState, tournament]);
+
+  console.log("Team for tournament ",myState.setFilteredResults);
 
   return (
     <>

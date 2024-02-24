@@ -172,7 +172,7 @@ const TeamFilters = ({
     }
   }, [myState, team]);
   console.log("selecter filter ", selectedFilters);
- console.log('teams',team);
+//  console.log('teams',team);
   if (data && data.filter) {
     return (
       <>

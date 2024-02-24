@@ -3,6 +3,7 @@ import { useState,useEffect } from 'react';
 import baseURL from '../../utils/baseURL';
 import axios from 'axios';
 // import Head from 'next/head'
+import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import RankingTable from './RankingTable';
 
@@ -66,6 +67,15 @@ const TeamFilter = ({ filterType, myState, selectedGame , showfavs , searchData,
     fetchData();
   }, []);
 
+  
+  const router = useRouter();
+
+  const refreshData = () => {
+    // router.replace(router.asPath);
+    router.reload()
+  };
+
+
   const handleClearFilter = async (e, key, val) => {
     e.preventDefault();
     var sf = selectedFilters.filter((selfil) => selfil != val);
@@ -95,9 +105,14 @@ const TeamFilter = ({ filterType, myState, selectedGame , showfavs , searchData,
       }
     });
     setSelectedMapFilters(uniqueTags);
+
+    refreshData();
+  
   };
 
   // const handleApplyFilters = async (e) => {
+
+
   //   e.preventDefault();
   //   myState.setFilteredResults([]);
   //   myState.setSelectedFilters([]);
@@ -132,7 +147,26 @@ const TeamFilter = ({ filterType, myState, selectedGame , showfavs , searchData,
   //     toast.error(err.response?.data?.msg || 'Please recheck your inputs');
   //   }
   // };
+//   useEffect(() => {
+//     const fetchRankings = async () => {
+//         // setLoading(true);
+//         try {
+//             const response = await axios.get(
+//               `${baseURL}/api/rankings/bywinnings100/${selectedGame?._id}?region=${filterdata} `
+//             );
+//             setTeam(response.data);
+//             // setLoading(false);
+//         } catch (err) {
+//             // setError(err);
+//             // setLoading(false);
+//             toast.error('Error fetching rankings');
+//         }
+//     };
 
+//     fetchRankings();
+// }, [team]);
+
+  
   const handleApplyFilters = async (e) => {
     // e.preventDefault();
     // myState.setFilteredResults([]);
@@ -185,43 +219,46 @@ const TeamFilter = ({ filterType, myState, selectedGame , showfavs , searchData,
   }
 
 
-  // useEffect(() => {
-  //   var sg = undefined;
-  //   if (selectedGame != null) {
-  //     sg = selectedGame._id;
-  //   }
+  useEffect(() => {
+    var sg = undefined;
+    if (selectedGame != null) {
+      sg = selectedGame._id;
+    }
 
 
-  //   if (myState.selectedFilters.length > 0) {
-  //     setTeam(myState.filteredResults);
+    if (myState.selectedFilters.length > 0) {
+      setTeam(myState.filteredResults);
   //     setIsLoading(false);
-  //   } else {
-  //     setIsLoading(true);
-  //     if (sessionTeam.key === null) {
-  //       axios.get(`${baseURL}/api/rankings/bywinnings100/${sg}`).then((res) => {
-  //         setTeam(res.data);
-  //         setSessionTeam({ key: sg, value: team });
-  //         setIsLoading(false);
-  //       });
-  //     } else {
-  //       if (sessionTeam.key != sg) {
-  //         axios.get(`${baseURL}/api/rankings/bywinnings100/${sg}`).then((res) => {
-  //           setTeam(res.data);
-  //           setSessionTeam({ key: sg, value: team });
-  //           setIsLoading(false);
-  //         });
-  //       } else {
-  //         //setTeam (sessionTeam.get(sg));
-  //         setIsLoading(false);
-  //       }
-  //     }
-  //     // myState.setFilteredResults(team):
+    }
+   else {
+    
+      setIsLoading(true);
+      // if (sessionTeam.key === null) {
+      //   axios.get(`${baseURL}/api/rankings/bywinnings100/${sg}`).then((res) => {
+      //     setTeam(res.data);
+      //     setSessionTeam({ key: sg, value: team });
+      //     setIsLoading(false);
+      //   });
+      // } else {
+        // if (sessionTeam.key != sg) {
+        //   axios.get(`${baseURL}/api/rankings/bywinnings100/${sg}`).then((res) => {
+        //     setTeam(res.data);
+        //     setSessionTeam({ key: sg, value: team });
+        //     setIsLoading(false);
+        //   });
+        // } 
+        // else {
+        //   //setTeam (sessionTeam.get(sg));
+        //   setIsLoading(false);
+        // }
+      // }
+      // myState.setFilteredResults(team):
      
-  //   }
-  // }, [myState, team]);
-  console.log("team",team);
+    }
+  }, [myState, team]);
+  console.log("team accourding to resion :",team);
   console.log("selected filter :",selectedFilters);
-  console.log("sesssion team ",sessionTeam);
+  // console.log("sesssion team ",sessionTeam);
   // console.log("filter result", myState);
 
 

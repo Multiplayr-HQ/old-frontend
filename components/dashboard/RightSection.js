@@ -14,7 +14,7 @@ const RightSection = ({ user,  teams, profile }) => {
   const [matches, setMatches] = useState([]);
   // const [later, setLater] = useState(false);
   const [myPageData, setMypageData] = useState([]);
-  const [requestData, setRequestData] = useState(profile.request);
+  const [requestData, setRequestData] = useState(profile?.request);
 
   useEffect(() => {
     setRequestData(profile.request);

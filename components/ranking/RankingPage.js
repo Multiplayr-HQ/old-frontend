@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { searchRanks } from '@utils/functionsHelper';
 import { toast } from 'react-toastify';
 import TeamFilter from './TeamFilter';
@@ -44,7 +44,28 @@ const RankingPage = ({ selectedGame, teamranking, user,gameChange }) => {
         }));
     };
 
-    console.log('Selected game ', selectedGame);
+    // console.log('Selected game ', selectedGame);
+
+    useEffect(() => {
+        const fetchRankings = async () => {
+            // setLoading(true);
+            try {
+                const response = await axios.get(
+                    `${baseURL}/api/rankings/bywinnings100/${selectedGame._id}?searchText=${searchObj.search}`
+                );
+                setSearchData(response.data);
+                // setLoading(false);
+            } catch (err) {
+                setError(err);
+                // setLoading(false);
+                // toast.error('Error fetching rankings');
+            }
+        };
+
+        fetchRankings();
+    }, [selectedGame, searchObj]);
+
+
     // console.log("Searchobject" , searchObj.search);
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -56,33 +77,22 @@ const RankingPage = ({ selectedGame, teamranking, user,gameChange }) => {
         //     toast,
         //     setStatus
         // );
-        if(search == null){
-            const response = await axios.get(
-                `${baseURL}/api/rankings/bywinnings100/${selectedGame._id}`
-            );
-            // setTeamsRanks((prev) => [...prev, ...response.data]);
+   
+            // const response = await axios.get(
+            //     `${baseURL}/api/rankings/bywinnings100/${selectedGame._id}?searchText=${searchObj.search}`
+            // );
+            // // setTeamsRanks((prev) => [...prev, ...response.data]);
     
-            // setSearchData(sdata);
+            // // setSearchData(sdata);
     
-            setSearchData(response.data);
-
-        }
-        else{
-            const response = await axios.get(
-                `${baseURL}/api/rankings/bywinnings100/${selectedGame._id}?searchText=${searchObj.search}`
-            );
-            // setTeamsRanks((prev) => [...prev, ...response.data]);
-    
-            // setSearchData(sdata);
-    
-            setSearchData(response.data);
-        }
+            // setSearchData(response.data);
+        // }
 
         
     };
 
     // if()
-    // console.log("Search data" , searchData);
+    console.log("Search data" , searchData);
 
     return (
 

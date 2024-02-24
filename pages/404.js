@@ -22,7 +22,7 @@ const Error = ({ statusCode }) => {
 
           <p>
             {' '}
-            <Link href="/dashboard">Go back to home </Link>
+            <Link href="/login">Go back to home </Link>
           </p>
         </section>
       </body>

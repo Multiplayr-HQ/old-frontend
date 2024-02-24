@@ -94,56 +94,56 @@ const Filters = ({ filterType , myState, selectedGame}) => {
     setSelectedMapFilters(uniqueTags);
   };
 
-  const handleApplyFilters = async (e) => {
-    e.preventDefault();
-    myState.setFilteredResults([]);
-    myState.setSelectedFilters([]);
-    const uniqueTags = [];
-    selectedMapFilters.map((item) => {
-      uniqueTags.push({ key: item.key, values: Array.from(item.values) });
-    });
+  // const handleApplyFilters = async (e) => {
+  //   e.preventDefault();
+  //   myState.setFilteredResults([]);
+  //   myState.setSelectedFilters([]);
+  //   const uniqueTags = [];
+  //   selectedMapFilters.map((item) => {
+  //     uniqueTags.push({ key: item.key, values: Array.from(item.values) });
+  //   });
 
-    //Always set the Selected Game as Filter.
-    var ssg = undefined;
-    if (selectedGame != null) { 
-      ssg = selectedGame._id;
+  //   //Always set the Selected Game as Filter.
+  //   var ssg = undefined;
+  //   if (selectedGame != null) { 
+  //     ssg = selectedGame._id;
 
-    }
+  //   }
 
-    const params = JSON.stringify({
-    "mapFilters": uniqueTags,
-    "selectedGame" : ssg
-    });
+  //   const params = JSON.stringify({
+  //   "mapFilters": uniqueTags,
+  //   "selectedGame" : ssg
+  //   });
 
-    try {
+  //   try {
       
-    let apiurl = `${baseURL}/api/discover/teams`; 
-    if (filterType == 'PLAYERS') {
-      apiurl = `${baseURL}/api/discover/players`; 
-    } else if (filterType == 'COACHES') {
-      apiurl = `${baseURL}/api/discover/coaches`; 
-    } else if (filterType == 'ARENAS') {
-      apiurl = `${baseURL}/api/discover/arenas`; 
-    } else if (filterType == 'JOBS') {
-      apiurl = `${baseURL}/api/discover/jobs`; 
-    } else if (filterType == 'TOURNAMENTS') {
-      apiurl = `${baseURL}/api/discover/tournaments`; 
-    }
+  //   let apiurl = `${baseURL}/api/discover/teams`; 
+  //   if (filterType == 'PLAYERS') {
+  //     apiurl = `${baseURL}/api/discover/players`; 
+  //   } else if (filterType == 'COACHES') {
+  //     apiurl = `${baseURL}/api/discover/coaches`; 
+  //   } else if (filterType == 'ARENAS') {
+  //     apiurl = `${baseURL}/api/discover/arenas`; 
+  //   } else if (filterType == 'JOBS') {
+  //     apiurl = `${baseURL}/api/discover/jobs`; 
+  //   } else if (filterType == 'TOURNAMENTS') {
+  //     apiurl = `${baseURL}/api/discover/tournaments`; 
+  //   }
     
     
-    axios.post( apiurl, params, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }).then( (res) =>  {  
-        myState.setFilteredResults(res.data);
-        myState.setSelectedFilters(selectedMapFilters);
-      });
+  //   axios.post( apiurl, params, {
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   }).then( (res) =>  {  
+  //       myState.setFilteredResults(res.data);
+  //       myState.setSelectedFilters(selectedMapFilters);
+  //     });
 
-    } catch (err) {
-      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
-    }
-  };
+  //   } catch (err) {
+  //     toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+  //   }
+  // };
 
   if (data && data.filter) {
     return (
