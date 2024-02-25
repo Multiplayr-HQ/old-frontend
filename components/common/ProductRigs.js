@@ -38,6 +38,7 @@ const ProductRigs = ({ user, productList, Userdata }) => {
 
   const { state, dispatch } = useContext(DataContext);
   const { auth } = state;
+  
 
   useEffect(() => {
     setProducts(productList);
@@ -47,8 +48,13 @@ const ProductRigs = ({ user, productList, Userdata }) => {
     if (Object.keys(router.query).length === 0) setPage(1);
   }, [router.query]);
 
-  useEffect(() => {
-    axios.get(`${baseURL}/api/rigsdata/`).then((res) => setRigsData(res.data));
+  useEffect(async() => {
+    await axios.get(`${baseURL}/api/rigsdata/`).then((res) => {
+      const { data } = res;
+      // setRigsData([...data]);
+      rigsData.push([...data]);
+      console.log('fetched rig data \t \t', res, '\n', rigsData);
+    });
   }, []);
 
   const handleCheck = (id) => {
@@ -92,8 +98,12 @@ const ProductRigs = ({ user, productList, Userdata }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      axios.put(`${baseURL}/api/profile/rigs/${user._id}`, states);
-      toast.success('Saved Changes', { autoClose: 2000 });
+      const res = await axios.put(
+        `${baseURL}/api/profile/rigs/${user._id}`,
+        states
+      );
+      await console.log('response for rigs \t \t ', res);
+      await toast.success('Saved Changes', { autoClose: 2000 });
       $('a.model_close').parent().removeClass('show_model');
     } catch (err) {
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
@@ -105,8 +115,10 @@ const ProductRigs = ({ user, productList, Userdata }) => {
     setStates({ ...states, [e.target.name]: e.target.value });
   };
 
+  // Switching the tab content using jquery
+
   useEffect(() => {
-    $('.profile_tab_btn li a').on("click",function () {
+    $('.profile_tab_btn li a').click(function () {
       $('.prfoile_tab_data .tab').addClass('hide');
       var rel = jQuery(this).attr('rel');
       $('#' + rel).removeClass('hide');
@@ -119,6 +131,7 @@ const ProductRigs = ({ user, productList, Userdata }) => {
     <div className="tab hide" id="rigs">
       <div className="sponser_btn">
         {' '}
+        {/* adding add your rig button for profile owner */}
         {Userdata.profile.user._id === user._id ? (
           <a href="#!" className="model_show_btn">
             <button className="btn">
@@ -139,10 +152,10 @@ const ProductRigs = ({ user, productList, Userdata }) => {
 
             <form className="common_form" onSubmit={handleSubmit}>
               <div className="form-group">
-                <label htmlFor="exampleFormControlTextarea1">Platform</label>
+                <label for="exampleFormControlTextarea1">Platform</label>
                 <div className="btn_selection">
                   <div className="big_btn">
-                    <span className="form-check-label terms">PC</span>
+                    <span class="form-check-label terms">PC</span>
                     <input
                       type="radio"
                       name="rigsType"
@@ -152,7 +165,7 @@ const ProductRigs = ({ user, productList, Userdata }) => {
                   </div>
 
                   <div className="big_btn">
-                    <span className="form-check-label terms">Console</span>
+                    <span class="form-check-label terms">Console</span>
                     <input
                       type="radio"
                       name="rigsType"
@@ -162,7 +175,7 @@ const ProductRigs = ({ user, productList, Userdata }) => {
                   </div>
 
                   <div className="big_btn">
-                    <span className="form-check-label terms">Mobile</span>
+                    <span class="form-check-label terms">Mobile</span>
                     <input
                       type="radio"
                       name="rigsType"
@@ -255,14 +268,16 @@ const ProductRigs = ({ user, productList, Userdata }) => {
           <div className="overlay"></div>
         </div>
       </div>
+
       <div className="rigs">
         <ul>
-          {Userdata.profile.rigs.length === 0 ? (
+          {console.log('inside rigs ul \t', rigsData)}
+          {Userdata?.profile?.rigs?.length === 0 ? (
             <p>No Rigs available for you.</p>
           ) : (
-            Userdata?.profile?.rigs.map((rig,i) => (
-              <li key={i}>
-                <ProfileRigsDelete key={i}
+            Userdata?.profile?.rigs?.map((rig) => (
+              <li className='rig-card'>
+                <ProfileRigsDelete
                   rigId={rig._id}
                   profile={Userdata.profile}
                   user={user}
@@ -279,7 +294,7 @@ const ProductRigs = ({ user, productList, Userdata }) => {
                   <a
                     href={rig.rigId?.link}
                     className="quickpoup"
-                    target="_blank" rel="noreferrer"
+                    target="_blank"
                   >
                     Buy Now
                   </a>{' '}
@@ -290,6 +305,28 @@ const ProductRigs = ({ user, productList, Userdata }) => {
               </li>
             ))
           )}
+
+          {rigsData[0]?.map((rig) => (
+            <li key={rig._id}>
+              <ProfileRigsDelete rigId={rig._id} profile={rig} user={rig} />
+              <div className="lft_prod_det">
+                {' '}
+                <span className="new"> New</span>
+                <div className="prod_brand">
+                  {rig.name && rig.name.length > 30
+                    ? rig.name.substring(0, 30) + '...'
+                    : rig.name}
+                </div>
+                <p className="prod_name">{rig.category}</p>
+                <a href={rig.link} className="quickpoup" target="_blank">
+                  Buy Now
+                </a>{' '}
+              </div>
+              <div className="prod_img">
+                <img src={rig.image} alt={rig.name} />
+              </div>
+            </li>
+          ))}
         </ul>
       </div>
     </div>

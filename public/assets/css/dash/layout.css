@@ -7391,9 +7391,13 @@ article .social_bar img {
 	padding: 20px;
 	margin-bottom: 20px;
 	background: #ddd;
+	
 	position: relative;
 	overflow: hidden;
+	border-radius: 10px;
+
 }
+
 
 .rigs li:nth-child(3n) {
 	margin-right: 0;
@@ -7407,11 +7411,19 @@ article .social_bar img {
 }
 
 .rigs li .lft_prod_det .new {
+	position: relative;
 	background: #8dbe0a;
 	padding: 5px;
 	width: 50px;
 	display: block;
 	text-align: center;
+	border-radius: 5px;
+}
+.quickpoup{
+	position: absolute;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	margin-left: 10px;
 }
 
 .rigs li .lft_prod_det .prod_brand {
@@ -7426,7 +7438,7 @@ article .social_bar img {
 }
 
 .rigs li .lft_prod_det a {
-	background: #6931f9;
+	background: #8dbe0a;
 	text-transform: uppercase;
 	font-weight: 600;
 	padding: 15px 40px;
@@ -7441,10 +7453,12 @@ article .social_bar img {
 	width: 45%;
 	text-align: center;
 	height: 100%;
+
 	vertical-align: middle;
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;
+	
 }
 
 .rigs li .prod_img img {
@@ -7456,7 +7470,6 @@ article .social_bar img {
 	top: 10px;
 	right: 10px
 }
-
 /* ----------Sponsers ------------ */
 .sponsers_box {
 	float: left;

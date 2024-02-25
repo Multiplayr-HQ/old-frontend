@@ -84,17 +84,17 @@ const ProfileTeams = ({ Userdata, user, teamsData, allGames, teamroles }) => {
     console.log("setAllTeams \t\t",allTeams );
     const teamExists = allTeams.some(team => team.name === searchText);
 
-    if (teamExists){
-      setTeamNameIndicator(false);
-      // console.log(" correct pass in list \t\t",searchText );
+    // if (teamExists){
+    //   setTeamNameIndicator(false);
+    //   // console.log(" correct pass in list \t\t",searchText );
       
 
-    }else{
+    // }else{
       // console.log(" Not in list \t\t",searchText );
       setTeamNameIndicator(true);
-      setLoader(false);
-      return;
-    }
+      // setLoader(false);
+    //   return;
+    // }
 
     const errors = profileTeam(team);
     setFormErrors(errors);
@@ -147,12 +147,12 @@ const ProfileTeams = ({ Userdata, user, teamsData, allGames, teamroles }) => {
                     autoComplete="off"
                     required
                   />
-                  { teamNameIndicator && (
+                  {/* { teamNameIndicator && (
                             <small className="text-xs text-red-600">
                               {' '}
                               This Team is invalid or not available{' '}
                             </small>
-                          )}
+                          )} */}
                   {searchText?.length !== 0 ? (
                     <>
                       {filteredData?.length > 0 ? (

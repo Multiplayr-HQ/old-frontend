@@ -14,11 +14,11 @@ const SignedMainContent = ({ posts, user, profile }) => {
   const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
   const [followingPosts, setFollowingPosts] = useState([]);
-  const [profilepic, setProfilePic] = useState(user.profilePicUrl);
-  const [username, setUsername] = useState(user.name);
+  // const [profilepic, setProfilePic] = useState(user.profilePicUrl);
+  // const [username, setUsername] = useState(user.name);
   const [personas, setPersonas] = useState({});
   const [allgames, setAllGames] = useState([]);
-  const [postType, setPostType] = useState('User');
+  // const [postType, setPostType] = useState('User');
   const [gameTag, setGameTag] = useState({
     name: '',
     gameId: ''
