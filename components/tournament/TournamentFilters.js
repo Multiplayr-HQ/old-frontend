@@ -129,7 +129,7 @@ const TournamentFilters = ({
 
     try {
       axios
-        .post(`https://9de1-106-212-173-61.ngrok-free.app/api/discover/tournaments`, params, {
+        .post(`${baseURL}/api/discover/tournaments`, params, {
           headers: {
             'Content-Type': 'application/json'
           }
@@ -157,7 +157,7 @@ const TournamentFilters = ({
           .get(`${baseURL}/api/tournaments/tournamentsbygame/${sg}`)
           .then((res) => {
             setTournament(res.data);
-            setSessionTournament({ key: sg, value: tournament });
+            setSessionTournament({ key: sg , value: tournament });
           });
       } else {
         if (sessiontournament.key != sg) {
@@ -165,7 +165,7 @@ const TournamentFilters = ({
             .get(`${baseURL}/api/tournaments/tournamentsbygame/${sg}`)
             .then((res) => {
               setTournament(res.data);
-              setSessionTournament({ key: sg, value: tournament });
+              setSessionTournament({ key: sg , value: tournament });
             });
         } else {
           //setTeam (sessionTeam.get(sg));
@@ -176,6 +176,10 @@ const TournamentFilters = ({
       //console.log(team);
     }
   }, [myState, tournament]);
+
+
+
+
 
   console.log("Team for tournament ",myState.setFilteredResults);
 

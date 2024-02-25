@@ -14,7 +14,7 @@ const Tournament = ({ user, games, profile, teams }) => {
     //myState.setFilteredResults([]);
     $('a.model_close').parent().removeClass('show_model');
   };
-
+  
   useEffect(() => {
     $('a.model_show_btn').click(function () {
       $(this).next().addClass('show_model');
