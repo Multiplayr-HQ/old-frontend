@@ -6,8 +6,8 @@ import ReactCountryFlag from 'react-country-flag';
 
 const RankingTable = ({ teamrankingss, searchResults, favshow, user, team }) => {
   // console.log('search :', searchResults);
-  console.log('team ranking data in ranking table :', teamrankingss);
-  console.log("team in Ranking table", team);
+  // console.log('team ranking data in ranking table :', teamrankingss.teams);
+  // console.log("team in Ranking table", team);
 
   if (!teamrankingss) {
     return null; // If teamrankingss is falsy, render nothing
@@ -15,37 +15,22 @@ const RankingTable = ({ teamrankingss, searchResults, favshow, user, team }) => 
 
   const [content, setContent] = useState([]);
 
-
+  console.log("gandu Team Ranking length" , teamrankingss?.teams?.length);
+  
   useEffect(() => {
     if (team.length > 0 ) {
-      setContent(team);
+      setContent({teams: team});
     } else if (searchResults.length > 0 ) {
-      setContent(searchResults);
+      setContent({teams : searchResults});
     } else {
       setContent(teamrankingss);
     }
-  }, [ searchResults, team]); 
-
+  }, [ searchResults, team, teamrankingss]);
+  console.log("content",content);
   const getContent = () => {
-    // Determine what content to display based on the current state
-    // let content = [];
-
-    // if (team.length > 0) {
-    //   content = team;
-
-
-    // } else if (searchResults.length > 0 && team.length === 0) {
-    //   content = searchResults;
-
-    // }else{
-    //   content = teamrankingss;
-    // }
-   
-
-
 
     // Return "No teams are ranked yet ..." message if there's no content
-    if (content.length === 0 && teamrankingss === 0) {
+    if (content === 0 && teamrankingss === 0) {
       return (
         <div className="activity_tag">
           <span className="act_name">No teams are ranked yet ...</span>
@@ -53,8 +38,7 @@ const RankingTable = ({ teamrankingss, searchResults, favshow, user, team }) => 
       );
     }
 
-
-    return content.map((result, idx) => (
+    return content?.teams?.map((result, idx) => (
           <div className="row_box" key={idx}>
           <div className="cols_box">
             <div className="cols">
@@ -413,7 +397,6 @@ const RankingTable = ({ teamrankingss, searchResults, favshow, user, team }) => 
     // }
 
   };
-
 
   return (
     <div className="ranking_table">

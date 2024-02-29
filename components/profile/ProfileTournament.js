@@ -402,7 +402,7 @@ const ProfileTournament = ({
                     </a>
                     <p>
                       {format(
-                        new Date(tournament.tournament?.startDate),
+                        new Date(tournament?.tournament?.startDate),
                         'yyyy'
                       )}
                     </p>

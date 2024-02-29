@@ -129,7 +129,7 @@ const TournamentFilters = ({
 
     try {
       axios
-        .post(`https://9de1-106-212-173-61.ngrok-free.app/api/discover/tournaments`, params, {
+        .post(`${baseURL}/api/discover/tournaments`, params, {
           headers: {
             'Content-Type': 'application/json'
           }
@@ -142,6 +142,7 @@ const TournamentFilters = ({
       toast.error(err.response?.data?.msg || 'Please recheck your inputs');
     }
   };
+
 
   useEffect(() => {
     var sg = undefined;
@@ -177,7 +178,7 @@ const TournamentFilters = ({
     }
   }, [myState, tournament]);
 
-  console.log("Team for tournament ",myState.setFilteredResults);
+  
 
   return (
     <>
@@ -297,6 +298,9 @@ const TournamentFilters = ({
         user={user}
         teams={teams}
       />
+      <div>
+        <button  className='pagination-btn' style={{ height: 40, width: 100 }}>page : </button>
+      </div>
     </>
   );
 };

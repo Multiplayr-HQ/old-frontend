@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import MetaDash from '@components/MetaDash';
 import SignedHeader from '@components/SignedHeader';
@@ -19,132 +19,62 @@ import Filters from '@components/common/Filters';
 import { searchTeams } from '@utils/functionsHelper';
 import RankingPage from '../components/ranking/RankingPage';
 import Link from 'next/link';
+import next from 'next';
 
 const Ranking = ({ user, games, profile }) => {
-  // const [searchObj, setSearchObj] = useState({
-  //   search: '',
-  //   filters: ''
-  // });
-
-  // const [searchText, setSearchText] = useState('');
-  // const [status, setStatus] = useState('confirm');
-  // const [searchResults, setSearchResults] = useState([]);
-  // const [data, setData] = useState([]);
-  const [teamsRanks, setTeamsRanks] = useState([]);
-  // const router = useRouter();
-
-  // let cancel;
-  // var sdata;
-
-  // const [showPassword, setShowPassword] = useState(false);
-  // const [error, setError] = useState(null);
-  // const [formLoading, setFormLoading] = useState(false);
-  // const [submitDisabled, setSubmitDisabled] = useState(true);
-  const [selectedGame, setSelectedGame] = useState({
-    _id : 20
-  });
+  const [teamsRanks, setTeamsRanks] = useState({ teams: [] });
+  const [loading, setLoading] = useState(false);
 
 
-  // const { search, filters } = searchObj;
-  const [page , setPage] = useState(1);
+  const [selectedGame, setSelectedGame] = useState({ _id: 20 });
 
-  // const arr=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
-
-  useEffect (() => {
-    const fet=async()=>{
-     const res= await axios.get(`${baseURL}/api/rankings/bywinnings100/${selectedGame?._id}?page=1`)
-      await setTeamsRanks(res.data);
-
-    }
-
-    fet()
-  },[selectedGame]);
+  const [page, setPage] = useState(1);
 
 
-  // const gameChange = {};
 
   const handleSelectGame = async (obj) => {
-
-    // gameChange = obj;
-
-
+    setTeamsRanks({ teams: [] });
     setSelectedGame(obj);
-    console.log("i am inhandle selectgame \t",obj)
-    // setPage(1);
+    setPage(1);
+    await getData(1, obj);
+    
+    console.log("game id ", obj?._id);
+
     $('a.model_close').parent().removeClass('show_model');
-    // const response = await axios.get(`${baseURL}/api/rankings/bywinnings100/20`);
-    // await setTeamsRanks(response.data);
-    
-   
-    // await axios
-    // // .get(`${baseURL}/api/rankings/bywinnings100/${selectedGame?._id}?page=${page}`)
-    // .get(`${baseURL}/api/rankings/bywinnings100/${selectedGame?._id}`) 
-    // // .then((res) => setTeamsRanks((prev) => [...prev , ...res.data]));
-      
-    //   // .then((res) => setTeamsRanks((prev) => [...prev , ...res.data]));
-    // .then((res) => setTeamsRanks(res.data));
-    
-      
-    // //   console.log('new team data',teamsRanks);
   };
-  // console.log("games :",games);
-  // console.log("selected games",selectedGame?._id);
 
-  // console.log("set team ",teamsRanks);
-  // };
+  const getData = async (pag, game) => {
+    setLoading(true);
+    console.log("gandu page : " ,pag);
+    const res = await axios.get(`${baseURL}/api/rankings/bywinnings100/${game?._id}?page=${pag}`);
+    setPage(pag+1);
 
+    setTeamsRanks((p) => {
+      let arr = [];
+      arr = [...p.teams , ...res?.data?.teams];
+      return {teams : arr};
+    });
 
+    setLoading(false);
+    console.log("response data gandu :", res, "page : ", page);
+  }
+
+  console.log("gandu page : " , page);
   
   
-  // Implement handleSelectGame and other necessary functions...
+  useEffect(() => {
+    getData(1, selectedGame);
+  }, []);
 
- 
-  
 
-  // useEffect (async () => {
-  //   const response = await axios.get(`${baseURL}/api/rankings/bywinnings100/${selectedGame?._id}?page=${page}`);
-  //   setTeamsRanks((prev ) => [...prev,...response.data]);
-  // },[page]);
+  const handlepageChange = async () => {
+    if(loading===true){
+      console.log("gandu wait");
+      return;
+    }
+    await getData(page, selectedGame);
+  }
 
- 
-
-  
-
-  // useEffect(() => {
-  //   $('a.model_show_btn').click(function () {
-  //     $(this).next().addClass('show_model');
-  //   });
-
-  //   $('a.model_close').click(function () {
-  //     $(this).parent().removeClass('show_model');
-  //   });
-  // }, []);
-
-  // useEffect(() => {
-    
-  //   console.log("page in useeffect in ",page)
-  //   handleSelectGame('Browse Games');
-  //   // setPage((prev) => prev + 1);
-  // },[]);
-   
-  
-
-  
-
-  // const handleScrollTop = () => {
-  //   if ((window.innerHeight + document.documentElement.scrollTop + 1) >= document.documentElement.scrollHeight) {
-  //     console.log("page before setPage in handleTop ",page);
-  //     setPage((prev) => prev + 1);
-  //     console.log("page after setPage in handleTop",page)
-  //   }
-  // };
-
-  // useEffect (()=>{
-  //   window.addEventListener("scroll",handleScrollTop);
-  //   return () => window.removeEventListener("scroll",handleScrollTop);
-  // },[]);
-  // console.log('ranking page :', searchResults);
-  // console.log('selectGame', selectedGame);
   return (
 
     <>
@@ -153,6 +83,8 @@ const Ranking = ({ user, games, profile }) => {
       <SignedHeader user={user} profile={profile} />
 
       <LeftNav user={user} />
+
+
 
       <div className="main_middle profile_middle">
         <div className="discovery_page">
@@ -200,11 +132,11 @@ const Ranking = ({ user, games, profile }) => {
                         <li key={idx}>
                           <div className="game_pic">
                             <Link href="#!">
-                            <a onClick={() => handleSelectGame(game)}>
-                              {' '}
-                              <img src={game.imgUrl} alt={game.name} />{' '}
+                              <a onClick={() => handleSelectGame(game)}>
+                                {' '}
+                                <img src={game.imgUrl} alt={game.name} />{' '}
 
-                            </a>
+                              </a>
                             </Link>
                           </div>
                           <p>{game.name}</p>
@@ -259,6 +191,10 @@ const Ranking = ({ user, games, profile }) => {
               user={user}
             // gameChange={gameChange}
             />
+          </div>
+
+          <div>
+            <button onClick={handlepageChange} className='pagination-btn' style={{ height: 40, width: 100 }}>page : {page-1}</button>
           </div>
         </div>
       </div>

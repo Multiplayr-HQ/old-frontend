@@ -189,11 +189,11 @@ const TeamFilter = ({ filterType, myState, selectedGame , showfavs , searchData,
     //   mapFilters: uniqueTags,
     //   selectedGame: ssg
     // });
-    console.log("GAME",selectedGame);
-    console.log("FILTERS",uniqueTags[0].key);
+    // console.log("GAME",selectedGame);
+    // console.log("FILTERS",uniqueTags[0].key);
    
     const filterdata = uniqueTags[0].values[0];
-    console.log("FILTERS  2 :",filterdata);
+    // console.log("FILTERS  2 :",filterdata);
 
     try {
 
@@ -256,8 +256,8 @@ const TeamFilter = ({ filterType, myState, selectedGame , showfavs , searchData,
      
     }
   }, [myState, team]);
-  console.log("team accourding to resion :",team);
-  console.log("selected filter :",selectedFilters);
+  // console.log("team accourding to resion :",team);
+  // console.log("selected filter :",selectedFilters);
   // console.log("sesssion team ",sessionTeam);
   // console.log("filter result", myState);
 
