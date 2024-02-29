@@ -15,7 +15,8 @@ const RankingTable = ({ teamrankingss, searchResults, favshow, user, team }) => 
 
   const [content, setContent] = useState([]);
 
-
+  console.log("gandu Team Ranking length" , teamrankingss?.teams?.length);
+  
   useEffect(() => {
     if (team.length > 0 ) {
       setContent({teams: team});
@@ -24,25 +25,9 @@ const RankingTable = ({ teamrankingss, searchResults, favshow, user, team }) => 
     } else {
       setContent(teamrankingss);
     }
-  }, [ searchResults, team]);
-console.log("content",content);
+  }, [ searchResults, team, teamrankingss]);
+  console.log("content",content);
   const getContent = () => {
-    // Determine what content to display based on the current state
-    // let content = [];
-
-    // if (team.length > 0) {
-    //   content = team;
-
-
-    // } else if (searchResults.length > 0 && team.length === 0) {
-    //   content = searchResults;
-
-    // }else{
-    //   content = teamrankingss;
-    // }
-   
-
-
 
     // Return "No teams are ranked yet ..." message if there's no content
     if (content === 0 && teamrankingss === 0) {
@@ -52,7 +37,6 @@ console.log("content",content);
         </div>
       );
     }
-
 
     return content?.teams?.map((result, idx) => (
           <div className="row_box" key={idx}>

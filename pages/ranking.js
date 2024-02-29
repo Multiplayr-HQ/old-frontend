@@ -19,94 +19,62 @@ import Filters from '@components/common/Filters';
 import { searchTeams } from '@utils/functionsHelper';
 import RankingPage from '../components/ranking/RankingPage';
 import Link from 'next/link';
+import next from 'next';
 
 const Ranking = ({ user, games, profile }) => {
-  const [teamsRanks, setTeamsRanks] = useState([]);
+  const [teamsRanks, setTeamsRanks] = useState({ teams: [] });
+  const [loading, setLoading] = useState(false);
 
-  // let cancel;
-  // var sdata;
 
-  // const [showPassword, setShowPassword] = useState(false);
-  // const [error, setError] = useState(null);
-  // const [formLoading, setFormLoading] = useState(false);
-  // const [submitDisabled, setSubmitDisabled] = useState(true);
-  const [selectedGame, setSelectedGame] = useState({
-    _id: 20
-  });
+  const [selectedGame, setSelectedGame] = useState({ _id: 20 });
 
   const [page, setPage] = useState(1);
-  const pageRef = useRef(page);
+
+
 
   const handleSelectGame = async (obj) => {
+    setTeamsRanks({ teams: [] });
     setSelectedGame(obj);
-    console.log("i am inhandle selectgame \t", obj)
+    setPage(1);
+    await getData(1, obj);
+    
+    console.log("game id ", obj?._id);
+
     $('a.model_close').parent().removeClass('show_model');
   };
 
-  useEffect(() => {
-    const fet = async () => {
-      const res = await axios.get(`${baseURL}/api/rankings/bywinnings100/${selectedGame?._id}`)
-      await setTeamsRanks(res?.data);
-      setPage(1);
-      console.log("response data gandu :", res);
-    }
-    fet()
-  }, [selectedGame]);
+  const getData = async (pag, game) => {
+    setLoading(true);
+    console.log("gandu page : " ,pag);
+    const res = await axios.get(`${baseURL}/api/rankings/bywinnings100/${game?._id}?page=${pag}`);
+    setPage(pag+1);
 
+    setTeamsRanks((p) => {
+      let arr = [];
+      arr = [...p.teams , ...res?.data?.teams];
+      return {teams : arr};
+    });
 
-  useEffect(() => {
-    const fet = async () => {
-      const response = await axios.get(`${baseURL}/api/rankings/bywinnings100/${selectedGame?._id}?page=${pageRef.current + 1}`);
-      console.log("response gandu :", response);
-      setTeamsRanks(response?.data);
-    }
-    fet();
-  }, [pageRef.current]);
-
-  useEffect(() => {
-    pageRef.current = page; // Update the ref's current value when page state changes
-  }, [page]);
-
-
-
-
-
-  // useEffect(() => {
-  //   $('a.model_show_btn').click(function () {
-  //     $(this).next().addClass('show_model');
-  //   });
-
-  //   $('a.model_close').click(function () {
-  //     $(this).parent().removeClass('show_model');
-  //   });
-  // }, []);
-
-  // useEffect(() => {
-
-  //   console.log("page in useeffect in ",page)
-  //   handleSelectGame();
-  //   // setPage((prev) => prev + 1);
-  // },[]);
-
-
-
-
-
-  const handleScrollTop = () => {
-    if ((window.innerHeight + document.documentElement.scrollTop + 1) >= document.documentElement.scrollHeight) {
-      setPage(pageRef.current +1);
-      // Use the ref to log the current page
-      console.log("page after setPage in handleScrollTop", page);
-    }
+    setLoading(false);
+    console.log("response data gandu :", res, "page : ", page);
   }
 
+  console.log("gandu page : " , page);
+  
+  
   useEffect(() => {
-    const scrollListener = () => handleScrollTop();
-    window.addEventListener("scroll", scrollListener);
-    return () => window.removeEventListener("scroll", scrollListener);
+    getData(1, selectedGame);
   }, []);
-  // console.log('ranking page :', searchResults);
-  // console.log('selectGame', selectedGame);
+
+
+  const handlepageChange = async () => {
+    if(loading===true){
+      console.log("gandu wait");
+      return;
+    }
+    await getData(page, selectedGame);
+  }
+
   return (
 
     <>
@@ -115,6 +83,8 @@ const Ranking = ({ user, games, profile }) => {
       <SignedHeader user={user} profile={profile} />
 
       <LeftNav user={user} />
+
+
 
       <div className="main_middle profile_middle">
         <div className="discovery_page">
@@ -221,6 +191,10 @@ const Ranking = ({ user, games, profile }) => {
               user={user}
             // gameChange={gameChange}
             />
+          </div>
+
+          <div>
+            <button onClick={handlepageChange} className='pagination-btn' style={{ height: 40, width: 100 }}>page : {page-1}</button>
           </div>
         </div>
       </div>

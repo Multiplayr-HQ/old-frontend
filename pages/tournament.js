@@ -8,13 +8,14 @@ import baseURL from '@utils/baseURL';
 
 const Tournament = ({ user, games, profile, teams }) => {
   const [selectedGame, setSelectedGame] = useState(null);
-
+  
   const handleSelectGame = async (obj) => {
     setSelectedGame(obj);
     //myState.setFilteredResults([]);
+   
     $('a.model_close').parent().removeClass('show_model');
   };
-  
+
   useEffect(() => {
     $('a.model_show_btn').click(function () {
       $(this).next().addClass('show_model');
@@ -106,6 +107,9 @@ const Tournament = ({ user, games, profile, teams }) => {
             />
           </div>
         </div>
+        {/* <div>
+          <button  className='pagination-btn' style={{ height: 40, width: 100 }}>page : </button>
+        </div> */}
       </div>
 
       <AllScript />

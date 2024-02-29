@@ -870,12 +870,13 @@ ul.top_menu li.wallet>a {
 	display: flex;
 	align-items: center;
 	background: #fff;
-	padding: 12px 10px;
+	padding: 16px 10px;
 }
 
 ul.top_menu li.wallet>a .dps {
 	overflow: hidden;
 }
+
 
 ul.top_menu li.wallet>a .dps img {
 	width: 30px;
@@ -1222,6 +1223,7 @@ ul.top_menu .drop_down_bg.create_pages p {
 
 .main_middle {
 	width: 800px;
+	
 	margin: 150px auto 0 auto;
 }
 
@@ -3883,6 +3885,12 @@ article .social_bar img {
 	float: left;
 	width: 100%;
 	margin: 20px 0 0 0;
+}
+.pagination-btn{
+	display: flex;
+	font-size: 20px;
+	
+	margin: auto;
 }
 
 .prfoile_tab_data .tab {
@@ -9716,7 +9724,7 @@ ul.game_search_result.map-slection li .fa-check{ top:8%;}
 	width: 100%;
 	padding: 30px;
 	background: #fff;
-	overflow: hidden;
+	overflow-y: scroll;
 	box-shadow: 2px 0px 10px #b9b2b2;
 }
 
@@ -9877,6 +9885,7 @@ ul.game_search_result.map-slection li .fa-check{ top:8%;}
 
 .inner_model_box {
 	padding: 20px !important;
+	
 }
 
 .inner_model_box h3 {

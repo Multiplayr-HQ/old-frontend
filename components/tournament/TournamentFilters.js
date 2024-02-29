@@ -143,6 +143,7 @@ const TournamentFilters = ({
     }
   };
 
+
   useEffect(() => {
     var sg = undefined;
     if (selectedGame != null) {
@@ -157,7 +158,7 @@ const TournamentFilters = ({
           .get(`${baseURL}/api/tournaments/tournamentsbygame/${sg}`)
           .then((res) => {
             setTournament(res.data);
-            setSessionTournament({ key: sg , value: tournament });
+            setSessionTournament({ key: sg, value: tournament });
           });
       } else {
         if (sessiontournament.key != sg) {
@@ -165,7 +166,7 @@ const TournamentFilters = ({
             .get(`${baseURL}/api/tournaments/tournamentsbygame/${sg}`)
             .then((res) => {
               setTournament(res.data);
-              setSessionTournament({ key: sg , value: tournament });
+              setSessionTournament({ key: sg, value: tournament });
             });
         } else {
           //setTeam (sessionTeam.get(sg));
@@ -177,11 +178,7 @@ const TournamentFilters = ({
     }
   }, [myState, tournament]);
 
-
-
-
-
-  console.log("Team for tournament ",myState.setFilteredResults);
+  
 
   return (
     <>
@@ -301,6 +298,9 @@ const TournamentFilters = ({
         user={user}
         teams={teams}
       />
+      <div>
+        <button  className='pagination-btn' style={{ height: 40, width: 100 }}>page : </button>
+      </div>
     </>
   );
 };
