@@ -33,14 +33,18 @@ const CommentList = ({ post, user, comments }) => {
   };
 
   useEffect(() => {
-    axios
+
+    const fet =async()=>{ await axios
       .get(`${baseURL}/api/comments/commentData/${post._id}/${value?.type}`)
       .then((res) => {
         setCommentsData(res.data);
       })
       .catch((err) => {
         console.log(err);
-      });
+      });}
+
+    fet();
+    
   }, [post._id, value]);
 
   return (
@@ -118,7 +122,7 @@ const CommentList = ({ post, user, comments }) => {
                     <ReplyList post={post} comment={comment} user={user} />
                   </div>
                 ))
-              : commentsData.slice(0, next).map((comment) => (
+              : commentsData?.slice(0, next)?.map((comment) => (
                   <div key={comment._id} className="single_comment_sec">
                     <div className="comments_point">
                       <LikeComment
