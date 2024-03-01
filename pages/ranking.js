@@ -1,25 +1,25 @@
 import { useState, useEffect, useRef } from 'react';
-import Head from 'next/head';
+// import Head from 'next/head';
 import MetaDash from '@components/MetaDash';
 import SignedHeader from '@components/SignedHeader';
 import LeftNav from '@components/LeftNav';
-import TeamFilter from '@components/ranking/TeamFilter';
-import RankingTable from '@components/ranking/RankingTable';
-import FooterMain from '@components/FooterMain';
+// import TeamFilter from '@components/ranking/TeamFilter';
+// import RankingTable from '@components/ranking/RankingTable';
+// import FooterMain from '@components/FooterMain';
 import AllScript from './AllScript';
 
-import { toast } from 'react-toastify';
-import { useForm } from 'react-hook-form';
+// import { toast } from 'react-toastify';
+// import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import { useRouter } from 'next/router';
-import cookie from 'js-cookie';
-import { useQuery, useMutation } from 'react-query';
-import Filters from '@components/common/Filters';
-import { searchTeams } from '@utils/functionsHelper';
+// import cookie from 'js-cookie';
+// import { useQuery, useMutation } from 'react-query';
+// import Filters from '@components/common/Filters';
+// import { searchTeams } from '@utils/functionsHelper';
 import RankingPage from '../components/ranking/RankingPage';
 import Link from 'next/link';
-import next from 'next';
+// import next from 'next';
 
 const Ranking = ({ user, games, profile }) => {
   const [teamsRanks, setTeamsRanks] = useState({ teams: [] });
