@@ -5,12 +5,23 @@ import LeftNav from '@components/LeftNav';
 import TournamentRows from '@components/tournament/TournamentRows';
 import AllScript from './AllScript';
 import baseURL from '@utils/baseURL';
+import axios from 'axios';
 
 const Tournament = ({ user, games, profile, teams }) => {
   const [selectedGame, setSelectedGame] = useState(null);
+  var [tournament, setTournament] = useState([]);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
   
   const handleSelectGame = async (obj) => {
+    setTournament(  [] );
     setSelectedGame(obj);
+
+    // setSelectedGame(obj);
+    setPage(1);
+    await getData(1, obj);
+    
+    console.log("game id ", obj?._id);
     //myState.setFilteredResults([]);
    
     $('a.model_close').parent().removeClass('show_model');
@@ -25,6 +36,38 @@ const Tournament = ({ user, games, profile, teams }) => {
       $(this).parent().removeClass('show_model');
     });
   }, []);
+
+
+
+  const getData = async (pag, game) => {
+    setLoading(true);
+    console.log("gandu page : " ,pag);
+    const res = await axios.get(`${baseURL}/api/tournaments/tournamentsbygame/${game?._id}?page=${pag}`);
+    setPage(pag+1);
+
+    setTournament((p) => {
+
+    let arr = [];
+    arr = [...p , ...res?.data];
+    return  arr;
+    });
+
+    setLoading(false);
+    console.log("response data gandu :", res, "page : ", page);
+  }
+
+
+  useEffect(() => {
+    getData(1, selectedGame);
+  }, []);
+
+  const handlepageChange = async () => {
+    if(loading===true){
+      console.log("gandu wait");
+      return;
+    }
+    await getData(page, selectedGame);
+  }
 
   return (
     <>
@@ -102,14 +145,15 @@ const Tournament = ({ user, games, profile, teams }) => {
             <TournamentRows
               user={user}
               profile={profile}
+              tournament={tournament}
               selectedGame={selectedGame}
               teams={teams}
             />
           </div>
         </div>
-        {/* <div>
-          <button  className='pagination-btn' style={{ height: 40, width: 100 }}>page : </button>
-        </div> */}
+        <div>
+            <button onClick={handlepageChange} className='pagination-btn' style={{ height: 40, width: 100 }}>page : {page-1}</button>
+          </div>
       </div>
 
       <AllScript />

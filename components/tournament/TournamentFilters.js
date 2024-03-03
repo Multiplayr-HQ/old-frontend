@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
-import cookie from 'js-cookie';
+// import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
 import TournamentDisplay from './TournamentDisplay';
+
 
 const TournamentFilters = ({
   filterType,
@@ -13,12 +14,13 @@ const TournamentFilters = ({
   profile,
   searchData,
   user,
-  teams
+  teams,
+  tournament
 }) => {
   const [data, setData] = useState(null);
 
   const [selectedMapFilters, setSelectedMapFilters] = useState([]);
-  var [tournament, setTournament] = useState([]);
+  const [filterdata, setFilterdata] = useState(tournament);
   const [isLoading, setIsLoading] = useState(false);
   const [sessiontournament, setSessionTournament] = useState({
     key: null,
@@ -143,40 +145,50 @@ const TournamentFilters = ({
     }
   };
 
+  console.log("session tournament is :",sessiontournament);
 
-  useEffect(() => {
-    var sg = undefined;
-    if (selectedGame != null) {
-      sg = selectedGame._id;
+  useEffect (()  =>  {
+      if (myState.selectedFilters.length > 0) {
+      
+      setFilterdata(myState.filteredResults);
     }
 
-    if (myState.selectedFilters.length > 0) {
-      setTournament(myState.filteredResults);
-    } else {
-      if (sessiontournament.key === null) {
-        axios
-          .get(`${baseURL}/api/tournaments/tournamentsbygame/${sg}`)
-          .then((res) => {
-            setTournament(res.data);
-            setSessionTournament({ key: sg, value: tournament });
-          });
-      } else {
-        if (sessiontournament.key != sg) {
-          axios
-            .get(`${baseURL}/api/tournaments/tournamentsbygame/${sg}`)
-            .then((res) => {
-              setTournament(res.data);
-              setSessionTournament({ key: sg, value: tournament });
-            });
-        } else {
-          //setTeam (sessionTeam.get(sg));
-        }
-      }
+  } ,[myState] );
+  // useEffect(() => {
+  //   var sg = undefined;
+  //   if (selectedGame != null) {
+  //     sg = selectedGame._id;
+  //   }
 
-      // myState.setFilteredResults(team);
-      //console.log(team);
-    }
-  }, [myState, tournament]);
+  //   if (myState.selectedFilters.length > 0) {
+  //     setTournament(myState.filteredResults);
+  //   } else {
+  //     if (sessiontournament.key === null) {
+  //       axios
+  //         .get(`${baseURL}/api/tournaments/tournamentsbygame/${sg}`)
+  //         .then((res) => {
+  //           setTournament(res.data);
+  //           console.log("session tournament in first api :",sessiontournament);
+  //           setSessionTournament({ key: sg, value: tournament });
+  //         });
+  //     } else {
+  //       if (sessiontournament.key != sg) {
+  //         axios
+  //           .get(`${baseURL}/api/tournaments/tournamentsbygame/${sg}`)
+  //           .then((res) => {
+  //             setTournament(res.data);
+  //             console.log("session tournament in second api :",sessiontournament);
+  //             setSessionTournament({ key: sg, value: tournament });
+  //           });
+  //       } else {
+  //         //setTeam (sessionTeam.get(sg));
+  //       }
+  //     }
+
+  //     // myState.setFilteredResults(team);
+  //     //console.log(team);
+  //   }
+  // }, [myState, tournament]);
 
   
 
@@ -294,13 +306,14 @@ const TournamentFilters = ({
         tournament={tournament}
         showfavs={showfavs}
         profile={profile}
+        filterdata ={filterdata}
         searchData={searchData}
         user={user}
         teams={teams}
       />
-      <div>
+      {/* <div>
         <button  className='pagination-btn' style={{ height: 40, width: 100 }}>page : </button>
-      </div>
+      </div> */}
     </>
   );
 };
