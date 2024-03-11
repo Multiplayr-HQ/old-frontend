@@ -7,7 +7,7 @@ import { useSpinner } from "@components/common/SpinnerContext";
 import { MarketItem } from "../pages/nftindex";
 import { Loader } from "@components/common/Loader";
 import { BigNumber, ethers } from "ethers";
-import { getMarketContract, getTokenContract } from "./api/blockchainService";
+// import { getMarketContract, getTokenContract } from "./api/blockchainService";
 import { useRouter } from "next/router";
 import { BlockchainContext } from "../context/BlockchainContext";
 import MetaDash from '@components/MetaDash';

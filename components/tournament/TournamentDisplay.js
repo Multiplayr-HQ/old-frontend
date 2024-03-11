@@ -15,6 +15,7 @@ const TournamentDisplay = ({
   profile,
   showfavs,
   searchData,
+  filterdata,
   user,
   teams
 }) => {
@@ -34,6 +35,25 @@ const TournamentDisplay = ({
         console.log(err);
       });
   }, []);
+  console.log("tournament new ",tournament);
+
+  const [content ,setContent]= useState([]);
+  console.log("filterdata is",filterdata);
+
+  useEffect(() => {
+    if(filterdata.length>0){
+      setContent(filterdata);
+    }
+    
+   
+  }, [filterdata,tournament]);
+  useEffect(() => {
+    // if(filterdata.length>0){
+      setContent(tournament);
+    // }
+    
+   
+  }, [tournament]);
 
   console.log("tournament for filter ",tournament);
 
@@ -374,8 +394,8 @@ const TournamentDisplay = ({
             </div>
           ))
         ) : (
-          tournament &&
-          tournament.map((result, idx) => (
+          content &&
+          content.map((result, idx) => (
             <div className="game_row" key={idx}>
               <FavTournament tournament={result.tournament} user={user} />
               <div className="game_pos">

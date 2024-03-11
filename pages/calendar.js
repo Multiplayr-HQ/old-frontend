@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import Head from 'next/head';
+// import Head from 'next/head';
 import MetaDash from '@components/MetaDash';
 import SignedHeader from '@components/SignedHeader';
 import LeftNav from '@components/LeftNav';
-import DateCal from '@components/calendar/DateCal';
-import Match from '@components/calendar/match';
-import FooterMain from '@components/FooterMain';
+// import DateCal from '@components/calendar/DateCal';
+// import Match from '@components/calendar/match';
+// import FooterMain from '@components/FooterMain';
 import AllScript from './AllScript';
 import baseURL from '@utils/baseURL';
 
@@ -92,9 +92,9 @@ const Calendar = ({ user, profile, games }) => {
               </div>
             </div>
 
-            <DateCal
+            {/* <DateCal
               gameId={selectedGame != null ? selectedGame._id : 'undefined'}
-            />
+            /> */}
           </div>
         </div>
       </div>

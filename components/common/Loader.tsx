@@ -11,10 +11,14 @@ const defaultOptions = {
 
 interface Props {}
 
-export const Loader = (props: Props) => {
+ const Loader = (props: Props) => {
 
   const { View } = useLottie(defaultOptions);
 
   return View;
 
 };
+
+export default Loader;
+
+

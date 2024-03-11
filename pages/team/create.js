@@ -3,8 +3,8 @@ import Head from 'next/head';
 import MetaDash from '@components/MetaDash';
 import SignedHeader from '@components/SignedHeader';
 import LeftNav from '@components/LeftNav';
-import Match from '@components/calendar/match';
-import FooterMain from '@components/FooterMain';
+// import Match from '@components/calendar/match';
+// import FooterMain from '@components/FooterMain';
 import AllScript from '../AllScript';
 import TeamCreate from '../../components/Creators/TeamCreate';
 
