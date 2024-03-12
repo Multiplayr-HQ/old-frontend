@@ -3890,7 +3890,8 @@ article .social_bar img {
 	display: flex;
 	font-size: 20px;
 	
-	margin: auto;
+	float: right;
+	
 }
 
 .prfoile_tab_data .tab {
@@ -5658,12 +5659,12 @@ article .social_bar img {
 .more_data .total .team-prize .prize_2 span{
 	font-size: 8px;
 	font-weight: 600;
-	margin-bottom: 10px;
+	/* margin-bottom: 10px; */
 }
-/* .more_data .total .team-prize .prize p{
+.more_data .total .team-prize .prize p{
 	font-size: 14px;
 	
-} */
+}
 
 .more_data .total p {
 	padding: 5px 0;

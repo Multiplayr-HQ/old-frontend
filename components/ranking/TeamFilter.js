@@ -257,7 +257,7 @@ const TeamFilter = ({ filterType, myState, selectedGame , showfavs , searchData,
     }
   }, [myState, team]);
   // console.log("team accourding to resion :",team);
-  // console.log("selected filter :",selectedFilters);
+  console.log("selected filter :",selectedFilters);
   // console.log("sesssion team ",sessionTeam);
   // console.log("filter result", myState);
 

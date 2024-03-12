@@ -126,7 +126,7 @@ const AllPosts = ({ post, user, profiledata, followData, type, team }) => {
             <img
               src={
                 post.post_type === 'user'
-                  ? post?.user.profilePicUrl
+                  ? post?.user?.profilePicUrl
                   : post?.profilepic
               }
               alt={post.post_type}

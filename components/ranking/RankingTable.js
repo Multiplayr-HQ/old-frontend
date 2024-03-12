@@ -1,5 +1,6 @@
 import { MPNumberFormat } from '../../utils/helpers';
 import { format } from 'date-fns';
+import Moment from 'moment';
 import { useEffect, useState } from 'react';
 import LoadingSpinner from '../LoadingSpinner';
 import ReactCountryFlag from 'react-country-flag';
@@ -55,9 +56,10 @@ const RankingTable = ({ teamrankingss, searchResults, favshow, user, team }) => 
             <div className="cols">{result.totalTournaments}</div>
             <div className="cols">{result.teamWinCount}</div>
             <div className="cols">
-              {result.points ? result.points : '0'}
+              {/* {result.points ? result.points : '0'}
               ---
-              / 0
+              / 0 */}
+              0
             </div>
             {/* <div className="cols">tdb</div> */}
             <div className="cols">
@@ -70,7 +72,7 @@ const RankingTable = ({ teamrankingss, searchResults, favshow, user, team }) => 
             </div>
             {result.team.team_winnings ? (
               <div className="cols">
-                Rs: {result.team.team_winnings}
+                $ {result.team.team_winnings}
               </div>
             ) : (
               'No Winnings Yet'
@@ -104,17 +106,17 @@ const RankingTable = ({ teamrankingss, searchResults, favshow, user, team }) => 
               {/* <p>TOTAL PRIZE POOL EARNED</p> */}
               <div className='team-prize'>
                 <div className='prize'>
-                  <p>PRIZE EARNED</p>
-                  <span>USD 912,840</span>
+                  <span>PRIZE EARNED</span>
+                  <p>USD {result.team.team_winnings}</p>
                 </div>
                 <div className='prize_2'>
                   <div className="team-stablish">
-                    <p>STABLISHED</p>
-                    <span>MARCH 2007</span>
+                    <span>ESTABLISHED</span>
+                    <p>{Moment(result.team.founded).format('MMM YYYY')}</p>
                   </div>
                   <div className="manager">
-                    <p>Manager </p>
-                    <span>Sonu Singh</span>
+                    <span>{result.team.role}</span>
+                    <p>Sonu Singh</p>
                   </div>
 
                 </div>
