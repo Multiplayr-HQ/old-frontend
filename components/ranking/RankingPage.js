@@ -53,6 +53,7 @@ const RankingPage = ({ selectedGame, teamranking, user,gameChange }) => {
                 const response = await axios.get(
                     `${baseURL}/api/rankings/bywinnings100/${selectedGame._id}?searchText=${searchObj.search}`
                 );
+                
                 setSearchData(response.data);
                 // setLoading(false);
             } catch (err) {
@@ -134,8 +135,8 @@ const RankingPage = ({ selectedGame, teamranking, user,gameChange }) => {
                                 ></label>
                             </div>
                         </div> */}
-                        <h3>Favourite</h3>
-                        <div className="custom-control custom-switch">
+                        {/* <h3>Favourite</h3> */}
+                        {/* <div className="custom-control custom-switch">
                             <input
                                 type="checkbox"
                                 className="custom-control-input"
@@ -146,7 +147,7 @@ const RankingPage = ({ selectedGame, teamranking, user,gameChange }) => {
                                 className="custom-control-label"
                                 htmlFor="customSwitch1"
                             ></label>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 

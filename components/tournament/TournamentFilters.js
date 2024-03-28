@@ -15,9 +15,12 @@ const TournamentFilters = ({
   searchData,
   user,
   teams,
-  tournament
+  tournament,
+  searchObj
 }) => {
   const [data, setData] = useState(null);
+
+  let filter = {};
 
   const [selectedMapFilters, setSelectedMapFilters] = useState([]);
   const [filterdata, setFilterdata] = useState(tournament);
@@ -41,6 +44,7 @@ const TournamentFilters = ({
         })
       );
     }
+    // console.log("selected map filter",selectedFilters);
 
     var found = selectedMapFilters.find((element) =>
       element.key.includes(name)
@@ -65,6 +69,7 @@ const TournamentFilters = ({
       var findItem = uniqueTags.find((x) => x.key === item.key);
       if (!findItem) uniqueTags.push(item);
     });
+    
 
     setSelectedMapFilters(uniqueTags);
   };
@@ -111,41 +116,73 @@ const TournamentFilters = ({
 
   const handleApplyFilters = async (e) => {
     e.preventDefault();
-    myState.setFilteredResults([]);
-    myState.setSelectedFilters([]);
+    // myState.setFilteredResults([]);
+    // myState.setSelectedFilters([]);
     const uniqueTags = [];
     selectedMapFilters.map((item) => {
       uniqueTags.push({ key: item.key, values: Array.from(item.values) });
     });
+    // console.log("selected map filter",)
+
+
+    const getfilterData  =  async () => {
+     
+      selectedMapFilters.map((item , index) => {
+        const key = item.key.toString().toLowerCase();
+        console.log(key);
+        filter = {
+          ...filter,
+          [key] : Array.from(item.values)
+        }
+      })
+
+      console.log("xxxx" , filter);
+
+      fetch(`${baseURL}/api/discover/tournaments/${selectedGame?._id}`, {
+        method: 'POST', 
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(filter),
+      })
+      .then(response => response.json())
+      .then(data => console.log("xxxx api response" , data))
+      .catch((error) => {
+        console.error('Error:', error);
+      }) 
+    };
+
+    await getfilterData();
 
     //Always set the Selected Game as Filter.
-    var ssg = undefined;
-    if (selectedGame != null) {
-      ssg = selectedGame._id;
-    }
+    // var ssg = undefined;
+    // if (selectedGame != null) {
+    //   ssg = selectedGame._id;
+    // }
 
-    const params = JSON.stringify({
-      mapFilters: uniqueTags,
-      selectedGame: ssg
-    });
+    // const params = JSON.stringify({
+    //   mapFilters: uniqueTags,
+    //   selectedGame: ssg
+    // });
 
-    try {
-      axios
-        .post(`${baseURL}/api/discover/tournaments`, params, {
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        })
-        .then((res) => {
-          myState.setFilteredResults(res.data);
-          myState.setSelectedFilters(selectedMapFilters);
-        });
-    } catch (err) {
-      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
-    }
+    // try {
+    //   axios
+    //     .post(`${baseURL}/api/discover/tournaments`, params, {
+    //       headers: {
+    //         'Content-Type': 'application/json'
+    //       }
+    //     })
+    //     .then((res) => {
+    //       myState.setFilteredResults(res.data);
+    //       myState.setSelectedFilters(selectedMapFilters);
+    //     });
+    // } catch (err) {
+    //   toast.error(err.response?.data?.msg || 'Please recheck your inputs');
+    // }
+    // console.log("selected map filter",selectedMapFilters);
   };
 
-  console.log("session tournament is :",sessiontournament);
+  // console.log("session tournament is :",sessiontournament);
 
   useEffect (()  =>  {
       if (myState.selectedFilters.length > 0) {
@@ -310,6 +347,7 @@ const TournamentFilters = ({
         searchData={searchData}
         user={user}
         teams={teams}
+        searchObj = {searchObj}
       />
       {/* <div>
         <button  className='pagination-btn' style={{ height: 40, width: 100 }}>page : </button>

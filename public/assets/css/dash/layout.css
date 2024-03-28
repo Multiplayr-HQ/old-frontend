@@ -2516,6 +2516,7 @@ article .social_bar img {
 	width: 100%;
 	margin: 5px 0;
 	text-align: left;
+	
 	border-bottom: 1px solid #ddd;
 	padding-bottom: 10px;
 }
@@ -2545,6 +2546,7 @@ article .social_bar img {
 	font-size: 12px;
 	font-weight: 600;
 	word-break: break-all;
+	margin-top: 50px;
 }
 
 .white_box .activity_tag .act_name b {
@@ -5611,6 +5613,10 @@ article .social_bar img {
 	justify-content: space-between;
 	width: 250px;
 }
+.more_data .pic .flag{
+	display: flex;
+	justify-content: space-around;
+}
 
 .more_data .pic .tumb {
 	border-radius: 5px;
@@ -5703,9 +5709,14 @@ article .social_bar img {
 	display: inline-block;
 	width: 30px;
 	height: 30px;
+	
 	border-radius: 50%;
 	border: 1px solid #fff;
 	flex-shrink: 0;
+}
+.more_data .ate .score{
+	height: 40px;
+	width: 40px;
 }
 
 .row_box:hover .more_data {

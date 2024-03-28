@@ -16,7 +16,8 @@ const RankingTable = ({ teamrankingss, searchResults, favshow, user, team }) => 
 
   const [content, setContent] = useState([]);
 
-  console.log("gandu Team Ranking length" , teamrankingss?.teams?.length);
+  // console.log("gandu Team Ranking length" , teamrankingss?.teams?.length);
+  
   
   useEffect(() => {
     if (team.length > 0 ) {
@@ -31,13 +32,16 @@ const RankingTable = ({ teamrankingss, searchResults, favshow, user, team }) => 
   const getContent = () => {
 
     // Return "No teams are ranked yet ..." message if there's no content
-    if (content === 0 && teamrankingss === 0) {
+    if ((content === 0 && teamrankingss === 0) || (searchResults == 0)) {
       return (
         <div className="activity_tag">
           <span className="act_name">No teams are ranked yet ...</span>
         </div>
       );
     }
+
+   
+
 
     return content?.teams?.map((result, idx) => (
           <div className="row_box" key={idx}>
@@ -90,9 +94,11 @@ const RankingTable = ({ teamrankingss, searchResults, favshow, user, team }) => 
               <ReactCountryFlag
                 countryCode={result.team.region}
                 svg
+                
                 style={{
                   width: '2em',
-                  height: '2em'
+                  height: '2em',
+                 
                 }}
               />
             </div>
@@ -125,7 +131,7 @@ const RankingTable = ({ teamrankingss, searchResults, favshow, user, team }) => 
             </div>
 
             <div className="chart">
-              <img src="/assets/media/ranking/chart.png" alt="" />
+              {/* <img src="/assets/media/ranking/chart.png" alt="" /> */}
             </div>
             <div className="follows">
               <button>Follow</button>
@@ -137,8 +143,9 @@ const RankingTable = ({ teamrankingss, searchResults, favshow, user, team }) => 
                                     7
                                   ) + '...'
                                 : 'Not Mentioned'}{' '} */}
-                <span className="circle"></span> 16-3{' '}
-                <span className="circle"></span>{' '}
+                                ATE<span className="circle"></span> {' '}
+                16-3
+                <span className="circle"></span>{' '}TWW
                 {/* {result.matches[0]
                                 ? result.matches[0].teams[1].teamName.substring(
                                     0,

@@ -88,7 +88,7 @@ const TeamProfileData = ({
             Squads
           </a>
         </li>
-        {/* <li>
+        <li>
           <a href="#!" rel="achievement">
             {' '}
             ACHIEVEMENTS
@@ -109,7 +109,7 @@ const TeamProfileData = ({
             {' '}
             CLAN STORE{' '}
           </a>
-        </li> */}
+        </li>
         <li>
           <a href="#!" rel="photos">
             PHOTOS

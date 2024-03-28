@@ -2,6 +2,7 @@ import { useState } from 'react';
 import TournamentFilters from './TournamentFilters';
 import { searchTournaments } from '@utils/functionsHelper';
 import { toast } from 'react-toastify';
+import { object } from 'prop-types';
 
 const TournamentRows = ({ user, selectedGame, profile, teams ,tournament}) => {
   let myState = {};
@@ -39,6 +40,7 @@ const TournamentRows = ({ user, selectedGame, profile, teams ,tournament}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     sdata = await searchTournaments(
       searchObj,
       setError,
@@ -47,6 +49,7 @@ const TournamentRows = ({ user, selectedGame, profile, teams ,tournament}) => {
       setStatus
     );
     setSearchData(sdata);
+    // console.log("search object",searchObj);
   };
 
   return (
@@ -99,6 +102,7 @@ const TournamentRows = ({ user, selectedGame, profile, teams ,tournament}) => {
           showfavs={showfavs}
           profile={profile}
           searchData={searchData}
+          searchObj = {searchObj}
           user={user}
           teams={teams}
         />

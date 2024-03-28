@@ -1,5 +1,5 @@
 // import PropTypes from 'prop-types';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import baseURL from '../../utils/baseURL';
 import axios from 'axios';
 // import Head from 'next/head'
@@ -7,20 +7,26 @@ import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import RankingTable from './RankingTable';
 
-const TeamFilter = ({ filterType, myState, selectedGame , showfavs , searchData, teamrankings,user}) => {
+const TeamFilter = ({ filterType, myState, selectedGame, showfavs, searchData, teamrankings, user }) => {
 
   const [data, setData] = useState(null);
+
+  let filter = {};
   
+
   const [selectedMapFilters, setSelectedMapFilters] = useState([]);
   var [team, setTeam] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [sessionTeam, setSessionTeam] = useState({ key: null, value: null });
   const [selectedFilters, setSelectedFilters] = useState([]);
 
+  // const [selectedFilters, setSelectedFilters] = useState({key : });
+
   const handleSelectFilter = (event) => {
     const filtered = event.target.value;
     const name = event.target.name;
 
+    
     if (!selectedFilters.includes(filtered)) {
       setSelectedFilters([...selectedFilters, filtered]);
     } else {
@@ -35,16 +41,18 @@ const TeamFilter = ({ filterType, myState, selectedGame , showfavs , searchData,
       element.key.includes(name)
     );
 
+    
+
+
     if (found == undefined) {
       var arr = new Set();
       arr.add(filtered);
-
+    
       selectedMapFilters.push({ key: name, values: arr });
     } else {
       var arr = found.values;
       if (!arr.has(filtered)) {
         arr.add(filtered);
-
         selectedMapFilters.push({ key: name, values: arr });
       }
     }
@@ -67,7 +75,7 @@ const TeamFilter = ({ filterType, myState, selectedGame , showfavs , searchData,
     fetchData();
   }, []);
 
-  
+
   const router = useRouter();
 
   const refreshData = () => {
@@ -107,7 +115,7 @@ const TeamFilter = ({ filterType, myState, selectedGame , showfavs , searchData,
     setSelectedMapFilters(uniqueTags);
 
     refreshData();
-  
+
   };
 
   // const handleApplyFilters = async (e) => {
@@ -147,26 +155,26 @@ const TeamFilter = ({ filterType, myState, selectedGame , showfavs , searchData,
   //     toast.error(err.response?.data?.msg || 'Please recheck your inputs');
   //   }
   // };
-//   useEffect(() => {
-//     const fetchRankings = async () => {
-//         // setLoading(true);
-//         try {
-//             const response = await axios.get(
-//               `${baseURL}/api/rankings/bywinnings100/${selectedGame?._id}?region=${filterdata} `
-//             );
-//             setTeam(response.data);
-//             // setLoading(false);
-//         } catch (err) {
-//             // setError(err);
-//             // setLoading(false);
-//             toast.error('Error fetching rankings');
-//         }
-//     };
+  //   useEffect(() => {
+  //     const fetchRankings = async () => {
+  //         // setLoading(true);
+  //         try {
+  //             const response = await axios.get(
+  //               `${baseURL}/api/rankings/bywinnings100/${selectedGame?._id}?region=${filterdata} `
+  //             );
+  //             setTeam(response.data);
+  //             // setLoading(false);
+  //         } catch (err) {
+  //             // setError(err);
+  //             // setLoading(false);
+  //             toast.error('Error fetching rankings');
+  //         }
+  //     };
 
-//     fetchRankings();
-// }, [team]);
+  //     fetchRankings();
+  // }, [team]);
 
-  
+
   const handleApplyFilters = async (e) => {
     // e.preventDefault();
     // myState.setFilteredResults([]);
@@ -178,44 +186,39 @@ const TeamFilter = ({ filterType, myState, selectedGame , showfavs , searchData,
       // uniqueTags.push({key:item.key,value:item.value});
     });
 
-    //Always set the Selected Game as Filter.
 
-    // var ssg = undefined;
-    // if (selectedGame != null) {
-    //   ssg = selectedGame._id;
-    // }
-
-    // const params = JSON.stringify({
-    //   mapFilters: uniqueTags,
-    //   selectedGame: ssg
-    // });
-    // console.log("GAME",selectedGame);
-    // console.log("FILTERS",uniqueTags[0].key);
-   
     const filterdata = uniqueTags[0].values[0];
     // console.log("FILTERS  2 :",filterdata);
 
-    try {
+    const getfilterData  =  async () => {
+     
+        selectedMapFilters.map((item , index) => {
+          const key = item.key.toString().toLowerCase();
+          console.log(key);
+          filter = {
+            ...filter,
+            [key] : Array.from(item.values)
+          }
+        })
 
-      const res= await axios.get(`${baseURL}/api/rankings/bywinnings100/${selectedGame?._id}?region=${filterdata} `)
-      await setTeam(res.data);
+        console.log("xxxx" , filter);
 
+        fetch(`${baseURL}/api/rankings/bywinnings100/${selectedGame?._id}`, {
+          method: 'POST', 
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(filter),
+        })
+        .then(response => response.json())
+        .then(data => console.log("xxxx api response" , data))
+        .catch((error) => {
+          console.error('Error:', error);
+        }) 
+      };
 
-      // axios
-      //   .post(`${baseURL}/api/rankings/bywinnings100/${selectedGame?._id} `, {
-      //     // headers: {
-      //     //   'Content-Type': 'application/json'
-      //     // }
-      //   })
-      //   .then((res) => {
-      //     // myState.setFilteredResults(res.data);
-      //     setTeam(res.data);
-         
-      //     // myState.setSelectedFilters(selectedMapFilters);
-      //   });
-    } catch (err) {
-      toast.error(err.response?.data?.msg || 'Please recheck your inputs');
-    }
+      await getfilterData();
+
   }
 
 
@@ -228,10 +231,10 @@ const TeamFilter = ({ filterType, myState, selectedGame , showfavs , searchData,
 
     if (myState.selectedFilters.length > 0) {
       setTeam(myState.filteredResults);
-  //     setIsLoading(false);
+      //     setIsLoading(false);
     }
-   else {
-    
+    else {
+
       setIsLoading(true);
       // if (sessionTeam.key === null) {
       //   axios.get(`${baseURL}/api/rankings/bywinnings100/${sg}`).then((res) => {
@@ -240,28 +243,26 @@ const TeamFilter = ({ filterType, myState, selectedGame , showfavs , searchData,
       //     setIsLoading(false);
       //   });
       // } else {
-        if (sessionTeam.key != sg) {
-          axios.get(`${baseURL}/api/rankings/bywinnings100/${sg}`).then((res) => {
-            setTeam(res.data);
-            setSessionTeam({ key: sg, value: team });
-            setIsLoading(false);
-          });
-        } 
-        // else {
-        //   //setTeam (sessionTeam.get(sg));
-        //   setIsLoading(false);
-        // }
+      if (sessionTeam.key != sg) {
+        axios.get(`${baseURL}/api/rankings/bywinnings100/${sg}`).then((res) => {
+          setTeam(res.data);
+          setSessionTeam({ key: sg, value: team });
+          setIsLoading(false);
+        });
+      }
+      // else {
+      //   //setTeam (sessionTeam.get(sg));
+      //   setIsLoading(false);
+      // }
       // }
       // myState.setFilteredResults(team):
-     
+
     }
   }, [myState, team]);
-  // console.log("team accourding to resion :",team);
-  console.log("selected filter :",selectedFilters);
-  // console.log("sesssion team ",sessionTeam);
-  // console.log("filter result", myState);
-
-
+  
+  console.log("selected filter :", selectedFilters);
+  console.log("Selected map filter ", selectedMapFilters);
+ 
 
   if (data && data.filter) {
     return (
@@ -379,7 +380,7 @@ const TeamFilter = ({ filterType, myState, selectedGame , showfavs , searchData,
           // profile={profile}
           user={user}
           searchResults={searchData}
-          teamrankingss = {teamrankings}
+          teamrankingss={teamrankings}
         />
 
 
