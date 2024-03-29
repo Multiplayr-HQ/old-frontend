@@ -115,9 +115,9 @@ const VerifyToken = ({ verificationToken, finishsubmit }) => {
                   </div>
                   <div className="fs-5">
                     <span className="fw-bold text-gray-700">
-                      Did’t receive an email? {" "}
+                      Did&apos;t receive an email? {" "}
                     </span>
-                    <a href="signup.html" className=" text-[#d2fe24] fw-bolder">
+                    <a href="/signup" className=" text-[#d2fe24] fw-bolder">
                       Resend
                     </a>
                   </div>

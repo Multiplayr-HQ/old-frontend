@@ -23,8 +23,16 @@ module.exports = {
         lime: colors.lime,
         orange: colors.orange,
         cyan: colors.cyan,
-        primary: colors.pink[600],
+        primary: "#b5fe1b",
+        primary1: "#b5fe1b",
         background: "#181A22",
+
+        dark2:"#1e293b",
+        dark3:"#334155",
+        bgbody:"#0f172a",
+        secondery:"#334150",
+        // primary:{soft : "#334150",},
+        
       },
       boxShadow: {
         homogen: "0 0 10px 3px rgba(0,0,0,0.5)",

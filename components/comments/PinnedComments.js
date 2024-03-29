@@ -17,7 +17,7 @@ const PinnedComments = ({ post, comment, user }) => {
     comment.pinned_comments.filter((pin) => pin.commentId === comment._id)
       .length > 0;
 
-  const isAuthorized = post.user !== '' && post.user?._id === user._id;
+  const isAuthorized = post.user !== '' && post.user?._id === user?._id;
 
   const addPinComment = async () => {
     const { data } = await fetch(

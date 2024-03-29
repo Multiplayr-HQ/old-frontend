@@ -65,6 +65,7 @@ const Photos = ({ Userdata, user, photosData }) => {
                       imgg.images.map((imag, idex) => {
                         
                         a.push({src:imag.path, alt:imag.originalname});
+                        console.log(a ,"inside photos")
 
                         return (
                           <a

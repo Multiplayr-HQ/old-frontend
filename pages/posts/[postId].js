@@ -19,7 +19,7 @@ const PostId = ({ user, profile, post, teams }) => {
 
       <div className="prfoile_tab_data">
         <div className="tab" id="feed">
-          <div className="profile_left_post">
+          <div className="flex-1 justify-center items-center mt-10 mx-[25%]">
             {' '}
             <AllPosts post={post} user={user} />
           </div>
