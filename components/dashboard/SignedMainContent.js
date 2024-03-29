@@ -14,11 +14,11 @@ const SignedMainContent = ({ posts, user, profile }) => {
   const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
   const [followingPosts, setFollowingPosts] = useState([]);
-  // const [profilepic, setProfilePic] = useState(user.profilePicUrl);
-  // const [username, setUsername] = useState(user.name);
+  const [profilepic, setProfilePic] = useState(user.profilePicUrl);
+  const [username, setUsername] = useState(user.name);
   const [personas, setPersonas] = useState({});
   const [allgames, setAllGames] = useState([]);
-  // const [postType, setPostType] = useState('User');
+  const [postType, setPostType] = useState('User');
   const [gameTag, setGameTag] = useState({
     name: '',
     gameId: ''
@@ -28,25 +28,40 @@ const SignedMainContent = ({ posts, user, profile }) => {
   const [profiledata, setProfileData] = useState([]);
   const [followData, setFollowData] = useState([]);
   const [topMenu, setTopMenu] = useState(profile?.isShortcutVisible);
+  
 
   let teamId = '';
-
   const shareUrl = `${process.env.NEXT_PUBLIC_ESPORTS_API_BASE_URL}/signup`;
-  useEffect(() => {
-    axios
-      .get(`${baseURL}/api/profile/${user.username}`)
-      .then((res) => setProfileData(res?.data));
-  }, []);
 
+  useEffect(() => {
+    const fetchProfileData = async () => {
+      try {
+        const response = await axios.get(`${baseURL}/api/profile/${user.username}`);
+        setProfileData(response?.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  
+    fetchProfileData(); // Call the asynchronous function
+  }, []);
+  
   const mutation = useMutation(
-    async (formdata) =>
-      await axios.post(`${baseURL}/api/posts`, formdata, {
-        headers: {
-          Authorization: cookie.get('token'),
-          'Content-Type': 'multipart/form-data'
-        }
-      })
+    async (formData) => {
+      try {
+        const response = await axios.post(`${baseURL}/api/posts`, formData, {
+          headers: {
+            Authorization: cookie.get('token'),
+            'Content-Type': 'multipart/form-data'
+          }
+        });
+        return response.data; // Return the data from the response
+      } catch (error) {
+        throw new Error(error); // Throw the error for handling by the caller
+      }
+    }
   );
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -92,47 +107,36 @@ const SignedMainContent = ({ posts, user, profile }) => {
     }
   };
 
-  useEffect(async () => {
-    await axios
-      .get(`${baseURL}/api/all/personas`, {
-        headers: {
-          Authorization: cookie.get('token')
-        }
-      })
-      .then((res) => {
-        setPersonas(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-    await axios
-      .get(`${baseURL}/api/posts/feed`, {
-        headers: {
-          Authorization: cookie.get('token')
-        }
-      })
-      .then((res) => {
-        // console.log(res)
-        setFollowingPosts(res?.data?.posts);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-    await axios
-      .get(`${baseURL}/api/all/games`)
-      .then((res) => {
-        setAllGames(res?.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-    await axios
-      .get(`${baseURL}/api/profile/${user.username}/followers`)
-      .then((res) => setFollowData(res?.data));
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const personasResponse = await axios.get(`${baseURL}/api/all/personas`, {
+          headers: {
+            Authorization: cookie.get('token')
+          }
+        });
+        setPersonas(personasResponse.data);
+  
+        const followingPostsResponse = await axios.get(`${baseURL}/api/posts/feed`, {
+          headers: {
+            Authorization: cookie.get('token')
+          }
+        });
+        setFollowingPosts(followingPostsResponse?.data?.posts);
+  
+        const allGamesResponse = await axios.get(`${baseURL}/api/all/games`);
+        setAllGames(allGamesResponse?.data);
+  
+        const followersResponse = await axios.get(`${baseURL}/api/profile/${user.username}/followers`);
+        setFollowData(followersResponse?.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  
+    fetchData(); // Call the asynchronous function
   }, []);
+  
 
   const selectgameTag = (x) => {
     setShowGame(x);
@@ -150,46 +154,58 @@ const SignedMainContent = ({ posts, user, profile }) => {
     arrows: true
   };
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     $('.user_slider').slick({
-  //       infinite: false,
-  //       vertical: true,
-  //       verticalSwiping: true,
-  //       slidesToShow: 1,
-  //       slidesToScroll: 1,
-  //       arrows: true,
-  //       prevArrow: $('.slick-prev'),
-  //       nextArrow: $('.slick-next')
-  //     });
-  //   }, 4000);
-  // }, []);
+  const [count, setCount] = useState(-1);
+  
 
   useEffect(() => {
-    $('a.model_show_btn').click(function () {
-      $(this).next().addClass('show_model');
-    });
+    const initializeSlider = () => {
+      const sliderTimeout = setTimeout(() => {
+        $('.user_slider').slick({
+          infinite: false,
+          vertical: true,
+          verticalSwiping: true,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: true,
+          prevArrow: $('.slick-prev'),
+          nextArrow: $('.slick-next')
+        });
+      }, 400);
 
-    $('a.model_close').click(function () {
-      $(this).parent().removeClass('show_model');
-    });
-  }, []);
-  const [count, setCount] = useState(-1);
+      return () => clearTimeout(sliderTimeout); // Cleanup function to clear the timeout
+    };
+
+    initializeSlider();
+  }, []); // Run only once when the component mounts
+
+  useEffect(() => {
+    const openModel = () => {
+      $('a.model_show_btn').click(function () {
+        $(this).next().addClass('show_model');
+      });
+
+      $('a.model_close').click(function () {
+        $(this).parent().removeClass('show_model');
+      });
+    };
+
+    openModel();
+  }, []); // Run only once when the component mounts
 
   const changeCount = (e, value) => {
     e.preventDefault();
     if (value === 'Next') {
-      setCount(count + 1);
+      setCount((prevCount) => prevCount + 1);
     } else if (value === 'Prev') {
-      setCount(count - 1);
+      setCount((prevCount) => prevCount - 1);
     }
   };
 
   const menu_close = async (e) => {
     e.preventDefault();
     setTopMenu(!topMenu);
-    await axios
-      .put(
+    try {
+      const response = await axios.put(
         `${baseURL}/api/profile/settings/SECURITY`,
         { isShortcutVisible: false },
         {
@@ -198,8 +214,12 @@ const SignedMainContent = ({ posts, user, profile }) => {
             'Content-Type': 'application/json'
           }
         }
-      )
-      .then((res) => toast.success(res?.data?.msg));
+      );
+      toast.success(response?.data?.msg);
+    } catch (error) {
+      console.error(error);
+      toast.error('An error occurred while updating settings');
+    }
   };
 
   return (

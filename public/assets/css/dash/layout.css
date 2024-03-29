@@ -870,13 +870,12 @@ ul.top_menu li.wallet>a {
 	display: flex;
 	align-items: center;
 	background: #fff;
-	padding: 16px 10px;
+	padding: 12px 10px;
 }
 
 ul.top_menu li.wallet>a .dps {
 	overflow: hidden;
 }
-
 
 ul.top_menu li.wallet>a .dps img {
 	width: 30px;
@@ -1223,7 +1222,6 @@ ul.top_menu .drop_down_bg.create_pages p {
 
 .main_middle {
 	width: 800px;
-	
 	margin: 150px auto 0 auto;
 }
 
@@ -2442,11 +2440,7 @@ article .social_bar img {
 	height: 100%;
 	z-index: 9;
 	padding-bottom: 100px;
-	overflow-y:scroll;
-	/* scrollbar-: 0px; */
-	/* overflow: hidden !important; */
 }
-
 
 .right_side.fixed{ top:-100px}
 
@@ -2605,12 +2599,8 @@ article .social_bar img {
 	position: relative;
 }
 
-
-/* .suggested_player li a:hover {
+.suggested_player li a:hover {
 	box-shadow: 0px 0px 10px #ddd;
-} */
-.suggested_player li a .img_thumb:hover{
-	box-shadow: 0px 0px 10px var(--yellow);
 }
 
 .suggested_player li a .online {
@@ -2749,8 +2739,7 @@ article .social_bar img {
 
 .team_match .match_name {
 	font-size: 12px;
-	/* color: #202028; */
-	color: #fff;
+	color: #202028;
 	font-weight: 600;
 }
 
@@ -3885,12 +3874,6 @@ article .social_bar img {
 	float: left;
 	width: 100%;
 	margin: 20px 0 0 0;
-}
-.pagination-btn{
-	display: flex;
-	font-size: 20px;
-	
-	margin: auto;
 }
 
 .prfoile_tab_data .tab {
@@ -5627,43 +5610,14 @@ article .social_bar img {
 }
 
 .more_data .pic h3 {
-	font-size: 12px;
+	font-size: 14px;
 }
 
 .more_data .total {
-	font-size: 12px;
-	text-transform: uppercase;
-	/* text-align: center; */
-	display: flex;
-	justify-content: space-between;
-}
-.more_data .total .team-prize{
-	display: flex;
-	flex-direction: column;
-	/* float: left; */
-}
-.more_data .total .team-prize .prize span{
-	font-size: 8px;
-	font-weight: 600;
-	margin-bottom: 10px;
-	
-}
-.more_data .total .team-prize .prize_2 {
-	display: flex;
-	flex-direction: row;
-}
-.more_data .total .team-prize .prize_2 .team-stablish{
-	margin-right: 10px;
-}
-.more_data .total .team-prize .prize_2 span{
-	font-size: 8px;
-	font-weight: 600;
-	margin-bottom: 10px;
-}
-/* .more_data .total .team-prize .prize p{
 	font-size: 14px;
-	
-} */
+	text-transform: uppercase;
+	text-align: center;
+}
 
 .more_data .total p {
 	padding: 5px 0;
@@ -5677,7 +5631,7 @@ article .social_bar img {
 	background: var(--yellow);
 	padding: 10px 20px;
 	text-align: center;
-	color: #000;
+	color: #fff;
 	font-size: 14px;
 	border: 0;
 	width: 100%;
@@ -7163,7 +7117,7 @@ article .social_bar img {
 	justify-content: space-between;
 	align-items: center;
 	background: #ddd;
-	padding: 10px;
+	padding: 40px;
 	margin: 20px 0;
 }
 
@@ -7478,6 +7432,7 @@ article .social_bar img {
 	top: 10px;
 	right: 10px
 }
+
 /* ----------Sponsers ------------ */
 .sponsers_box {
 	float: left;
@@ -7595,54 +7550,21 @@ article .social_bar img {
 	display: block;
 	float: left;
 	width: 100%;
-	height: 225px;
+	min-height: 384px;
+	/* height: 225px; */
 	overflow: hidden;
 	margin-bottom: 5px;
 }
 
-.imagess_box li a:nth-child(2){
-	display: block;
-	/* float: left; */
-	position:absolute;
-	top: calc(225px - 80px);
-	left:0;
-	width: 32%;
-	margin-left: 1%;
-	margin-right: 1%;
-	height: 80px;
-	overflow: hidden;
-	background: #21212293;
-	border-radius: 5px;
-}
-
-
-.imagess_box li a:nth-child(3){
-	display: block;
-	/* float: left; */
-	position:absolute;
-	top: calc(225px - 80px);
-	left:33%;
-	width: 32%;
-	margin-left: 1%;
-	margin-right: 1%;
-	height: 80px;
-	overflow: hidden;
-	background: #21212293;
-	border-radius: 5px;
-}
-
+.imagess_box li a:nth-child(2),
+.imagess_box li a:nth-child(3),
 .imagess_box li a:nth-child(4) {
 	display: block;
-	/* float: left; */
-	position:absolute;
-	top: calc(225px - 80px);
-	left:67%;
+	float: left;
 	width: 32%;
 	margin-right: 2%;
 	height: 80px;
 	overflow: hidden;
-	background: #21212293;
-	border-radius: 5px;
 }
 
 .imagess_box li a:nth-child(4) {
@@ -9724,7 +9646,7 @@ ul.game_search_result.map-slection li .fa-check{ top:8%;}
 	width: 100%;
 	padding: 30px;
 	background: #fff;
-	overflow-y: scroll;
+	overflow: hidden;
 	box-shadow: 2px 0px 10px #b9b2b2;
 }
 
@@ -9885,7 +9807,7 @@ ul.game_search_result.map-slection li .fa-check{ top:8%;}
 
 .inner_model_box {
 	padding: 20px !important;
-	
+	border-radius: 10px;
 }
 
 .inner_model_box h3 {
