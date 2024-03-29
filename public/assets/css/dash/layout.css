@@ -2510,6 +2510,7 @@ article .social_bar img {
 	width: 100%;
 	margin: 5px 0;
 	text-align: left;
+	
 	border-bottom: 1px solid #ddd;
 	padding-bottom: 10px;
 }
@@ -2539,6 +2540,7 @@ article .social_bar img {
 	font-size: 12px;
 	font-weight: 600;
 	word-break: break-all;
+	margin-top: 50px;
 }
 
 .white_box .activity_tag .act_name b {
@@ -3875,6 +3877,15 @@ article .social_bar img {
 	width: 100%;
 	margin: 20px 0 0 0;
 }
+
+.pagination-btn{
+	display: flex;
+	font-size: 20px;
+	
+	float: right;
+	
+}
+
 
 .prfoile_tab_data .tab {
 	float: left;
@@ -5593,6 +5604,10 @@ article .social_bar img {
 	justify-content: space-between;
 	width: 250px;
 }
+.more_data .pic .flag{
+	display: flex;
+	justify-content: space-around;
+}
 
 .more_data .pic .tumb {
 	border-radius: 5px;
@@ -5616,8 +5631,39 @@ article .social_bar img {
 .more_data .total {
 	font-size: 14px;
 	text-transform: uppercase;
-	text-align: center;
+
+	/* text-align: center; */
+	display: flex;
+	justify-content: space-between;
 }
+.more_data .total .team-prize{
+	display: flex;
+	flex-direction: column;
+	/* float: left; */
+}
+.more_data .total .team-prize .prize span{
+	font-size: 8px;
+	font-weight: 600;
+	margin-bottom: 10px;
+	
+}
+.more_data .total .team-prize .prize_2 {
+	display: flex;
+	flex-direction: row;
+}
+.more_data .total .team-prize .prize_2 .team-stablish{
+	margin-right: 10px;
+}
+.more_data .total .team-prize .prize_2 span{
+	font-size: 8px;
+	font-weight: 600;
+	/* margin-bottom: 10px; */
+}
+.more_data .total .team-prize .prize p{
+	font-size: 14px;
+	
+}
+
 
 .more_data .total p {
 	padding: 5px 0;
@@ -5656,9 +5702,14 @@ article .social_bar img {
 	display: inline-block;
 	width: 30px;
 	height: 30px;
+	
 	border-radius: 50%;
 	border: 1px solid #fff;
 	flex-shrink: 0;
+}
+.more_data .ate .score{
+	height: 40px;
+	width: 40px;
 }
 
 .row_box:hover .more_data {

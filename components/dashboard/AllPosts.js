@@ -145,7 +145,7 @@ const Useless = () => {
             <img
               src={
                 post.post_type === 'user'
-                  ? post?.user.profilePicUrl
+                  ? post?.user?.profilePicUrl
                   : post?.profilepic
               }
               alt={post.post_type}

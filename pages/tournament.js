@@ -152,7 +152,8 @@ const Tournament = ({ user, games, profile, teams }) => {
           </div>
         </div>
         <div>
-            <button onClick={handlepageChange} className='pagination-btn' style={{ height: 40, width: 100 }}>page : {page-1}</button>
+            <button onClick={handlepageChange} className='pagination-btn' style={{ height: 40, width: 100 }}>Next <i  style={{ height: 40, width: 30 ,paddingTop:5 }} className="fa fa-angle-right" aria-hidden="true"></i></button>
+            {/* page : {page-1} */}
           </div>
       </div>
 
