@@ -25,14 +25,15 @@ const Like_Comment = ({ postId, comment, user }) => {
     setLikeCount(data);
   };
   return (
-    <div className="like_btn" onClick={likehandlesubmit}>
+    // <div className="like_btn " onClick={likehandlesubmit}>
+    <div  onClick={likehandlesubmit}>
       {likecomment ? (
-        <button>
+        <button className="flex gap-2 ">
           <img src="/assets/media/dash/fire.png" alt="" />{' '}
           <span>{likeCount}</span>
         </button>
       ) : (
-        <button>
+        <button className="flex gap-2 ">
           <img src="/assets/media/dash/fire.png" alt="" />{' '}
           <span>{likeCount}</span>
         </button>

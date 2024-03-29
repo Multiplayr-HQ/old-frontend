@@ -4,6 +4,7 @@ import cookie from 'js-cookie';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 
+
 const queryClient = new QueryClient();
 
 export default function SharePost({ postId, isShared }) {
@@ -30,7 +31,7 @@ const Post_share = ({ postId, isShared }) => {
         Authorization: cookie.get('token')
       }
     });
-    if (isShared !== true) {
+    if (share !== true) {
       toast.success('Shared in your timeline successfully');
     } else {
       toast.success('Removed from your timeline');
