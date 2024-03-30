@@ -8,120 +8,139 @@ import baseURL from '@utils/baseURL';
 import cookie from 'js-cookie';
 import axios from 'axios';
 import SharePost from './SharePost';
-import TeamFollow from '../team/TeamFollow';
+// import TeamFollow from '../team/TeamFollow';
 import { toast } from 'react-toastify';
 import Follow from '../common/Follow';
 
+import dynamic from 'next/dynamic';
+const NewPost = dynamic(() => import('./NewPost'), { ssr: false });
+
 const AllPosts = ({ post, user, profiledata, followData, type, team }) => {
-  const [comments, setComments] = useState([]);
-  var followerList =
-    followData && followData.map((follow) => follow.user?.username);
-  useEffect(() => {
-    axios
-      .get(`${baseURL}/api/comments/${post._id}`)
-      .then((res) => {
-        setComments(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [post._id]);
+  // const [comments, setComments] = useState([]);
+  // var followerList =
+  //   followData && followData.map((follow) => follow.user?.username);
+  // useEffect(() => {
+  //   axios
+  //     .get(`${baseURL}/api/comments/${post._id}`)
+  //     .then((res) => {
+  //       setComments(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, [post._id]);
 
-  const isFollow =
-    profiledata &&
-    profiledata.following
-      ?.filter((profile) => profile.user === post.user?._id)
-      .map((profile, ind) => profile.user).length > 0;
+  // const isFollow =
+  //   profiledata &&
+  //   profiledata.following
+  //     ?.filter((profile) => profile.user === post.user?._id)
+  //     .map((profile, ind) => profile.user).length > 0;
 
-  const followhandlesubmit = async (Uid) => {
-    await fetch(`${baseURL}/api/profile/follow/${Uid}`, {
-      method: 'POST',
-      headers: {
-        Authorization: cookie.get('token')
-      }
-    });
-    if (isFollow == true) {
-      toast.success(`You Unfollowed ${post.user.username}`);
-    } else {
-      toast.success(`You are Following ${post.user.username}`);
-    }
-  };
+  // const followhandlesubmit = async (Uid) => {
+  //   await fetch(`${baseURL}/api/profile/follow/${Uid}`, {
+  //     method: 'POST',
+  //     headers: {
+  //       Authorization: cookie.get('token')
+  //     }
+  //   });
+  //   if (isFollow == true) {
+  //     toast.success(`You Unfollowed ${post.user.username}`);
+  //   } else {
+  //     toast.success(`You are Following ${post.user.username}`);
+  //   }
+  // };
 
-  const isLoggedInUser = post.user !== '' && post.user?._id === user._id;
+  // const isLoggedInUser = post.user !== '' && post.user?._id === user?._id;
 
-  const isLiked =
-    post.likes.filter((like) => {
-      return like.user === user._id;
-    }).length > 0;
+  // const isLiked =
+  //   post.likes.filter((like) => {
+  //     return like.user === user?._id;
+  //   }).length > 0;
 
-  const isShared =
-    post.shares?.filter((share) => {
-      return share.user?._id === user._id;
-    }).length > 0;
+  // const isShared =
+  //   post.shares?.filter((share) => {
+  //     return share.user?._id === user?._id;
+  //   }).length > 0;
 
-  var filtered = post.shares?.filter(function (item) {
-    return followerList?.indexOf(item.user?.username) !== -1;
-  });
+  // var filtered = post.shares?.filter(function (item) {
+  //   return followerList?.indexOf(item.user?.username) !== -1;
+  // });
 
   return (
     <div key={post._id}>
+      <NewPost
+        user={user}
+        post={post}
+        profiledata={profiledata}
+        followData={followData}
+      />
+
+
+    </div>
+  );
+};
+
+export default AllPosts;
+
+const Useless = () => {
+  return (
+    <>
+      {' '}
       <div className="post">
         <div className="heads">
           <div className="user_shared">
-            {filtered.length > 0 ? (
+        {filtered.length > 0 ? (
+          <>
+            {filtered &&
+              filtered.slice(0, 1).map((usr, i) => (
+                <a href={`/user/${usr?.user?.username}`} key={i}>
+                  {usr?.user?.username}
+                </a>
+              ))}
+            {filtered.length >= 2 ? (
               <>
-                {filtered &&
-                  filtered
-                    .slice(0, 1)
-                    .map((usr,i) => (
-                      <a href={`/user/${usr.user.username}`} key={i}>
-                        {usr.user.username}
-                      </a>
-                    ))}
-                {filtered.length >= 2 ? (
-                  <>
-                    {' '}
-                    and{' '}
-                    <a href="#!" className="model_show_btn more">
-                      {filtered.length - 1} others{' '}
-                    </a>{' '}
-                    <div className="common_model_box" id="share_prof">
-                      <a href="#!" className="model_close">
-                        X
-                      </a>
+                {' '}
+                and{' '}
+                <a href="#!" className="model_show_btn more">
+                  {filtered.length - 1} others{' '}
+                </a>{' '}
+                <div className="common_model_box" id="share_prof">
+                  <a href="#!" className="model_close">
+                    X
+                  </a>
 
-                      <div className="inner_model_box">
-                        <h3>Shares User</h3>
-                        <ul>
-                          {filtered &&
-                            filtered.slice(1).map((usr,i) => (
-                              <li key={i}>
-                                <img
-                                  src={usr.user.profilePicUrl}
-                                  alt={usr.user.username}
-                                />
-                                <a href={`/user/${usr.user.username}`}>
-                                  {' '}
-                                  {usr.user.username}{' '}
-                                </a>
-                              </li>
-                            ))}
-                        </ul>
-                      </div>
-                      <div className="overlay"></div>
-                    </div>
-                  </>
-                ) : null}
-
-                <p>
-                  {' '}
-                  has shared{' '}
-                  {post.post_type === 'user' ? post.user?.name : post.username}
-                  &apos;s post{' '}
-                </p>
+                  <div className="inner_model_box">
+                    <h3>Shares User</h3>
+                    <ul>
+                      {filtered &&
+                        filtered.slice(1).map((usr, i) => (
+                          <li key={i}>
+                            <img
+                              src={usr.user.profilePicUrl}
+                              alt={usr.user.username}
+                            />
+                            <a href={`/user/${usr.user.username}`}>
+                              {' '}
+                              {usr.user.username}{' '}
+                            </a>
+                          </li>
+                        ))}
+                    </ul>
+                  </div>
+                  <div className="overlay"></div>
+                </div>
               </>
             ) : null}
-          </div>
+
+            <p>
+              {' '}
+              has shared{' '}
+              {post.post_type === 'user' ? post.user?.name : post.username}
+              &apos;s post{' '}
+            </p>
+          </>
+        ) : null}
+      </div>
           <div className="user">
             <img
               src={
@@ -176,9 +195,7 @@ const AllPosts = ({ post, user, profiledata, followData, type, team }) => {
                       <a href={`/user/${post.user?.username}`}>
                         {post.user?.name}
                       </a>
-                      <a>
-                        {'is playing'}
-                      </a>
+                      <a>{'is playing'}</a>
                     </div>
                   )}
                   <a
@@ -286,7 +303,7 @@ const AllPosts = ({ post, user, profiledata, followData, type, team }) => {
             ) : (
               <div className="more_user">
                 {post.shares &&
-                  post.shares.slice(0, 2).map((share,i) => (
+                  post.shares.slice(0, 2).map((share, i) => (
                     <a href="#" key={i}>
                       <img
                         src={share.user?.profilePicUrl}
@@ -310,7 +327,7 @@ const AllPosts = ({ post, user, profiledata, followData, type, team }) => {
                     <h3>Shares</h3>
                     <ul>
                       {post.shares &&
-                        post.shares.map((ppl,i) => (
+                        post.shares.map((ppl, i) => (
                           <li key={i}>
                             {' '}
                             <div className="game_pic">
@@ -331,7 +348,7 @@ const AllPosts = ({ post, user, profiledata, followData, type, team }) => {
 
                 <span className="others">
                   {post.shares &&
-                    post.shares.slice(0, 2).map((share,i) => (
+                    post.shares.slice(0, 2).map((share, i) => (
                       <span key={i}>
                         <a href={`/user/${share.user?.username}`}>
                           {share.user?.username}
@@ -344,7 +361,7 @@ const AllPosts = ({ post, user, profiledata, followData, type, team }) => {
                       and <b>{post.shares.length - 2}</b> others
                     </span>
                   ) : null}{' '}
-                  have shared {post.user?._id === user._id ? 'your' : 'this'}{' '}
+                  have shared {post.user?._id === user?._id ? 'your' : 'this'}{' '}
                   post.
                 </span>
               </div>
@@ -362,8 +379,6 @@ const AllPosts = ({ post, user, profiledata, followData, type, team }) => {
           <CommentForm post={post} user={user} />
         </div>
       </div>
-    </div>
+    </>
   );
 };
-
-export default AllPosts;

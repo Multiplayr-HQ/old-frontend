@@ -20,20 +20,22 @@ const Reply_Comment = ({ post, comment }) => {
   };
 
   const addreply = async () => {
-    const res = await fetch(
-      `${baseURL}/api/comments/${post._id}/${comment._id}`,
-      {
-        method: 'POST',
-        body: JSON.stringify({
-          reply
-        }),
-        headers: {
-          'Content-type': 'application/json',
-          Authorization: cookie.get('token')
+    try {
+      const res = await fetch(
+        `${baseURL}/api/comments/${post._id}/${comment._id}`,
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            reply
+          }),
+          headers: {
+            'Content-type': 'application/json',
+            Authorization: cookie.get('token')
+          }
         }
-      }
-    );
-    return res.json();
+      );
+      return await res.json();
+    } catch (error) {console.log(error);}
   };
 
   const { mutate } = useMutation(addreply, {
@@ -44,9 +46,9 @@ const Reply_Comment = ({ post, comment }) => {
 
   return (
     <>
-      <div className="reply_comment">
+      <div className="reply_comment m-0">
         {' '}
-        <button onClick={() => setReplyModal(true)}>Reply</button>
+        <button onClick={() => setReplyModal((state) => !state)}>Reply</button>
       </div>
 
       {replyModal && (

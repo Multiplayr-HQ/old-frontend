@@ -260,7 +260,9 @@ body.DarkPage .next_matches .bdr_clr_green {
     background: #403351;
 }
 body.DarkPage .rigs li {
-    background: #26292e;
+    /* background: #26292e; */
+    background: var(--bgcolor1);
+    border-color: #00deff;
 }
 body.DarkPage .video_box li {
     background: #2b2b35;

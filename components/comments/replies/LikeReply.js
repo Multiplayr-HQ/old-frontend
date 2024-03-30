@@ -28,15 +28,15 @@ const Like_Reply = ({ postId, commentId, reply, user }) => {
   return (
     <div className="reply_like" onClick={likehandlesubmit}>
       {likereplies ? (
-        <button>
+        <div className=' flex items-center ml-2 gap-2'>
           <img src="/assets/media/dash/fire.png" alt="" />
           <span>{likeReplyCount}</span>
-        </button>
+        </div>
       ) : (
-        <button>
+        <div  className=' flex items-center ml-2 gap-2'>
           <img src="/assets/media/dash/fire.png" alt="" />
           <span>{likeReplyCount}</span>
-        </button>
+        </div>
       )}
     </div>
   );

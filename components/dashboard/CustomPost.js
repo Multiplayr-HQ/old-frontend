@@ -105,7 +105,7 @@ const CustomPost = ({ post, user }) => {
     <>
       <div className="three_dots_dropdown">
         <ul>
-          {post.user?._id === user._id ? (
+          {post.user?._id === user?._id ? (
             <>
               <li>
                 <button onClick={() => setEditModal(true)}>Edit</button>
