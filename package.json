@@ -5,7 +5,7 @@
   "description": "Multiplayr headless platform using next.js",
   "engines": {
     "yarn": "*",
-    "node": "20"
+    "node": "18"
   },
   "engineStrict": true,
   "private": true,
