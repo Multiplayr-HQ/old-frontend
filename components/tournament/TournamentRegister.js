@@ -33,9 +33,9 @@ const Tournament_Reg = ({ user, tournament, profile, teams }) => {
       return team?.teamId?._id === profile?.current_team?._id;
     }).length > 0;
 
-  const isRegFull = tournament.registered?.length === tournament.participants;
+  const isRegFull = tournament?.registered?.length === tournament?.participants;
 
-  const isTeamRegFull = tournament.numberOfTeam === tournament.teams?.length;
+  const isTeamRegFull = tournament?.numberOfTeam === tournament?.teams?.length;
 
   const handleChange = (e, type) => {
     e.preventDefault();
@@ -88,7 +88,7 @@ const Tournament_Reg = ({ user, tournament, profile, teams }) => {
 
   return (
     <>
-      {tournament.playType === 'TEAMS' ? (
+      {tournament?.playType === 'TEAMS' ? (
         <>
           {isTeamRegistered ? (
             <>

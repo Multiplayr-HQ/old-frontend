@@ -23,7 +23,7 @@ const TeamFav = ({ team, profile }) => {
   };
 
   const isFav =
-    team.favourites?.filter((fav) => {
+    team?.favourites?.filter((fav) => {
       return fav.profile === profile._id;
     }).length > 0;
 

@@ -126,7 +126,7 @@ const Discover = ({ user, profile, games }) => {
               <li className={filterType == 'PLAYERS' ? 'active' : ''}>
                 <a href="#!" onClick={() => handleFType('PLAYERS')}>
                   {' '}
-                  Free Agents
+                  PLAYERS
                 </a>
               </li>
               <li className={filterType == 'COACHES' ? 'active' : ''}>
@@ -202,7 +202,8 @@ const Discover = ({ user, profile, games }) => {
               />
             ) : (
               ''
-            )}
+            )
+            }
           </div>
         </div>
       </div>

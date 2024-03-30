@@ -97,8 +97,8 @@ const TournamentVideos = ({ user, tournament, isUser, isSupportAdmin }) => {
 
       <p></p>
 
-      {tournament.tournament.videosgallery.length > 0 ? (
-        tournament.tournament.videosgallery.map((vid, idx) => (
+      {tournament.tournament?.videosgallery.length > 0 ? (
+        tournament.tournament?.videosgallery.map((vid, idx) => (
           <ul key={idx}>
             {vid.videos.map((vide, idex) => (
               <li key={idex}>
