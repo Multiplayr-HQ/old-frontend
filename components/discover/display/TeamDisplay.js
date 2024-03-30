@@ -7,10 +7,11 @@ import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import Cookies from 'js-cookie';
 import TeamRequest from '../invites/TeamRequest';
+import team from '../multiplayrDEV.teams.json';
 
 const TeamDisplay = ({
   isLoading,
-  team,
+  // team,
   showfavs,
   profile,
   searchData,
@@ -400,11 +401,11 @@ console.log("filter team  data in discover page ",team);
                   <div className="role_pic">
                     <img src={team.team?.imgUrl} alt="" />
                   </div>
-                  <a href={`/team/${team.team._id}`}>
+                  {/* <a href={`/team/${team.team._id}`}>
                     <h3>{team.team.name}</h3>
-                  </a>
+                  </a> */}
                   <ReactCountryFlag
-                    countryCode={team.team.region}
+                    countryCode={team.team?.region}
                     svg
                     style={{
                       width: '2em',
@@ -412,12 +413,12 @@ console.log("filter team  data in discover page ",team);
                     }}
                   />
                 </div>
-                {team.team.games && team.team.games.length <= 0 ? (
+                {team.team?.games && team.team.games.length <= 0 ? (
                   <p>No Game for this team</p>
                 ) : (
                   <>
                     <span className="logo">
-                      {team.team.games &&
+                      {team.team?.games &&
                         team.team.games.map((game, gx) => (
                           <img key={gx} src={game.gameId?.imgUrl} alt="" />
                         ))}
@@ -426,7 +427,7 @@ console.log("filter team  data in discover page ",team);
                 )}
                 <span className="remarks role_remk">
                   <h4>ROLE:</h4>
-                  {team.attribute.role.length > 0 ? (
+                  {team.attribute?.role?.length > 0 ? (
                     <p>{team.attribute.role}</p>
                   ) : (
                     <p>No Role Specified</p>
@@ -486,14 +487,14 @@ console.log("filter team  data in discover page ",team);
                       {' '}
                       <img src={team.team?.imgUrl} alt="" />{' '}
                     </div>
-                    <h3>{team.team.name}</h3>
+                    <h3>{team.team?.name}</h3>
                   </div>
 
                   <div className="ranking">
                     <h4>Ranking</h4>
 
                     <div className="current_team">
-                      {!team.attribute.rank ? (
+                      {!team.attribute?.rank ? (
                         <p>No ranking</p>
                       ) : (
                         <>
@@ -515,7 +516,7 @@ console.log("filter team  data in discover page ",team);
                     <h4>country</h4>
                     <p>
                       <ReactCountryFlag
-                        countryCode={team.team.region}
+                        countryCode={team.team?.region}
                         svg
                         style={{
                           width: '2em',
@@ -524,7 +525,7 @@ console.log("filter team  data in discover page ",team);
                       />
                     </p>
                     <h4>Established</h4>
-                    <p>{Moment(team.team.founded).format('MMM YYYY')}</p>
+                    <p>{Moment(team.team?.founded).format('MMM YYYY')}</p>
                   </div>
                   <div className="match">
                     <h4>Matches Played</h4>
@@ -532,8 +533,8 @@ console.log("filter team  data in discover page ",team);
                     <h4>Matches Won</h4>
                     <p>---</p>
                     <h4>Manager</h4>
-                    {team.team.employees.length !== 0 ? (
-                      team.team.employees &&
+                    {team.team?.employees.length !== 0 ? (
+                      team.team?.employees &&
                       team.team.employees.map(
                         (role, tmx) =>
                           role.role === 'Manager' && (

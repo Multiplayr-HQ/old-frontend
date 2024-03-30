@@ -53,15 +53,16 @@ const TournamentDetail = ({
   const [followData, setFollowData] = useState([]);
   const isRegisteredMember = isMember(data, user);
 
+
   useEffect(async () => {
     await axios
-      .get(`${baseURL}/api/tournaments/${data.tournament.name}/followers`)
+      .get(`${baseURL}/api/tournaments/${data.tournament?.name}/followers`)
       .then((res) => setFollowData(res.data));
   }, []);
   if (data) {
     const isUser = data.tournament?.user?._id === user._id;
     const isSupportAdmin =
-      data.tournament.isClaimed === false && user.isSupportAdmin;
+      data.tournament?.isClaimed === false && user.isSupportAdmin;
 
     const refreshData = () => {
       router.replace(router.asPath);
@@ -85,7 +86,7 @@ const TournamentDetail = ({
     };
 
     let x = Moment.duration(
-      Moment(data.tournament.startDate).diff(Moment().startOf('day'))
+      Moment(data.tournament?.startDate).diff(Moment().startOf('day'))
     )
       .asDays()
       .toString()
@@ -128,6 +129,7 @@ const TournamentDetail = ({
         toast.error(err.response?.data?.msg || 'Please recheck your inputs');
       }
     };
+    console.log("data in tournament", data);
 
     return (
       <>
@@ -140,15 +142,15 @@ const TournamentDetail = ({
             <div className="profile_box tournament_dp_box">
               <div className="profile_cover_photo">
                 {' '}
-                <img src={data.tournament.coverPhoto} alt="cover image" />{' '}
+                <img src={data.tournament?.coverPhoto} alt="cover image" />{' '}
               </div>
               <div className="profile_dp_box">
                 <div className="profile_pic">
                   {' '}
                   <img
                     src={
-                      data.tournament.imgUrl
-                        ? data.tournament.imgUrl
+                      data.tournament?.imgUrl
+                        ? data.tournament?.imgUrl
                         : '/assets/media/tournament/1.png'
                     }
                     alt=""
@@ -233,18 +235,18 @@ const TournamentDetail = ({
                         <p> {data.tournament?.followers.length} Followers</p>
                       </span>
                       <span className="name loc_date">
-                        {data.tournament.category !== 'LAN' ? null : (
+                        {data.tournament?.category !== 'LAN' ? null : (
                           <>
                             <i className="fa fa-map-marker"></i>
                             {data.tournament?.address},{' '}
                           </>
                         )}
-                        {data.tournament.location}{' '}
+                        {data.tournament?.location}{' '}
                         <span className="tour_time">
                           <i className="fa fa-clock-o"></i>{' '}
-                          {Moment(data.tournament.startDate).format('MMM DD')} -
-                          {Moment(data.tournament.endDate).format('MMM DD')}{' '}
-                          {data.tournament.startTime}
+                          {Moment(data.tournament?.startDate).format('MMM DD')} -
+                          {Moment(data.tournament?.endDate).format('MMM DD')}{' '}
+                          {data.tournament?.startTime}
                         </span>
                       </span>{' '}
                       <span className="follower"></span>{' '}
@@ -261,7 +263,7 @@ const TournamentDetail = ({
                       profile={profile}
                       teams={teams}
                     />
-                    {data.tournament.category === 'LAN' ? (
+                    {data.tournament?.category === 'LAN' ? (
                       <a href="#" className="btn">
                         BOOK TICKETS
                       </a>
@@ -307,7 +309,7 @@ const TournamentDetail = ({
 
                 <div className="flex prices">
                   <h5>Prize Pool</h5>
-                  {data.tournament.currency}
+                  {data.tournament?.currency}
                   <span className="">
                     <MPNumberFormat
                       value={
@@ -325,7 +327,7 @@ const TournamentDetail = ({
                   <div className="top_bio">
                     <h3>ABOUT THE TOURNAMENT</h3>
                     <div className="socail">
-                      {data.tournament.social?.facebook ? (
+                      {data.tournament?.social?.facebook ? (
                         <a
                           href={`https://www.facebook.com/${data.tournament.social?.facebook}`}
                           target="_blank"
@@ -337,7 +339,7 @@ const TournamentDetail = ({
                           ></i>
                         </a>
                       ) : null}
-                      {data.tournament.social?.instagram ? (
+                      {data.tournament?.social?.instagram ? (
                         <a
                           href={`https://www.instagram.com/${data.tournament.social?.instagram}`}
                           target="_blank"
@@ -347,7 +349,7 @@ const TournamentDetail = ({
                         </a>
                       ) : null}
 
-                      {data.tournament.social?.twitch ? (
+                      {data.tournament?.social?.twitch ? (
                         <a
                           href={`https://www.twitch.tv/${data.tournament.social?.twitch}`}
                           target="_blank"
@@ -357,7 +359,7 @@ const TournamentDetail = ({
                         </a>
                       ) : null}
 
-                      {data.tournament.social?.youtube ? (
+                      {data.tournament?.social?.youtube ? (
                         <a
                           href={`https://www.youtube.com/c/${data.tournament.social?.youtube}`}
                           target="_blank"
@@ -367,7 +369,7 @@ const TournamentDetail = ({
                         </a>
                       ) : null}
 
-                      {data.tournament.social?.discord ? (
+                      {data.tournament?.social?.discord ? (
                         <a
                           href={`https://${data.tournament.social?.discord}`}
                           target="_blank"
@@ -428,39 +430,39 @@ const TournamentDetail = ({
                   </div>
                   <div className="games">
                     <h3>
-                      {data.tournament.playType === 'TEAMS'
+                      {data.tournament?.playType === 'TEAMS'
                         ? 'Teams:'
                         : 'PARTICIPANTS:'}{' '}
                     </h3>
-                    {data.tournament.playType === 'TEAMS'
-                      ? data.tournament.teams?.slice(0, 3).map((team,i) => (
-                          <span key={i}>
-                            {' '}
-                            <img src={team?.teamId.imgUrl} alt="" />
-                          </span>
-                        ))
-                      : data.tournament.registered?.slice(0, 3).map((reg,i) => (
-                          <span key={i}>
-                            {' '}
-                            <img src={reg?.user?.profilePicUrl} alt="" />
-                          </span>
-                        ))}
-                    {data.tournament.playType === 'SOLO' ? (
+                    {data.tournament?.playType === 'TEAMS'
+                      ? data.tournament.teams?.slice(0, 3).map((team, i) => (
+                        <span key={i}>
+                          {' '}
+                          <img src={team?.teamId.imgUrl} alt="" />
+                        </span>
+                      ))
+                      : data.tournament?.registered?.slice(0, 3).map((reg, i) => (
+                        <span key={i}>
+                          {' '}
+                          <img src={reg?.user?.profilePicUrl} alt="" />
+                        </span>
+                      ))}
+                    {data.tournament?.playType === 'SOLO' ? (
                       <>
-                        {data.tournament.registered.length === 0
+                        {data.tournament?.registered.length === 0
                           ? 'No Participants Yet'
                           : null}
                       </>
                     ) : (
                       <>
-                        {data.tournament.teams.length === 0
+                        {data.tournament?.teams.length === 0
                           ? 'No Teams Yet'
                           : null}
                       </>
                     )}
-                    {data.tournament.registered.length > 3 ? (
+                    {data.tournament?.registered.length > 3 ? (
                       <a href="#!" className="model_show_btn more">
-                        +{data.tournament.registered.length - 3}
+                        +{data.tournament?.registered.length - 3}
                       </a>
                     ) : null}
                     <div className="common_model_box part_poup" id="share_prof">
@@ -471,9 +473,9 @@ const TournamentDetail = ({
                       <div className="inner_model_box">
                         <h3>Participants</h3>
                         <ul>
-                          {data.tournament.playType === 'SOLO' ? (
+                          {data.tournament?.playType === 'SOLO' ? (
                             <>
-                              {data.tournament.registered.map((ppl,i) => (
+                              {data.tournament?.registered.map((ppl, i) => (
                                 <li key={i}>
                                   <div className="game_pic">
                                     {' '}
@@ -490,7 +492,7 @@ const TournamentDetail = ({
                             </>
                           ) : (
                             <>
-                              {data.tournament.teams.map((team,i) => (
+                              {data.tournament?.teams.map((team, i) => (
                                 <li key={i}>
                                   <div className="game_pic">
                                     {' '}
@@ -511,34 +513,34 @@ const TournamentDetail = ({
                       <div className="overlay"></div>
                     </div>
                     <p className="slots">
-                      {data.tournament.playType === 'TEAMS' ? (
+                      {data.tournament?.playType === 'TEAMS' ? (
                         <>
                           {data.tournament.teams.length} /{' '}
                           {data.tournament.numberOfTeam} <b> SLOTS</b>
                         </>
                       ) : (
                         <>
-                          {data.tournament.registered.length} /{' '}
-                          {data.tournament.participants} <b> SLOTS</b>
+                          {data.tournament?.registered.length} /{' '}
+                          {data.tournament?.participants} <b> SLOTS</b>
                         </>
                       )}
                     </p>
                     <div className="slot-graphs">
-                      {data.tournament.playType === 'TEAMS' ? (
+                      {data.tournament?.playType === 'TEAMS' ? (
                         <>
-                          {data.tournament.teams.length === 0 ? null : (
+                          {data.tournament?.teams.length === 0 ? null : (
                             <TournamentSlots
-                              total={data.tournament.numberOfTeam}
-                              reg={data.tournament.teams.length}
+                              total={data.tournament?.numberOfTeam}
+                              reg={data.tournament?.teams.length}
                             />
                           )}
                         </>
                       ) : (
                         <>
-                          {data.tournament.registered.length === 0 ? null : (
+                          {data.tournament?.registered.length === 0 ? null : (
                             <TournamentSlots
-                              total={data.tournament.participants}
-                              reg={data.tournament.registered.length}
+                              total={data.tournament?.participants}
+                              reg={data.tournament?.registered.length}
                             />
                           )}
                         </>
@@ -550,8 +552,8 @@ const TournamentDetail = ({
                   <div className="games">
                     <h2>GAMES</h2>
                     <>
-                      {data.tournament.games &&
-                        data.tournament.games.map((item, index) => (
+                      {data.tournament?.games &&
+                        data.tournament?.games.map((item, index) => (
                           <span key={index}>
                             <img
                               src={item.gameId.imgUrl}
@@ -566,11 +568,11 @@ const TournamentDetail = ({
                   <div className="games">
                     <>
                       <h2>Maps: </h2>
-                      {data.tournament.games[0].gameId._id ===
-                      data.tournament.maps[0]?.mapId.game ? (
+                      {data.tournament?.games[0].gameId._id ===
+                        data.tournament?.maps[0]?.mapId.game ? (
                         <>
-                          {data.tournament.maps &&
-                            data.tournament.maps.map((item, index) => (
+                          {data.tournament?.maps &&
+                            data.tournament?.maps.map((item, index) => (
                               <>
                                 <span key={index}>
                                   <img
@@ -588,7 +590,7 @@ const TournamentDetail = ({
                     </>
                   </div>
 
-                  {data.tournament.eligibleCountries.length > 0 ? (
+                  {data.tournament?.eligibleCountries.length > 0 ? (
                     <>
                       <div className="games">
                         <h2>Eligible Countries:</h2>
@@ -620,19 +622,19 @@ const TournamentDetail = ({
                     <ul>
                       <li>
                         <b>CATEGORY</b>
-                        {data.tournament.category ? (
-                          <>{data.tournament.category} </>
+                        {data.tournament?.category ? (
+                          <>{data.tournament?.category} </>
                         ) : (
                           'No Category selected'
                         )}
                       </li>
                       <li>
                         <b>REGISTRATION </b>
-                        {data.tournament.entranceFee !== 0 ? (
+                        {data.tournament?.entranceFee !== 0 ? (
                           <>
                             {' '}
-                            {data.tournament.currency}{' '}
-                            {data.tournament.entranceFee}
+                            {data.tournament?.currency}{' '}
+                            {data.tournament?.entranceFee}
                           </>
                         ) : (
                           'Free'
@@ -644,7 +646,7 @@ const TournamentDetail = ({
                       </li>
                       <li>
                         <b>ELIMINATION </b>
-                        {data.tournament.tournamentType}
+                        {data.tournament?.tournamentType}
                       </li>
                     </ul>
                   </div>
@@ -715,11 +717,11 @@ const TournamentDetail = ({
             <div className="prfoile_tab_data">
               <div className="tab" id="overview">
                 <div className="profile_left_post">
-                  {data.tourPosts.length === 0 ? (
+                  {data.tourPosts?.length === 0 ? (
                     <h6>No Posts Under This Tournament</h6>
                   ) : (
-                    data.tourPosts.length !== 0 &&
-                    data.tourPosts.map((post, index) => (
+                    data.tourPosts?.length !== 0 &&
+                    data.tourPosts?.map((post, index) => (
                       <AllPosts key={index}
                         post={post}
                         user={user}
@@ -729,7 +731,7 @@ const TournamentDetail = ({
                   )}
                 </div>
                 <div>
-                  {data.tournament.room && isRegisteredMember === user._id ? (
+                  {data.tournament?.room && isRegisteredMember === user._id ? (
                     <>
                       <p>Room ID and Password</p>
                       <p>ID: {data.tournament?.room?.roomId}</p>
@@ -768,8 +770,8 @@ const TournamentDetail = ({
                   <div className="rules_row">
                     <h2> ELIGIBLE COUNTRIES</h2>
                     <ul>
-                      {data.tournament.eligibleCountries &&
-                        data.tournament.eligibleCountries?.map((cty,i) => (
+                      {data.tournament?.eligibleCountries &&
+                        data.tournament?.eligibleCountries?.map((cty, i) => (
                           <li key={i}>
                             <ReactCountryFlag
                               countryCode={cty.iso}
@@ -809,31 +811,31 @@ const TournamentDetail = ({
                 ) : null}
                 <div className="points_table">
                   <div className="groupds_box">
-                    {data.tournament.playType === 'SOLO' ? (
+                    {data.tournament?.playType === 'SOLO' ? (
                       <>
                         <TournamentGroups
-                          group={data.tourGroups[0]}
-                          playType={data.tournament.playType}
-                          tournamentType={data.tournament.tournamentType}
+                          group={data?.tourGroups[0]}
+                          playType={data?.tournament.playType}
+                          tournamentType={data?.tournament.tournamentType}
                         />
                         <TournamentGroups
-                          group={data.tourGroups[1]}
-                          playType={data.tournament.playType}
-                          tournamentType={data.tournament.tournamentType}
+                          group={data?.tourGroups[1]}
+                          playType={data?.tournament.playType}
+                          tournamentType={data?.tournament.tournamentType}
                         />
                       </>
                     ) : (
                       <>
-                        <TournamentGroups
-                          group={data.tourGroups[0]}
-                          playType={data.tournament.playType}
-                          tournamentType={data.tournament.tournamentType}
-                        />
-                        <TournamentGroups
-                          group={data.tourGroups[1]}
-                          playType={data.tournament.playType}
-                          tournamentType={data.tournament.tournamentType}
-                        />
+                        {/* <TournamentGroups
+                          group={data?.tourGroups[0]}
+                          playType={data?.tournament.playType}
+                          tournamentType={data?.tournament.tournamentType}
+                        /> */}
+                        {/* <TournamentGroups
+                          group={data?.tourGroups[1]}
+                          playType={data?.tournament.playType}
+                          tournamentType={data?.tournament.tournamentType}
+                        /> */}
                       </>
                     )}
                   </div>
@@ -842,8 +844,8 @@ const TournamentDetail = ({
 
               <div className="tab hide" id="matches">
                 <Matches
-                  teamMatches={data.tournamentMatches.matches}
-                  isMatchPlayersSet={data.tournamentMatches.isMatchPlayersSet}
+                  teamMatches={data?.tournamentMatches?.matches}
+                  isMatchPlayersSet={data?.tournamentMatches?.isMatchPlayersSet}
                 />
               </div>
 
@@ -1030,7 +1032,7 @@ const TournamentDetail = ({
                         </div>
                       </div>
                     </div> */}
-                    <BracketSystem data={data.tournamentMatches.matches} />
+                    <BracketSystem data={data.tournamentMatches?.matches} />
                   </div>
                 </div>
               </div>
@@ -1086,16 +1088,20 @@ export const getServerSideProps = async (context, query) => {
     }
   });
   const data = await response.json();
+ 
+
+ 
+
+
   // const data = dat.data;
 
   const res = await fetch(
-    `${baseURL}/api/tournamentRules/${data.tournament._id}`
+    `${baseURL}/api/tournamentRules/${data.tournament?._id}`
   );
   const tourRules = await res.json();
 
   const resprod = await getData(
-    `product?limit=${
-      page * 6
+    `product?limit=${page * 6
     }&category=${category}&sort=${sort}&title=${search}`
   );
 

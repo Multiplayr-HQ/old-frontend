@@ -1,23 +1,23 @@
 import React from 'react';
 
 const BracketSystem = ({ data }) => {
-  const roundOneMatches = data.filter((match) => {
+  const roundOneMatches = data?.filter((match) => {
     return match.instance === 'Round1';
   });
-  const roundTwoMatches = data.filter((match) => {
+  const roundTwoMatches = data?.filter((match) => {
     return match.instance === 'Round2';
   });
-  const SemiFinals = data.filter((match) => {
+  const SemiFinals = data?.filter((match) => {
     return match.instance === 'Semifinals';
   });
-  const Finals = data.filter((match) => {
+  const Finals = data?.filter((match) => {
     return match.instance === 'Final';
   });
 
-  const middleIndex = Math.ceil(roundTwoMatches.length / 2);
+  const middleIndex = Math.ceil(roundTwoMatches?.length / 2);
 
-  const firstHalf = roundTwoMatches.splice(0, middleIndex);
-  const secondHalf = roundTwoMatches.splice(-middleIndex);
+  const firstHalf = roundTwoMatches?.splice(0, middleIndex);
+  const secondHalf = roundTwoMatches?.splice(-middleIndex);
 
   return (
     <>

@@ -41,8 +41,8 @@ const TournamentPhotos = ({ user, tournament, isUser, isSupportAdmin }) => {
 
       <p></p>
 
-      {tournament.tournament.imagesgallery.length > 0 ? (
-        tournament.tournament.imagesgallery.map((imgg, idx) => (
+      {tournament.tournament?.imagesgallery.length > 0 ? (
+        tournament.tournament?.imagesgallery.map((imgg, idx) => (
           <div className="imagess_box" key={idx}>
             <div className="imagess">
               <ul>

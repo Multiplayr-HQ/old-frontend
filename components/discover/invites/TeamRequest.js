@@ -17,12 +17,12 @@ const Team_Req = ({ profile, team, user, isAdmin }) => {
   const playerId = profile.playergames[0]?.player?._id;
 
   const isReqSent =
-    team.request?.filter((plyr) => plyr.playerId._id === playerId).length > 0;
+    team?.request?.filter((plyr) => plyr.playerId._id === playerId).length > 0;
 
   const [request, setRequest] = useState(isReqSent);
 
   const isPlayer =
-    team.players?.filter((plyr) => plyr.playerId === playerId).length > 0;
+    team?.players?.filter((plyr) => plyr.playerId === playerId).length > 0;
 
   const reqhandlesubmit = async (e) => {
     e.preventDefault();

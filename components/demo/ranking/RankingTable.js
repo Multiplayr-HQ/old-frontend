@@ -17,18 +17,18 @@ const RankingTable = ({ teamrankingss, searchResults, favshow, user, team }) => 
   const [content, setContent] = useState([]);
 
   // console.log("gandu Team Ranking length" , teamrankingss?.teams?.length);
-
-
+  
+  
   useEffect(() => {
-    if (team.length > 0) {
-      setContent({ teams: team });
-    } else if (searchResults.length > 0) {
-      setContent({ teams: searchResults });
+    if (team.length > 0 ) {
+      setContent({teams: team});
+    } else if (searchResults.length > 0 ) {
+      setContent({teams : searchResults});
     } else {
       setContent(teamrankingss);
     }
-  }, [searchResults, team, teamrankingss]);
-  console.log("content", content);
+  }, [ searchResults, team, teamrankingss]);
+  console.log("content",content);
   const getContent = () => {
 
     // Return "No teams are ranked yet ..." message if there's no content
@@ -40,143 +40,128 @@ const RankingTable = ({ teamrankingss, searchResults, favshow, user, team }) => 
       );
     }
 
+   
+   console.log("Content of ranking",content);
 
-    console.log("Content of ranking", content);
-
-    return content?.team?.map((result, idx) => (
-      <div className="row_box" key={idx}>
-        <div className="cols_box">
-          <div className="cols">
-            {result.rank ? result.rank : 'Not Ranked'}
-          </div>
-          <div className="cols">
-            <a href={`/team/${result._id}`}>
-              {result.teamData[0].name}
-            </a>
-          </div>
-          <div className="cols">
-            {result.team_points ? result.team_points : 'Not Defined'}
-          </div>
-          <div className="cols">{result.total_tournaments}</div>
-          <div className="cols">{result.winLossCounts[0]?.wins} / {result.winLossCounts[0]?.losses}</div>
-          <div className="cols">
-            {/* {result.points ? result.points : '0'}
+    return content?.teams?.map((result, idx) => (
+          <div className="row_box" key={idx}>
+          <div className="cols_box">
+            <div className="cols">
+              {result.rank ? result.rank : 'Not Ranked'}
+            </div>
+            <div className="cols">
+              <a href={`/team/${result.team._id}`}>
+                {result.team.name}
+              </a>
+            </div>
+            <div className="cols">
+              {result.points ? result.points : 'Not Defined'}
+            </div>
+            <div className="cols">{result.totalTournaments}</div>
+            <div className="cols">{result.teamWinCount}</div>
+            <div className="cols">
+              {/* {result.points ? result.points : '0'}
               ---
               / 0 */}
-            {result.win_percentage} %
-          </div>
-          {/* <div className="cols">tdb</div> */}
-          <div className="cols">
-            {' '}
-            {/* <span className="round green"></span>{' '}
+              0
+            </div>
+            {/* <div className="cols">tdb</div> */}
+            <div className="cols">
+              {' '}
+              <span className="round green"></span>{' '}
               <span className="round green"></span>{' '}
               <span className="round red"></span>{' '}
               <span className="round red"></span>{' '}
-              <span className="round green"></span>{' '} */}
-
-            {result.recentMatchData.recentMatches.length === 0 ? (
-              <span>-----</span>
+              <span className="round green"></span>{' '}
+            </div>
+            {result.team.team_winnings ? (
+              <div className="cols">
+                $ {result.team.team_winnings}
+              </div>
             ) : (
-              result.recentMatchData.recentMatches.map((data, index) => (
-                data === null ? (
-                  <span key={index}>-----</span>
-                ) : (
-                  <span key={index} className={data.isWin ? "round green" : "round red"}></span>
-                )
-              ))
+              'No Winnings Yet'
             )}
           </div>
-          {result.teamData[0].team_winnings ? (
-            <div className="cols">
-              $ {result.teamData[0].team_winnings}
-            </div>
-          ) : (
-            
-            (<div className="cols">
-              No Winnings 
-            </div>)
-          )}
-        </div>
 
-        {/* {!result.team || result.team.length >= 0 ? ( */}
-        <div className="more_data" key={idx}>
-          <div className="pic">
-            <div className="tumb">
-              <img src={result.teamData[0]?.imgUrl} alt="" />
-            </div>
-            <h3>{result.teamData[0].name}</h3>
+          {/* {!result.team || result.team.length >= 0 ? ( */}
+          <div className="more_data" key={idx}>
+            <div className="pic">
+              <div className="tumb">
+                <img src={result.team.imgUrl} alt="" />
+              </div>
+              <h3>{result.team.name}</h3>
 
-            <ReactCountryFlag
-              countryCode={result.teamData[0]?.region}
-              svg
-
-              style={{
-                width: '2em',
-                height: '2em',
-
-              }}
-            />
-          </div>
-          <div className="total">
-            <p>
-              <MPNumberFormat
-                // value={result.team.prizepool}
-                currency={result.currency}
+              <ReactCountryFlag
+                countryCode={result.team.region}
+                svg
+                
+                style={{
+                  width: '2em',
+                  height: '2em',
+                 
+                }}
               />
-            </p>
-            {/* <p>TOTAL PRIZE POOL EARNED</p> */}
-            <div className='team-prize'>
-              <div className='prize'>
-                <span>PRIZE EARNED</span>
-                <p>USD {result?.total_prize}</p>
-              </div>
-              <div className='prize_2'>
-                <div className="team-stablish">
-                  <span>ESTABLISHED</span>
-                  <p>{Moment(result.teamData[0].founded).format('MMM YYYY')}</p>
-                </div>
-                <div className="manager">
-                  <span>{result.teamData[0].role}</span>
-                  <p>Sonu Singh</p>
-                </div>
-
-              </div>
-
             </div>
-          </div>
+            <div className="total">
+              <p>
+                <MPNumberFormat
+                  value={result.team.prizepool}
+                  currency={result.currency}
+                />
+              </p>
+              {/* <p>TOTAL PRIZE POOL EARNED</p> */}
+              <div className='team-prize'>
+                <div className='prize'>
+                  <span>PRIZE EARNED</span>
+                  <p>USD {result.team.team_winnings}</p>
+                </div>
+                <div className='prize_2'>
+                  <div className="team-stablish">
+                    <span>ESTABLISHED</span>
+                    <p>{Moment(result.team.founded).format('MMM YYYY')}</p>
+                  </div>
+                  <div className="manager">
+                    <span>{result.team.role}</span>
+                    <p>Sonu Singh</p>
+                  </div>
 
-          <div className="chart">
-            {/* <img src="/assets/media/ranking/chart.png" alt="" /> */}
-          </div>
-          <div className="follows">
-            <button>Follow</button>
-            <div className="ate">
-              {' '}
-              {/* {result.matches[0]
+                </div>
+
+              </div>
+            </div>
+
+            <div className="chart">
+              {/* <img src="/assets/media/ranking/chart.png" alt="" /> */}
+            </div>
+            <div className="follows">
+              <button>Follow</button>
+              <div className="ate">
+                {' '}
+                {/* {result.matches[0]
                                 ? result.matches[0].teams[0].teamName.substring(
                                     0,
                                     7
                                   ) + '...'
                                 : 'Not Mentioned'}{' '} */}
-              ATE<span className="circle"></span> {' '}
-              16-3
-              <span className="circle"></span>{' '}TWW
-              {/* {result.matches[0]
+                                ATE<span className="circle"></span> {' '}
+                16-3
+                <span className="circle"></span>{' '}TWW
+                {/* {result.matches[0]
                                 ? result.matches[0].teams[1].teamName.substring(
                                     0,
                                     7
                                   ) + '...'
                                 : 'Not Mentioned'}{' '} */}
+              </div>
             </div>
           </div>
-        </div>
-        {/* ) : (
+          {/* ) : (
                       result.team.map((tresult, idx) => (
   
                       )) */}
-        {/* )
+          {/* )
                     } */}
-      </div>
+        </div>
     ));
 
 
@@ -292,7 +277,7 @@ const RankingTable = ({ teamrankingss, searchResults, favshow, user, team }) => 
     //       </div>
     //       {/* ) : (
     //                   result.team.map((tresult, idx) => (
-
+  
     //                   )) */}
     //       {/* )
     //                 } */}
@@ -338,7 +323,7 @@ const RankingTable = ({ teamrankingss, searchResults, favshow, user, team }) => 
     //             'No Winnings Yet'
     //           )}
     //         </div>
-
+  
     //         {/* {!result.team || result.team.length >= 0 ? ( */}
     //         <div className="more_data" key={idx}>
     //           <div className="pic">
@@ -346,7 +331,7 @@ const RankingTable = ({ teamrankingss, searchResults, favshow, user, team }) => 
     //               <img src={result.team.imgUrl} alt="" />
     //             </div>
     //             <h3>{result.team.name}</h3>
-
+  
     //             <ReactCountryFlag
     //               countryCode={result.team.region}
     //               svg
@@ -378,12 +363,12 @@ const RankingTable = ({ teamrankingss, searchResults, favshow, user, team }) => 
     //                   <p>Manager </p>
     //                   <span>Sonu Singh</span>
     //                 </div>
-
+  
     //               </div>
-
+  
     //             </div>
     //           </div>
-
+  
     //           <div className="chart">
     //             <img src="/assets/media/ranking/chart.png" alt="" />
     //           </div>
@@ -410,14 +395,14 @@ const RankingTable = ({ teamrankingss, searchResults, favshow, user, team }) => 
     //         </div>
     //         {/* ) : (
     //                         result.team.map((tresult, idx) => (
-
+        
     //                         )) */}
     //         {/* )
     //                       } */}
     //       </div>
     //     ))
     //   )
-
+     
     // }
 
   };

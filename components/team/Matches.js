@@ -2,10 +2,10 @@ import React from 'react';
 import Moment from 'moment';
 
 const Matches = ({ teamMatches, isMatchPlayersSet }) => {
-  const roundsMatches = teamMatches.filter((x) => {
+  const roundsMatches = teamMatches?.filter((x) => {
     return x.instance === 'Round1' || x.instance === 'Round2';
   });
-  const semiFinalAndFinalMatches = teamMatches.filter((x) => {
+  const semiFinalAndFinalMatches = teamMatches?.filter((x) => {
     return x.instance === 'Semifinals' || x.instance === 'Final';
   });
 
@@ -153,7 +153,7 @@ const Matches = ({ teamMatches, isMatchPlayersSet }) => {
         ))
       )}
       <div className="heads_bg">Upcoming Matches</div>
-      {semiFinalAndFinalMatches.length === 0 || !isMatchPlayersSet ? (
+      {semiFinalAndFinalMatches?.length === 0 || !isMatchPlayersSet ? (
         <h5>No Matches</h5>
       ) : (
         semiFinalAndFinalMatches.map((tm, idx) => (

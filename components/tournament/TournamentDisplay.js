@@ -65,10 +65,11 @@ const TournamentDisplay = ({
     }
     
   },[searchData]);
+  console.log("content data in tournament",tournament);
 
-  console.log("tournament for filter ",tournament);
+  // console.log("tournament for filter ",tournament);
 
-  console.log(" data of search",searchObj);
+  // console.log(" data of search",searchObj);
 
   return (
     <>
@@ -399,7 +400,7 @@ const TournamentDisplay = ({
                           currency={result.tournament?.currency}
                         />
                       ) : (
-                        'Not Available'
+                        '----'
                       )}
                     </div>
                   </div>

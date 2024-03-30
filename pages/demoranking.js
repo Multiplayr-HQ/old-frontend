@@ -22,7 +22,7 @@ import Link from 'next/link';
 // import next from 'next';
 
 const Ranking = ({ user, games, profile }) => {
-  const [teamsRanks, setTeamsRanks] = useState();
+  const [teamsRanks, setTeamsRanks] = useState({ teams: [] });
   const [loading, setLoading] = useState(false);
 
 
@@ -33,7 +33,7 @@ const Ranking = ({ user, games, profile }) => {
 
 
   const handleSelectGame = async (obj) => {
-    setTeamsRanks();
+    setTeamsRanks({ teams: [] });
     setSelectedGame(obj);
     setPage(1);
     await getData(1, obj);
@@ -46,17 +46,14 @@ const Ranking = ({ user, games, profile }) => {
   const getData = async (pag, game) => {
     setLoading(true);
     console.log("gandu page : " ,pag);
-    const res = await axios.get(`${baseURL}/api/rankings/bywins/${game?._id}?page=${pag}`);
+    const res = await axios.get(`${baseURL}/api/rankings/bywinnings100/${game?._id}?page=${pag}`);
     setPage(pag+1);
 
-    // setTeamsRanks((p) => {
-    //   let arr = [];
-    //   arr = [...p.teams , ...res?.data?.teams];
-    //   return {teams : arr};
-    // });
-    console.log("res",res);
-    setTeamsRanks(res.data);
-    console.log("teamRanks in ranking page",teamsRanks);
+    setTeamsRanks((p) => {
+      let arr = [];
+      arr = [...p.teams , ...res?.data?.teams];
+      return {teams : arr};
+    });
 
     setLoading(false);
     console.log("response data gandu :", res, "page : ", page);
@@ -86,6 +83,8 @@ const Ranking = ({ user, games, profile }) => {
       <SignedHeader user={user} profile={profile} />
 
       <LeftNav user={user} />
+
+
 
       <div className="main_middle profile_middle">
         <div className="discovery_page">

@@ -98,7 +98,7 @@ const TournamentSponsor = ({ user, data, isUser, isSupportAdmin }) => {
                 <form className="common_form" onSubmit={handleSubmit}>
                   <SponsorCard
                     states={state}
-                    tournamentId={data.tournament._id}
+                    tournamentId={data?.tournament?._id}
                     sponsors={sponsors}
                   />
 

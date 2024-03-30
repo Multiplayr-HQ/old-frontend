@@ -242,7 +242,7 @@ export const LanguageData = [
 
 export const isMember = (data, user) => {
   let smtg = '';
-  if (data.tournament.playType === 'TEAMS') {
+  if (data.tournament?.playType === 'TEAMS') {
     for (let i = 0; i < data.tournament.teams.length; i++) {
       const newTT = data.tournament.teams[i];
 
@@ -256,7 +256,7 @@ export const isMember = (data, user) => {
         }
       }
     }
-  } else if (data.tournament.playType === 'SOLO') {
+  } else if (data.tournament?.playType === 'SOLO') {
     for (let i = 0; i < data.tournament.registered.length; i++) {
       if (data.tournament.registered[i].user._id == user._id) {
         smtg = data.tournament.registered[i].user._id;
