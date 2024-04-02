@@ -3425,7 +3425,7 @@ article .social_bar img {
 	float: left;
 	width: 100%;
 	background: #fff;
-	padding:10px 20px;
+	padding:30px 20px;
 	margin-top: 10px;
 	display: flex;
 	justify-content: space-between;
@@ -4267,8 +4267,14 @@ article .social_bar img {
 	padding: 5px;
 	text-align: center;
 }
+.sponser ul li .pos_name .name {
+	/* margin-left: 5px;
+	margin-right: 5px; */
+}
 
-.sponser ul li .pos_name{ display: flex;}
+.sponser ul li .pos_name{ display: flex;
+flex-direction: column;
+}
 
 .sponser ul li img {
 	height: 30px;
@@ -5671,13 +5677,14 @@ article .social_bar img {
 
 .more_data .follows {
 	width: 220px;
+	
 }
 
 .more_data button {
 	background: var(--yellow);
 	padding: 10px 20px;
 	text-align: center;
-	color: #fff;
+	color: #000;
 	font-size: 14px;
 	border: 0;
 	width: 100%;

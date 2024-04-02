@@ -22,11 +22,11 @@ import Link from 'next/link';
 // import next from 'next';
 
 const Ranking = ({ user, games, profile }) => {
-  const [teamsRanks, setTeamsRanks] = useState();
+  const [teamsRanks, setTeamsRanks] = useState([]);
   const [loading, setLoading] = useState(false);
 
 
-  const [selectedGame, setSelectedGame] = useState({ _id: 20 });
+  const [selectedGame, setSelectedGame] = useState({_id : 20,name :'Browse Game',imgUrl : '/assets/media/ranking/console.png'});
 
   const [page, setPage] = useState(1);
 
@@ -45,7 +45,7 @@ const Ranking = ({ user, games, profile }) => {
 
   const getData = async (pag, game) => {
     setLoading(true);
-    console.log("gandu page : " ,pag);
+    // console.log("gandu page : " ,pag);
     const res = await axios.get(`${baseURL}/api/rankings/bywins/${game?._id}?page=${pag}`);
     setPage(pag+1);
 
@@ -54,12 +54,12 @@ const Ranking = ({ user, games, profile }) => {
     //   arr = [...p.teams , ...res?.data?.teams];
     //   return {teams : arr};
     // });
-    console.log("res",res);
+    // console.log("res",res);
     setTeamsRanks(res.data);
-    console.log("teamRanks in ranking page",teamsRanks);
+    // console.log("teamRanks in ranking page",teamsRanks);
 
     setLoading(false);
-    console.log("response data gandu :", res, "page : ", page);
+    // console.log("response data gandu :", res, "page : ", page);
   }
 
   console.log("gandu page : " , page);

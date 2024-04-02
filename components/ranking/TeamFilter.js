@@ -11,8 +11,13 @@ const TeamFilter = ({ filterType, myState, selectedGame, showfavs, searchData, t
 
   const [data, setData] = useState(null);
 
-  let filter = {};
-  
+  let filter = {
+    filter : ["yes"],
+  };
+  console.log("game id in ranking 0",selectedGame._id);
+
+
+
 
   const [selectedMapFilters, setSelectedMapFilters] = useState([]);
   var [team, setTeam] = useState([]);
@@ -26,7 +31,7 @@ const TeamFilter = ({ filterType, myState, selectedGame, showfavs, searchData, t
     const filtered = event.target.value;
     const name = event.target.name;
 
-    
+
     if (!selectedFilters.includes(filtered)) {
       setSelectedFilters([...selectedFilters, filtered]);
     } else {
@@ -44,7 +49,7 @@ const TeamFilter = ({ filterType, myState, selectedGame, showfavs, searchData, t
     if (found == undefined) {
       var arr = new Set();
       arr.add(filtered);
-    
+
       selectedMapFilters.push({ key: name, values: arr });
     } else {
       var arr = found.values;
@@ -80,6 +85,13 @@ const TeamFilter = ({ filterType, myState, selectedGame, showfavs, searchData, t
     router.reload()
   };
 
+  const clearData = () =>{
+        filter = {
+          filter : ["yes"],
+        };
+  }
+  
+
 
   const handleClearFilter = async (e, key, val) => {
     e.preventDefault();
@@ -111,7 +123,7 @@ const TeamFilter = ({ filterType, myState, selectedGame, showfavs, searchData, t
     });
     setSelectedMapFilters(uniqueTags);
 
-    refreshData();
+    // refreshData();
 
   };
 
@@ -173,9 +185,7 @@ const TeamFilter = ({ filterType, myState, selectedGame, showfavs, searchData, t
 
 
   const handleApplyFilters = async (e) => {
-    // e.preventDefault();
-    // myState.setFilteredResults([]);
-    // myState.setSelectedFilters([]);
+
     const uniqueTags = [];
     // const uniqueTags = {};
     selectedMapFilters.map((item) => {
@@ -184,82 +194,88 @@ const TeamFilter = ({ filterType, myState, selectedGame, showfavs, searchData, t
     });
 
 
-    const filterdata = uniqueTags[0].values[0];
-    // console.log("FILTERS  2 :",filterdata);
+
 
     const getfilterData  =  async () => {
-     
+
         selectedMapFilters.map((item , index) => {
           const key = item.key.toString().toLowerCase();
-          console.log(key);
+          console.log("key",key);
           filter = {
             ...filter,
             [key] : Array.from(item.values)
           }
         })
+        if(filter.year){
+          filter.year=String(filter.year)
 
-        console.log("xxxx" , filter);
+        }
 
-        fetch(`${baseURL}/api/rankings/bywinnings100/${selectedGame?._id}`, {
-          method: 'POST', 
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(filter),
-        })
-        .then(response => response.json())
-        .then(data => console.log("xxxx api response" , data))
-        .catch((error) => {
+        console.log("selected filters" , filter);
+        // console.log(selectedGame?._id,"hello hii")
+        const game = selectedGame._id;
+
+        try {
+          const response = await axios.post(`http://localhost:8181/api/rankings/bywins/${game}`, filter, {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          });
+      
+          console.log("API response:", response.data);
+          setTeam(response.data);
+          
+        } catch (error) {
           console.error('Error:', error);
-        }) 
-      };
+        }
+      }
 
-      await getfilterData();
+    await getfilterData();
 
   }
 
 
-  useEffect(() => {
-    var sg = undefined;
-    if (selectedGame != null) {
-      sg = selectedGame._id;
-    }
+  // useEffect(() => {
+  //   var sg = undefined;
+  //   if (selectedGame != null) {
+  //     sg = selectedGame._id;
+  //   }
 
 
-    if (myState.selectedFilters.length > 0) {
-      setTeam(myState.filteredResults);
-      //     setIsLoading(false);
-    }
-    else {
+  //   if (myState.selectedFilters.length > 0) {
+  //     setTeam(myState.filteredResults);
+  //     //     setIsLoading(false);
+  //   }
+  //   else {
 
-      setIsLoading(true);
-      // if (sessionTeam.key === null) {
-      //   axios.get(`${baseURL}/api/rankings/bywinnings100/${sg}`).then((res) => {
-      //     setTeam(res.data);
-      //     setSessionTeam({ key: sg, value: team });
-      //     setIsLoading(false);
-      //   });
-      // } else {
-      if (sessionTeam.key != sg) {
-        axios.get(`${baseURL}/api/rankings/bywinnings100/${sg}`).then((res) => {
-          setTeam(res.data);
-          setSessionTeam({ key: sg, value: team });
-          setIsLoading(false);
-        });
-      }
-      // else {
-      //   //setTeam (sessionTeam.get(sg));
-      //   setIsLoading(false);
-      // }
-      // }
-      // myState.setFilteredResults(team):
+  //     setIsLoading(true);
+  //     // if (sessionTeam.key === null) {
+  //     //   axios.get(`${baseURL}/api/rankings/bywinnings100/${sg}`).then((res) => {
+  //     //     setTeam(res.data);
+  //     //     setSessionTeam({ key: sg, value: team });
+  //     //     setIsLoading(false);
+  //     //   });
+  //     // } else {
+  //     if (sessionTeam.key != sg) {
+  //       axios.get(`${baseURL}/api/rankings/bywinnings100/${sg}`).then((res) => {
+  //         setTeam(res.data);
+  //         setSessionTeam({ key: sg, value: team });
+  //         setIsLoading(false);
+  //       });
+  //     }
+  //     // else {
+  //     //   //setTeam (sessionTeam.get(sg));
+  //     //   setIsLoading(false);
+  //     // }
+  //     // }
+  //     // myState.setFilteredResults(team):
 
-    }
-  }, [myState, team]);
-  
+  //   }
+  // }, [myState, team]);
+
   console.log("selected filter :", selectedFilters);
-  console.log("Selected map filter ", selectedMapFilters);
- 
+  
+
 
   if (data && data.filter) {
     return (
@@ -332,6 +348,7 @@ const TeamFilter = ({ filterType, myState, selectedGame, showfavs, searchData, t
                 href="#!"
                 className="close1"
                 onClick={() => {
+                  setSelectedFilters([]);
                   setSelectedMapFilters([]);
                   myState.setFilteredResults([]);
                   myState.setSelectedFilters([]);
@@ -503,4 +520,3 @@ const TeamFilter = ({ filterType, myState, selectedGame, showfavs, searchData, t
 };
 
 export default TeamFilter;
-

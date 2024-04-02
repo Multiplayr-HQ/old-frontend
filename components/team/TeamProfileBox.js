@@ -631,7 +631,7 @@ const TeamProfileBox = ({
                   <li key={index}>
                     <span className="pos_name">
                       <img src={item.logoUrl} alt="" />
-                      <p> {item.name}</p>
+                      {/* <p className='name'> {item.name}</p> */}
                     </span>
                   </li>
                 ))

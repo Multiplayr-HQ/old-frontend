@@ -41,7 +41,8 @@ const Team = ({ user, data, products, profile, teams }) => {
       (emp) => emp.role === 'CEO' && emp.employeeId?._id === user._id
     ).length > 0;
 
-  const isSupportAdmin = data.team.isClaimed === false && user.isSupportAdmin;
+  const isSupportAdmin = data.team?.isClaimed === false && user.isSupportAdmin;
+  console.log("team in team page ",data);
 
   if (data) {
     return (
@@ -78,7 +79,6 @@ const Team = ({ user, data, products, profile, teams }) => {
             teams={teams}
           />
         </div>
-
         <AllScript />
       </>
     );
