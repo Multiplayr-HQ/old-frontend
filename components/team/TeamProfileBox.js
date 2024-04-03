@@ -232,6 +232,8 @@ const TeamProfileBox = ({
     data.team &&
     data.team.players?.filter((plyr) => plyr.playerId === playerId).length > 0;
 
+  console.log("data",data);
+
   return (
     <div className="profile_box team_profile_box">
       <div className="profile_cover_photo">

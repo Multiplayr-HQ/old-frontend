@@ -136,6 +136,7 @@ const TeamSponsors = ({
                   {' '}
                   <span className="head_spons_bg">{item.name}</span>
                   <p>{item.description}</p>
+                  <div className='sponser_del'>
                   {isAdmin ||
                   isOwner ||
                   isCEO ||
@@ -148,6 +149,7 @@ const TeamSponsors = ({
                       <i className="fa fa-trash" />
                     </button>
                   ) : null}
+                  </div>
                 </div>
               </li>
             ))

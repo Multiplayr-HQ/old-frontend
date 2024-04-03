@@ -99,32 +99,32 @@ const TeamProfileData = ({
             MATCHES
           </a>
         </li>
-        <li>
+        {/* <li>
           <a href="#!" rel="stats">
             STATISTICS
           </a>
-        </li>
-        <li>
+        </li> */}
+        {/* <li>
           <a href="#!" rel="store">
             {' '}
             CLAN STORE{' '}
           </a>
-        </li>
-        <li>
+        </li> */}
+        {/* <li>
           <a href="#!" rel="photos">
             PHOTOS
           </a>
-        </li>
+        </li> */}
         <li>
           <a href="#!" rel="media">
             MEDIA
           </a>
         </li>
-        <li>
+        {/* <li>
           <a href="#!" rel="jobs">
             JOBS
           </a>
-        </li>
+        </li> */}
         <li>
           <a href="#!" rel="about" onClick={() => handleTabs('ABOUT')}>
             {' '}
@@ -143,7 +143,7 @@ const TeamProfileData = ({
             RIGS
           </a>
         </li> */}
-        <li>
+        {/* <li>
           <a
             href="#!"
             rel="tournaments"
@@ -151,14 +151,14 @@ const TeamProfileData = ({
           >
             Tournaments
           </a>
-        </li>
-        <li>
+        </li> */}
+        {/* <li>
           {isManager || isAdmin || isOwner || isCEO || isSupportAdmin ? (
             <a href="#!" rel="joines" onClick={() => handleTabs('JOINES')}>
               Joines
             </a>
           ) : null}
-        </li>
+        </li> */}
       </ul>
       <div className="prfoile_tab_data">
         <div className="tab" id="overview">

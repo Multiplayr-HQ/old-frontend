@@ -184,29 +184,32 @@ function Customjs() {
 
       var options = [];
 
-      $('.dropdown-menu a').on('click', function (event) {
-        var $target = $(event.currentTarget),
-          val = $target.attr('data-value'),
-          $inp = $target.find('input'),
-          idx;
+      // $('.dropdown-menu a').on('click', function (event) {
+      //   var $target = $(event.currentTarget),
+      //     val = $target.attr('data-value'),
+      //     $inp = $target.find('input'),
+      //     idx;
 
-        if ((idx = options.indexOf(val)) > -1) {
-          options.splice(idx, 1);
-          setTimeout(function () {
-            $inp.prop('checked', false);
-          }, 0);
-        } else {
-          options.push(val);
-          setTimeout(function () {
-            $inp.prop('checked', true);
-          }, 0);
-        }
+      //   if ((idx = options.indexOf(val)) > -1) {
+      //     options.splice(idx, 1);
+      //     setTimeout(function () {
+      //       $inp.prop('checked', false);
+      //     }, 0);
+      //   } else {
+      //     options.push(val);
+      //     setTimeout(function () {
+      //       $inp.prop('checked', true);
+      //     }, 0);
+      //   }
 
-        $(event.target).blur();
+      //   $(event.target).blur();
 
-        console.log(options);
-        return false;
-      });
+      //   console.log( "options ",options);
+      //   return false;
+      // });
+      
+      
+
 
       $('.comment_round_box').hover(function () {
         $(this).find('.pinned').addClass('ajay');
@@ -294,6 +297,30 @@ function Customjs() {
       console.log("jquery fat gaya")
 
     }
+
+    $('.dropdown-menu a').on('click', function (event) {
+      var $target = $(event.currentTarget),
+        val = $target.attr('data-value'),
+        $inp = $target.find('input'),
+        idx;
+
+      if ((idx = options.indexOf(val)) > -1) {
+        options.splice(idx, 1);
+        setTimeout(function () {
+          $inp.prop('checked', false);
+        }, 0);
+      } else {
+        options.push(val);
+        setTimeout(function () {
+          $inp.prop('checked', true);
+        }, 0);
+      }
+
+      $(event.target).blur();
+
+      console.log( "options ",options);
+      return false;
+    });
 
   }, [2]);
 

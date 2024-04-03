@@ -29,7 +29,7 @@ const BrandDisplay = ({ brandData, user }) => {
             <div className="profile_dp_box">
               <div className="profile_pic">
                 {' '}
-                <img src={brandData.brand.logoUrl} alt="" />{' '}
+                <img src={brandData.brand?.logoUrl} alt="" />{' '}
               </div>
               <div className="profile_details">
                 <div className="top_details">

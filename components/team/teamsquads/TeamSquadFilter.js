@@ -14,10 +14,12 @@ const TeamSquadFilter = ({ playerData, players }) => {
     axios
       .get(`${baseURL}/api/all/players`)
       .then((res) => setAllplayers(res.data));
+     
 
     axios
       .get(`${baseURL}/api/all/teamroles`)
       .then((res) => setTeamroles(res.data));
+      
   }, []);
 
   const [filteredData, setFilteredData] = useState([]);
@@ -25,6 +27,7 @@ const TeamSquadFilter = ({ playerData, players }) => {
 
   const handleFilter = (event) => {
     const searchWord = event.target.value;
+    
 
     setSearchText(searchWord);
     const newFilter = players?.filter((value) => {
@@ -40,7 +43,9 @@ const TeamSquadFilter = ({ playerData, players }) => {
     } else {
       setFilteredData(newFilter);
     }
+    // console.log("new filter",newFilter);
   };
+ 
 
   const handleSelectedRig = (data) => {
     if (data.apidata?.data?.platformInfo) {
@@ -57,6 +62,7 @@ const TeamSquadFilter = ({ playerData, players }) => {
   const onChange = (e) => {
     setSquadPlayers({ ...squadPlayers, [e.target.name]: e.target.value });
   };
+  // console.log("Sqade player",filteredData);
 
   return (
     <>

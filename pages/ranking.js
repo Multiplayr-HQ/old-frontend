@@ -26,7 +26,7 @@ const Ranking = ({ user, games, profile }) => {
   const [loading, setLoading] = useState(false);
 
 
-  const [selectedGame, setSelectedGame] = useState({_id : 20,name :'Browse Game',imgUrl : '/assets/media/ranking/console.png'});
+  const [selectedGame, setSelectedGame] = useState({ _id: 20, name: 'Browse Game', imgUrl: '/assets/media/ranking/console.png' });
 
   const [page, setPage] = useState(1);
 
@@ -37,7 +37,7 @@ const Ranking = ({ user, games, profile }) => {
     setSelectedGame(obj);
     setPage(1);
     await getData(1, obj);
-    
+
     console.log("game id ", obj?._id);
 
     $('a.model_close').parent().removeClass('show_model');
@@ -47,7 +47,7 @@ const Ranking = ({ user, games, profile }) => {
     setLoading(true);
     // console.log("gandu page : " ,pag);
     const res = await axios.get(`${baseURL}/api/rankings/bywins/${game?._id}?page=${pag}`);
-    setPage(pag+1);
+    setPage(pag + 1);
 
     // setTeamsRanks((p) => {
     //   let arr = [];
@@ -62,16 +62,16 @@ const Ranking = ({ user, games, profile }) => {
     // console.log("response data gandu :", res, "page : ", page);
   }
 
-  console.log("gandu page : " , page);
-  
-  
+  console.log("gandu page : ", page);
+
+
   useEffect(() => {
     getData(1, selectedGame);
   }, []);
 
 
   const handlepageChange = async () => {
-    if(loading===true){
+    if (loading === true) {
       console.log("gandu wait");
       return;
     }
@@ -89,7 +89,7 @@ const Ranking = ({ user, games, profile }) => {
 
       <div className="main_middle profile_middle">
         <div className="discovery_page">
-          <div className="white_bg">
+          <div className="white_bg " >
             <h2>GAME</h2>
 
             <div className="tit">
@@ -179,24 +179,20 @@ const Ranking = ({ user, games, profile }) => {
             
             </div> */}
           </div>
-          {/* <RankingTable
-            teamranking={teamsRanks}
-            searchResults={searchResults}
+            <div className="prfoile_tab_data ">
+              <RankingPage
+                selectedGame={selectedGame}
+                teamranking={teamsRanks}
+                user={user}
+              
+              />
+            </div>
+          
 
-           
-          /> */}
-          <div className="prfoile_tab_data ">
-            <RankingPage
-              selectedGame={selectedGame}
-              teamranking={teamsRanks}
-              user={user}
-            // gameChange={gameChange}
-            />
-          </div>
 
           <div>
-            <button onClick={handlepageChange} className='pagination-btn' style={{ height: 40, width: 100 ,paddingTop:5 }}>Next   <i  style={{ height: 40, width: 30 ,paddingTop:5 }} className="fa fa-angle-right" aria-hidden="true"></i></button>
-            
+            <button onClick={handlepageChange} className='pagination-btn' style={{ height: 40, width: 100, paddingTop: 5 }}>Next   <i style={{ height: 40, width: 30, paddingTop: 5 }} className="fa fa-angle-right" aria-hidden="true"></i></button>
+
           </div>
         </div>
       </div>

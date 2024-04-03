@@ -12,7 +12,7 @@ const RankingTable = ({ teamrankingss, searchResults, favshow, user, team }) => 
   // console.log('search :', searchResults);
   // console.log('team ranking data in ranking table :', teamrankingss.teams);
   console.log("team in Ranking table", teamrankingss);
-  console.log("filter data in ranking",team);
+  console.log("filter data in ranking", team);
 
   if (!teamrankingss) {
     return null; // If teamrankingss is falsy, render nothing
@@ -79,30 +79,38 @@ const RankingTable = ({ teamrankingss, searchResults, favshow, user, team }) => 
   //     setContent(teamrankingss);
   //   }
   // }, [searchResults, team, teamrankingss]);
-useEffect(() => {
-      
-        setContent(team);
- 
-      
-      
-    
+  useEffect(() => {
+
+    setContent(team);
+
+
+
+
   }, [team]);
 
   useEffect(() => {
-   
+
     setContent(teamrankingss);
-    
-  
-}, [teamrankingss]);
+
+
+  }, [teamrankingss]);
+
+
+  useEffect(() => {
+
+    setContent(searchResults);
+
+
+  }, [searchResults]);
 
 
 
 
-  
+
   const getContent = () => {
 
     // Return "No teams are ranked yet ..." message if there's no content
-    if ((content === 0 && teamrankingss === 0) ) {
+    if ((content === 0 && teamrankingss === 0)) {
       return (
         <div className="activity_tag">
           <span className="act_name">No teams are ranked yet ...</span>
@@ -125,15 +133,22 @@ useEffect(() => {
             </a>
           </div>
           <div className="cols">
-            {result.team_points ? result.team_points : 'Not Defined'}
+            {result.team_points ? result.team_points : '--'}
           </div>
-          <div className="cols">{result.total_tournaments}</div>
-          <div className="cols">{result.winLossCounts[0]?.wins} / {result.winLossCounts[0]?.losses}</div>
+          <div className="cols">{result.total_tournaments ? result.total_tournaments : '--'}</div>
+          <div className="cols">
+            {
+              result.winLossCounts?.length > 0 ?
+                <>{result.winLossCounts[0]?.wins} / {result.winLossCounts[0]?.losses} </> :
+                <>--</>
+            }
+
+          </div>
           <div className="cols">
             {/* {result.points ? result.points : '0'}
               ---
               / 0 */}
-            {result.win_percentage} %
+            {result.win_percentage > 0 ? result.win_percentage + '%' : '--'}
           </div>
           {/* <div className="cols">tdb</div> */}
           <div className="cols">
@@ -145,20 +160,28 @@ useEffect(() => {
               <span className="round green"></span>{' '} */}
 
             {result.recentMatchData.recentMatches.length === 0 ? (
-              <span>-----</span>
+              <div>
+                <span className="round gray"></span>
+                <span className="round gray"></span>
+                <span className="round gray"></span>
+                <span className="round gray"></span>
+                <span className="round gray"></span>
+              </div>
+
             ) : (
-              result.recentMatchData.recentMatches.map((data, index) => (
+              result.recentMatchData.recentMatches.concat(Array.from({ length: Math.max(5 - result.recentMatchData.recentMatches.length, 0) }, () => null)).map((data, index) => (
                 data === null ? (
-                  <span key={index}>-----</span>
+                  <span key={index} className="round gray"></span>
                 ) : (
                   <span key={index} className={data.isWin ? "round green" : "round red"}></span>
                 )
               ))
             )}
           </div>
-          {result.teamData[0].team_winnings ? (
+
+          {parseFloat(result.total_prize).toFixed(2) ? (
             <div className="cols">
-              $ {result.teamData[0].team_winnings}
+              $ {parseFloat(result.total_prize).toFixed(2)}
             </div>
           ) : (
 
@@ -201,7 +224,7 @@ useEffect(() => {
             <div className='team-prize'>
               <div className='prize'>
                 <span>PRIZE EARNED</span>
-                <p>USD {result?.total_prize}</p>
+                <p>USD {parseFloat(result.total_prize).toFixed(2)}</p>
               </div>
               <div className='prize_2'>
                 <div className="team-stablish">
@@ -245,24 +268,14 @@ useEffect(() => {
           </div>
           <div className="follows">
             <button>Follow</button>
-            <div className="ate">
+            {/* <div className="ate">
               {' '}
-              {/* {result.matches[0]
-                                ? result.matches[0].teams[0].teamName.substring(
-                                    0,
-                                    7
-                                  ) + '...'
-                                : 'Not Mentioned'}{' '} */}
+              
               ATE<span className="circle"></span> {' '}
               16-3
               <span className="circle"></span>{' '}TWW
-              {/* {result.matches[0]
-                                ? result.matches[0].teams[1].teamName.substring(
-                                    0,
-                                    7
-                                  ) + '...'
-                                : 'Not Mentioned'}{' '} */}
-            </div>
+              
+            </div> */}
           </div>
         </div>
         {/* ) : (

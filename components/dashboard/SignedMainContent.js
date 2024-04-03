@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
-import Link from 'next/link';
 import { useMutation } from 'react-query';
 import cookie from 'js-cookie';
 import { toast } from 'react-toastify';
@@ -28,40 +27,25 @@ const SignedMainContent = ({ posts, user, profile }) => {
   const [profiledata, setProfileData] = useState([]);
   const [followData, setFollowData] = useState([]);
   const [topMenu, setTopMenu] = useState(profile?.isShortcutVisible);
-  
 
   let teamId = '';
-  const shareUrl = `${process.env.NEXT_PUBLIC_ESPORTS_API_BASE_URL}/signup`;
 
+  const shareUrl = `${process.env.NEXT_PUBLIC_ESPORTS_API_BASE_URL}/signup`;
   useEffect(() => {
-    const fetchProfileData = async () => {
-      try {
-        const response = await axios.get(`${baseURL}/api/profile/${user.username}`);
-        setProfileData(response?.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-  
-    fetchProfileData(); // Call the asynchronous function
+    axios
+      .get(`${baseURL}/api/profile/${user.username}`)
+      .then((res) => setProfileData(res.data));
   }, []);
-  
+
   const mutation = useMutation(
-    async (formData) => {
-      try {
-        const response = await axios.post(`${baseURL}/api/posts`, formData, {
-          headers: {
-            Authorization: cookie.get('token'),
-            'Content-Type': 'multipart/form-data'
-          }
-        });
-        return response.data; // Return the data from the response
-      } catch (error) {
-        throw new Error(error); // Throw the error for handling by the caller
-      }
-    }
+    async (formdata) =>
+      await axios.post(`${baseURL}/api/posts`, formdata, {
+        headers: {
+          Authorization: cookie.get('token'),
+          'Content-Type': 'multipart/form-data'
+        }
+      })
   );
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -107,36 +91,47 @@ const SignedMainContent = ({ posts, user, profile }) => {
     }
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const personasResponse = await axios.get(`${baseURL}/api/all/personas`, {
-          headers: {
-            Authorization: cookie.get('token')
-          }
-        });
-        setPersonas(personasResponse.data);
-  
-        const followingPostsResponse = await axios.get(`${baseURL}/api/posts/feed`, {
-          headers: {
-            Authorization: cookie.get('token')
-          }
-        });
-        setFollowingPosts(followingPostsResponse?.data?.posts);
-  
-        const allGamesResponse = await axios.get(`${baseURL}/api/all/games`);
-        setAllGames(allGamesResponse?.data);
-  
-        const followersResponse = await axios.get(`${baseURL}/api/profile/${user.username}/followers`);
-        setFollowData(followersResponse?.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-  
-    fetchData(); // Call the asynchronous function
+  useEffect(async () => {
+    await axios
+      .get(`${baseURL}/api/all/personas`, {
+        headers: {
+          Authorization: cookie.get('token')
+        }
+      })
+      .then((res) => {
+        setPersonas(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    await axios
+      .get(`${baseURL}/api/posts/feed`, {
+        headers: {
+          Authorization: cookie.get('token')
+        }
+      })
+      .then((res) => {
+        // console.log(res)
+        setFollowingPosts(res.data.posts);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    await axios
+      .get(`${baseURL}/api/all/games`)
+      .then((res) => {
+        setAllGames(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    await axios
+      .get(`${baseURL}/api/profile/${user.username}/followers`)
+      .then((res) => setFollowData(res.data));
   }, []);
-  
 
   const selectgameTag = (x) => {
     setShowGame(x);
@@ -154,58 +149,46 @@ const SignedMainContent = ({ posts, user, profile }) => {
     arrows: true
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+      $('.user_slider').slick({
+        infinite: false,
+        vertical: true,
+        verticalSwiping: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true,
+        prevArrow: $('.slick-prev'),
+        nextArrow: $('.slick-next')
+      });
+    }, 4000);
+  }, []);
+
+  useEffect(() => {
+    $('a.model_show_btn').click(function () {
+      $(this).next().addClass('show_model');
+    });
+
+    $('a.model_close').click(function () {
+      $(this).parent().removeClass('show_model');
+    });
+  }, []);
   const [count, setCount] = useState(-1);
-  
-
-  useEffect(() => {
-    const initializeSlider = () => {
-      const sliderTimeout = setTimeout(() => {
-        $('.user_slider').slick({
-          infinite: false,
-          vertical: true,
-          verticalSwiping: true,
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          arrows: true,
-          prevArrow: $('.slick-prev'),
-          nextArrow: $('.slick-next')
-        });
-      }, 400);
-
-      return () => clearTimeout(sliderTimeout); // Cleanup function to clear the timeout
-    };
-
-    initializeSlider();
-  }, []); // Run only once when the component mounts
-
-  useEffect(() => {
-    const openModel = () => {
-      $('a.model_show_btn').click(function () {
-        $(this).next().addClass('show_model');
-      });
-
-      $('a.model_close').click(function () {
-        $(this).parent().removeClass('show_model');
-      });
-    };
-
-    openModel();
-  }, []); // Run only once when the component mounts
 
   const changeCount = (e, value) => {
     e.preventDefault();
     if (value === 'Next') {
-      setCount((prevCount) => prevCount + 1);
+      setCount(count + 1);
     } else if (value === 'Prev') {
-      setCount((prevCount) => prevCount - 1);
+      setCount(count - 1);
     }
   };
 
   const menu_close = async (e) => {
     e.preventDefault();
     setTopMenu(!topMenu);
-    try {
-      const response = await axios.put(
+    await axios
+      .put(
         `${baseURL}/api/profile/settings/SECURITY`,
         { isShortcutVisible: false },
         {
@@ -214,12 +197,8 @@ const SignedMainContent = ({ posts, user, profile }) => {
             'Content-Type': 'application/json'
           }
         }
-      );
-      toast.success(response?.data?.msg);
-    } catch (error) {
-      console.error(error);
-      toast.error('An error occurred while updating settings');
-    }
+      )
+      .then((res) => toast.success(res.data.msg));
   };
 
   return (
@@ -228,58 +207,40 @@ const SignedMainContent = ({ posts, user, profile }) => {
         <div className="create_menu">
           <ul>
             <li>
-              <Link href="/team/create">
-              <a>
-
+              <a href="/team/create">
                 <i className="fa fa-users" aria-hidden="true"></i>
                 <p>create a Team </p>
               </a>
-              </Link>
             </li>
             <li>
-              <Link href="/tour/create">
-              <a>
+              <a href="/tour/create">
                 <i className="fa fa-trophy" aria-hidden="true"></i>
                 <p> create a Tournament</p>
-
               </a>
-              </Link>
             </li>
             <li>
-              <Link href="#">
-              <a>
-
+              <a href="#">
                 <i className="fa fa-comments" aria-hidden="true"></i>
                 <p> create a Community </p>
               </a>
-              </Link>
             </li>
             <li>
-              <Link href="/brand/create">
-              <a>
-
+              <a href="/brand/create">
                 <i className="fa fa-briefcase" aria-hidden="true"></i>
                 <p> create a Brand </p>
               </a>
-              </Link>
             </li>
             <li>
-              <Link href="/arena/create">
-              <a>
-
+              <a href="/arena/create">
                 <i className="fa fa-gamepad" aria-hidden="true"></i>
                 <p> create an Arena </p>
               </a>
-              </Link>
             </li>
             <li>
-              <Link href="/company/create">
-              <a>
-
+              <a href="/company/create">
                 <i className="fa fa-shopping-cart" aria-hidden="true"></i>
                 <p> create a Company </p>
               </a>
-              </Link>
             </li>
           </ul>
           <div className="message">
@@ -290,9 +251,9 @@ const SignedMainContent = ({ posts, user, profile }) => {
             </p>
           </div>
 
-          <Link href="#" onClick={menu_close} className="close">
-            <i className="fa fa-times-circle" aria-hidden="true"></i>
-          </Link>
+          <a href="#" onClick={menu_close} className="close">
+            <i class="fa fa-times-circle" aria-hidden="true"></i>
+          </a>
         </div>
       ) : null}
 
@@ -447,8 +408,8 @@ const SignedMainContent = ({ posts, user, profile }) => {
         <div className="tab hide" id="Following">
           <div>
             <div className="post" style={{ padding: 0 }}>
-              {followingPosts.map((post,i) => (
-                <AllPosts user={user} post={post} profiledata={profiledata} key={i}/>
+              {followingPosts.map((post) => (
+                <AllPosts user={user} post={post} profiledata={profiledata} />
               ))}
             </div>
           </div>
@@ -456,8 +417,8 @@ const SignedMainContent = ({ posts, user, profile }) => {
 
         <div className="tab" id="Discover">
           <div>
-            {posts?.map((post,i) => (
-              <AllPosts key={i}
+            {posts.map((post) => (
+              <AllPosts
                 user={user}
                 post={post}
                 profiledata={profiledata}

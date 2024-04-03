@@ -18,7 +18,7 @@ const TeamFilter = ({ filterType, myState, selectedGame, showfavs, searchData, t
 
 
 
-
+  const [isHovered, setIsHovered] = useState(false);
   const [selectedMapFilters, setSelectedMapFilters] = useState([]);
   var [team, setTeam] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -76,6 +76,8 @@ const TeamFilter = ({ filterType, myState, selectedGame, showfavs, searchData, t
     };
     fetchData();
   }, []);
+
+console.log("data of filter",data);
 
 
   const router = useRouter();
@@ -281,8 +283,8 @@ const TeamFilter = ({ filterType, myState, selectedGame, showfavs, searchData, t
     return (
       <>
         <div className="team_filter">
-          <div className="drop_downs">
-            {data.filter.metadata.map((filter, index) =>
+          <div className="drop_downs" >
+            {data.filter?.metadata.map((filter, index) =>
               filter.value?.indexOf(filter.key) < 0 ? (
                 <div key={index} className="button-group">
                   <button
@@ -340,7 +342,7 @@ const TeamFilter = ({ filterType, myState, selectedGame, showfavs, searchData, t
               )
             )}
           </div>
-
+                
           {selectedMapFilters.length > 0 && (
             <div className="filters">
               {' '}
