@@ -48,11 +48,14 @@ const RankingPage = ({ selectedGame, teamranking, user,gameChange }) => {
 
     useEffect(() => {
         const fetchRankings = async () => {
-            // setLoading(true);
+            
+            console.log("searching .... ");
             try {
-                const response = await axios.get(
-                    `${baseURL}/api/rankings/bywinnings100/${selectedGame._id}?searchText=${searchObj.search}`
+                const response = await axios.post(
+                    `http://localhost:8181/api/rankings/bywins/${selectedGame._id}?searchText=${searchObj.search}`
                 );
+
+                console.log("response search",response.data);
                 
                 setSearchData(response.data);
                 // setLoading(false);
@@ -67,7 +70,7 @@ const RankingPage = ({ selectedGame, teamranking, user,gameChange }) => {
     }, [selectedGame, searchObj]);
 
 
-    // console.log("Searchobject" , searchObj.search);
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
         // sdata = await searchRanks(
@@ -157,7 +160,7 @@ const RankingPage = ({ selectedGame, teamranking, user,gameChange }) => {
                     selectedGame={selectedGame}
 
                     showfavs={showfavs}
-                    // profile={profile}
+                  
                     teamrankings={teamranking}
 
                     searchData={searchData}

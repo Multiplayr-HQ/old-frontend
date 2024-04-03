@@ -3436,7 +3436,7 @@ article .social_bar img {
 	float: left;
 	width: 100%;
 	background: #fff;
-	padding:10px 20px;
+	padding:30px 20px;
 	margin-top: 10px;
 	display: flex;
 	justify-content: space-between;
@@ -4276,8 +4276,14 @@ article .social_bar img {
 	padding: 5px;
 	text-align: center;
 }
+.sponser ul li .pos_name .name {
+	/* margin-left: 5px;
+	margin-right: 5px; */
+}
 
-.sponser ul li .pos_name{ display: flex;}
+.sponser ul li .pos_name{ display: flex;
+flex-direction: column;
+}
 
 .sponser ul li img {
 	height: 30px;
@@ -4783,10 +4789,12 @@ article .social_bar img {
 	float: left;
 	width: 100%;
 	background: #fff;
-	padding: 20px;
+	padding: 20px 5px;
 	border-radius: 15px;
 }
-
+.discovery_page .white_bg{
+	padding: 20px;
+}
 .discovery_page {
 	float: left;
 	width: 100%;
@@ -4919,6 +4927,7 @@ article .social_bar img {
 	display: flex;
 	justify-content: space-between;
 	margin-top: 20px;
+	padding: 20px;
 	background: #fff;
 }
 
@@ -5020,7 +5029,7 @@ article .social_bar img {
 
 .team_filter {
 	display: flex;
-	justify-content: space-between;
+	/* justify-content: space-between; */
 	align-items: center;
 	align-content: center;
 	margin-top: 50px;
@@ -5048,10 +5057,10 @@ article .social_bar img {
 
 .team_filter .drop_downs {
 	display: flex;
-	width: 70%;
+	/* width: 70%; */
 	justify-content: flex-start;
 	flex-wrap: wrap;
-	border-right: 1px solid #2c2c34;
+	border-right: 2px solid gray;
 	margin-right: 20px;
 }
 
@@ -5084,7 +5093,7 @@ article .social_bar img {
 	font-weight: 400;
 	color: #000;
 	display: flex;
-	align-items: center;
+	/* align-items: center; */
 	padding: 4px 0;
 }
 
@@ -5100,7 +5109,7 @@ article .social_bar img {
 
 .filters {
 	display: block;
-	width: 30%;
+	width: 42%;
 	align-items: start;
 }
 
@@ -5455,6 +5464,9 @@ article .social_bar img {
 .green {
 	background: #00a651;
 }
+.gray{
+	background:gray ;
+}
 
 .red {
 	background: #ff0c00;
@@ -5569,7 +5581,7 @@ article .social_bar img {
 	width: 100%;
 	background: #fff;
 	border-radius: 5px;
-	padding: 20px;
+	padding: 20px 0px;
 	margin-top: 20px;
 }
 
@@ -5592,7 +5604,7 @@ article .social_bar img {
 
 .heads_row,
 .row_box {
-	border-bottom: 1px solid #ddd;
+	border-bottom: 0.5px solid #474747;
 }
 
 .more_data {
@@ -5600,18 +5612,18 @@ article .social_bar img {
 	display: none;
 	flex-direction: row;
 	flex-grow: 1;
-	justify-content: space-between;
+	justify-content: space-evenly;
 	text-transform: uppercase;
 	margin-left: 55px;
-	padding: 30px 0;
-	border-top: 1px solid #ddd;
+	padding: 30px 40px;
+	border-top: 0.5px solid #474747;
 }
 
 .more_data .pic {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	width: 250px;
+	width: 300px;
 }
 .more_data .pic .flag{
 	display: flex;
@@ -5678,6 +5690,7 @@ article .social_bar img {
 
 .more_data .follows {
 	width: 220px;
+	
 }
 
 .more_data button {
@@ -7524,6 +7537,7 @@ article .social_bar img {
 	padding: 20px;
 	text-align: center;
 	height: 90px;
+	
 }
 
 .sponsers_box ul li .sponser_name img {
@@ -7533,8 +7547,15 @@ article .social_bar img {
 
 .sponsers_box .sponser_data {
 	padding: 40px 20px;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
 	text-align: center;
 	background: #ddd;
+	
+}
+.sponsers_box .sponser_data .sponser_del{
+	bottom: 0;
 }
 
 .sponsers_box .sponser_data span {

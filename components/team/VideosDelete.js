@@ -15,7 +15,7 @@ const VideosDelete = ({
 }) => {
   const refreshPage = () => {
     setTimeout(function () {
-      document.body.location.reload(false);
+      document.body.location?.reload(false);
     }, 1000);
   };
 

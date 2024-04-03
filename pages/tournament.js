@@ -68,7 +68,8 @@ const Tournament = ({ user, games, profile, teams }) => {
     }
     await getData(page, selectedGame);
   }
-
+  console.log("selected game now",selectedGame);
+  console.log("tournament in now",tournament);
   return (
     <>
       <MetaDash />

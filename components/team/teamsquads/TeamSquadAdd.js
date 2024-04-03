@@ -48,11 +48,12 @@ const TeamSquadAdd = ({
     e.preventDefault();
     if (Object.keys(formErrors).length === 0) {
       try {
-        await axios.post(`${baseURL}/api/squads/create`, squadData, {
+        await axios.post(`${baseURL}/api/squads/create`, {
           headers: {
             Authorization: cookie.get('token'),
             'Content-Type': 'application/json'
-          }
+          },
+          body: JSON.stringify( squadData)
         });
         toast.success('Team Squad has being added.');
       } catch (err) {
@@ -81,7 +82,11 @@ const TeamSquadAdd = ({
     } else {
       setSquadData({ ...squadData, [e.target.name]: e.target.value });
     }
+
+    
   }
+  console.log("squad data",squadData);
+  
   useEffect(() => {
     $('a.model_show_btn').click(function () {
       $(this).next().addClass('show_model');
@@ -91,6 +96,7 @@ const TeamSquadAdd = ({
       $(this).parent().removeClass('show_model');
     });
   }, []);
+  console.log("player data",playerData);
 
   return (
     <>

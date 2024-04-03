@@ -170,9 +170,9 @@ const TeamEdit = ({
                   >
                     <option value="">Select Country...</option>
                     {options &&
-                      options.map((opt) => (
+                      options.map((opt,index) => (
                         <>
-                          <option value={opt.value}>{opt.label}</option>
+                          <option key={index} value={opt.value}>{opt.label}</option>
                         </>
                       ))}
                   </select>

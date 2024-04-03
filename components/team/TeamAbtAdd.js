@@ -13,7 +13,7 @@ const TeamAbtAdd = ({ role, rolesData }) => {
 
     setSearchText(searchWord);
     const newFilter = userData?.filter((value) => {
-      return value.name.toLowerCase().includes(searchWord.toLowerCase());
+      return value?.name?.toLowerCase().includes(searchWord.toLowerCase());
     });
     if (searchText === '') {
       setFilteredData([]);

@@ -5,34 +5,112 @@ import { useEffect, useState } from 'react';
 import LoadingSpinner from '../LoadingSpinner';
 import ReactCountryFlag from 'react-country-flag';
 
+
+import { AreaChart, linearGradient, XAxis, YAxis, Area, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+
 const RankingTable = ({ teamrankingss, searchResults, favshow, user, team }) => {
   // console.log('search :', searchResults);
   // console.log('team ranking data in ranking table :', teamrankingss.teams);
   console.log("team in Ranking table", teamrankingss);
+  console.log("filter data in ranking", team);
 
   if (!teamrankingss) {
     return null; // If teamrankingss is falsy, render nothing
   }
 
   const [content, setContent] = useState([]);
+  // setContent(teamrankingss);
 
   // console.log("gandu Team Ranking length" , teamrankingss?.teams?.length);
+  const data = [
+    {
+      "name": "Page A",
+      "uv": 4000,
+      "pv": 2400,
+      "amt": 2400
+    },
+    {
+      "name": "Page B",
+      "uv": 3000,
+      "pv": 1398,
+      "amt": 2210
+    },
+    {
+      "name": "Page C",
+      "uv": 2000,
+      "pv": 9800,
+      "amt": 2290
+    },
+    {
+      "name": "Page D",
+      "uv": 2780,
+      "pv": 3908,
+      "amt": 2000
+    },
+    {
+      "name": "Page E",
+      "uv": 1890,
+      "pv": 4800,
+      "amt": 2181
+    },
+    {
+      "name": "Page F",
+      "uv": 2390,
+      "pv": 3800,
+      "amt": 2500
+    },
+    {
+      "name": "Page G",
+      "uv": 3490,
+      "pv": 4300,
+      "amt": 2100
+    }
+  ]
+
+  // useEffect(() => {
+  //   if (team.length > 0) {
+  //     setContent( team );
+  //     console.log("set team in ranking ")
+  //   } 
+  //   else if (searchResults.length > 0) {
+  //     setContent( searchResults );
+  //   } 
+  //   else {
+  //     setContent(teamrankingss);
+  //   }
+  // }, [searchResults, team, teamrankingss]);
+  useEffect(() => {
+
+    setContent(team);
+
+
+
+
+  }, [team]);
+
+  useEffect(() => {
+
+    setContent(teamrankingss);
+
+
+  }, [teamrankingss]);
 
 
   useEffect(() => {
-    if (team.length > 0) {
-      setContent({ teams: team });
-    } else if (searchResults.length > 0) {
-      setContent({ teams: searchResults });
-    } else {
-      setContent(teamrankingss);
-    }
-  }, [searchResults, team, teamrankingss]);
-  console.log("content", content);
+
+    setContent(searchResults);
+
+
+  }, [searchResults]);
+
+
+
+
+
   const getContent = () => {
 
     // Return "No teams are ranked yet ..." message if there's no content
-    if ((content === 0 && teamrankingss === 0) || (searchResults == 0)) {
+    if ((content === 0 && teamrankingss === 0)) {
       return (
         <div className="activity_tag">
           <span className="act_name">No teams are ranked yet ...</span>
@@ -55,15 +133,22 @@ const RankingTable = ({ teamrankingss, searchResults, favshow, user, team }) => 
             </a>
           </div>
           <div className="cols">
-            {result.team_points ? result.team_points : 'Not Defined'}
+            {result.team_points ? result.team_points : '--'}
           </div>
-          <div className="cols">{result.total_tournaments}</div>
-          <div className="cols">{result.winLossCounts[0]?.wins} / {result.winLossCounts[0]?.losses}</div>
+          <div className="cols">{result.total_tournaments ? result.total_tournaments : '--'}</div>
+          <div className="cols">
+            {
+              result.winLossCounts?.length > 0 ?
+                <>{result.winLossCounts[0]?.wins} / {result.winLossCounts[0]?.losses} </> :
+                <>--</>
+            }
+
+          </div>
           <div className="cols">
             {/* {result.points ? result.points : '0'}
               ---
               / 0 */}
-            {result.win_percentage} %
+            {result.win_percentage > 0 ? result.win_percentage + '%' : '--'}
           </div>
           {/* <div className="cols">tdb</div> */}
           <div className="cols">
@@ -75,25 +160,33 @@ const RankingTable = ({ teamrankingss, searchResults, favshow, user, team }) => 
               <span className="round green"></span>{' '} */}
 
             {result.recentMatchData.recentMatches.length === 0 ? (
-              <span>-----</span>
+              <div>
+                <span className="round gray"></span>
+                <span className="round gray"></span>
+                <span className="round gray"></span>
+                <span className="round gray"></span>
+                <span className="round gray"></span>
+              </div>
+
             ) : (
-              result.recentMatchData.recentMatches.map((data, index) => (
+              result.recentMatchData.recentMatches.concat(Array.from({ length: Math.max(5 - result.recentMatchData.recentMatches.length, 0) }, () => null)).map((data, index) => (
                 data === null ? (
-                  <span key={index}>-----</span>
+                  <span key={index} className="round gray"></span>
                 ) : (
                   <span key={index} className={data.isWin ? "round green" : "round red"}></span>
                 )
               ))
             )}
           </div>
-          {result.teamData[0].team_winnings ? (
+
+          {parseFloat(result.total_prize).toFixed(2) ? (
             <div className="cols">
-              $ {result.teamData[0].team_winnings}
+              $ {parseFloat(result.total_prize).toFixed(2)}
             </div>
           ) : (
-            
+
             (<div className="cols">
-              No Winnings 
+              No Winnings
             </div>)
           )}
         </div>
@@ -104,7 +197,10 @@ const RankingTable = ({ teamrankingss, searchResults, favshow, user, team }) => 
             <div className="tumb">
               <img src={result.teamData[0]?.imgUrl} alt="" />
             </div>
-            <h3>{result.teamData[0].name}</h3>
+            {/* <h3>{result.teamData[0].name}</h3> */}
+            <a href={`/team/${result._id}`}>
+              {result.teamData[0].name}
+            </a>
 
             <ReactCountryFlag
               countryCode={result.teamData[0]?.region}
@@ -128,7 +224,7 @@ const RankingTable = ({ teamrankingss, searchResults, favshow, user, team }) => 
             <div className='team-prize'>
               <div className='prize'>
                 <span>PRIZE EARNED</span>
-                <p>USD {result?.total_prize}</p>
+                <p>USD {parseFloat(result.total_prize).toFixed(2)}</p>
               </div>
               <div className='prize_2'>
                 <div className="team-stablish">
@@ -136,10 +232,9 @@ const RankingTable = ({ teamrankingss, searchResults, favshow, user, team }) => 
                   <p>{Moment(result.teamData[0].founded).format('MMM YYYY')}</p>
                 </div>
                 <div className="manager">
-                  <span>{result.teamData[0].role}</span>
+                  <span>{result.teamData[0].role ? result.teamData[0].role : 'Manager'}</span>
                   <p>Sonu Singh</p>
                 </div>
-
               </div>
 
             </div>
@@ -147,27 +242,40 @@ const RankingTable = ({ teamrankingss, searchResults, favshow, user, team }) => 
 
           <div className="chart">
             {/* <img src="/assets/media/ranking/chart.png" alt="" /> */}
+
+
+            {/* <AreaChart width={300} height={150} data={data}
+              margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+              <defs>
+                <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
+                  <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
+                </linearGradient>
+                <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8} />
+                  <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
+                </linearGradient>
+              </defs>
+              <XAxis dataKey="name" />
+              <YAxis />
+
+              <Tooltip />
+              <Area type="monotone" dataKey="uv" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
+              <Area type="monotone" dataKey="pv" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" />
+            </AreaChart> */}
+
+
           </div>
           <div className="follows">
             <button>Follow</button>
-            <div className="ate">
+            {/* <div className="ate">
               {' '}
-              {/* {result.matches[0]
-                                ? result.matches[0].teams[0].teamName.substring(
-                                    0,
-                                    7
-                                  ) + '...'
-                                : 'Not Mentioned'}{' '} */}
+              
               ATE<span className="circle"></span> {' '}
               16-3
               <span className="circle"></span>{' '}TWW
-              {/* {result.matches[0]
-                                ? result.matches[0].teams[1].teamName.substring(
-                                    0,
-                                    7
-                                  ) + '...'
-                                : 'Not Mentioned'}{' '} */}
-            </div>
+              
+            </div> */}
           </div>
         </div>
         {/* ) : (
