@@ -38,14 +38,19 @@ const RightSection = ({ user,  teams, profile }) => {
   const [challenges, setChallenges] = useState([]);
   let type = 'User_team';
   useEffect(() => {
-    axios
-      .get(`${baseURL}/api/challenges/userchallenges/${type}/${profile._id}`)
-      .then((res) => {
-        setChallenges(res.data);
-      });
-    axios
-      .get(`${baseURL}/api/tournaments/usertournament/${user._id}`)
-      .then((res) => setMypageData(res.data));
+    try {
+      axios
+        .get(`${baseURL}/api/challenges/userchallenges/${type}/${profile._id}`)
+        .then((res) => {
+          setChallenges(res.data);
+        });
+      axios
+        .get(`${baseURL}/api/tournaments/usertournament/${user._id}`)
+        .then((res) => setMypageData(res.data));
+      
+    } catch (error) {
+      
+    }
   }, []);
 
 

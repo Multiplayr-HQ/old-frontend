@@ -3,18 +3,23 @@ import { useEffect, useState } from 'react';
 
 const ReportsComments = ({ type }) => {
   useEffect(() => {
-    $('a.model_show_btn').click(function () {
-      $(this).next().addClass('show_model');
-    });
-
-    $('a.model_close').click(function () {
-      $(this).parent().removeClass('show_model');
-    });
+    try {
+      $('a.model_show_btn').click(function () {
+        $(this).next().addClass('show_model');
+      });
+  
+      $('a.model_close').click(function () {
+        $(this).parent().removeClass('show_model');
+      });
+      
+    } catch (error) {
+      
+    }
   }, []);
 
   return (
     <>
-      <a href="#!" className="report_link model_show_btn">
+      <a href="#!" className="">
         {type === 'Post' ? (
           'Report'
         ) : (
