@@ -88,7 +88,7 @@ const ReplyList = ({ post, comment, user }) => {
                     <div className="flex flex-col items-start">
                       <a
                         href={`/user/${reply?.user?.username}`}
-                        className="text-black font-medium inline-block dark:text-white capitalize"
+                        className="text-white font-medium inline-block dark:text-white capitalize"
                       >
                         {reply.user != null ? reply.user?.name : 'Not Defined'}
                       </a>

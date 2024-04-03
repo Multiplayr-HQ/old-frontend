@@ -133,12 +133,15 @@ const SignedMainContent = ({ posts, user, profile }) => {
       .then((res) => setFollowData(res.data));
   }, []);
 
+
+  
   const selectgameTag = (x) => {
     setShowGame(x);
     setGameTag({ name: x.name, gameId: x._id });
     toast.success(`${x.name} is selected.`);
     $('a.model_close').parent().removeClass('show_model');
   };
+  
 
   var settings = {
     infinite: false,
@@ -150,28 +153,38 @@ const SignedMainContent = ({ posts, user, profile }) => {
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      $('.user_slider').slick({
-        infinite: false,
-        vertical: true,
-        verticalSwiping: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: true,
-        prevArrow: $('.slick-prev'),
-        nextArrow: $('.slick-next')
-      });
-    }, 4000);
+    try {
+      setTimeout(() => {
+        $('.user_slider').slick({
+          infinite: false,
+          vertical: true,
+          verticalSwiping: true,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: true,
+          prevArrow: $('.slick-prev'),
+          nextArrow: $('.slick-next')
+        });
+      }, 4000);
+      
+    } catch (error) {
+      
+    }
   }, []);
 
   useEffect(() => {
-    $('a.model_show_btn').click(function () {
-      $(this).next().addClass('show_model');
-    });
-
-    $('a.model_close').click(function () {
-      $(this).parent().removeClass('show_model');
-    });
+    try {
+      $('a.model_show_btn').click(function () {
+        $(this).next().addClass('show_model');
+      });
+  
+      $('a.model_close').click(function () {
+        $(this).parent().removeClass('show_model');
+      });
+      
+    } catch (error) {
+      
+    }
   }, []);
   const [count, setCount] = useState(-1);
 

@@ -103,31 +103,31 @@ const CustomPost = ({ post, user }) => {
 
   return (
     <>
-      <div className="three_dots_dropdown">
-        <ul>
-          {post.user?._id === user?._id ? (
-            <>
-              <li>
-                <button onClick={() => setEditModal(true)}>Edit</button>
-              </li>
-              <li>
-                <button onClick={() => setDeleteModal(true)}>Delete</button>
-              </li>
-            </>
-          ) : null}
-          <li>
-            <button onClick={() => setShareToModal(true)}>Share to</button>
-          </li>
-          <li>
-            <CopyToClipboard onCopy={onCopy} text={`${shareUrl}/${post._id}`}>
-              <button>Copy Link</button>
-            </CopyToClipboard>
-          </li>
-          <li>
-            <Report type="Post" />
-          </li>
-        </ul>
-      </div>
+
+      <ul className='flex w-full flex-col gap-1 mb-3 text-md text-white -z-3'>
+        {post.user?._id === user?._id ? (
+          <>
+            <li className="flex justify-center items-center  h-10 p-2 w-full rounded-lg hover:bg-background">
+              <button onClick={() => setEditModal(true)}>Edit</button>
+            </li>
+            <li className="flex justify-center items-center  h-10 p-2 w-full rounded-lg hover:bg-background">
+              <button onClick={() => setDeleteModal(true)}>Delete</button>
+            </li>
+          </>
+        ) : null}
+        <li className="flex justify-center items-center  h-10 p-2 w-full rounded-lg hover:bg-background">
+          <button onClick={() => setShareToModal(true)}>Share to</button>
+        </li>
+        <li className="flex justify-center items-center  h-10 p-2 w-full rounded-lg hover:bg-background">
+          <CopyToClipboard onCopy={onCopy} text={`${shareUrl}/${post._id}`}>
+            <button>Copy Link</button>
+          </CopyToClipboard>
+        </li>
+        {/* <li className="flex justify-center items-center  h-10 p-2 w-full rounded-lg hover:bg-background">
+          <Report type="Post" />
+        </li> */}
+      </ul>
+
 
       {editModal && (
         <div className="edit_post">

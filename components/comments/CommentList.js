@@ -95,7 +95,7 @@ const CommentList = ({ post, user, comments }) => {
           <div className="flex flex-col items-start">
             <a
               href={`/user/${comment?.user?.username}`}
-              className="text-black font-medium inline-block dark:text-white capitalize"
+              className="text-white font-medium inline-block dark:text-white capitalize"
             >
               {comment.user != null ? comment.user?.name : 'NOT DEFINED'}
             </a>

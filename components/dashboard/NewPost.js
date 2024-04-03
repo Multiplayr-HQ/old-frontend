@@ -37,6 +37,7 @@ import {
 } from 'ionicons/icons';
 import Follow from '../common/Follow';
 import CopyToClipboard from 'react-copy-to-clipboard';
+import CustomPost from './CustomPost';
 
 const NewPost = ({ post, user, profiledata, followData, type, team }) => {
   const [comments, setComments] = useState([]);
@@ -82,7 +83,7 @@ const NewPost = ({ post, user, profiledata, followData, type, team }) => {
           Authorization: cookie.get('token')
         }
       });
-    } catch (error) {}
+    } catch (error) { }
     if (!isFollowing) {
       toast.success(`You are Following ${post.user.username}`);
     } else {
@@ -123,73 +124,124 @@ const NewPost = ({ post, user, profiledata, followData, type, team }) => {
               className="w-12 h-12 rounded-full"
             />
           </a>
-          <div className="flex-1">
-            <div className="flex items-center">
-              {post.game_tag[0]?.gameId === null ? (
-                <>
-                  {post.post_type === 'team' ||
-                  post.post_type === 'tour' ||
-                  post.post_type === 'brand' ? (
-                    <a
-                      href={`/${post.post_type}/${
-                        post.post_type === 'team'
+          <div className=" flex flex-1 justify-start items-start">
+            <div className="">
+              <div className="flex items-center">
+                {post.game_tag[0]?.gameId === null ? (
+                  <>
+                    {post.post_type === 'team' ||
+                      post.post_type === 'tour' ||
+                      post.post_type === 'brand' ? (
+                      <a
+                        href={`/${post.post_type}/${post.post_type === 'team'
                           ? post?.teamId
                           : post?.username
-                      }`}
-                    >
-                      <h4 className="capitalize text-base">{post.username}</h4>{' '}
-                      {/* Increased from sm to base */}
-                    </a>
-                  ) : (
-                    <>
-                      <a href={`/user/${post.user?.username}`}>
-                        <h4 className="capitalize text-base">
-                          {post.user?.name}
-                        </h4>{' '}
+                          }`}
+                      >
+                        <h4 className="capitalize text-base">{post.username}</h4>{' '}
                         {/* Increased from sm to base */}
                       </a>
-                    </>
-                  )}
-                </>
-              ) : (
-                <h4 className="flex items-center text-base">
-                  {' '}
-                  {/* Increased from sm to base */}
-                  {post.post_type === 'team' ||
-                  post.post_type === 'tour' ||
-                  post.post_type === 'brand' ? (
-                    <a
-                      href={`/${post.post_type}/${
-                        post.post_type === 'team'
+                    ) : (
+                      <>
+                        <a href={`/user/${post.user?.username}`}>
+                          <h4 className="capitalize text-base">
+                            {post.user?.name}
+                          </h4>{' '}
+                          {/* Increased from sm to base */}
+                        </a>
+                      </>
+                    )}
+                  </>
+                ) : (
+                  <h4 className="flex items-center text-base">
+                    {' '}
+                    {/* Increased from sm to base */}
+                    {post.post_type === 'team' ||
+                      post.post_type === 'tour' ||
+                      post.post_type === 'brand' ? (
+                      <a
+                        href={`/${post.post_type}/${post.post_type === 'team'
                           ? post?.teamId
                           : post?.username
-                      }`}
-                    >
-                      <h4 className="capitalize">{post.username}</h4>
-                    </a>
-                  ) : (
-                    <div className="flex items-center">
-                      <a href={`/user/${post.user?.username}`}>
-                        <h4 className="capitalize">{post.user?.name}</h4>
-                      </a>
-                      <span className="mx-1"> is playing </span>
-                      <a
-                        href={`/games/${post.game_tag[0]?.gameId}`}
-                        className="game-name"
+                          }`}
                       >
-                        {post.game_tag[0]?.name}
+                        <h4 className="capitalize">{post.username}</h4>
                       </a>
-                    </div>
-                  )}
-                </h4>
-              )}
+                    ) : (
+                      <div className="flex items-center">
+                        <a href={`/user/${post.user?.username}`}>
+                          <h4 className="capitalize">{post.user?.name}</h4>
+                        </a>
+                        <span className="mx-1"> is playing </span>
+                        <a
+                          href={`/games/${post.game_tag[0]?.gameId}`}
+                          className="game-name"
+                        >
+                          {post.game_tag[0]?.name}
+                        </a>
+                      </div>
+                    )}
+                  </h4>
+                )}
+              </div>
+
+              <div className="text-xs text-gray-500 dark:text-white/80">
+                {' '}
+                {/* Considered already small, not increased */}
+                {Moment(post.createdAt).format('MMM, DD, YYYY hh:mm A')}
+              </div>
             </div>
 
-            <div className="text-xs text-gray-500 dark:text-white/80">
-              {' '}
-              {/* Considered already small, not increased */}
-              {Moment(post.createdAt).format('MMM, DD, YYYY hh:mm A')}
+            <div className='ml-2'>
+              {post?.post_type === 'team' ? (
+                <button>
+                  <Follow
+                    username={post.username}
+                    type={post.post_type}
+                    user={user}
+                  />
+                </button>
+              ) : post?.post_type === 'tour' ? (
+                <button>
+                  <Follow
+                    username={post.username}
+                    type={post.post_type}
+                    user={user}
+                  />
+                </button>
+              ) : post?.post_type === 'brand' ? (
+                <button>
+                  <Follow
+                    username={post.username}
+                    type={post.post_type}
+                    user={user}
+                  />
+                </button>
+              ) : isLoggedInUser === false ? (
+                <div
+                  className="flex justify-center items-center h-10 p-2 w-full rounded-lg hover:bg-background"
+                  onClick={() => followhandlesubmit(post.user._id)}
+                >
+                  {
+                    <div
+                      className={`flex justify-center items-center text-${isFollowing ? 'red-500' : 'primary1'
+                        }`}
+                    >
+                      <IonIcon
+                        className="text-xl shrink-0"
+                        icon={
+                          isFollowing ? stopCircleOutline : personAddOutline
+                        }
+                      />
+                      <span>{isFollowing ? 'Unfollow' : 'Follow'}</span>
+                    </div>
+                  }
+                </div>
+              ) : null}
+
+
             </div>
+
           </div>
 
           <div className="-mr-1">
@@ -201,7 +253,7 @@ const NewPost = ({ post, user, profiledata, followData, type, team }) => {
               className="w-[245px] bg-inherit p-0"
               uk-dropdown="pos: bottom-right; animation: uk-animation-scale-up uk-transform-origin-top-right; animate-out: true; mode: click"
             >
-              <nav className="flex flex-col gap-2 my-3 text-md text-white -z-3">
+              <nav className="flex flex-col gap-2  my-3 text-md text-white -z-3">
                 {/* <div className="flex justify-center items-center  h-10 p-2 w-full rounded-lg hover:bg-background">
                   <IonIcon
                     className="text-xl shrink-0"
@@ -232,7 +284,7 @@ const NewPost = ({ post, user, profiledata, followData, type, team }) => {
                   Share your profile{' '}
                 </div> */}
 
-                {post?.post_type === 'team' ? (
+                {/* {post?.post_type === 'team' ? (
                   <button>
                     <Follow
                       username={post.username}
@@ -263,9 +315,8 @@ const NewPost = ({ post, user, profiledata, followData, type, team }) => {
                   >
                     {
                       <div
-                        className={`flex justify-center items-center text-${
-                          isFollowing ? 'red-500' : 'primary1'
-                        }`}
+                        className={`flex justify-center items-center text-${isFollowing ? 'red-500' : 'primary1'
+                          }`}
                       >
                         <IonIcon
                           className="text-xl shrink-0"
@@ -277,7 +328,11 @@ const NewPost = ({ post, user, profiledata, followData, type, team }) => {
                       </div>
                     }
                   </div>
-                ) : null}
+                ) : null} */}
+
+                
+              <CustomPost post={post} user={user} />
+            
 
                 {/* <div className="flex justify-center items-center h-10 p-2 w-full rounded-lg text-red-500 hover:bg-background">
                   {' '}
@@ -300,6 +355,12 @@ const NewPost = ({ post, user, profiledata, followData, type, team }) => {
               {/* post without image*/}
             </div>
           ) : (
+           <>
+            {post.images.toString().length === 0 ? null : (
+          <div className="flex items-center justify-start px-4 mb-1">
+            <p className="text-lg">{post.description}</p>
+          </div>
+        )}
             <a
               href=""
               uk-toggle
@@ -319,6 +380,8 @@ const NewPost = ({ post, user, profiledata, followData, type, team }) => {
                 />
               </div>
             </a>
+            
+           </>
           )}
         </div>
 
@@ -414,11 +477,7 @@ const NewPost = ({ post, user, profiledata, followData, type, team }) => {
           </CopyToClipboard>
         </div>
 
-        {post.images.toString().length === 0 ? null : (
-          <div className="flex items-center justify-start px-4 mb-1">
-            <p className="text-lg">{post.description}</p>
-          </div>
-        )}
+       
 
         {/* <!-- comments --> */}
         {/* <div className="sm:p-4 p-2.5 border-t border-gray-100 font-normal space-y-3 relative dark:border-slate-700/40">
