@@ -16,7 +16,7 @@ const TeamFilter = ({ filterType, myState, selectedGame, showfavs, searchData, t
   };
   console.log("game id in ranking 0",selectedGame._id);
 
-
+  
 
   const [isHovered, setIsHovered] = useState(false);
   const [selectedMapFilters, setSelectedMapFilters] = useState([]);
@@ -70,9 +70,15 @@ const TeamFilter = ({ filterType, myState, selectedGame, showfavs, searchData, t
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`${baseURL}/api/filters/${filterType}`);
-      const newData = await response.json();
-      setData(newData);
+
+      try {
+        const response = await fetch(`${baseURL}/api/filters/${filterType}`);
+        const newData = await response.json();
+        setData(newData);
+        
+      } catch (error) {
+        
+      }
     };
     fetchData();
   }, []);

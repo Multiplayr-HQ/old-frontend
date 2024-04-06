@@ -9,7 +9,7 @@ import TeamStatistics from './teamstats/TeamStatistics';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import ProductList from '@components/common/ProductList';
-import TeamMatches from '@components/tournament/TeamMatches';
+import TeamMatches from '@components/team/Matches';
 import TeamJobs from './TeamJobs';
 import TeamJoines from './TeamJoines';
 import AllPosts from '../dashboard/AllPosts';
@@ -282,7 +282,10 @@ const TeamProfileData = ({
             </div>
           </div>
         </div>
+        <div  className="tab hide" id="matches">
         <TeamMatches tournament={tabData.teamMatches} />
+        </div>
+       
         <div className="tab hide" id="stats">
           <TeamStatistics
             tournamentStatData={tournamentStatData}
