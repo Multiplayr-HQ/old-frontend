@@ -224,19 +224,19 @@ const Signup = ({ games, avatars }) => {
     setShowbtn(true);
   };
 
-  // useEffect(() => {
-  //   $('a.model_show_btn').click(function () {
-  //     $(this).next().addClass('show_model');
-  //   });
+  useEffect(() => {
+    $('a.model_show_btn').click(function () {
+      $(this).next().addClass('show_model');
+    });
 
-  //   $('a.model_close').click(function () {
-  //     $(this).parent().removeClass('show_model');
-  //   });
+    $('a.model_close').click(function () {
+      $(this).parent().removeClass('show_model');
+    });
 
-  //   $('.msScroll_all').mCustomScrollbar({
-  //     autoHideScrollbar: true
-  //   });
-  // }, [trigger]);
+    $('.msScroll_all').mCustomScrollbar({
+      autoHideScrollbar: true
+    });
+  }, [trigger]);
   return (
     <>
       <div id="kt_body" className="bg-body">

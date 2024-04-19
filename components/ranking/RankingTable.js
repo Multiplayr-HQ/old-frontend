@@ -232,8 +232,8 @@ const RankingTable = ({ teamrankingss, searchResults, favshow, user, team }) => 
                   <p>{Moment(result.teamData[0].founded).format('MMM YYYY')}</p>
                 </div>
                 <div className="manager">
-                  <span>{result.teamData[0].role ? result.teamData[0].role : 'Manager'}</span>
-                  <p>Sonu Singh</p>
+                  <span> Manager</span>
+                  <p>{result.teamData[0]?.employees[0]?.name ? result.teamData[0]?.employees[0]?.name : "--" }</p>
                 </div>
               </div>
 

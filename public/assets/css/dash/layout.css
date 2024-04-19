@@ -3213,7 +3213,7 @@ article .social_bar img {
 
 .profile_dp_box {
 	display: flex;
-	;
+	bottom: 0;
 	padding: 0;
 	justify-content: space-between;
 	position: relative;
@@ -5819,6 +5819,7 @@ flex-direction: column;
 
 .game_pos .tour_logo img {
 	width: 60px;
+	
 }
 
 .game_pos .game_loc {
@@ -11466,8 +11467,11 @@ form.common_form .btn {
 	float: left;
 	width: 100%;
 	background: #1c1e2a;
-	padding: 80px 50px;
-	margin: 50px 0;
+	padding: 00px 50px;
+	padding-top: 80px ;
+
+	/* margin: 50px 0; */
+	margin-top: 50px;
 }
 
 .top_three_prize {
@@ -11489,7 +11493,7 @@ form.common_form .btn {
 .first_symb {
 	position: absolute;
 	width: 100px;
-	height: 100px;
+	height: 120px;
 	top: -50px;
 	left: 0;
 	right: 0;
@@ -11498,12 +11502,21 @@ form.common_form .btn {
 	border-radius: 10px;
 	color: #fff;
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	text-align: center;
 	justify-content: center;
 	font-size: 31px;
 	font-weight: 600;
 	text-transform: uppercase;
+}
+.first_symb img{
+	width: 110px;
+	height: 90px;
+	border-radius: 10px;
+}
+.first_symb p {
+	font-size: 22px;
 }
 
 .top_three_prize .prize_box:nth-child(1) .first_symb {
@@ -11528,9 +11541,15 @@ form.common_form .btn {
 	width: 100%;
 	align-items: center;
 	justify-content: space-around;
-	padding: 30px 20px;
+	/* padding: 30px 20px; */
+	padding: 10px;
+	padding: auto;
 	text-align: center;
 	margin-top: 30px;
+}
+.prize_money img{
+	height: 200px;
+	width: 180px;
 }
 
 .prize_money .money {
@@ -11551,6 +11570,8 @@ form.common_form .btn {
 
 .prize_foot img {
 	display: inline-block;
+	height: 20px;
+	width: 20px;
 }
 
 .more_prizes {
@@ -11574,13 +11595,15 @@ form.common_form .btn {
 }
 
 .more_prizes .prize_box .first_symb {
+	
 	font-size: 17px;
-	align-items: end;
+	align-items: center;
 	width: 75px;
 	height: 105px;
+	
 }
 
-.more_prizes .prize_box .first_symb::after {
+.more_prizes .prize_box .first_symb ::after {
 	content: "";
 	width: 100%;
 	height: 70px;
@@ -11588,6 +11611,10 @@ form.common_form .btn {
 	position: absolute;
 	top: 0;
 	border-radius: 5px;
+	
+}
+.more_prizes .prize_box .prize_money{
+	padding: 20px;
 }
 
 .more_prizes .prize_box .first_symb b {
@@ -11599,7 +11626,8 @@ form.common_form .btn {
 }
 
 .more_prizes .prize_foot img {
-	width: 75px;
+	/* width: 75px; */
+	
 }
 
 /* --------------- Point Table ------------------ */

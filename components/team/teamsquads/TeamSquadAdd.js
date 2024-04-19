@@ -38,7 +38,7 @@ const TeamSquadAdd = ({
   const handleRoleForm = (e) => {
     setCount(count + 1);
   };
-
+  
   useEffect(() => {
     //Games
     axios.get(`${baseURL}/api/all/games`).then((res) => setGames(res.data));
@@ -97,6 +97,7 @@ const TeamSquadAdd = ({
     });
   }, []);
   console.log("player data",playerData);
+  console.log("team players",teamplayers);
 
   return (
     <>
