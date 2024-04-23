@@ -126,16 +126,21 @@ const ProfileBox = ({ user, Userdata, profile, games, teams }) => {
     }
   };
 
-  // useEffect(() => {
-  //   $('.common_poup').fancybox({
-  //     wrapCSS: 'common_poup_wrap',
-
-  //     minHeight: 450,
-  //     fitToView: true,
-  //     autoSize: true,
-  //     autoScale: true
-  //   });
-  // }, []);
+  useEffect(() => {
+    try {
+      $('.common_poup').fancybox({
+        wrapCSS: 'common_poup_wrap',
+  
+        minHeight: 450,
+        fitToView: true,
+        autoSize: true,
+        autoScale: true
+      });
+      
+    } catch (error) {
+      
+    }
+  }, []);
 
   const handleSelectGame = async (obj) => {
     setSelectedGame({ game: obj });
@@ -186,11 +191,11 @@ const ProfileBox = ({ user, Userdata, profile, games, teams }) => {
     <>
       <div className="profile_box for_profile">
         <div className="profile_cover_photo">
-          <div className="report">
+          {/* <div className="report">
             <a href="#">
               <i className="fa fa-ellipsis-v" aria-hidden="true"></i>
             </a>
-          </div>
+          </div> */}
           <form>
             <img
               className=""

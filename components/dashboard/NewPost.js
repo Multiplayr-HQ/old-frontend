@@ -372,7 +372,7 @@ const NewPost = ({ post, user, profiledata, followData, type, team }) => {
                 setOpen((state) => !state);
               }}
             >
-              <div className="relative w-full lg:h-96 h-full sm:px-4">
+              <div className="relative w-full lg:h-full h-full sm:px-4 aspect-video">
                 <img
                   src={post.images}
                   alt=""
