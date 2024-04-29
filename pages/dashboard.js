@@ -60,7 +60,12 @@ export const getServerSideProps = async (context) => {
   const data = await response.json();
   const posts = data?.posts;
 
-  const respons = await fetch(`${baseURL}/api/all/teams`);
+  const respons = await fetch(`${baseURL}/api/all/myteams`,{
+    method : 'get',
+    headers : {
+      Authorization : token
+    }
+  });
     const teams = await respons.json();
 
 
