@@ -23,8 +23,8 @@ const Dashboard = ({ user, profile, teams, posts, suggplayers }) => {
   const { chat } = router.query;
 
   const [messages, setMessages] = useState([]);
-  console.log('team in dashboard page :',teams);
-  console.log('suggested player',suggplayers);
+  console.log('team in dashboard page :', teams);
+  console.log('suggested player', suggplayers);
 
   return (
     <>
@@ -50,7 +50,7 @@ const Dashboard = ({ user, profile, teams, posts, suggplayers }) => {
 
 export const getServerSideProps = async (context) => {
   const { token } = parseCookies(context);
-  const {teamId} = parseCookies(context);
+  const { teamId } = parseCookies(context);
   const response = await fetch(`${baseURL}/api/posts`, {
     method: 'get',
     headers: {
@@ -61,7 +61,7 @@ export const getServerSideProps = async (context) => {
   const posts = data?.posts;
 
   const respons = await fetch(`${baseURL}/api/all/teams`);
-    const teams = await respons.json();
+  const teams = await respons.json();
 
 
   const res = await fetch(`${baseURL}/api/profile/suggested/players`, {
@@ -73,7 +73,7 @@ export const getServerSideProps = async (context) => {
   const suggplayers = await res.json();
 
   return {
-    props: { posts, suggplayers,teams }
+    props: { posts, suggplayers, teams }
   };
 };
 

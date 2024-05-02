@@ -176,6 +176,8 @@ const Discover = ({ user, profile, games }) => {
                 user={user}
                 profile={profile}
                 myState={myState}
+
+
                 selectedGame={selectedGame}
               />
             ) : (
@@ -204,6 +206,7 @@ const Discover = ({ user, profile, games }) => {
               ''
             )
             }
+            {console.log(myState, "this is myState")}
           </div>
         </div>
       </div>

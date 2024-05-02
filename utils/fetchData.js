@@ -2,15 +2,20 @@ import baseUrl from './baseURL';
 
 export const getData = async (url, token) => {
     console.log(url + '    :::: ' + token);
-    const res = await fetch(`${baseUrl}/api/${url}`, {
-        method: 'GET',
-        headers: {
-            'Authorization': token
-        }
-    })
+    try {
+        const res = await fetch(`${baseUrl}/api/${url}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': token
+            }
+        })
 
-    const data = await res.json()
-    return data
+        const data = await res.json()
+        return data
+    }
+    catch {
+        return {}
+    }
 }
 
 export const postData = async (url, post, token) => {
