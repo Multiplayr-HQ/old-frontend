@@ -7,8 +7,6 @@ const TeamSquadFilter = ({ playerData, players }) => {
     player: '',
     role: ''
   });
-  // console.log("player",players);
-  // console.log("playr data ",playerData);
   const [allplayers, setAllplayers] = useState([]);
   const [teamroles, setTeamroles] = useState([]);
 
@@ -30,15 +28,14 @@ const TeamSquadFilter = ({ playerData, players }) => {
   const handleFilter = (event) => {
     const searchWord = event.target.value;
     
-    console.log("object",searchWord);
+
     setSearchText(searchWord);
-    const newFilter = allplayers?.filter((value) => {
+    const newFilter = players?.filter((value) => {
       return (
-        value.name?.toLowerCase().includes(searchWord.toLowerCase()) 
-        // ||
-        // value.apidata?.data?.platformInfo?.platformUserHandle
-        //   .toLowerCase()
-        //   .includes(searchWord.toLowerCase())
+        value.name?.toLowerCase().includes(searchWord.toLowerCase()) ||
+        value.apidata?.data?.platformInfo?.platformUserHandle
+          .toLowerCase()
+          .includes(searchWord.toLowerCase())
       );
     });
     if (searchText === '') {
@@ -46,19 +43,16 @@ const TeamSquadFilter = ({ playerData, players }) => {
     } else {
       setFilteredData(newFilter);
     }
-    console.log("new filter",newFilter);
+    // console.log("new filter",newFilter);
   };
+ 
 
-
-
-
-  
   const handleSelectedRig = (data) => {
-    // if (data.apidata?.data?.platformInfo) {
-    //   setSearchText(data.apidata?.data?.platformInfo.platformUserHandle);
-    // } else {
-    //   setSearchText(data.name);
-    // }
+    if (data.apidata?.data?.platformInfo) {
+      setSearchText(data.apidata?.data?.platformInfo.platformUserHandle);
+    } else {
+      setSearchText(data.name);
+    }
 
     squadPlayers.player = data._id;
     playerData.push(squadPlayers);
@@ -68,7 +62,7 @@ const TeamSquadFilter = ({ playerData, players }) => {
   const onChange = (e) => {
     setSquadPlayers({ ...squadPlayers, [e.target.name]: e.target.value });
   };
-  console.log("Sqade player",squadPlayers);
+  // console.log("Sqade player",filteredData);
 
   return (
     <>
@@ -126,7 +120,6 @@ const TeamSquadFilter = ({ playerData, players }) => {
                     )}
                   </div>
                 </div>
-                
               </>
             ) : null}
           </>

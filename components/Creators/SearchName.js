@@ -108,7 +108,6 @@ const SearchName = ({ data, type, handleChange, isSearchOnly, user }) => {
           autoComplete="off"
           style={{ color: 'whitesmoke !important' }}
         />
-         <input type="submit" />
 
         {searchText.length !== 0 ? (
           <>
