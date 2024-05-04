@@ -1,41 +1,7 @@
 import React from 'react';
 import Moment from 'moment';
 
-const TournamentSeries = ({ user}) => {
-
-  const tournament = {
-    seriesId: {
-      fullName: "Example Series",
-      startDate: "2024-04-01",
-      endDate: "2024-04-30",
-      season: "Spring",
-      tier: "Tier 1",
-      slug: "example-series"
-    },
-    leagues: [
-      {
-        leagueId: {
-          name: "Example League 1",
-          // imgUrl: "league1.jpg",
-          startDate: "2024-04-01",
-      endDate: "2024-04-30",
-          url: "https://example.com/league1",
-          slug: "example-league-1"
-        }
-      },
-      {
-        leagueId: {
-          name: "Example League 2",
-          // imgUrl: "league2.jpg",
-          startDate: "2024-04-01",
-      endDate: "2024-04-30",
-          url: "https://example.com/league2",
-          slug: "example-league-2"
-        }
-      }
-    ]
-  };
-
+const TournamentSeries = ({ user, tournament }) => {
   return (
     <div className="groupds_box">
       <div className="group">
