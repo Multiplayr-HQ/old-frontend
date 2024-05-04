@@ -54,6 +54,58 @@ const TournamentDetail = ({
   const isRegisteredMember = isMember(data, user);
 
 
+  const groupData = {
+    teams: [
+      {
+        teamId: {
+          name: "Team A",
+          imgUrl: "teamA.jpg"
+        },
+        matches: 5,
+        won: 3,
+        draw: 1,
+        loss: 1,
+        points: 10
+      },
+      {
+        teamId: {
+          name: "Team B",
+          imgUrl: "teamB.jpg"
+        },
+        matches: 5,
+        won: 2,
+        draw: 2,
+        loss: 1,
+        points: 8
+      }
+    ],
+    participants: [
+      {
+        participantId: {
+          username: "Player X",
+          profilePicUrl: "/assets/media/default/team.jpg"
+        },
+        matches: 5,
+        won: 4,
+        draw: 0,
+        loss: 1,
+        points: 12
+      },
+      {
+        participantId: {
+          username: "Player Y",
+          profilePicUrl: "/assets/media/default/team.jpg"
+        },
+        matches: 5,
+        won: 3,
+        draw: 1,
+        loss: 1,
+        points: 10
+      }
+    ]
+  };
+
+
   useEffect(async () => {
     await axios
       .get(`${baseURL}/api/tournaments/${data.tournament?.name}/followers`)
@@ -698,11 +750,11 @@ const TournamentDetail = ({
                   Braket
                 </a>
               </li>
-              {/* <li>
+              <li>
                 <a href="#!" rel="store">
                   Store
                 </a>
-              </li> */}
+              </li>
               <li>
                 <a href="#!" rel="video">
                   Streams/Media
@@ -804,22 +856,24 @@ const TournamentDetail = ({
                 <TournamentSeries user={user} tournament={data.tournament} />
               </div>
               <div className="tab hide" id="points">
-                {isUser || isSupportAdmin ? (
+                {/* {isUser || isSupportAdmin ? (
                   <button className="btn" onClick={() => handleSetMatches()}>
                     Set Matches
                   </button>
-                ) : null}
+                ) : null} */}
                 <div className="points_table">
                   <div className="groupds_box">
                     {data.tournament?.playType === 'SOLO' ? (
                       <>
                         <TournamentGroups
-                          group={data?.tourGroups[0]}
+                          // group={data?.tourGroups[0]}
+                          group = {groupData}
                           playType={data?.tournament.playType}
                           tournamentType={data?.tournament.tournamentType}
                         />
                         <TournamentGroups
-                          group={data?.tourGroups[1]}
+                          // group={data?.tourGroups[1]}
+                          group = {groupData}
                           playType={data?.tournament.playType}
                           tournamentType={data?.tournament.tournamentType}
                         />

@@ -7,7 +7,7 @@ import baseURL from '@utils/baseURL';
 import MetaDash from '@components/MetaDash';
 import SignedHeader from '@components/SignedHeader';
 import LeftNav from '@components/LeftNav';
-import SignedMainContent from '@components/dashboard/SignedMainContent';
+import SignedMainContent from '@components/dashboard/Signhttps://github.com/Multiplayr-HQ/old-frontend/pull/17/conflict?name=pages%252Fdashboard.js&ancestor_oid=f1fc9c5884e8d638aaf0c5518095d07a6a399692&base_oid=4f12edd0ab8db25ba6b720ffebbd5e6435c96aea&head_oid=19b861ca4817184fd893ac8a2673639f8dbdbb93edMainContent';
 import RightSection from '@components/dashboard/RightSection';
 import AllScript from './AllScript';
 import { parseCookies } from 'nookies';
@@ -60,8 +60,15 @@ export const getServerSideProps = async (context) => {
   const data = await response.json();
   const posts = data?.posts;
 
-  const respons = await fetch(`${baseURL}/api/all/teams`);
-  const teams = await respons.json();
+
+  const respons = await fetch(`${baseURL}/api/all/myteams`,{
+    method: 'get',
+    headers: {
+      Authorization: token
+    }
+  });
+    const teams = await respons.json();
+
 
 
   const res = await fetch(`${baseURL}/api/profile/suggested/players`, {

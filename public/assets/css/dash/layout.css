@@ -496,6 +496,33 @@ header .logo a {
 	align-items: center;
 	padding-right: 25px;
 }
+.right_menu .searchbox input[type="submit"]{
+	border: 0;
+	background: url(/assets/media/search-icon.png) 0 7px no-repeat;
+	height: 30px;
+	width: 20px;
+	position: absolute;
+	right: 5px;
+	cursor: pointer;
+	transition: 0.3s ease-out;
+	text-indent: -999px;
+}
+
+/* .team_search .searchbox input[type="submit"] {
+	border: 0;
+	background: url(/assets/media/search-icon.png) 0 7px no-repeat;
+	height: 30px;
+	width: 20px;
+	position: absolute;
+	right: 5px;
+	cursor: pointer;
+	transition: 0.3s ease-out;
+	text-indent: -999px;
+} */
+
+.right_menu .searchbox input[type="submit"]:hover {
+	background-position: 0 -20px;
+}
 
 ul.top_menu {
 	display: flex;
@@ -2514,7 +2541,7 @@ article .social_bar img {
 .white_box .activity_tag {
 	float: left;
 	width: 100%;
-	margin: 5px 0;
+	margin: 20px 0;
 	text-align: left;
 	
 	border-bottom: 1px solid #ddd;
@@ -2537,13 +2564,14 @@ article .social_bar img {
 	height: 100%;
 }
 
-.white_box .activity_tag .act_name {
+ .activity_tag .act_name {
 	display: inline-block;
 	width: calc(100% - 65px);
 	vertical-align: middle;
 	margin: 0 10px;
-	color: #202028;
-	font-size: 12px;
+	/* color: #202028; */
+	color: #fff;
+	font-size: 16px;
 	font-weight: 600;
 	word-break: break-all;
 	margin-top: 50px;
@@ -3213,7 +3241,7 @@ article .social_bar img {
 
 .profile_dp_box {
 	display: flex;
-	;
+	bottom: 0;
 	padding: 0;
 	justify-content: space-between;
 	position: relative;
@@ -3233,8 +3261,8 @@ article .social_bar img {
 
 .profile_dp_box .profile_pic img {
 	object-fit: cover;
-	/* width: 145px;
-	height: 145px; */
+	width: 145px;
+	height: 145px;
 	border-radius: 12px;
 	
 }
@@ -3885,6 +3913,45 @@ article .social_bar img {
 .profile_tab_btn li.active a {
 	color: var(--yellow);
 }
+
+/* team testing to resolve j query */
+
+.profile_tab_btn_1 {
+	float: left;
+	width: 100%;
+	margin: 30px 0 0 0;
+	padding: 20px 20px 10px 20px;
+	border-bottom: 1px solid #ddd;
+}
+
+.profile_tab_btn_1 li {
+	display: inline-block;
+	list-style: none;
+	position: relative;
+	margin-right: 10px;
+}
+
+.profile_tab_btn_1 li a {
+	color: #000;
+	text-transform: uppercase;
+	font-size: 12px;
+	padding-right: 10px;
+}
+
+.profile_tab_btn_1 li.active:after {
+	content: "";
+	position: absolute;
+	width: 100%;
+	border-bottom: 4px solid var(--yellow);
+	left: 0;
+	bottom: -12px;
+}
+
+.profile_tab_btn_1 li.active a {
+	color: var(--yellow);
+}
+
+/* end experiment */
 
 .prfoile_tab_data {
 	float: left;
@@ -5644,9 +5711,11 @@ flex-direction: column;
 
 .more_data .pic .tumb img {
 	object-fit: cover;
-	/* width: 100%;
-	height: 100%; */
+	width: 100%;
+	height: 100%;
 }
+
+
 
 .more_data .pic h3 {
 	font-size: 12px;
@@ -5819,6 +5888,7 @@ flex-direction: column;
 
 .game_pos .tour_logo img {
 	width: 60px;
+	
 }
 
 .game_pos .game_loc {
@@ -11466,8 +11536,11 @@ form.common_form .btn {
 	float: left;
 	width: 100%;
 	background: #1c1e2a;
-	padding: 80px 50px;
-	margin: 50px 0;
+	padding: 00px 50px;
+	padding-top: 80px ;
+
+	/* margin: 50px 0; */
+	margin-top: 50px;
 }
 
 .top_three_prize {
@@ -11489,7 +11562,7 @@ form.common_form .btn {
 .first_symb {
 	position: absolute;
 	width: 100px;
-	height: 100px;
+	height: 120px;
 	top: -50px;
 	left: 0;
 	right: 0;
@@ -11498,12 +11571,21 @@ form.common_form .btn {
 	border-radius: 10px;
 	color: #fff;
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	text-align: center;
 	justify-content: center;
 	font-size: 31px;
 	font-weight: 600;
 	text-transform: uppercase;
+}
+.first_symb img{
+	width: 110px;
+	height: 90px;
+	border-radius: 10px;
+}
+.first_symb p {
+	font-size: 22px;
 }
 
 .top_three_prize .prize_box:nth-child(1) .first_symb {
@@ -11528,9 +11610,15 @@ form.common_form .btn {
 	width: 100%;
 	align-items: center;
 	justify-content: space-around;
-	padding: 30px 20px;
+	/* padding: 30px 20px; */
+	padding: 10px;
+	padding: auto;
 	text-align: center;
 	margin-top: 30px;
+}
+.prize_money img{
+	height: 200px;
+	width: 180px;
 }
 
 .prize_money .money {
@@ -11551,6 +11639,8 @@ form.common_form .btn {
 
 .prize_foot img {
 	display: inline-block;
+	height: 20px;
+	width: 20px;
 }
 
 .more_prizes {
@@ -11574,13 +11664,15 @@ form.common_form .btn {
 }
 
 .more_prizes .prize_box .first_symb {
+	
 	font-size: 17px;
-	align-items: end;
+	align-items: center;
 	width: 75px;
 	height: 105px;
+	
 }
 
-.more_prizes .prize_box .first_symb::after {
+.more_prizes .prize_box .first_symb ::after {
 	content: "";
 	width: 100%;
 	height: 70px;
@@ -11588,6 +11680,10 @@ form.common_form .btn {
 	position: absolute;
 	top: 0;
 	border-radius: 5px;
+	
+}
+.more_prizes .prize_box .prize_money{
+	padding: 20px;
 }
 
 .more_prizes .prize_box .first_symb b {
@@ -11599,7 +11695,8 @@ form.common_form .btn {
 }
 
 .more_prizes .prize_foot img {
-	width: 75px;
+	/* width: 75px; */
+	
 }
 
 /* --------------- Point Table ------------------ */

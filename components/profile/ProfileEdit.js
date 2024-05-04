@@ -202,6 +202,8 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
     axios.get(`${baseURL}/api/all/teams/`).then((res) => setTeamData(res.data));
   }, []);
 
+  console.log("filter data profile",filteredData);
+
   return (
     <>
       <div className="loc_box edit_pof">

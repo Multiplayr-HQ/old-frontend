@@ -53,7 +53,8 @@ const TournamentRules = ({ tourRules, tournament }) => {
   const router = useRouter();
 
   const refreshData = () => {
-    router.replace(router.asPath);
+    // router.replace(router.asPath);
+    router.reload();
   };
 
   const options = useMemo(() => countryList().getData(), []);
@@ -66,7 +67,7 @@ const TournamentRules = ({ tourRules, tournament }) => {
 
     setSearchText(searchWord);
     const newFilter = allusers?.filter((value) => {
-      return value.name.toLowerCase().includes(searchWord.toLowerCase());
+      return value?.name?.toLowerCase().includes(searchWord.toLowerCase());
     });
     if (searchText === '') {
       setFilteredData([]);
@@ -90,6 +91,7 @@ const TournamentRules = ({ tourRules, tournament }) => {
           states
         );
         toast.success('Tournament Rules Updated');
+        // router.refresh();
       } catch (err) {
         console.log(err);
         toast.error(err.response?.data?.msg || 'Please recheck your inputs');

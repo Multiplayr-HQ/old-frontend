@@ -8,8 +8,6 @@ import baseURL from '../../utils/baseURL';
 
 const RankingPage = ({ selectedGame, teamranking, user,gameChange }) => {
 
-    
-
     const [newGame,setNewGame] = useState();
 
     let myState = {};
@@ -44,7 +42,7 @@ const RankingPage = ({ selectedGame, teamranking, user,gameChange }) => {
         }));
     };
 
-    // console.log('Selected game ', selectedGame);
+
 
     useEffect(() => {
         const fetchRankings = async () => {

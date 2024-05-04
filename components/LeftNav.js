@@ -60,42 +60,42 @@ function LeftNav({ user }) {
               </a>
             </Link>
           </li>
-          <li className={router.pathname == '/calendar' ? 'active' : ''}>
+          {/* <li className={router.pathname == '/calendar' ? 'active' : ''}>
             <Link href="/calendar">
               <a className="">
                 <span className="iconbg">
-                  {/* <img src="/assets/media/icons/Calendar.png" alt="" /> */}
+                 
                 </span>{' '}
                 <span className="title">CALENDER</span>
               </a>
             </Link>{' '}
-          </li>
-          <li className={router.pathname == '/challenges' ? 'active' : ''}>
+          </li> */}
+          {/* <li className={router.pathname == '/challenges' ? 'active' : ''}>
             <Link href="/challenges">
               <a className="">
                 <span className="iconbg">
-                  {/* <img src="/assets/media/icons/Challenge.png" alt="" /> */}
+                 
                 </span>{' '}
                 <span className="title">WAGERS</span>
               </a>
             </Link>
-          </li>
-          <li className={router.pathname == '/battlepass' ? 'active' : ''}>
+          </li> */}
+          {/* <li className={router.pathname == '/battlepass' ? 'active' : ''}>
             <Link href="/battlepass">
               <a className="">
                 <span className="iconbg">
-                  {/* <img src="/assets/media/icons/Challenge.png" alt="" /> */}
+                  
                 </span>{' '}
                 <span className="title">BATTLEPASS</span>
               </a>
             </Link>
-          </li>
-          {user?.isSuperAdmin === true || user?.isSupportAdmin === true ? (
+          </li> */}
+          {/* {user?.isSuperAdmin === true || user?.isSupportAdmin === true ? (
             <li className={router.pathname == '/adminpage' ? 'active' : ''}>
               <Link href="/adminpage">
                 <a className="">
                   <span className="iconbg">
-                    {/* <img src="/assets/media/icons/Dashboard.png" alt="" /> */}
+                    
                   </span>{' '}
                   <span className="title">Admin Settings</span>
                 </a>
@@ -103,11 +103,9 @@ function LeftNav({ user }) {
             </li>
           ) : (
             ''
-          )}
+          )} */}
           <li className="submenu">
-            {/* <ListDrag /> */}
-
-            {/*  more submenu */}
+          
             <ul className="more_left_menu">
               <li>
                 <Link href="/">
@@ -144,7 +142,7 @@ function LeftNav({ user }) {
                 </Link>{' '}
               </li>
 
-              {user?.role === 'admin' ? (
+              {/* {user?.role === 'admin' ? (
                 <li>
                   <Link href="/settings">
                     <a className="">
@@ -157,8 +155,8 @@ function LeftNav({ user }) {
                 </li>
               ) : (
                 ''
-              )}
-              {user?.isSuperAdmin === true ? (
+              )} */}
+              {/* {user?.isSuperAdmin === true ? (
                 <li>
                   <Link href="/adminpage">
                     <a className="">
@@ -171,13 +169,13 @@ function LeftNav({ user }) {
                 </li>
               ) : (
                 ''
-              )}
+              )} */}
             </ul>
           </li>
-        </ul>
+        </ul> 
       </nav>
 
-      <DarkMode />
+      {/* <DarkMode /> */}
     </div>
   );
 }
