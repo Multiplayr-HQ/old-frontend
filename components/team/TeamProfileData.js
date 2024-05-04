@@ -65,6 +65,7 @@ const TeamProfileData = ({
 
   const handleTabs = async (Type) => {
     console.log(Type);
+    handleTabClick(Type);
     try {
       await axios
         .get(`${baseURL}/api/teams/teamdata/${Type}/${data.team?._id}`)
@@ -75,26 +76,36 @@ const TeamProfileData = ({
     }
   };
 
+
+  // State to keep track of the active tab
+  const [activeTab, setActiveTab] = useState('overview');
+
+  // Function to change the active tab
+  const handleTabClick = (tabId) => {
+    setActiveTab(tabId);
+    console.log("state changed to next", tabId);
+  };
+
   return (
     <>
       <ul className="profile_tab_btn">
-        <li className="active">
-          <a href="#!" rel="overview">
+        <li className={activeTab === 'overview' ? 'active' : 'active'}>
+          <a onClick={() => handleTabClick('overview')} href="#!" rel="overview">
             OVERVIEW
           </a>
         </li>
-        <li>
-          <a href="#!" rel="squads" onClick={() => handleTabs('SQUADS')}>
+        <li className={activeTab === 'SQUADS' ? 'active' : ''}>
+          <a href="#!" rel="squads" onClick={() => handleTabs('SQUADS')}  >
             Squads
           </a>
         </li>
-        <li>
+        <li >
           <a href="#!" rel="achievement">
             {' '}
             ACHIEVEMENTS
           </a>
         </li>
-        <li>
+        <li className={activeTab === 'MATCHES' ? 'active' : ''}>
           <a href="#!" rel="matches" onClick={() => handleTabs('MATCHES')}>
             MATCHES
           </a>
@@ -115,7 +126,7 @@ const TeamProfileData = ({
             PHOTOS
           </a>
         </li> */}
-        <li>
+        <li >
           <a href="#!" rel="media">
             MEDIA
           </a>
@@ -125,13 +136,13 @@ const TeamProfileData = ({
             JOBS
           </a>
         </li> */}
-        <li>
+        <li className={activeTab === 'ABOUT' ? 'active' : ''}>
           <a href="#!" rel="about" onClick={() => handleTabs('ABOUT')}>
             {' '}
             ABOUT
           </a>
         </li>
-        <li>
+        <li className={activeTab === 'SPONSORS' ? 'active' : ''}>
           <a href="#!" rel="sponsors" onClick={() => handleTabs('SPONSORS')}>
             {' '}
             SPONSORS
@@ -201,7 +212,7 @@ const TeamProfileData = ({
             isSupportAdmin={isSupportAdmin}
           />
         </div>
-        <div className="tab hide" id="achievement">
+        {/* <div className="tab hide" id="achievement">
           <div className="achivement_box">
             <div className="features">
               <h2>featured</h2>
@@ -281,11 +292,14 @@ const TeamProfileData = ({
               </table>
             </div>
           </div>
+        </div> */}
+        <div className="matches_box  tab hide" id="achievement">
+          <h5>NO Achievement</h5>
         </div>
-        <div  className="tab hide" id="matches">
-        <TeamMatches tournament={tabData.teamMatches} />
+        <div className="tab hide" id="matches">
+          <TeamMatches tournament={tabData.teamMatches} />
         </div>
-       
+
         <div className="tab hide" id="stats">
           <TeamStatistics
             tournamentStatData={tournamentStatData}

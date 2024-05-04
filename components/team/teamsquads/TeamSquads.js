@@ -11,6 +11,7 @@ const TeamSquads = ({
   isCEO,
   isSupportAdmin
 }) => {
+  console.log("Squade data new :",squadsData);
   return (
     <>
       <TeamSquadAdd

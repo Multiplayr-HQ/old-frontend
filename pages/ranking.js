@@ -11,7 +11,7 @@ import Link from 'next/link';
 // import next from 'next';
 
 const Ranking = ({ user, games, profile }) => {
-  const [teamsRanks, setTeamsRanks] = useState([]);
+  const [teamsRanks, setTeamsRanks] = useState({team : []});
   const [loading, setLoading] = useState(false);
 
 
@@ -22,7 +22,7 @@ const Ranking = ({ user, games, profile }) => {
 
 
   const handleSelectGame = async (obj) => {
-    setTeamsRanks();
+    setTeamsRanks({team : []});
     setSelectedGame(obj);
     setPage(1);
     await getData(1, obj);
@@ -34,7 +34,7 @@ const Ranking = ({ user, games, profile }) => {
 
   const getData = async (pag, game) => {
 
-    try {
+    // try {
       
       setLoading(true);
       // console.log("gandu page : " ,pag);
@@ -42,20 +42,21 @@ const Ranking = ({ user, games, profile }) => {
       const res = await axios.post(`${baseURL}/api/rankings/bywins/${game?._id}?page=${pag}`);
       setPage(pag + 1);
   
-      // setTeamsRanks((p) => {
-      //   let arr = [];
-      //   arr = [...p.teams , ...res?.data?.teams];
-      //   return {teams : arr};
-      // });
-      // console.log("res",res);
-      setTeamsRanks(res.data);
+      setTeamsRanks((p) => {
+      let arr = [];
+        arr = [...p.team , ...res?.data?.team];
+        return {team : arr};
+      });
+
+      console.log("res",res);
+      // setTeamsRanks(res.data);
       // console.log("teamRanks in ranking page",teamsRanks);
   
       setLoading(false);
       // console.log("response data gandu :", res, "page : ", page);
-    } catch (error) {
-      console.log("error in ranking.js",error);
-    }
+    // } catch (error) {
+      // console.log("error in ranking.js",error);
+    // }
   }
 
   console.log("gandu page : ", page);
@@ -125,7 +126,7 @@ const Ranking = ({ user, games, profile }) => {
 
                   <div className="poup_height msScroll_all">
                     <ul className="">
-                      {games.map((game, idx) => (
+                      {games?.map((game, idx) => (
                         <li key={idx}>
                           <div className="game_pic">
                             <Link href="#!">

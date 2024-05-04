@@ -16,9 +16,9 @@ const TeamFilter = ({ filterType, myState, selectedGame, showfavs, searchData, t
   };
   console.log("game id in ranking 0",selectedGame._id);
 
-  
 
-  const [isHovered, setIsHovered] = useState(false);
+
+
   const [selectedMapFilters, setSelectedMapFilters] = useState([]);
   var [team, setTeam] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -70,20 +70,12 @@ const TeamFilter = ({ filterType, myState, selectedGame, showfavs, searchData, t
 
   useEffect(() => {
     const fetchData = async () => {
-
-      try {
-        const response = await fetch(`${baseURL}/api/filters/${filterType}`);
-        const newData = await response.json();
-        setData(newData);
-        
-      } catch (error) {
-        
-      }
+      const response = await fetch(`${baseURL}/api/filters/${filterType}`);
+      const newData = await response.json();
+      setData(newData);
     };
     fetchData();
   }, []);
-
-console.log("data of filter",data);
 
 
   const router = useRouter();
@@ -224,7 +216,7 @@ console.log("data of filter",data);
         const game = selectedGame._id;
 
         try {
-          const response = await axios.post(`${baseURL}/api/rankings/bywins/${game}`, filter, {
+          const response = await axios.post(`http://localhost:8181/api/rankings/bywins/${game}`, filter, {
             headers: {
               'Content-Type': 'application/json',
             },
@@ -281,16 +273,16 @@ console.log("data of filter",data);
   //   }
   // }, [myState, team]);
 
-  console.log("selected filter :", selectedFilters);
+  console.log("selected filter :", filter);
   
 
 
   if (data && data.filter) {
     return (
       <>
-        <div className="team_filter">
-          <div className="drop_downs" >
-            {data.filter?.metadata.map((filter, index) =>
+        {/* <div className="team_filter">
+          <div className="drop_downs">
+            {data.filter.metadata.map((filter, index) =>
               filter.value?.indexOf(filter.key) < 0 ? (
                 <div key={index} className="button-group">
                   <button
@@ -348,7 +340,7 @@ console.log("data of filter",data);
               )
             )}
           </div>
-                
+
           {selectedMapFilters.length > 0 && (
             <div className="filters">
               {' '}
@@ -393,7 +385,7 @@ console.log("data of filter",data);
               </button>
             </div>
           )}
-        </div>
+        </div> */}
 
         <RankingTable
           isLoading={isLoading}

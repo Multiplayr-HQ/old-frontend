@@ -48,12 +48,12 @@ const TeamSquadAdd = ({
     e.preventDefault();
     if (Object.keys(formErrors).length === 0) {
       try {
-        await axios.post(`${baseURL}/api/squads/create`, {
+        await axios.post(`${baseURL}/api/squads/create`, squadData,{
           headers: {
             Authorization: cookie.get('token'),
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify( squadData)
+          // body: JSON.stringify( squadData)
         });
         toast.success('Team Squad has being added.');
       } catch (err) {
@@ -85,7 +85,7 @@ const TeamSquadAdd = ({
 
     
   }
-  console.log("squad data",squadData);
+  console.log("squad data ",squadData);
   
   useEffect(() => {
     $('a.model_show_btn').click(function () {
