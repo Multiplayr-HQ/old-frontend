@@ -10,7 +10,7 @@ import RecentActivity from './RecentActivity';
 
 
 
-const RightSection = ({ user,  teams, profile }) => {
+const RightSection = ({ user, teams, profile }) => {
   const [matches, setMatches] = useState([]);
   // const [later, setLater] = useState(false);
   const [myPageData, setMypageData] = useState([]);
@@ -18,7 +18,7 @@ const RightSection = ({ user,  teams, profile }) => {
 
   useEffect(() => {
     setRequestData(profile.request);
-  }, [profile.request]);
+  }, [profile?.request]);
 
   const handleJoines = (data) => {
     setRequestData(data);
@@ -28,7 +28,7 @@ const RightSection = ({ user,  teams, profile }) => {
     axios
       .get(`${baseURL}/api/matches/top/matchs`, {})
       .then((res) => {
-        setMatches(res.data);
+        setMatches(res?.data);
       })
       .catch((err) => {
         console.log(err);
@@ -40,110 +40,110 @@ const RightSection = ({ user,  teams, profile }) => {
   useEffect(() => {
     try {
       axios
-        .get(`${baseURL}/api/challenges/userchallenges/${type}/${profile._id}`)
+        .get(`${baseURL}/api/challenges/userchallenges/${type}/${profile?._id}`)
         .then((res) => {
-          setChallenges(res.data);
+          setChallenges(res?.data);
         });
       axios
-        .get(`${baseURL}/api/tournaments/usertournament/${user._id}`)
-        .then((res) => setMypageData(res.data));
-      
+        .get(`${baseURL}/api/tournaments/usertournament/${user?._id}`)
+        .then((res) => setMypageData(res?.data));
+
     } catch (error) {
-      
+
     }
   }, []);
 
 
 
-// Sample data for suggestedplayers
-const suggestedplayersData = [
-  {
-    user: {
-      username: '789456123',
-      profilePicUrl: '/assets/media/dash/user.jpg',
+  // Sample data for suggestedplayers
+  const suggestedplayersData = [
+    {
+      user: {
+        username: '789456123',
+        profilePicUrl: '/assets/media/dash/user.jpg',
+      },
+      player: [
+        {
+          nickName: 'Player1',
+        },
+        {
+          nickName: 'raj',
+        },
+        {
+          nickName: 'abhishek',
+        }, {
+          nickName: 'gaurav',
+        }, {
+          nickName: 'om',
+        }, {
+          nickName: 'swayam',
+        }
+        // Add more players if needed
+      ],
     },
-    player: [
-      {
-        nickName: 'Player1',
-      },
-      {
-        nickName : 'raj',
-      },
-      {
-        nickName : 'abhishek',
-      },{
-        nickName : 'gaurav',
-      },{
-        nickName : 'om',
-      },{
-        nickName : 'swayam',
-      }
-      // Add more players if needed
-    ],
-  },
-  // Add more objects for additional suggested players
-];
+    // Add more objects for additional suggested players
+  ];
 
-// ----data
-const suggestedplayers = suggestedplayersData;
+  // ----data
+  const suggestedplayers = suggestedplayersData;
 
 
 
-// Sample data for challenges
-// const challengesData = [
-//   {
-//     _id: '1',
-//     name: 'Challenge 1',
-//     description: 'Description of Challenge 1',
-//     startDate: '2024-02-10T12:00:00Z',
-//     endDate: '2024-02-15T23:59:59Z',
-//     User_team : {
-//         name : 'raj',
-//     },
-//     game: {
-//       name: "Counter-Strike",
-//     },
-//     participants: [
-//       {
-//         teamName: 'Team A',
-//         imgUrl: '/assets/media/teams/team2.png',
-//       },
-//       {
-//         teamName: 'Team B',
-//         imgUrl: '/assets/media/teams/team1.png',
-//       },
-//       // Add more participants if needed
-//     ],
-//   },
-//   {
-//     _id: '2',
-//     name: 'Challenge 2',
-//     description: 'Description of Challenge 2',
-//     startDate: '2024-02-20T12:00:00Z',
-//     endDate: '2024-02-25T23:59:59Z',
-//     User_team : {
-//       name : 'raj',
-//   },
-//     game: {
-//       name: 'Game 2',
-//     },
-//     participants: [
-//       {
-//         teamName: 'Team C',
-//         imgUrl: '/path/to/teamC_logo.jpg',
-//       },
-//       {
-//         teamName: 'Team D',
-//         imgUrl: '/path/to/teamD_logo.jpg',
-//       },
-//       // Add more participants if needed
-//     ],
-//   },
-//   // Add more challenge objects as needed
-// ];
+  // Sample data for challenges
+  // const challengesData = [
+  //   {
+  //     _id: '1',
+  //     name: 'Challenge 1',
+  //     description: 'Description of Challenge 1',
+  //     startDate: '2024-02-10T12:00:00Z',
+  //     endDate: '2024-02-15T23:59:59Z',
+  //     User_team : {
+  //         name : 'raj',
+  //     },
+  //     game: {
+  //       name: "Counter-Strike",
+  //     },
+  //     participants: [
+  //       {
+  //         teamName: 'Team A',
+  //         imgUrl: '/assets/media/teams/team2.png',
+  //       },
+  //       {
+  //         teamName: 'Team B',
+  //         imgUrl: '/assets/media/teams/team1.png',
+  //       },
+  //       // Add more participants if needed
+  //     ],
+  //   },
+  //   {
+  //     _id: '2',
+  //     name: 'Challenge 2',
+  //     description: 'Description of Challenge 2',
+  //     startDate: '2024-02-20T12:00:00Z',
+  //     endDate: '2024-02-25T23:59:59Z',
+  //     User_team : {
+  //       name : 'raj',
+  //   },
+  //     game: {
+  //       name: 'Game 2',
+  //     },
+  //     participants: [
+  //       {
+  //         teamName: 'Team C',
+  //         imgUrl: '/path/to/teamC_logo.jpg',
+  //       },
+  //       {
+  //         teamName: 'Team D',
+  //         imgUrl: '/path/to/teamD_logo.jpg',
+  //       },
+  //       // Add more participants if needed
+  //     ],
+  //   },
+  //   // Add more challenge objects as needed
+  // ];
 
-// ----data
-// const challenges = challengesData;
+  // ----data
+  // const challenges = challengesData;
 
 
   console.log('profile : ', profile)
@@ -223,14 +223,14 @@ const suggestedplayers = suggestedplayersData;
         </a>
         <div className="white_box">
           <ul className="team">
-          {/* {console.log("inside right section i am team \t\t",teams)} */}
-            {teams.length > 0 ? (
-              teams.slice(0, 2).map((tm, idx) => (
+            {/* {console.log("inside right section i am team \t\t",teams)} */}
+            {teams?.length > 0 ? (
+              teams?.slice(0, 2).map((tm, idx) => (
                 <li key={idx}>
-                  <Link href={`/team/${tm._id}`}>
+                  <Link href={`/team/${tm?._id}`}>
                     <div>
-                      <img src={tm.imgUrl} alt={tm.name} />
-                      <p> {tm.name}</p>
+                      <img src={tm?.imgUrl} alt={tm?.name} />
+                      <p> {tm?.name}</p>
                     </div>
                   </Link>
                 </li>
@@ -259,8 +259,8 @@ const suggestedplayers = suggestedplayersData;
                       <li key={idx}>
                         <Link href={`/team/${tm._id}`}>
                           <div className="game_pic">
-                            <img src={tm.imgUrl} alt={tm.name} />
-                            <p> {tm.name}</p>
+                            <img src={tm?.imgUrl} alt={tm?.name} />
+                            <p> {tm?.name}</p>
                           </div>
                         </Link>
                       </li>
@@ -283,21 +283,21 @@ const suggestedplayers = suggestedplayersData;
               requestData.map((req) => (
                 <>
                   <div className="grey_bg">
-                    <img src={req.teamId.imgUrl} alt={req.teamId.name} />
+                    <img src={req?.teamId?.imgUrl} alt={req?.teamId?.name} />
                     <p>
                       You have been invited to join{' '}
-                      <a href={`team/${req.teamId._id}`}>{req.teamId.name}</a>
+                      <a href={`team/${req?.teamId?._id}`}>{req?.teamId?.name}</a>
                     </p>
                   </div>
                   <ApproveRequest
                     player={req}
-                    team={req.teamId}
+                    team={req?.teamId}
                     handleJoines={handleJoines}
                     type="PROFILE"
                   />
                   <DeclineRequest
                     player={req}
-                    team={req.teamId}
+                    team={req?.teamId}
                     type="PROFILE"
                     handleJoines={handleJoines}
                   />
@@ -318,15 +318,15 @@ const suggestedplayers = suggestedplayersData;
               myPageData.slice(0, 2).map((page, idx) => (
                 <li key={idx}>
                   <Link
-                    href={`/${page.logoUrl ? 'brand' : 'tour'}/${page.logoUrl ? page._id : page.name
+                    href={`/${page?.logoUrl ? 'brand' : 'tour'}/${page?.logoUrl ? page._id : page.name
                       }`}
                   >
                     <div>
                       <img
-                        src={page.logoUrl ? page.logoUrl : page.imgUrl}
-                        alt={page.name}
+                        src={page?.logoUrl ? page?.logoUrl : page?.imgUrl}
+                        alt={page?.name}
                       />
-                      <p> {page.name}</p>
+                      <p> {page?.name}</p>
                     </div>
                   </Link>
                 </li>
@@ -355,15 +355,15 @@ const suggestedplayers = suggestedplayersData;
                       myPageData.map((page, idx) => (
                         <li key={idx}>
                           <Link
-                            href={`/${page.logoUrl ? 'brand' : 'tour'}/${page.logoUrl ? page._id : page.name
+                            href={`/${page?.logoUrl ? 'brand' : 'tour'}/${page?.logoUrl ? page?._id : page?.name
                               }`}
                           >
                             <div className="game_pic">
                               <img
-                                src={page.logoUrl ? page.logoUrl : page.imgUrl}
-                                alt={page.name}
+                                src={page?.logoUrl ? page?.logoUrl : page?.imgUrl}
+                                alt={page?.name}
                               />
-                              <p> {page.name}</p>
+                              <p> {page?.name}</p>
                             </div>
                           </Link>
                         </li>
@@ -400,25 +400,25 @@ const suggestedplayers = suggestedplayersData;
                   ></i>{' '}
                   <br />
                   <div className="date-time">
-                  <span className='match-game'>
-                    {match?.game?.name}
-                  </span>
-                  <span>
-                    {Moment(match.scheduledAt).format(
-                      'DD/MM/YYYY hh:mm A'
-                    )
-                    }
-                  </span>
+                    <span className='match-game'>
+                      {match?.game?.name}
+                    </span>
+                    <span>
+                      {Moment(match?.scheduledAt).format(
+                        'DD/MM/YYYY hh:mm A'
+                      )
+                      }
+                    </span>
                   </div>
-                  
+
                 </div>
                 <div className="match_time">
-                  <b>status: {match.status}</b>
+                  <b>status: {match?.status}</b>
                 </div>
                 <div className="match_time">
                   <span>
-                    <a href={match.officialStreamUrl} target="_blank" rel="noreferrer">
-                      {match.officialStreamUrl}
+                    <a href={match?.officialStreamUrl} target="_blank" rel="noreferrer">
+                      {match?.officialStreamUrl}
                     </a>
                   </span>
                 </div>
@@ -429,9 +429,9 @@ const suggestedplayers = suggestedplayersData;
                     match.opponents.map((oppo, idx) => (
                       <li key={idx}>
                         <a href="#">
-                          <img src={oppo.opponent.image_url} alt="" />
+                          <img src={oppo?.opponent?.image_url} alt="" />
                           {' '}
-                          {oppo.opponent.name}
+                          {oppo?.opponent?.name}
                         </a>
                       </li>
                     ))) : (

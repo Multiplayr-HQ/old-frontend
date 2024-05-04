@@ -1,4 +1,4 @@
-import { useState, useEffect,useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import baseURL from '@utils/baseURL';
 import { toast } from 'react-toastify';
@@ -26,10 +26,10 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
   const [trigger, setTrigger] = useState(false);
 
   const router = useRouter();
-  
 
-  
-  
+
+
+
 
   const refreshData = () => {
     router.replace(router.asPath);
@@ -83,7 +83,7 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
   };
 
   const gamehandleSubmit = async (e) => {
-    setShowGameBox(false);
+    setShowGameBox(true);
   };
 
   useEffect(() => {
@@ -91,8 +91,8 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
       .get(`${baseURL}/api/all/teamroles`)
       .then((res) => setAllroles(res.data));
   }, []);
-  
-  
+
+
   const handleChangeCheck = (e) => {
     setStates({ ...states, [e.target.name]: e.target.value });
   };
@@ -124,27 +124,28 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
       try {
         setLoader(true);
         await axios.put(`${baseURL}/api/profile/type/${profile?._id}`, states);
-        router.reload();
+        console.log(states, "/n here is my profile id", profile._id)
+        // router.reload();
         // ;refreshData();
         toast.success('Profile Updated');
-  
-       
+
+
         $('a.model_close').trigger("click");
         setLoader(false);
-       
-        
+
+
       } catch (err) {
-       
+
         toast.error(err.response?.data?.msg || 'An error occurred, please try again.');
       }
     } else {
-      
+
       toast.error('Please correct the errors in the form.');
     }
   };
 
 
-    // const handleProfileEdit = async (e) => {
+  // const handleProfileEdit = async (e) => {
   //   e.preventDefault();
   //   if (Object.keys(formErrors).length === 0) {
   //     try {
@@ -159,7 +160,7 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
   //     }
   //   }
   // };
-  
+
 
   const User_team =
     allteams &&
@@ -345,7 +346,7 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
                         >
                           <option value="">Select Team...</option>
                           {allteams &&
-                            allteams.map((tem,i) => (
+                            allteams.map((tem, i) => (
                               <option key={i} value={tem.team?._id}>
                                 {tem.team?.name}
                               </option>
@@ -404,7 +405,7 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
                     </div>
                   ) : null}
                   {states.profileType === 'Gamer' ||
-                  states.profileType === 'Coach' ? (
+                    states.profileType === 'Coach' ? (
                     <>
                       <div className="form-group">
                         <select
@@ -415,7 +416,7 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
                         >
                           <option value="">Select Game...</option>
                           {User_team &&
-                            User_team[0]?.team?.games.map((game,i) => (
+                            User_team[0]?.team?.games.map((game, i) => (
                               <option key={i} value={game.gameId._id}>
                                 {game.gameId.name}
                               </option>
@@ -436,7 +437,7 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
                         >
                           <option value="">Select Game...</option>
                           {games &&
-                            games.map((game,i) => (
+                            games.map((game, i) => (
                               <option key={i} value={game._id}>{game.name}</option>
                             ))}
                         </select>
@@ -483,7 +484,7 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
                         >
                           <option value="">Select Role...</option>
                           {allroles &&
-                            allroles.map((role,i) => (
+                            allroles.map((role, i) => (
                               <option key={i} value={role}>{role}</option>
                             ))}
                         </select>
@@ -500,7 +501,7 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
                         >
                           <option value="">Select Role...</option>
                           {allroles &&
-                            allroles.map((role,i) => (
+                            allroles.map((role, i) => (
                               <option key={i} value={role}>{role}</option>
                             ))}
                         </select>
@@ -583,7 +584,7 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
                                   <div className="poup_height msScroll_all">
                                     <ul>
                                       {addgames &&
-                                        addgames.map((game,i) => (
+                                        addgames.map((game, i) => (
                                           <li key={i}>
                                             <div className="game_pic">
                                               <a
@@ -718,7 +719,7 @@ const ProfileEdit = ({ Userdata, user, games, allteams }) => {
                   onClick={() => {
                     setFormErrors(profileformvalidate(states));
                     setTrigger(!trigger);
-          
+
                   }}
                 >
                   Update

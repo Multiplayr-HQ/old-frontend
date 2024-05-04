@@ -66,12 +66,12 @@ const SignedMainContent = ({ posts, user, profile }) => {
 
     formdata.append('description', description);
     formdata.append('image', image);
-    formdata.append('profilepic', result.profilepic);
-    formdata.append('username', result.username);
-    formdata.append('postType', result.postType);
-    formdata.append('gameTagName', gameTag.name);
-    formdata.append('gameTagId', gameTag.gameId);
-    formdata.append('teamId', result.teamId);
+    formdata.append('profilepic', result?.profilepic);
+    formdata.append('username', result?.username);
+    formdata.append('postType', result?.postType);
+    formdata.append('gameTagName', gameTag?.name);
+    formdata.append('gameTagId', gameTag?.gameId);
+    formdata.append('teamId', result?.teamId);
 
     //    for (const key of Object.keys(images)) {
     //      formdata.append('images', images[key]);
@@ -99,7 +99,7 @@ const SignedMainContent = ({ posts, user, profile }) => {
         }
       })
       .then((res) => {
-        setPersonas(res.data);
+        setPersonas(res?.data);
       })
       .catch((err) => {
         console.log(err);
@@ -113,7 +113,7 @@ const SignedMainContent = ({ posts, user, profile }) => {
       })
       .then((res) => {
         // console.log(res)
-        setFollowingPosts(res.data.posts);
+        setFollowingPosts(res?.data?.posts);
       })
       .catch((err) => {
         console.log(err);
@@ -122,7 +122,7 @@ const SignedMainContent = ({ posts, user, profile }) => {
     await axios
       .get(`${baseURL}/api/all/games`)
       .then((res) => {
-        setAllGames(res.data);
+        setAllGames(res?.data);
       })
       .catch((err) => {
         console.log(err);
@@ -130,18 +130,18 @@ const SignedMainContent = ({ posts, user, profile }) => {
 
     await axios
       .get(`${baseURL}/api/profile/${user.username}/followers`)
-      .then((res) => setFollowData(res.data));
+      .then((res) => setFollowData(res?.data));
   }, []);
 
 
-  
+
   const selectgameTag = (x) => {
     setShowGame(x);
-    setGameTag({ name: x.name, gameId: x._id });
+    setGameTag({ name: x.name, gameId: x?._id });
     toast.success(`${x.name} is selected.`);
     $('a.model_close').parent().removeClass('show_model');
   };
-  
+
 
   var settings = {
     infinite: false,
@@ -166,9 +166,9 @@ const SignedMainContent = ({ posts, user, profile }) => {
           nextArrow: $('.slick-next')
         });
       }, 4000);
-      
+
     } catch (error) {
-      
+
     }
   }, []);
 
@@ -177,13 +177,13 @@ const SignedMainContent = ({ posts, user, profile }) => {
       $('a.model_show_btn').click(function () {
         $(this).next().addClass('show_model');
       });
-  
+
       $('a.model_close').click(function () {
         $(this).parent().removeClass('show_model');
       });
-      
+
     } catch (error) {
-      
+
     }
   }, []);
   const [count, setCount] = useState(-1);
@@ -430,7 +430,7 @@ const SignedMainContent = ({ posts, user, profile }) => {
 
         <div className="tab" id="Discover">
           <div>
-            {posts.map((post) => (
+            {posts?.map((post) => (
               <AllPosts
                 user={user}
                 post={post}

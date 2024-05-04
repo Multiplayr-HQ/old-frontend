@@ -35,13 +35,18 @@ const TeamProfileData = ({
   const [followData, setFollowData] = useState([]);
 
   useEffect(() => {
-    $('a.model_show_btn').click(function () {
-      $(this).next().addClass('show_model');
-    });
-
-    $('a.model_close').click(function () {
-      $(this).parent().removeClass('show_model');
-    });
+    try {
+      $('a.model_show_btn').click(function () {
+        $(this).next().addClass('show_model');
+      });
+  
+      $('a.model_close').click(function () {
+        $(this).parent().removeClass('show_model');
+      });
+      
+    } catch (error) {
+      
+    }
   }, []);
 
   useEffect(() => {

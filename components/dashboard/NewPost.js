@@ -83,7 +83,7 @@ const NewPost = ({ post, user, profiledata, followData, type, team }) => {
           Authorization: cookie.get('token')
         }
       });
-    } catch (error) { }
+    } catch (error) {}
     if (!isFollowing) {
       toast.success(`You are Following ${post.user.username}`);
     } else {
@@ -130,15 +130,18 @@ const NewPost = ({ post, user, profiledata, followData, type, team }) => {
                 {post.game_tag[0]?.gameId === null ? (
                   <>
                     {post.post_type === 'team' ||
-                      post.post_type === 'tour' ||
-                      post.post_type === 'brand' ? (
+                    post.post_type === 'tour' ||
+                    post.post_type === 'brand' ? (
                       <a
-                        href={`/${post.post_type}/${post.post_type === 'team'
-                          ? post?.teamId
-                          : post?.username
-                          }`}
+                        href={`/${post.post_type}/${
+                          post.post_type === 'team'
+                            ? post?.teamId
+                            : post?.username
+                        }`}
                       >
-                        <h4 className="capitalize text-base">{post.username}</h4>{' '}
+                        <h4 className="capitalize text-base">
+                          {post.username}
+                        </h4>{' '}
                         {/* Increased from sm to base */}
                       </a>
                     ) : (
@@ -157,13 +160,14 @@ const NewPost = ({ post, user, profiledata, followData, type, team }) => {
                     {' '}
                     {/* Increased from sm to base */}
                     {post.post_type === 'team' ||
-                      post.post_type === 'tour' ||
-                      post.post_type === 'brand' ? (
+                    post.post_type === 'tour' ||
+                    post.post_type === 'brand' ? (
                       <a
-                        href={`/${post.post_type}/${post.post_type === 'team'
-                          ? post?.teamId
-                          : post?.username
-                          }`}
+                        href={`/${post.post_type}/${
+                          post.post_type === 'team'
+                            ? post?.teamId
+                            : post?.username
+                        }`}
                       >
                         <h4 className="capitalize">{post.username}</h4>
                       </a>
@@ -192,7 +196,7 @@ const NewPost = ({ post, user, profiledata, followData, type, team }) => {
               </div>
             </div>
 
-            <div className='ml-2'>
+            <div className="ml-2">
               {post?.post_type === 'team' ? (
                 <button>
                   <Follow
@@ -219,29 +223,32 @@ const NewPost = ({ post, user, profiledata, followData, type, team }) => {
                 </button>
               ) : isLoggedInUser === false ? (
                 <div
-                  className="flex justify-center items-center h-10 p-2 w-full rounded-lg hover:bg-background"
-                  onClick={() => followhandlesubmit(post.user._id)}
+                  className="flex justify-center items-center h-10 p-2 w-full rounded-lg hover:bg-background -z-3"
+                  // onClick={() => followhandlesubmit(post.user._id)}
                 >
                   {
-                    <div
-                      className={`flex justify-center items-center text-${isFollowing ? 'red-500' : 'primary1'
-                        }`}
+                    <>
+                    {/* <div
+                      className={`flex justify-center items-center text-${
+                        isFollowing ? 'red-500' : 'primary1'
+                      }`}
                     >
                       <IonIcon
                         className="text-xl shrink-0"
-                        icon={
-                          isFollowing ? stopCircleOutline : personAddOutline
-                        }
+                        icon={isFollowing ? stopCircleOutline : ''}
                       />
                       <span>{isFollowing ? 'Unfollow' : 'Follow'}</span>
-                    </div>
+
+                    </div> */}
+                      <button className="btn" onClick={() => followhandlesubmit(post.user._id)}>
+                        {isFollowing ? 'Unfollow' : 'Follow'}
+                      </button>
+
+                    </>
                   }
                 </div>
               ) : null}
-
-
             </div>
-
           </div>
 
           <div className="-mr-1">
@@ -330,9 +337,7 @@ const NewPost = ({ post, user, profiledata, followData, type, team }) => {
                   </div>
                 ) : null} */}
 
-                
-              <CustomPost post={post} user={user} />
-            
+                <CustomPost post={post} user={user} />
 
                 {/* <div className="flex justify-center items-center h-10 p-2 w-full rounded-lg text-red-500 hover:bg-background">
                   {' '}
@@ -355,33 +360,32 @@ const NewPost = ({ post, user, profiledata, followData, type, team }) => {
               {/* post without image*/}
             </div>
           ) : (
-           <>
-            {post.images.toString().length === 0 ? null : (
-          <div className="flex items-center justify-start px-4 mb-1">
-            <p className="text-lg">{post.description}</p>
-          </div>
-        )}
-            <a
-              href=""
-              uk-toggle
-              onClick={(e) => {
-                e.preventDefault();
-                setA([{ src: post.images[0], alt: 'post image' }]);
+            <>
+              {post.images.toString().length === 0 ? null : (
+                <div className="flex items-center justify-start px-4 mb-1">
+                  <p className="text-lg">{post.description}</p>
+                </div>
+              )}
+              <a
+                href=""
+                uk-toggle
+                onClick={(e) => {
+                  e.preventDefault();
+                  setA([{ src: post.images[0], alt: 'post image' }]);
 
-                console.log(a, 'inside a tag');
-                setOpen((state) => !state);
-              }}
-            >
-              <div className="relative w-full lg:h-96 h-full sm:px-4">
-                <img
-                  src={post.images}
-                  alt=""
-                  className="sm:rounded-lg w-full h-full object-cover"
-                />
-              </div>
-            </a>
-            
-           </>
+                  console.log(a, 'inside a tag');
+                  setOpen((state) => !state);
+                }}
+              >
+                <div className="relative w-full lg:h-full h-full sm:px-4 aspect-video">
+                  <img
+                    src={post.images}
+                    alt=""
+                    className="sm:rounded-lg w-full h-full object-cover"
+                  />
+                </div>
+              </a>
+            </>
           )}
         </div>
 
@@ -476,8 +480,6 @@ const NewPost = ({ post, user, profiledata, followData, type, team }) => {
             </button>
           </CopyToClipboard>
         </div>
-
-       
 
         {/* <!-- comments --> */}
         {/* <div className="sm:p-4 p-2.5 border-t border-gray-100 font-normal space-y-3 relative dark:border-slate-700/40">

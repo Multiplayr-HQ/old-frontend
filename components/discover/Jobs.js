@@ -144,7 +144,9 @@ const Jobs = ({ user, profile, myState }) => {
         ) : searchData.length > 0 ? (
           searchData &&
           searchData.map((job, idx) => (
+
             <div className="team_row arena_team_row" key={idx}>
+              {console.log(job, " printing the job object")}
               <div className="inner_team">
                 <div className="mores jobss">
                   <a href={`/jobs/${job?._id}`}>
@@ -180,15 +182,15 @@ const Jobs = ({ user, profile, myState }) => {
                   )}
                 </div>
                 <div className="logo_box jobs_img">
-                  <a href={`/team/${job.job_owner._id}`}>
-                    <img src={job.job_owner?.imgUrl} alt="" />
+                  <a href={`/team/${job?.job_owner?._id}`}>
+                    <img src={job?.job_owner?.imgUrl} alt="" />
                     <h3>
-                      {job.job_owner ? job.job_owner.name : 'Not Available'}
+                      {job?.job_owner ? job?.job_owner?.name : 'Not Available'}
                     </h3>
                   </a>
                 </div>
                 <a
-                  href={`/jobs/${job._id}`}
+                  href={`/jobs/${job?._id}`}
                   // onClick={onSubmit}
                   className="btn btn_width"
                 >
@@ -234,15 +236,15 @@ const Jobs = ({ user, profile, myState }) => {
                     </p>
                   ) : (
                     <p>
-                      <b>SALARY:</b> {job?.currency} {job.salary}
+                      <b>SALARY:</b> {job?.currency} {job?.salary}
                     </p>
                   )}
                 </div>
                 <div className="logo_box jobs_img">
-                  <a href={`/team/${job.job_owner._id}`}>
-                    <img src={job.job_owner?.imgUrl} alt="" />
+                  <a href={`/team/${job?.job_owner?._id}`}>
+                    <img src={job?.job_owner?.imgUrl} alt="" />
                     <h3>
-                      {job.job_owner ? job.job_owner.name : 'Not Available'}
+                      {job?.job_owner ? job?.job_owner?.name : 'Not Available'}
                     </h3>
                   </a>
                 </div>
@@ -257,7 +259,7 @@ const Jobs = ({ user, profile, myState }) => {
                   </>
                 ))}{' '} */}
                 <a
-                  href={`/jobs/${job._id}`}
+                  href={`/jobs/${job?._id}`}
                   // onClick={onSubmit}
                   className="btn btn_width"
                 >
