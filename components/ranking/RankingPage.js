@@ -52,7 +52,7 @@ const RankingPage = ({ selectedGame, teamranking, user,gameChange }) => {
             console.log("searching .... ");
             try {
                 const response = await axios.post(
-                    `${baseURL}/api/rankings/bywins/${selectedGame._id}?searchText=${searchObj.search}`
+                    `http://localhost:8181/api/rankings/bywins/${selectedGame._id}?searchText=${searchObj.search}`
                 );
 
                 console.log("response search",response.data);
