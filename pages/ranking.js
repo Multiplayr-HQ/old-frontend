@@ -44,29 +44,22 @@ const Ranking = ({ user, games, profile }) => {
   };
 
   const getData = async (pag, game) => {
+    setLoading(true);
+    // console.log("gandu page : " ,pag);
+    const res = await axios.get(`${baseURL}/api/rankings/bywins/${game?._id}?page=${pag}`);
+    setPage(pag + 1);
 
-    try {
-      
-      setLoading(true);
-      // console.log("gandu page : " ,pag);
-      
-      const res = await axios.post(`${baseURL}/api/rankings/bywins/${game?._id}?page=${pag}`);
-      setPage(pag + 1);
-  
-      // setTeamsRanks((p) => {
-      //   let arr = [];
-      //   arr = [...p.teams , ...res?.data?.teams];
-      //   return {teams : arr};
-      // });
-      // console.log("res",res);
-      setTeamsRanks(res.data);
-      // console.log("teamRanks in ranking page",teamsRanks);
-  
-      setLoading(false);
-      // console.log("response data gandu :", res, "page : ", page);
-    } catch (error) {
-      console.log("error in ranking.js",error);
-    }
+    // setTeamsRanks((p) => {
+    //   let arr = [];
+    //   arr = [...p.teams , ...res?.data?.teams];
+    //   return {teams : arr};
+    // });
+    // console.log("res",res);
+    setTeamsRanks(res.data);
+    // console.log("teamRanks in ranking page",teamsRanks);
+
+    setLoading(false);
+    // console.log("response data gandu :", res, "page : ", page);
   }
 
   console.log("gandu page : ", page);

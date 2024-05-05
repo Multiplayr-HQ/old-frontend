@@ -3227,16 +3227,13 @@ article .social_bar img {
 	border: 5px solid #ddd;
 	border-radius: 20px;
 	left: 25px;
-	display: flex;
-	align-items: center;
 }
 
 .profile_dp_box .profile_pic img {
 	object-fit: cover;
-	/* width: 145px;
-	height: 145px; */
+	width: 145px;
+	height: 145px;
 	border-radius: 12px;
-	
 }
 
 .profile_dp_box .profile_details {
@@ -5644,8 +5641,8 @@ flex-direction: column;
 
 .more_data .pic .tumb img {
 	object-fit: cover;
-	/* width: 100%;
-	height: 100%; */
+	width: 100%;
+	height: 100%;
 }
 
 .more_data .pic h3 {
