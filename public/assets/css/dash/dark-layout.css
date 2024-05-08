@@ -1,0 +1,837 @@
+/* ---------------------- Dark Themes----------------------------- */
+
+body.DarkPage textarea:focus, body.DarkPage input[type='text']:focus, select:focus{ box-shadow: inset 0px 0px 0px #b5fe1b !important; }
+
+
+body.DarkPage {
+    color: #fff !important;
+    background: #1f2128;
+}
+body.DarkPage header {
+    background: var(--bgcolor1);
+}
+body.DarkPage .top_menu img, body.DarkPage .top_menu svg {
+    /* -webkit-filter: invert(100%);
+    filter: invert(100%); */
+    color: #b5fe1b;
+}
+body.DarkPage .notif_tag .notif_img img {
+    -webkit-filter: invert(0) !important;
+    filter: invert(0) !important;
+}
+body.DarkPage ul.top_menu li.profile img {
+    -webkit-filter: invert(0);
+    filter: invert(0);
+}
+body.DarkPage .left_side, body.DarkPage header .logo {
+    background: var(--bgcolor1);
+}
+body.DarkPage .write_post {
+    background: var(--bgcolor1);
+    border: 1px solid #36363c;
+}
+body.DarkPage .white_box {
+    background: var(--bgcolor1);
+}
+
+body.DarkPage .white_bg {
+	background: var(--bgcolor1);
+}
+
+
+body.DarkPage .write_post textarea {
+    color: #fff;
+    border:1px solid #36363c;
+    background: #1f2128;
+}
+
+
+
+body.DarkPage .post {
+    background: var(--bgcolor1);
+}
+body.DarkPage .profile_left_post .post {
+    background: var(--bgcolor1);
+}
+body.DarkPage .post .left_details a {
+    color: #fff;
+}
+body.DarkPage .users_share_box .more_user .others {
+    color: #fff;
+}
+body.DarkPage .users_share_box .shere a {
+    color: #fff;
+}
+body.DarkPage .post .heads h4 {
+    color: #fff;
+}
+body.DarkPage .recent_activity a.hideShow {
+    color: #fff;
+}
+body.DarkPage .white_box .activity_tag .act_name {
+    color: #fff;
+}
+body.DarkPage .suggested_player li a .name {
+    color: #fff;
+}
+body.DarkPage .add_comment_box .add_comments {
+    background: #373744;
+}
+
+body.DarkPage .post_comments{ background: none;}
+
+body.DarkPage .add_comment_box .add_comments textarea {
+    color: #fff;
+}
+body.DarkPage .loadmore a, body.DarkPage .post_comments h3 {
+    color: #fff;
+}
+body.DarkPage .profile_tab_btn.three_nav li a {
+    color: #fff;
+}
+body.DarkPage .post .heads .date p {
+    color: #fff;
+}
+body.DarkPage .post .right_details .post_data, body.DarkPage .post .post_discp.disc_without_img {
+    background: #62626e;
+}
+body.DarkPage .recent_activity h2, body.DarkPage .my_team p, body.DarkPage .team_match .match_time span, body.DarkPage .team_match .team li a {
+    color: #fff;
+}
+body.DarkPage .my_team .grey_bg {
+    background: #2b2b35;
+}
+body.DarkPage .profile_tab_btn.three_nav {
+    border-bottom: 1px solid #36363c;
+}
+body.DarkPage .write_post .right_links a {
+    border-right: 1px solid #36363c;
+    border-left: 1px solid #36363c;
+}
+body.DarkPage .white_box .activity_tag {
+    border-bottom: 1px solid #36363c;
+}
+body.DarkPage .reply_list {
+    border-bottom: 1px solid #36363c;
+}
+body.DarkPage .style_file_upload span {
+    color: #fff;
+}
+body.DarkPage .post_comments .pop_comment, body.DarkPage .reply_comment_item .comments_data {
+    background: #373744;
+    color: #fff;
+}
+body.DarkPage .delete_comment, body.DarkPage .delete_btn {
+    background: none;
+    color: #fff;
+}
+body.DarkPage .post_comments button {
+    color: #fff;
+}
+
+body.DarkPage  .comments_point .pinned{ color: #000;}
+
+body.DarkPage .reply_cancel {
+    background: var(--yellow);
+    margin-left: 10px;
+    color: #000 !important;
+}
+body.DarkPage .ranking_table, body.DarkPage .team_search {
+    background: var(--bgcolor1);
+}
+body.DarkPage .table {
+    color: #fff;
+}
+body.DarkPage .game_row {
+    background: var(--bgcolor1);
+}
+body.DarkPage .game_list_page li {
+    border: 1px solid #36363c;
+}
+body.DarkPage .game_list_page li .imgs {
+    border-bottom: 1px solid #36363c;
+}
+body.DarkPage .game_list_page li .bottom_data {
+    color: #fff;
+}
+body.DarkPage .bio_box {
+    background: var(--bgcolor1);
+    border-top: 1px solid #36363c;
+    margin-top: 0;
+}
+body.DarkPage .bio_box .right_team_bio {
+    border-left: 1px solid #36363c;
+}
+body.DarkPage .all_stats, body.DarkPage .games_details {
+    background: var(--bgcolor1);
+}
+body.DarkPage .all_stats ul li .names, body.DarkPage .games_details li .nm, body.DarkPage .games_details li .task {
+    color: #fff;
+}
+body.DarkPage .profile_tab_btn.discover_tab_btn li {
+    background: #1f2128;
+}
+body.DarkPage .discover_tab_btn.profile_tab_btn li.active, body.DarkPage .discover_tab_btn.profile_tab_btn li:hover {
+    background:var(--yellow);
+    color: #000;
+}
+body.DarkPage .for_profile .profile_dp_box .bottom_details {
+    background: var(--bgcolor1);
+}
+body.DarkPage .games_page .tournament_sponsers {
+    background: var(--bgcolor1);
+}
+body.DarkPage .tournament_dp_box .tournament_sponsers {
+    background: var(--bgcolor1);
+}
+body.DarkPage .discover_tab_btn.profile_tab_btn li a {
+    color: #fff;
+}
+body.DarkPage .team_filter .btn {
+    color: #fff;
+}
+body.DarkPage .dropdown-menu {
+    background: var(--bgcolor1);
+    border: 1px solid #3e3e46;
+}
+body.DarkPage .team_search .advance .views {
+    color: #fff;
+}
+body.DarkPage .team_row {
+    background: var(--bgcolor1);
+    color: #fff;
+}
+body.DarkPage .overview_box {
+    background: var(--bgcolor1);
+    color: #fff;
+}
+body.DarkPage .team_filter .drop_downs .button-group .dropdown-menu li a {
+    color: #fff;
+}
+body.DarkPage .team_row .mores img {
+    filter: invert(0);
+}
+body.DarkPage .team_overview {
+    color: #fff;
+}
+body.DarkPage .overview_box h2 {
+    color: #fff;
+    border-bottom: 2px solid #36363c;
+}
+body.DarkPage .team_row .stars {
+    color: #fff;
+}
+
+body.DarkPage .team_row .stars.active {
+    color: #000;
+    background: var(--yellow);
+    padding-top: 15px;
+    top: -5px;
+}
+
+body.DarkPage .team_row span.remarks h4 b {
+    color: #fff;
+}
+body.DarkPage .profile_box .edit_cover_photo, body.DarkPage .edit_photo .edit_label {
+    background: var(--bgcolor1);
+}
+body.DarkPage .games_btn li p {
+    color: #fff;
+}
+body.DarkPage .bio_box .right_bio ul li .name {
+    color: #fff;
+}
+body.DarkPage .profile_tab_btn li a {
+    color: #fff;
+}
+body.DarkPage .profile_tab_btn li.active a {
+    color: var(--yellow);
+}
+body.DarkPage .profile_tab_btn.discover_tab_btn li.active a, body.DarkPage .profile_tab_btn.discover_tab_btn li:hover a {
+    color: #000;
+}
+body.DarkPage .bio_box .left_bio .top_bio .socail a {
+    color: #fff;
+}
+body.DarkPage .next_matches {
+    background: #392d49;
+}
+body.DarkPage .next_matches .bdr_clr_green {
+    background: #403351;
+}
+body.DarkPage .rigs li {
+    /* background: #26292e; */
+    background: var(--bgcolor1);
+    border-color: #00deff;
+}
+body.DarkPage .video_box li {
+    background: #2b2b35;
+}
+body.DarkPage .gallery_box .jobs_browse, body.DarkPage .video_box .jobs_browse {
+    background: none;
+}
+body.DarkPage .video_box li .bottom_data span, body.DarkPage .video_box li .bottom_data i {
+    color: #858585;
+}
+body.DarkPage .video_box li .bottom_data .btn i {
+    color: #000;
+}
+
+body.DarkPage .video_box li .bottom_data .btn:hover i {
+    color: #fff;
+}
+
+body.DarkPage .video_box li .bottom_data h2 {
+    color: #fff;
+}
+body.DarkPage .imagess_box {
+    background: #2b2b35;
+}
+body.DarkPage .trophy_cabinate h3 {
+    background: #2a2a34;
+}
+body.DarkPage .table .thead-light th {
+    background: #2a2a34;
+    color: #fff;
+}
+body.DarkPage .post_comments p {
+    color: #fff;
+}
+body.DarkPage .features li {
+    background: #1c1f24;
+}
+body.DarkPage .create_bg {
+    background: var(--bgcolor1);
+    padding: 0;
+}
+body.DarkPage .create_bg input {
+    /* background: #222f41 !important; */
+    border-radius: 5px;
+    border: 1px solid #344860;
+    color: #000;
+}
+
+
+
+body.DarkPage .create_tournament .socail_url li .facebook {
+	background: #222f41 url(/assets/media/social/face.png) 10px 12px no-repeat !important;
+	background-size: 9px !important;
+	padding-left: 35px;
+}
+
+body.DarkPage .create_tournament .socail_url li .instagram {
+	background: #222f41 url(/assets/media/social/instagram.png) 10px 13px no-repeat !important;
+	background-size: 16px !important;
+	padding-left: 35px;
+}
+
+body.DarkPage .create_tournament .socail_url li .twitter {
+	background: #222f41 url(/assets/media/social/twitter.png) 10px 15px no-repeat !important;
+	background-size: 15px !important;
+	padding-left: 35px;
+}
+
+body.DarkPage .create_tournament .socail_url li .youtube {
+	background: #222f41 url(/assets/media/social/youtube.png) 8px 13px no-repeat !important;
+	background-size: 20px !important;
+	padding-left: 35px;
+}
+
+body.DarkPage .create_tournament .socail_url li .discord {
+	background: #222f41 url(/assets/media/social/discord1.png) 8px 13px no-repeat !important;
+	background-size: 20px !important;
+	padding-left: 35px;
+}
+
+body.DarkPage .create_tournament .socail_url li .twitch {
+	background: #222f41 url(/assets/media/social/twitch.png) 8px 13px no-repeat !important;
+	background-size: 20px !important;
+	padding-left: 35px;
+}
+
+body.DarkPage .create_tournament .socail_url li .website, body.DarkPage .create_tournament form .colm .website {
+	background: #222f41 url(/assets/media/social/globe.png) 8px 13px no-repeat !important;
+	background-size: 20px !important;
+	padding-left: 35px;
+}
+
+
+body.DarkPage .create_bg .style_file_upload .inputfile+label {
+    border-radius: 5px;
+    border: 1px solid #344860;
+}
+body.DarkPage .communities li .bottom_data {
+    color: #fff;
+}
+body.DarkPage .communities li .imgs {
+    border: 2px solid #fff 
+}
+body.DarkPage .communities li p.member {
+    color: #94999f;
+}
+body.DarkPage .matches_box .heads_bg {
+    background: var(--bgcolor1);
+}
+body.DarkPage .matches_box .match_row {
+    background: var(--bgcolor1);
+}
+body.DarkPage .match_row .team_vs .vs {
+    color: #fff;
+}
+body.DarkPage .create_tournament form input[type="text"], body.DarkPage .create_tournament form input[type="date"], body.DarkPage .create_tournament form input[type="time"], body.DarkPage .create_tournament form input[type="search"], body.DarkPage .create_tournament form select, body.DarkPage .create_tournament form textarea {
+    background: #222f41 !important;
+    color: #707088;
+    border: 1px solid #344860;
+    border-radius: 5px;
+    box-shadow: 0 0 0 var(--yellow);
+}
+.create_tournament form textarea {
+    height: 60px;
+    resize: none;
+}
+body.DarkPage .create_tournament .btn_selection input[type="checkbox"], body.DarkPage .create_tournament .btn_selection input[type="radio"], body.DarkPage .inner_model_box .btn_selection input[type="radio"] {
+   /* background-color: #222f41;
+    border: 1px solid #344860;
+    */
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+}
+body.DarkPage .create_tournament .btn_selection input[type='checkbox']:checked, body.DarkPage .create_tournament .btn_selection input[type='radio']:checked {
+    background-color: var(--yellow);
+    border: 1px solid var(--yellow);
+}
+body.DarkPage .inner_model_box .btn_selection input[type='checkbox']:checked {
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+}
+.btn_selection input[type='checkbox']:focus {
+    outline: none;
+    box-shadow: none;
+}
+body.DarkPage .create_tournament .style_file_upload .inputfile+label {
+    border: 2px solid #344860;
+    border-radius: 5px;
+}
+body.DarkPage .create_tournament input[type="number"] {
+    background: #222f41 !important;
+    border: 1px solid #344860 
+}
+body.DarkPage .game_list_page li a:hover span {
+    color: #fff;
+}
+body.DarkPage .add_comment_box button {
+    background: #373744;
+}
+
+body.DarkPage .add_comment_box button:hover {
+    background: var(--yellow);
+}
+
+body.DarkPage .my_team .create_team {
+    background: #2b2b35;
+    color: #fff;
+}
+body.DarkPage .user_name_disc  .three_dots_dropdown {
+    background: #000;
+    color: #fff;
+}
+body.DarkPage .user_name_disc .three_dots_dropdown button {
+    color: #fff;
+}
+body.DarkPage ul.top_menu .drop_down_bg {
+    background: var(--bgcolor1);
+    color: #fff;
+}
+body.DarkPage ul.top_menu .drop_down_bg:after {
+    border-bottom: 16px solid #000;
+}
+body.DarkPage .notif_tag .notif_name, body.DarkPage ul.top_menu .drop_down_bg li a, body.DarkPage ul.top_menu li i {
+    color: #fff;
+}
+body.DarkPage ul.top_menu li a:hover {
+    color: var(--yellow);
+}
+body.DarkPage .group tr {
+    background: var(--bgcolor1);
+    border-top: 5px solid #000;
+    border-bottom: 5px solid #000;
+    margin-bottom: 10px;
+}
+body.DarkPage .results_box.white_bg {
+    background: none;
+}
+body.DarkPage .congratulations {
+    background: #2f3245;
+}
+body.DarkPage .group_stage {
+    background: none;
+}
+body.DarkPage .group_stage .team_match_row {
+    background: none;
+}
+body.DarkPage .group_stage .match_date a {
+    color: #fff;
+}
+body.DarkPage .group_stage .match_date a:hover p, body.DarkPage .group_stage .match_date a.active p {
+    color: #fff;
+}
+body.DarkPage .matches_postitions {
+    background: none;
+}
+body.DarkPage ul.top_menu li.profile>a {
+    background: #383844;
+    color: #fff;
+}
+body.DarkPage ul.top_menu li.wallet>a {
+    background: none;
+    color: #fff;
+}
+body.DarkPage ul.top_menu li.profile>a span {
+    color: #fff;
+}
+body.DarkPage .create_menu {
+    background: var(--bgcolor1);
+    border: 1px solid #36363c;
+}
+body.DarkPage .create_menu ul li, body.DarkPage .create_menu .message {
+    background: #2b2b35;
+    box-shadow: none;
+}
+body.DarkPage .create_menu .close {
+    color: #fff;
+}
+body.DarkPage ul.top_menu li.wallet li span.amt1 img {
+    -webkit-filter: invert(0);
+    filter: invert(0);
+}
+body.DarkPage ul.top_menu .drop_down_bg.profile_drop_down li:last-child a img {
+    -webkit-filter: invert(0);
+    filter: invert(0);
+}
+body.DarkPage .post_comments .pop_comment select {
+    color: #fff;
+    background: #373744;
+    border: 0;
+}
+body.DarkPage .suggested_player .all, body.DarkPage .my_team .mng {
+    color: #fff;
+}
+body.DarkPage ul.top_menu li.wallet li button:first-child {
+    background: #10baa8;
+}
+body.DarkPage .wallet_box {
+    background: none;
+}
+body.DarkPage .box {
+    background: var(--bgcolor1);
+    color: #fff;
+}
+body.DarkPage .amt_bal .amt img, body.DarkPage .amt img {
+    -webkit-filter: invert(0);
+    filter: invert(0);
+}
+body.DarkPage .game_list_page li p {
+    color: #ababab;
+}
+body.DarkPage .products li {
+    background: #26292e;
+}
+body.DarkPage .size-option ul li {
+    background: #fff;
+    color: #000;
+}
+body.DarkPage .products li .pro_img {
+    border: 1px solid #26292e;
+}
+body.DarkPage .team_match_row .vs {
+    color: #fff;
+}
+body.DarkPage .bio_box .left_bio .bio_edit .fa, body.DarkPage .loc_box i {
+    color: #fff;
+}
+body.DarkPage .features li .tit {
+    color: #fff;
+}
+body.DarkPage .table th, body.DarkPage .table td {
+    border-top: 0px solid #636363;
+}
+body.DarkPage .table thead th {
+    border-bottom: 0px solid #636363;
+}
+body.DarkPage .rigs li .lft_prod_det .prod_name {
+    color: #62626e;
+}
+body.DarkPage .searchbox input[type="search"] {
+    background: #1f2128;
+    border-bottom: 1px solid #1f2128;
+}
+body.DarkPage .add_money input {
+    background: #18171d;
+}
+body.DarkPage .add_money .btn {
+    background: var(--yellow) !important;
+}
+body.DarkPage .ign_search {
+    background: #fff;
+}
+body.DarkPage .ign_search h3 {
+    margin-bottom: 0;
+    border: 0;
+    padding-bottom: 0;
+}
+body.DarkPage .rdrInputRanges, body.DarkPage .rdrStaticRanges, body.DarkPage .rdrStaticRange, body.DarkPage .rdrMonth, body.DarkPage .rdrMonthAndYearWrapper, body.DarkPage .rdrDateInput, body.DarkPage .rdrDefinedRangesWrapper {
+    background:#1f2128  !important 
+}
+body.DarkPage .rdrDateDisplayWrapper {
+    background-color: #202028 !important;
+}
+body.DarkPage .rdrDayNumber span {
+    color: #fff !important 
+}
+body.DarkPage .rdrMonthPicker {
+    background: #000 !important;
+}
+body.DarkPage .rdrMonthAndYearPickers select {
+    color: #fff !important;
+}
+body.DarkPage .rdrMonthAndYearWrapper {
+    border-bottom: 1px solid #69696a;
+}
+
+/* body.DarkPage .rdrDateDisplayItemActive{ border:1px solid #fff}
+body.DarkPage .rdrInRange{ background: var(--bgcolor1);}
+
+body.DarkPage .rdrDayToday .rdrStartEdge{background: #000;}
+.rdrDayToday .rdrDayNumber span:after{background: #000;}
+.rdrStartEdge.rdrEndEdge, .rdrEndEdge, .rdrStartEdge{background: #000 !important;} */
+
+
+body.DarkPage .checkout_strip {
+    background: var(--bgcolor1);
+    color: #fff;
+}
+body.DarkPage .checkout_strip h1 {
+    color: #fff;
+}
+body.DarkPage .cart_table th {
+    background: #0d0c12;
+    color: #fff;
+}
+body.DarkPage .cart_table {
+    background: var(--bgcolor1);
+}
+body.DarkPage .cart_table td {
+    color: #fff;
+}
+body.DarkPage .checkout_total .amount {
+    background: var(--bgcolor1);
+    color: #fff;
+}
+body.DarkPage .checkout_total .amount .amt_row span {
+    color: #fff;
+}
+body.DarkPage .address_order_box .user_add input {
+    background: var(--bgcolor1);
+}
+body.DarkPage ul.top_menu .drop_down_bg.create_pages a span:first-child {
+    background: #393945;
+}
+body.DarkPage .left_side nav li .iconbg {
+    background: #2d343e;
+}
+body.DarkPage .left_side nav li.active .iconbg, body.DarkPage .left_side nav li a:hover .iconbg {
+    background-color: #b5fe1b !important
+}
+body.DarkPage .left_side nav li.active i, body.DarkPage .left_side nav li a:hover i {
+    color: #000;
+}
+/* body.DarkPage .edit_share.right_links .fa-picture-o{
+   -webkit-filter: invert(100%);
+    filter: invert(100%);
+}
+*/
+body.DarkPage .rc-time-picker-panel-inner {
+    background: #000;
+}
+body.DarkPage .rc-time-picker-panel-input {
+    background: #000;
+    color: #fff;
+}
+body.DarkPage li.rc-time-picker-panel-select-option-selected {
+    background: #000;
+    font-weight: bold;
+}
+body.DarkPage ::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+body.DarkPage .write_post .team_slider .slick-next, body.DarkPage .write_post .team_slider .slick-prev {
+    background: #383845;
+}
+body.DarkPage .write_post .team_slider .slick-next:before, body.DarkPage .write_post .team_slider .slick-prev:before {
+    border-color: #9395a9;
+}
+body.DarkPage .write_post textarea::-webkit-input-placeholder {
+    color: #707088;
+}
+body.DarkPage .write_post textarea:-moz-placeholder {
+   /* Firefox 18- */
+    color: #707088;
+}
+body.DarkPage .write_post textarea::-moz-placeholder {
+   /* Firefox 19+ */
+    color: #707088;
+}
+body.DarkPage .write_post textarea:-ms-input-placeholder {
+    color: #707088;
+}
+body.DarkPage .create_tournament form input::-webkit-input-placeholder {
+    color: #707088;
+}
+body.DarkPage .create_tournament form input:-moz-placeholder {
+   /* Firefox 18- */
+    color: #707088;
+}
+body.DarkPage .create_tournament form input::-moz-placeholder {
+   /* Firefox 19+ */
+    color: #707088;
+}
+body.DarkPage .create_tournament form input:-ms-input-placeholder {
+    color: #707088;
+}
+body.DarkPage .discovery_page .tit span, body.DarkPage .discovery_page .tit i {
+    background: #1f2128;
+    color: #fff;
+}
+body.DarkPage .team_filter .drop_downs .button-group .drop_name {
+    color: #aaabb1;
+}
+body.DarkPage .custom-checkbox .custom-control-label::before {
+    background: #525355;
+    border: #525355 solid 1px;
+}
+body.DarkPage .team_row .mores .fa-star-o {
+    color: var(--yellow);
+}
+body.DarkPage .team_overview .fa-star {
+    color: var(--yellow);
+}
+body.DarkPage .sponsers_box ul li .sponser_name {
+    background: #0d0c12;
+}
+body.DarkPage .sponsers_box .sponser_data {
+    background: #14141c;
+    height: 250px;
+    color: #6d6e74;
+}
+body.DarkPage .edit_post form, body.DarkPage .delete_post form {
+    background: var(--bgcolor1);
+    border: 10px solid var(--yellow);
+}
+body.DarkPage .edit_post form h4, body.DarkPage .delete_post form h4 {
+    color: #858585;
+}
+body.DarkPage .edit_post .close {
+    background: #000;
+}
+body.DarkPage .edit_post textarea {
+    background: var(--bgcolor1);
+    border: 1px solid #36363c;
+    color: #858585 
+}
+body.DarkPage .delete_post_div p {
+    color: #858585 
+}
+body.DarkPage .common_model_box .inner_model_box {
+    background: var(--bgcolor1);
+    box-shadow: none;
+    border: 1px solid #36363c;
+}
+body.DarkPage .inner_model_box h3 {
+    color: #858585 
+}
+body.DarkPage #more_games ul li {
+    box-shadow: none;
+}
+body.DarkPage .common_model_box .model_close {
+    background: #000;
+}
+body.DarkPage .bio_box .left_bio form textarea {
+    background: var(--bgcolor1);
+    color: #858585 
+}
+body.DarkPage .video_box .upload_btn textarea {
+    background: var(--bgcolor1);
+    color: #858585 
+}
+body.DarkPage .inner_model_box li a {
+    color: #858585;
+}
+body.DarkPage form.common_form label {
+    color: #d9d9d9 
+}
+body.DarkPage form.common_form .colm select, body.DarkPage .common_form select, body.DarkPage .common_form input {
+    background-color: #202028;
+    color: #707088;
+    border: 1px solid #737373;
+}
+body.DarkPage .socail_urls input[type="text"] {
+    background: var(--bgcolor1);
+    color: #858585 
+}
+body.DarkPage form.common_form .btn {
+    background: var(--yellow);
+    color: #000;
+}
+body.DarkPage .about_team textarea {
+    background: var(--bgcolor1);
+    color: #858585;
+    border: 1px solid #737373;
+}
+body.DarkPage input[type="text"], body.DarkPage input[type="email"], body.DarkPage textarea, body.DarkPage input[type="password"], body.DarkPage input[type="number"] {
+    background: var(--bgcolor1)!important;
+    border: 1px solid #737373;
+    color: #707088;
+}
+body.DarkPage input[type="text"]:focus {
+    background: #202028 !important;
+}
+body.DarkPage .common_model_box#product_details .inner_model_box {
+    background: #fff;
+}
+body.DarkPage .profile_dp_box .profile_pic {
+    border: 5px solid var(--bgcolor1);
+}
+body.DarkPage .discovery_page .tit span .icon {
+    background: #000;
+}
+body.DarkPage .right_bio select {
+    background-color: #202028;
+    color: #858585;
+    border: 1px solid #737373;
+    border-radius: 5px;
+}
+body.DarkPage .online_icon {
+    border: 3px solid #20202a;
+}
+body.DarkPage .stats_card li {
+    background: var(--bgcolor1); position: relative;
+}
+
+body.DarkPage .stats_card li .btn{ position: absolute; right: 10px; top:10px}
+
+body.DarkPage .squads_details {
+    background: #2b2b35;
+}
+body.DarkPage .squads_details .table td a {
+    color: #fff;
+}
+body.DarkPage .squads_details .table td {
+    border-top: 1px solid #636363;
+}
+
+
+.form-check.form-check-solid .form-check-input:checked{ background-color: #000 !important;}

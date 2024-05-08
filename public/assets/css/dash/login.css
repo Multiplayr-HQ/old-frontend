@@ -1,0 +1,357 @@
+#kt_sign_up_form .bi{ font-size: 1.5rem;}
+
+ ul, li{ list-style: none; margin: 0; padding: 0;}
+
+body {
+	margin:0;
+	padding:0;
+	font-family: 'Rubik', sans-serif !important;
+	font-weight:400;
+	color:#000000;
+	line-height:1.2;
+	font-size: 14px;
+	background:#f3f6f9;
+}
+
+/* ------   signup step1 and login -------------- */
+
+.singup_page_box{ float: left; width: 100%; position: relative; overflow: hidden;}
+.singup_page_box .text-red-600{ color:red;}
+.singup_page_box .btn {width: 100%;color: #000;opacity: 1;height: 40px; line-height: 18px;}
+.singup_page_box .btn.btn-icon{ background: none;}
+
+.singup_page_box .singup_icons{ display: flex; justify-content: space-between; margin:20px 0;}
+.singup_page_box .singup_icons a {border: 1px solid #2f2e32 !important;padding: 10px;width: 18%; text-align: center;}
+.singup_page_box .singup_icons .fa{ color: #fff; font-size: 15px; background: none;}
+
+.singup_page_box .singup_icons  img{ width: 20px; display: inline-block;}
+
+.singup_page_box .singup_icons .fa-google{}
+.singup_page_box .singup_icons .fa-facebook{ color: #174ac0;}
+.singup_page_box .singup_icons .fa-twitch{ color: #7d007b;}
+.singup_page_box .singup_icons .fa-steam{ color: #fff;}
+.singup_page_box .singup_icons .google{}
+.singup_page_box .select{border-radius: 5px;
+    background-color: #2c2c36 !important;     border: 1px solid #2f2e32;}
+
+.left_banner{ float: left; width:calc(100% - 500px); height: 100vh; 
+background: #232741; 
+background: -moz-linear-gradient(-45deg,  #232741 0%, #2e1d49 26%, #47085a 100%);
+background: -webkit-linear-gradient(-45deg,  #232741 0%,#2e1d49 26%,#47085a 100%);
+background: linear-gradient(135deg,  #232741 0%,#2e1d49 26%,#47085a 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#232741', endColorstr='#47085a',GradientType=1 ); 
+display: flex; align-items: center; justify-content: center; position: relative;}
+
+.left_banner h1{ text-align: left; color: #fff; font-size: 54px;}
+.left_banner .props{ position: absolute;}
+.left_banner .logo {top: 17%;left: 23%;position: absolute;}
+.left_banner .logo img{ width: 150px;}
+
+
+.right_form{ float: right; width: 500px; height: 100vh; background: #16202a; overflow-y: auto; display: flex;}
+.right_form .form_box{ width: 80%;}
+.right_form h2{ font-size: 25px; color: #fff; padding: 20px 0;}
+.right_form label{ color: #fff !important}
+.right_form input, .form-control{ min-height:45px; background: none; color: #fff; padding: 0 10px; height: 35px; border-radius: 3px; border:1px solid #2f2e32  !important}
+.right_form .form-control-solid{ background: #0f0e13;}
+.right_form  .form-check-input[type=checkbox]{min-height: 20px; height: 20px; width: 20px;}
+.right_form .terms{ font-size: 11px !important;}
+.right_form .already{ font-size: 14px;}
+.right_form .mb-7, .right_form .mb-10{ margin-bottom: 10px !important}
+.right_form h4{ color: #fff; font-size: 13px; text-align:center;}
+.right_form  .remeberme{ display: flex; justify-content: space-between;}
+.right_form a{ color: #1990ea;}
+.right_form .align-center{ align-items: center;}
+
+/* ------   signup step2 -------------- */
+
+.game_sect{ float: left; width: 100%; position: relative;}
+.game_sect select{    -webkit-appearance: auto;-moz-appearance: auto;appearance: auto;}
+.game_sect .two_btn{ display: flex; justify-content: end;}
+.game_sect button{ width: 200px  !important; background: #f6e52e; display:inline-block;}
+.signup2 #kt_sign_up_submit{ width: 200px  !important; flex-grow: 0; border-radius: 30px;}
+
+.signup2 button{ flex:0 0 200px; flex-grow: 0 !important;}
+
+.left_game{ float: left; width: 40%; height: 100vh;}
+.left_game img{ width: 100%; object-fit: cover; height: 100%;}
+
+.right_game_form {float: right;width: 60%;background: #15202b;padding: 0 5%;height: 100vh;display: flex;color: #fff;flex-direction: column;justify-content: center;}
+.right_game_form h1{ color: #fff; text-align: left; font-size: 18px; }
+.right_game_form h2{ color: #fff; text-align: left; font-size: 18px; }
+.right_game_form h4{ color: #80aaae; font-size: 16px; text-align: left; padding-top: 5px;}
+.right_game_form label{ color: #fff !important}
+.right_game_form .gamer_photo{ display: flex; width: 100%; align-items: center; margin-top: 30px;}
+.right_game_form .gamer_photo .gamer_dp{ width:125px; height: 120px; background: #ddd; border-radius: 5px; flex-shrink: 0; overflow: hidden;}
+.right_game_form .gamer_photo .gamer_dp img{ width: 100%; height: 100%; object-fit: cover;}
+.right_game_form .gamer_photo ul{ display: flex; flex-wrap: wrap; margin-left: 20px;}
+.right_game_form .gamer_photo ul li{ flex:0 0 10%; height: 54px; margin: 6px; border-radius: 5px; overflow: hidden; border:2px solid #15202b}
+.right_game_form .gamer_photo ul li.uploads {
+    background: #1b2737;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    color: #fff !important;
+    border: 0 !important;
+     cursor: pointer;
+}
+
+.right_game_form .gamer_photo ul li.uploads span{ color: #596a7d;}
+.right_game_form .gamer_photo ul li.uploads .fa{ color: #596a7d;}
+
+.right_game_form .gamer_photo ul li.active{ border:2px solid #fff;    }
+
+.right_game_form .gamer_photo ul li img{ width: 100%; height: 60px; object-position: center; object-fit: cover;}
+.right_game_form .pick_game{ margin: 20px 0; position: relative;}
+.right_game_form .pick_game ul{ display: flex; flex-wrap: wrap; margin-top: 20px;}
+
+.right_game_form .pick_game ul li{ flex:0 0 20%; margin-right: 20px;  transition: 0.3s ease-in-out; overflow: hidden; margin-bottom: 10px; border-radius: 5px; background: #fff; position: relative; height:180px;}
+.right_game_form .pick_game ul li .hovers {position: absolute;top: 50%; transform: translateY(-50%);height: 50px;text-align: center;width: 100%;height: 104%;background: rgba(0,0,0,0.7);display: flex;justify-content: center;align-items: center;flex-flow: column;opacity: 0;z-index: -1; transition: 0.3s ease-in-out;}
+.right_game_form .pick_game ul li .hovers span{ display: block;}
+
+.right_game_form .pick_game ul li img {
+    height: 180px;
+    width: 100%;
+    object-fit: cover;
+    transition: 0.3s ease-in-out;
+    object-position: center;
+}
+
+.right_game_form .pick_game ul li:hover{ height: 200px; margin-top: -10px; margin-bottom: -10px;}
+
+.right_game_form .pick_game ul li:hover img{  height: 200px; }
+.right_game_form .pick_game ul li:hover .hovers{ margin-top:0;opacity: 1; z-index: 1;}
+.right_game_form .pick_game ul li:hover input {
+    color: #fff;
+    width: 80%;
+    border-radius: 5px;
+    border: 1px solid #36588d; background: #262645;
+}
+
+.right_game_form .pick_game .model_show_btn{ position: absolute;
+    right: 40px;
+    top: 50%; text-transform: capitalize;}
+
+.right_game_form select{background: #222f41;
+    color: #fff;
+    border: 1px solid #344860;
+    border-radius: 5px; width: 400px;}
+
+#react-select-3-listbox{ color: #000;}
+#verifycode{ float: left; width: 500px; height: 400px;}
+.verify_box {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inn_verify{     width: 400px;
+    display: inline-block;
+    border: 1px solid #ddd;
+    padding: 30px; margin-top: 40px;}
+
+	.inn_verify h2{color:#858585}
+
+#verifycode label{ color: #858585 !important; width: 100%;}
+/* #verifycode input[type="text"]{ width: 300px; display: inline-block;} */
+
+.logos{ display: inline-block; text-align: center;}
+
+.style_file_upload1 .inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.style_file_upload1 .inputfile + label {
+	width: 150px;
+	font-size:12px;
+	font-weight: 700;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	cursor: pointer;
+	display: inline-block;
+	overflow: hidden;
+	padding: 0;
+	color: #ddd;
+	border: 0px solid #ced4da;
+	height: 54px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+}
+.style_file_upload1 .inputfile + label {
+    margin-left: 0;
+    width: 84px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.no-js .inputfile + label {
+	display: none;
+}
+.style_file_upload1 span {
+	color: #000;
+}
+.style_file_upload1 .inputfile:focus + label, .style_file_upload1 .inputfile.has-focus + label, .style_file_upload1 .inputfile.has-focus + label:hover {
+	outline: 1px dotted #ced4da;
+	outline: -webkit-focus-ring-color auto 5px;
+	color: #ced4da;
+}
+
+.custom-file-input {
+	width: 0;
+	height: 0;
+}
+
+
+.overlay {
+	position: fixed;
+	width:100%;
+	height: 100%;
+	left: 0;
+	top:0;
+	background: rgba(0,0,0,0.6);
+	z-index: -1;
+	display: block;
+}
+.overlay.show {
+	display: block;
+}
+
+
+.join_box {
+    position: absolute;
+    bottom: 10%;
+    left: 11%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.join_revolution{    display: flex;
+   
+    width: 400px;
+    margin-left: 20px;}
+
+	.join_revolution input {
+		width: 270px;
+		background: #fff;
+		height: 40px;
+		margin-right: 20px; color: #000; font-size: 14px; 
+	}
+	.join_revolution .btn{ width: 100px; background: #fc5203;}
+
+	.join_btn.btn{ width: 200px; background: #fc5203;}
+
+
+.countries{ width: 400px;}
+.css-1s2u09g-control{ background: none;}
+
+/* --------------Animation ------------ */
+
+.left_banner .props1 {top: 0;left: 6%; }
+.left_banner .props2 {top: 25%;left: 7%;}
+.left_banner .props3 {left: 2%;bottom: 26%;}
+.left_banner .props4 {bottom: 14%;left: 11%;}
+.left_banner .props5 {bottom: 10%;left: 15%;}
+.left_banner .props6 {right: 20%;bottom: 15%;}
+.left_banner .props7 {right: -24px;top: 10%;}
+.left_banner .props8 {top: 29%;right: 41%;}
+.left_banner .props9 {bottom: 17%; left: 17%;}
+.left_banner .props9 img{ width: 150px;}
+
+.props1{ animation-name: props1; animation-duration: 0.5s; animation-delay:0.5s; animation-fill-mode: both; }
+.props2{ animation-name: props2; animation-duration: 0.5s; animation-delay:0.9s; animation-fill-mode: both; }
+.props3{ animation-name: props3; animation-duration: 0.5s; animation-delay:1.2s; animation-fill-mode: both; }
+.props4{ animation-name: props4; animation-duration: 0.5s; animation-delay:1.5s; animation-fill-mode: both; }
+.props5{ animation-name: props5; animation-duration: 0.5s; animation-delay:1.8s; animation-fill-mode: both; }
+.props6{ animation-name: props6; animation-duration: 0.5s; animation-delay:2.1s; animation-fill-mode: both; }
+.props7{ animation-name: props7; animation-duration: 0.5s; animation-delay:2.3s; animation-fill-mode: both; }
+.props8{ animation-name: props8; animation-duration: 0.5s; animation-delay:2.6s; animation-fill-mode: both; }
+.props9{ animation-name: props9; animation-duration: 0.5s; animation-delay:2.9s; animation-fill-mode: both; }
+
+.form-check-input:checked[type=checkbox]{ background-repeat: no-repeat; background-position: 4px 4px;}
+
+@keyframes props1 { 
+	0% {opacity: 0; left: 0;}
+	100% { opacity: 1; left: 6%;}
+}
+
+@keyframes props2 { 
+	0% {opacity: 0;  top:0;left:0;}
+	100% { opacity: 1; top: 25%;left: 7%;}
+}
+
+@keyframes props3 { 
+	0% {opacity: 0; left:0;bottom: 0;}
+	100% { opacity: 1; left: 2%;bottom: 26%;}
+}
+
+@keyframes props4 { 
+	0% {opacity: 0; bottom: 0;left: 0;}
+	100% { opacity: 1;bottom: 14%;left: 11%;}
+}
+
+@keyframes props5 { 
+	0% {opacity: 0;bottom:0;left: 0;}
+	100% { opacity: 1; bottom: 7%;left: 15%;}
+}
+
+@keyframes props6 { 
+	0% {opacity: 0;right:0;bottom:0;}
+	100% { opacity: 1;right: 20%;bottom: 15%;}
+}
+
+@keyframes props7 { 
+	0% {opacity: 0; right:0;top:0;}
+	100% { opacity: 1; right: -24px;top: 10%;}
+}
+
+@keyframes props8 { 
+	0% {opacity: 0; top:0;right:0;}
+	100% { opacity: 1;top: 29%;right: 41%;}
+}
+
+@keyframes props9 { 
+	0% {opacity: 0; bottom:0; left: 0;}
+	100% { opacity: 1; bottom: 20%; left: 17%;}
+}
+
+
+
+@media screen and (max-width:1500px){
+
+	.left_banner h1{ font-size: 42px;}
+}
+
+
+/* start custom model box */
+
+#see_all {
+	float: left;
+	width:800px;
+}
+#see_all h3 {
+	text-align: center;
+}
+#see_all ul li {
+	float: left;
+	width: 18%;
+	margin-right: 5%;
+	margin-bottom: 20px;
+	background: #ddd;
+	border: 1px solid #999;
+	padding: 0;
+	box-shadow: 2px 4px 10px #eee;
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+
+/* -------------forget password----------------------- */
+
+.forget-pass-box{}

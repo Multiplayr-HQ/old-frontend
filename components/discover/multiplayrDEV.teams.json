@@ -1,0 +1,1252 @@
+ [
+   {
+  "_id": 35441310,
+  "about": {
+    "contacts": []
+  },
+  "platform": "PC",
+  "language": [
+    "English",
+    "Hindi"
+  ],
+  "attributes": {
+    "timing": {
+      "$date": "2022-01-28T08:52:53.155Z"
+    },
+    "language": [
+      "English",
+      "Hindi"
+    ],
+    "roles": "Player",
+    "regions": "India",
+    "teamtype": "Pro",
+    "platform": "PC",
+    "elo": "1500-2000",
+    "gender": "Male",
+    "paid": "Unpaid"
+  },
+  "imgUrl": "/assets/media/default/team.jpg",
+  "coverPhoto": "/assets/media/profile/cover_bg.jpg",
+  "isVerified": false,
+  "rigs": [
+    "Headphone"
+  ],
+  "user": {
+    "$oid": "61c36a4526bba655d0ee9758"
+  },
+  "name": "Zombie Killer",
+  "founded": "2022",
+  "games": [
+    {
+      "_id": {
+        "$oid": "61f3b140691ae03ea42476b3"
+      },
+      "gameId": 3
+    },
+    {
+      "_id": {
+        "$oid": "61f3b140691ae03ea42476b4"
+      },
+      "gameId": 23
+    },
+    {
+      "_id": {
+        "$oid": "61f3b140691ae03ea42476b5"
+      },
+      "gameId": 24
+    },
+    {
+      "_id": {
+        "$oid": "61f3b140691ae03ea42476b6"
+      },
+      "gameId": 8
+    }
+  ],
+  "achievements": "many",
+  "arenas": [
+    {
+      "_id": {
+        "$oid": "61f3b140691ae03ea42476b7"
+      },
+      "arenaId": {
+        "$oid": "619158f2d802397e7abf2190"
+      }
+    }
+  ],
+  "sponsors": [
+    {
+      "_id": {
+        "$oid": "61f3b140691ae03ea42476b8"
+      },
+      "sponsorId": {
+        "$oid": "61915798d802397e7abf218f"
+      }
+    }
+  ],
+  "description": "desc 333333",
+  "role": "CEO",
+  "website": "SomeSite.com",
+  "sociallink": "SomeLinks",
+  "employees": [],
+  "ranks": [],
+  "imagesgallery": [],
+  "videosgallery": [],
+  "sentRequest": [],
+  "request": [],
+  "players": [],
+  "createdAt": {
+    "$date": "2022-01-28T09:02:56.996Z"
+  },
+  "updatedAt": {
+    "$date": "2022-01-28T09:02:56.996Z"
+  },
+  "__v": 0
+},
+{
+  "_id": 27734313,
+  "about": {
+    "contacts": []
+  },
+  "attributes": {
+    "timing": {
+      "$date": "2022-02-14T09:23:05.088Z"
+    },
+    "language": []
+  },
+  "imgUrl": "/assets/media/default/team.jpg",
+  "coverPhoto": "/assets/media/profile/cover_bg.jpg",
+  "isVerified": false,
+  "region": "IN",
+  "rigs": [
+    "Mouse",
+    "Headphone"
+  ],
+  "user": {
+    "$oid": "61c36a4526bba655d0ee9758"
+  },
+  "name": "TEst GamiNg",
+  "founded": "2022",
+  "games": [
+    {
+      "_id": {
+        "$oid": "620a20041da6341e94573b1b"
+      },
+      "gameId": 26
+    },
+    {
+      "_id": {
+        "$oid": "620a20041da6341e94573b1c"
+      },
+      "gameId": 4
+    },
+    {
+      "_id": {
+        "$oid": "620a20041da6341e94573b1d"
+      },
+      "gameId": 3
+    },
+    {
+      "_id": {
+        "$oid": "620a20041da6341e94573b1e"
+      },
+      "gameId": 1
+    }
+  ],
+  "achievements": "Many",
+  "arenas": [
+    {
+      "_id": {
+        "$oid": "620a20041da6341e94573b1f"
+      },
+      "arenaId": {
+        "$oid": "61a4f2a31adc4a11b442686f"
+      }
+    }
+  ],
+  "sponsors": [
+    {
+      "_id": {
+        "$oid": "620a20041da6341e94573b20"
+      },
+      "sponsorId": {
+        "$oid": "61915798d802397e7abf218f"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "620a20041da6341e94573b21"
+      },
+      "sponsorId": {
+        "$oid": "6191575ad802397e7abf218e"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "620a20041da6341e94573b22"
+      },
+      "sponsorId": {
+        "$oid": "61b36a95b9e3302d0731c30b"
+      }
+    }
+  ],
+  "description": "desc 44545435",
+  "role": "CEO",
+  "website": "USA.com",
+  "sociallink": "Some linkkk",
+  "employees": [],
+  "ranks": [],
+  "imagesgallery": [
+    {
+      "images": [
+        {
+          "fieldname": "images",
+          "originalname": "download (2).png",
+          "encoding": "7bit",
+          "mimetype": "image/png",
+          "path": "https://res.cloudinary.com/dch502zpg/image/upload/v1645170314/multiplayr/rv2qtwkluuvvmbbmdrwe.png",
+          "size": 7301,
+          "filename": "multiplayr/rv2qtwkluuvvmbbmdrwe"
+        }
+      ],
+      "_id": {
+        "$oid": "620f4e8ac17f752ac8fd9765"
+      },
+      "title": "photo1",
+      "tag": "1645170314497",
+      "createdAt": {
+        "$date": "2022-02-18T07:45:14.000Z"
+      }
+    }
+  ],
+  "videosgallery": [],
+  "sentRequest": [],
+  "request": [],
+  "players": [],
+  "createdAt": {
+    "$date": "2022-02-14T09:25:24.315Z"
+  },
+  "updatedAt": {
+    "$date": "2022-02-18T07:45:14.499Z"
+  },
+  "__v": 0
+},
+{
+  "_id": 26873082,
+  "about": {
+    "contacts": []
+  },
+  "attributes": {
+    "roles": "Player",
+    "regions": "India",
+    "teamtype": "Semipro",
+    "platform": "PC",
+    "elo": "1500-2000",
+    "timing": {
+      "$date": "2022-02-10T10:00:30.907Z"
+    },
+    "language": [
+      "English",
+      "Hindi"
+    ],
+    "gender": "Male",
+    "paid": "Unpaid"
+  },
+  "region": "US",
+  "imgUrl": "/assets/media/default/team.jpg",
+  "coverPhoto": "/assets/media/profile/cover_bg.jpg",
+  "isVerified": false,
+  "rigs": [
+    "Mouse"
+  ],
+  "user": {
+    "$oid": "61c36a4526bba655d0ee9758"
+  },
+  "name": "DPX",
+  "founded": "2022",
+  "games": [
+    {
+      "_id": {
+        "$oid": "620b86b4cd484e30200e7967"
+      },
+      "gameId": 26
+    },
+    {
+      "_id": {
+        "$oid": "620b86b4cd484e30200e7968"
+      },
+      "gameId": 4
+    },
+    {
+      "_id": {
+        "$oid": "620b86b4cd484e30200e7969"
+      },
+      "gameId": 3
+    }
+  ],
+  "squads": [
+    {
+      "squadId": {
+        "$oid": "622704a0794138b4e2fcac2f"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "6228837e655f924dd487ab47"
+      },
+      "squadId": {
+        "$oid": "6228837e655f924dd487ab43"
+      }
+    }
+  ],
+  "players": [
+    {
+      "playerId": 25552
+    },
+    {
+      "playerId": 14271
+    },
+    {
+      "playerId": 39393
+    },
+    {
+      "playerId": 39394
+    },
+    {
+      "playerId": 39395
+    }
+  ],
+  "achievements": "Some thing",
+  "arenas": [
+    {
+      "_id": {
+        "$oid": "620b86b4cd484e30200e796a"
+      },
+      "arenaId": {
+        "$oid": "61a4f2a31adc4a11b442686f"
+      }
+    }
+  ],
+  "sponsors": [
+    {
+      "_id": {
+        "$oid": "620e3ef5d8ef872a0013118f"
+      },
+      "sponsorId": {
+        "$oid": "61915798d802397e7abf218f"
+      }
+    }
+  ],
+  "description": "Best Game art and 3d renders",
+  "role": "CEO",
+  "website": "www.minecraft.net",
+  "sociallink": "www.something.com",
+  "employees": [
+    {
+      "role": "developer",
+      "_id": {
+        "$oid": "622b59b52d206f46d85cad31"
+      },
+      "employeeId": {
+        "$oid": "61c1f1272fae36749c5942e8"
+      }
+    },
+    {
+      "role": "staff",
+      "_id": {
+        "$oid": "622b5ab42d206f46d85cad70"
+      },
+      "employeeId": {
+        "$oid": "61cdcc6fb0f0db85973f3b77"
+      }
+    }
+  ],
+  "ranks": [],
+  "imagesgallery": [],
+  "videosgallery": [],
+  "sentRequest": [],
+  "request": [],
+  "createdAt": {
+    "$date": "2022-02-15T10:55:48.871Z"
+  },
+  "updatedAt": {
+    "$date": "2022-03-11T14:20:36.012Z"
+  },
+  "__v": 0
+},
+{
+  "_id": 82963610,
+  "about": {
+    "contacts": []
+  },
+  "attributes": {
+    "timing": {
+      "$date": "2022-03-25T11:41:59.203Z"
+    },
+    "language": []
+  },
+  "imgUrl": "/assets/media/default/team.jpg",
+  "coverPhoto": "/assets/media/profile/cover_bg.jpg",
+  "isVerified": false,
+  "rigs": [
+    "Headphone"
+  ],
+  "region": "DK",
+  "name": "Avengers",
+  "founded": "1919",
+  "games": [
+    {
+      "_id": {
+        "$oid": "623daad1c884353b84a7aa84"
+      },
+      "gameId": 20
+    }
+  ],
+  "achievements": "Too many",
+  "arenas": [
+    {
+      "_id": {
+        "$oid": "623daad1c884353b84a7aa85"
+      },
+      "arenaId": {
+        "$oid": "61e58987cc7c8802e6138fa6"
+      }
+    }
+  ],
+  "sponsors": [
+    {
+      "sponsorId": {
+        "$oid": "61b36b19b9e3302d07324ff7"
+      },
+      "_id": {
+        "$oid": "623dde453c58f50e342ccb37"
+      }
+    }
+  ],
+  "description": "Heavy at playing only heavy games",
+  "role": "CEO",
+  "website": "www.nowebsite.com",
+  "sociallink": "www.nowebsite.com",
+  "employees": [
+    {
+      "employeeId": {
+        "$oid": "61c36a4526bba655d0ee9758"
+      },
+      "role": "coach",
+      "_id": {
+        "$oid": "623ddd9d3c58f50e342cc9e3"
+      }
+    },
+    {
+      "employeeId": {
+        "$oid": "61c36a4526bba655d0ee9758"
+      },
+      "role": "coach",
+      "_id": {
+        "$oid": "623dddd03c58f50e342ccaf9"
+      }
+    },
+    {
+      "employeeId": {
+        "$oid": "620e8804c17f752ac8fd8b51"
+      },
+      "role": "coach",
+      "_id": {
+        "$oid": "623dddf33c58f50e342ccb17"
+      }
+    }
+  ],
+  "ranks": [],
+  "squads": [],
+  "imagesgallery": [
+    {
+      "title": "album",
+      "tag": "1648218946321",
+      "images": [
+        {
+          "fieldname": "images",
+          "originalname": "royal team.jpg",
+          "encoding": "7bit",
+          "mimetype": "image/jpeg",
+          "path": "https://res.cloudinary.com/dch502zpg/image/upload/v1648218946/multiplayr/dak7lfbyerh4kvadun5g.jpg",
+          "size": 7939,
+          "filename": "multiplayr/dak7lfbyerh4kvadun5g"
+        }
+      ],
+      "createdAt": {
+        "$date": "2022-03-25T14:35:46.000Z"
+      },
+      "_id": {
+        "$oid": "623dd3423c58f50e342cb256"
+      }
+    }
+  ],
+  "videosgallery": [
+    {
+      "videodisc": "video",
+      "tag": "1648220744991",
+      "videos": [
+        {
+          "fieldname": "videos",
+          "originalname": "sample-mp4-file-small.mp4",
+          "encoding": "7bit",
+          "mimetype": "video/mp4",
+          "path": "https://res.cloudinary.com/dch502zpg/video/upload/v1648220742/multiplayr/file_mllm00.mp4",
+          "size": 2079048,
+          "filename": "multiplayr/file_mllm00"
+        }
+      ],
+      "createdAt": {
+        "$date": "2022-03-25T15:05:44.000Z"
+      },
+      "_id": {
+        "$oid": "623dda483c58f50e342cc2aa"
+      }
+    }
+  ],
+  "sentRequest": [],
+  "request": [],
+  "players": [],
+  "createdAt": {
+    "$date": "2022-03-25T11:43:13.478Z"
+  },
+  "updatedAt": {
+    "$date": "2022-03-25T15:22:45.742Z"
+  },
+  "__v": 0
+},
+{
+  "_id": 65518813,
+  "isClaimed": true,
+  "about": {
+    "contacts": [],
+    "description": "This is Agent 47"
+  },
+  "attributes": {
+    "timing": {
+      "$date": "2022-03-25T14:56:39.044Z"
+    },
+    "language": [
+      "English",
+      "Telagu",
+      "Tamil"
+    ],
+    "paid": "Paid",
+    "platform": "PC",
+    "regions": "USA",
+    "roles": [
+      "Sniper",
+      "Driver",
+      "Fragger"
+    ],
+    "teamtype": "Gunman",
+    "mic": true,
+    "languages": []
+  },
+  "imgUrl": "https://res.cloudinary.com/dch502zpg/image/upload/v1663751213/multiplayr/j9ghwwcy35ahfyxdl4vd.jpg",
+  "coverPhoto": "https://res.cloudinary.com/dch502zpg/image/upload/v1663768193/multiplayr/tjzywcohnfxysuwclzch.jpg",
+  "isVerified": false,
+  "rigs": [
+    {
+      "_id": {
+        "$oid": "62c47605f0c2c12bc850e154"
+      },
+      "rigId": {
+        "$oid": "62b1bd090c5a2244c0a7bc06"
+      }
+    }
+  ],
+  "name": "TestSubject47",
+  "founded": {
+    "$date": "2022-07-18T00:00:00.000Z"
+  },
+  "games": [
+    {
+      "gameId": 28,
+      "_id": {
+        "$oid": "637b3afed23aa0771b3405b2"
+      }
+    },
+    {
+      "gameId": 20,
+      "_id": {
+        "$oid": "637b3afed23aa0771b3405b3"
+      }
+    },
+    {
+      "gameId": 1,
+      "_id": {
+        "$oid": "637b3afed23aa0771b3405b4"
+      }
+    }
+  ],
+  "region": "IN",
+  "achievements": "There are Some",
+  "arenas": [
+    {
+      "arenaId": {
+        "$oid": "61a4f2e31adc4a11b4426870"
+      },
+      "_id": {
+        "$oid": "637b3afed23aa0771b3405b5"
+      }
+    },
+    {
+      "arenaId": {
+        "$oid": "619158f2d802397e7abf2190"
+      },
+      "_id": {
+        "$oid": "637b3afed23aa0771b3405b6"
+      }
+    }
+  ],
+  "sponsors": [
+    {
+      "_id": {
+        "$oid": "6305c77f847eb937fc63cb90"
+      },
+      "sponsorId": {
+        "$oid": "61915798d802397e7abf218f"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "6305c77f847eb937fc63cb91"
+      },
+      "sponsorId": {
+        "$oid": "61b36ad2b9e3302d0732039e"
+      }
+    }
+  ],
+  "description": "Beware Of The Agent47, he is a professional Killer!",
+  "role": "CEO",
+  "website": "www.npmjs.com",
+  "sociallink": "www.npmjs.com",
+  "employees": [
+    {
+      "role": "Editor",
+      "_id": {
+        "$oid": "62451fe6fc0cc60884490791"
+      },
+      "employeeId": {
+        "$oid": "61c1daabdea7de47a202d994"
+      }
+    },
+    {
+      "role": "Developer",
+      "_id": {
+        "$oid": "628b31245baa6227441fd0d2"
+      },
+      "employeeId": {
+        "$oid": "62c29776efb7ab7090e4f8f1"
+      }
+    },
+    {
+      "role": "Admin",
+      "_id": {
+        "$oid": "62beb62e8617123820778eab"
+      },
+      "employeeId": {
+        "$oid": "61c36a4526bba655d0ee9758"
+      }
+    },
+    {
+      "role": "Manager",
+      "_id": {
+        "$oid": "62c7fde09c059d400478c674"
+      },
+      "employeeId": {
+        "$oid": "61c36a4526bba655d0ee9758"
+      }
+    },
+    {
+      "employeeId": {
+        "$oid": "61c36a4526bba655d0ee9758"
+      },
+      "role": "Owner",
+      "_id": {
+        "$oid": "636f4822fb7941362a65990a"
+      }
+    },
+    {
+      "employeeId": {
+        "$oid": "61c17564dea7de47a202d62f"
+      },
+      "role": "PR Manager",
+      "_id": {
+        "$oid": "637e061bfde58a8d13b22123"
+      }
+    },
+    {
+      "employeeId": {
+        "$oid": "62c29776efb7ab7090e4f8f1"
+      },
+      "role": "Nutritionist",
+      "_id": {
+        "$oid": "637e061bfde58a8d13b22124"
+      }
+    }
+  ],
+  "ranks": [],
+  "squads": [
+    {
+      "_id": {
+        "$oid": "62cc2f51d76cb81b6cef7cd8"
+      },
+      "squadId": {
+        "$oid": "62cc2f50d76cb81b6cef7cd2"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "62cc325efd733c2f6091ccf0"
+      },
+      "squadId": {
+        "$oid": "62cc325efd733c2f6091ccec"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "62d94e36760fd634882d553a"
+      },
+      "squadId": {
+        "$oid": "62d94e36760fd634882d5536"
+      }
+    },
+    {
+      "squadId": {
+        "$oid": "63bd01d8bef542e2862da2f9"
+      },
+      "_id": {
+        "$oid": "63bd01d8bef542e2862da2fd"
+      }
+    },
+    {
+      "squadId": {
+        "$oid": "63d8b860f67a3cb7bbc4a998"
+      },
+      "_id": {
+        "$oid": "63d8b860f67a3cb7bbc4a99d"
+      }
+    }
+  ],
+  "imagesgallery": [
+    {
+      "title": "Test",
+      "tag": "1655812065785",
+      "images": [
+        {
+          "fieldname": "images",
+          "originalname": "stats (1).jpg",
+          "encoding": "7bit",
+          "mimetype": "image/jpeg",
+          "path": "https://res.cloudinary.com/dch502zpg/image/upload/v1655812062/multiplayr/tqgr24xsb6ouwezr8p7o.jpg",
+          "size": 4383924,
+          "filename": "multiplayr/tqgr24xsb6ouwezr8p7o"
+        },
+        {
+          "fieldname": "images",
+          "originalname": "Profile_teams.jpg",
+          "encoding": "7bit",
+          "mimetype": "image/jpeg",
+          "path": "https://res.cloudinary.com/dch502zpg/image/upload/v1655812064/multiplayr/n5ndqfe0k81ettkxmvfw.jpg",
+          "size": 3690222,
+          "filename": "multiplayr/n5ndqfe0k81ettkxmvfw"
+        },
+        {
+          "fieldname": "images",
+          "originalname": "6f7cc0ac-861c-4ec2-b49f-1a5a037fa4f2.jpg",
+          "encoding": "7bit",
+          "mimetype": "image/jpeg",
+          "path": "https://res.cloudinary.com/dch502zpg/image/upload/v1655812065/multiplayr/pigfw5k9cbofhs8mui2p.jpg",
+          "size": 161073,
+          "filename": "multiplayr/pigfw5k9cbofhs8mui2p"
+        },
+        {
+          "fieldname": "images",
+          "originalname": "step-ladder.png",
+          "encoding": "7bit",
+          "mimetype": "image/png",
+          "path": "https://res.cloudinary.com/dch502zpg/image/upload/v1655812066/multiplayr/rdjrzwzs4h420fraxqnw.png",
+          "size": 10573,
+          "filename": "multiplayr/rdjrzwzs4h420fraxqnw"
+        }
+      ],
+      "createdAt": {
+        "$date": "2022-06-21T11:47:45.000Z"
+      },
+      "_id": {
+        "$oid": "62b1afe1c1c5c91e6575c913"
+      }
+    }
+  ],
+  "videosgallery": [
+    {
+      "videodisc": "vid",
+      "tag": "1656407882502",
+      "videos": [
+        {
+          "fieldname": "videos",
+          "originalname": "yt5s.com-20 second video amazing(360p).mp4",
+          "encoding": "7bit",
+          "mimetype": "video/mp4",
+          "path": "https://res.cloudinary.com/dch502zpg/video/upload/v1656407880/multiplayr/file_m6lqnu.mp4",
+          "size": 853132,
+          "filename": "multiplayr/file_m6lqnu"
+        }
+      ],
+      "createdAt": {
+        "$date": "2022-06-28T09:18:02.000Z"
+      },
+      "_id": {
+        "$oid": "62bac74ac923c7cbc2225021"
+      }
+    },
+    {
+      "videodisc": "vid2",
+      "tag": "1656407924715",
+      "videos": [
+        {
+          "fieldname": "videos",
+          "originalname": "videoplayback.mp4",
+          "encoding": "7bit",
+          "mimetype": "video/mp4",
+          "path": "https://res.cloudinary.com/dch502zpg/video/upload/v1656407923/multiplayr/file_i6mwyk.mp4",
+          "size": 215451,
+          "filename": "multiplayr/file_i6mwyk"
+        }
+      ],
+      "createdAt": {
+        "$date": "2022-06-28T09:18:44.000Z"
+      },
+      "_id": {
+        "$oid": "62bac774c923c7cbc22251dc"
+      }
+    }
+  ],
+  "request": [
+    {
+      "playerId": 61252573,
+      "_id": {
+        "$oid": "62c3d715ddf6f06b4d740095"
+      }
+    },
+    {
+      "playerId": 31708442,
+      "_id": {
+        "$oid": "6328189a1887e5106caa0a0d"
+      }
+    }
+  ],
+  "players": [
+    {
+      "_id": {
+        "$oid": "627cccc53c6c493bb8e902c7"
+      },
+      "playerId": 33987
+    },
+    {
+      "playerId": 76001243,
+      "_id": {
+        "$oid": "62c2c434ddf6f06b4d736ae3"
+      }
+    },
+    {
+      "playerId": 41857420,
+      "_id": {
+        "$oid": "6307682b0ecb657299380b5a"
+      }
+    },
+    {
+      "playerId": 45299370,
+      "_id": {
+        "$oid": "630dee1aea66ea68b16b4fa0"
+      }
+    },
+    {
+      "playerId": 20333403,
+      "_id": {
+        "$oid": "6319a188437846a07720efc3"
+      }
+    },
+    {
+      "playerId": 20333403,
+      "_id": {
+        "$oid": "6319a1ad4b5d38a70417f8d0"
+      }
+    },
+    {
+      "playerId": 20333403,
+      "_id": {
+        "$oid": "6319a2730c00902baa27cc95"
+      }
+    },
+    {
+      "playerId": 31708442,
+      "_id": {
+        "$oid": "632818b11887e5106caa0e40"
+      }
+    },
+    {
+      "playerId": 50062280,
+      "_id": {
+        "$oid": "632846bc2b55ed5e10d42c9b"
+      }
+    },
+    {
+      "playerId": 32998994,
+      "_id": {
+        "$oid": "633abf79ba6ab57b35694cb4"
+      }
+    },
+    {
+      "playerId": 31708442,
+      "_id": {
+        "$oid": "63636d9936cf248e6e9db1ad"
+      }
+    },
+    {
+      "playerId": 31708442,
+      "_id": {
+        "$oid": "63636dca36cf248e6e9db25d"
+      }
+    },
+    {
+      "playerId": 31708442,
+      "_id": {
+        "$oid": "63636e006832112406bb6ec3"
+      }
+    },
+    {
+      "playerId": 31708442,
+      "_id": {
+        "$oid": "63636ee5df2dc6663fdbb46c"
+      }
+    },
+    {
+      "playerId": 31708442,
+      "_id": {
+        "$oid": "63636fba511d2c8ea8d71124"
+      }
+    },
+    {
+      "playerId": 31708442,
+      "_id": {
+        "$oid": "63636ffd77d893c3087c895c"
+      }
+    },
+    {
+      "playerId": 31708442,
+      "_id": {
+        "$oid": "6363712b77d893c3087c8a61"
+      }
+    },
+    {
+      "playerId": 31708442,
+      "_id": {
+        "$oid": "636373e471af8ad0137310bf"
+      }
+    },
+    {
+      "playerId": 31708442,
+      "_id": {
+        "$oid": "6363744d71af8ad0137319f2"
+      }
+    },
+    {
+      "playerId": 31708442,
+      "_id": {
+        "$oid": "6363749e71af8ad0137321a4"
+      }
+    },
+    {
+      "playerId": 31708442,
+      "_id": {
+        "$oid": "6363790471af8ad013737dd2"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2022-03-25T14:56:40.982Z"
+  },
+  "updatedAt": {
+    "$date": "2023-02-06T07:18:43.216Z"
+  },
+  "__v": 6,
+  "favourites": [
+    {
+      "_id": {
+        "$oid": "62e7b9f8280a2544d4c9b862"
+      },
+      "profile": {
+        "$oid": "61c36a5826bba655d0ee975c"
+      }
+    }
+  ],
+  "followers": [
+    {
+      "user": {
+        "$oid": "6381e7142681d6e9af9a7557"
+      },
+      "_id": {
+        "$oid": "63a46e5a32816b80114fbfe0"
+      }
+    },
+    {
+      "user": {
+        "$oid": "637c7ae7256c5157d87d87ea"
+      },
+      "_id": {
+        "$oid": "637d04cd172a7d904eea8bdf"
+      }
+    },
+    {
+      "user": {
+        "$oid": "637cc29cb1ba317caebe4ff6"
+      },
+      "_id": {
+        "$oid": "637ce9d8579180a3f3924909"
+      }
+    },
+    {
+      "user": {
+        "$oid": "6295d74b1cf2933faf6352f7"
+      },
+      "_id": {
+        "$oid": "629d96fe44722d3af63a9046"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "630759cecc8cd31c20604141"
+      },
+      "user": {
+        "$oid": "61c36a4526bba655d0ee9758"
+      }
+    },
+    {
+      "user": {
+        "$oid": "62fb4be227db6f2e5cade16e"
+      },
+      "_id": {
+        "$oid": "6307682b0ecb657299380b59"
+      }
+    },
+    {
+      "user": {
+        "$oid": "6290631a307ffdb95ff62910"
+      },
+      "_id": {
+        "$oid": "630dee1aea66ea68b16b4f9f"
+      }
+    },
+    {
+      "user": {
+        "$oid": "62e3a4b8b11807092979d88b"
+      },
+      "_id": {
+        "$oid": "63199e9303ec9068264c5088"
+      }
+    },
+    {
+      "user": {
+        "$oid": "62e3a4b8b11807092979d88b"
+      },
+      "_id": {
+        "$oid": "6319a0f1486167b20ecaf071"
+      }
+    },
+    {
+      "user": {
+        "$oid": "62e3a4b8b11807092979d88b"
+      },
+      "_id": {
+        "$oid": "6319a188437846a07720efc2"
+      }
+    },
+    {
+      "user": {
+        "$oid": "62e3a4b8b11807092979d88b"
+      },
+      "_id": {
+        "$oid": "6319a1ad4b5d38a70417f8cf"
+      }
+    },
+    {
+      "user": {
+        "$oid": "62e3a4b8b11807092979d88b"
+      },
+      "_id": {
+        "$oid": "6319a202c338169f66f2df21"
+      }
+    },
+    {
+      "user": {
+        "$oid": "62e3a4b8b11807092979d88b"
+      },
+      "_id": {
+        "$oid": "6319a2730c00902baa27cc94"
+      }
+    },
+    {
+      "user": {
+        "$oid": "630c7ed6b25550910a9053fd"
+      },
+      "_id": {
+        "$oid": "6328189a1887e5106caa0a0c"
+      }
+    },
+    {
+      "user": {
+        "$oid": "630c7ed6b25550910a9053fd"
+      },
+      "_id": {
+        "$oid": "632818b11887e5106caa0e3f"
+      }
+    },
+    {
+      "user": {
+        "$oid": "630ce2feb25550910a90cf0d"
+      },
+      "_id": {
+        "$oid": "632846bc2b55ed5e10d42c9a"
+      }
+    },
+    {
+      "user": {
+        "$oid": "630ce153b25550910a90cba7"
+      },
+      "_id": {
+        "$oid": "633abf79ba6ab57b35694cb3"
+      }
+    },
+    {
+      "user": {
+        "$oid": "630c7ed6b25550910a9053fd"
+      },
+      "_id": {
+        "$oid": "63636d9936cf248e6e9db1ac"
+      }
+    },
+    {
+      "user": {
+        "$oid": "630c7ed6b25550910a9053fd"
+      },
+      "_id": {
+        "$oid": "63636dca36cf248e6e9db25c"
+      }
+    },
+    {
+      "user": {
+        "$oid": "630c7ed6b25550910a9053fd"
+      },
+      "_id": {
+        "$oid": "63636e006832112406bb6ec2"
+      }
+    },
+    {
+      "user": {
+        "$oid": "630c7ed6b25550910a9053fd"
+      },
+      "_id": {
+        "$oid": "63636ee5df2dc6663fdbb46b"
+      }
+    },
+    {
+      "user": {
+        "$oid": "630c7ed6b25550910a9053fd"
+      },
+      "_id": {
+        "$oid": "63636fba511d2c8ea8d71123"
+      }
+    },
+    {
+      "user": {
+        "$oid": "630c7ed6b25550910a9053fd"
+      },
+      "_id": {
+        "$oid": "63636ffd77d893c3087c895b"
+      }
+    },
+    {
+      "user": {
+        "$oid": "630c7ed6b25550910a9053fd"
+      },
+      "_id": {
+        "$oid": "6363712b77d893c3087c8a60"
+      }
+    },
+    {
+      "user": {
+        "$oid": "630c7ed6b25550910a9053fd"
+      },
+      "_id": {
+        "$oid": "636373e471af8ad0137310be"
+      }
+    },
+    {
+      "user": {
+        "$oid": "630c7ed6b25550910a9053fd"
+      },
+      "_id": {
+        "$oid": "6363744d71af8ad0137319f1"
+      }
+    },
+    {
+      "user": {
+        "$oid": "630c7ed6b25550910a9053fd"
+      },
+      "_id": {
+        "$oid": "6363749e71af8ad0137321a3"
+      }
+    },
+    {
+      "user": {
+        "$oid": "630c7ed6b25550910a9053fd"
+      },
+      "_id": {
+        "$oid": "6363790471af8ad013737dd1"
+      }
+    }
+  ],
+  "social": {
+    "facebook": "this is FB",
+    "instagram": "this INSTA",
+    "twitch": "",
+    "youtube": "this is YT",
+    "discord": "his is DISCORD",
+    "website": "This is WEB"
+  },
+  "tournaments": [
+    {
+      "tournamentId": 46400401,
+      "organizer": {
+        "$oid": "6192a71e979f22602d40bb61"
+      },
+      "games": [
+        {
+          "gameId": 20,
+          "_id": {
+            "$oid": "63ca66e2826a5a9913ef0282"
+          }
+        }
+      ],
+      "year": {
+        "$date": "2023-01-20T10:03:14.000Z"
+      },
+      "currency": "Rs",
+      "team_ranking": 1,
+      "winnings": 368555,
+      "upload_proof": {
+        "images": "https://res.cloudinary.com/dch502zpg/image/upload/v1674209366/multiplayr/xvwysgrihq6jytobnapd.jpg",
+        "createdAt": {
+          "$date": "2023-01-20T10:03:14.234Z"
+        }
+      },
+      "_id": {
+        "$oid": "63ca66e2826a5a9913ef0281"
+      }
+    }
+  ],
+  "team_points": 1080,
+  "team_winnings": 10500
+}]

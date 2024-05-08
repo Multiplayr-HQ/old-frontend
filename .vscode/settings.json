@@ -1,0 +1,5 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/3fc0b988-0146-4a80-806a-92230898910c/resourceGroups/main-frontend-MP_group/providers/Microsoft.Web/sites/main-frontend-MP",
+    "appService.deploySubpath": ".",
+    "liveServer.settings.port": 5501
+}
