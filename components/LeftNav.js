@@ -3,6 +3,9 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 //import ListDrag from './ListDrag';
 
+
+
+
 function LeftNav({ user }) {
   const router = useRouter();
 
@@ -60,36 +63,8 @@ function LeftNav({ user }) {
               </a>
             </Link>
           </li>
-          <li className={router.pathname == '/calendar' ? 'active' : ''}>
-            <Link href="/calendar">
-              <a className="">
-                <span className="iconbg">
-                  {/* <img src="/assets/media/icons/Calendar.png" alt="" /> */}
-                </span>{' '}
-                <span className="title">CALENDER</span>
-              </a>
-            </Link>{' '}
-          </li>
-          <li className={router.pathname == '/challenges' ? 'active' : ''}>
-            <Link href="/challenges">
-              <a className="">
-                <span className="iconbg">
-                  {/* <img src="/assets/media/icons/Challenge.png" alt="" /> */}
-                </span>{' '}
-                <span className="title">WAGERS</span>
-              </a>
-            </Link>
-          </li>
-          <li className={router.pathname == '/battlepass' ? 'active' : ''}>
-            <Link href="/battlepass">
-              <a className="">
-                <span className="iconbg">
-                  {/* <img src="/assets/media/icons/Challenge.png" alt="" /> */}
-                </span>{' '}
-                <span className="title">BATTLEPASS</span>
-              </a>
-            </Link>
-          </li>
+          
+  
           {user?.isSuperAdmin === true || user?.isSupportAdmin === true ? (
             <li className={router.pathname == '/adminpage' ? 'active' : ''}>
               <Link href="/adminpage">
@@ -183,3 +158,43 @@ function LeftNav({ user }) {
 }
 
 export default LeftNav;
+
+
+
+
+
+
+(first) => { 
+  return(<>        <li className={router.pathname == '/calendar' ? 'active' : ''}>
+    <Link href="/calendar">
+      <a className="">
+        <span className="iconbg">
+          {/* <img src="/assets/media/icons/Calendar.png" alt="" /> */}
+        </span>{' '}
+        <span className="title">CALENDER</span>
+      </a>
+    </Link>{' '}
+  </li>
+  <li className={router.pathname == '/challenges' ? 'active' : ''}>
+    <Link href="/challenges">
+      <a className="">
+        <span className="iconbg">
+          {/* <img src="/assets/media/icons/Challenge.png" alt="" /> */}
+        </span>{' '}
+        <span className="title">WAGERS</span>
+      </a>
+    </Link>
+  </li>
+  <li className={router.pathname == '/battlepass' ? 'active' : ''}>
+    <Link href="/battlepass">
+      <a className="">
+        <span className="iconbg">
+          {/* <img src="/assets/media/icons/Challenge.png" alt="" /> */}
+        </span>{' '}
+        <span className="title">BATTLEPASS</span>
+      </a>
+    </Link>
+  </li></>)
+}
+
+
