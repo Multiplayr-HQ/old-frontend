@@ -50,7 +50,7 @@ const Dashboard = ({ user, profile, teams, posts, suggplayers }) => {
 
 export const getServerSideProps = async (context) => {
   const { token } = parseCookies(context);
-  const {teamId} = parseCookies(context);
+  // const {teamId} = parseCookies(context);
   const response = await fetch(`${baseURL}/api/posts`, {
     method: 'get',
     headers: {

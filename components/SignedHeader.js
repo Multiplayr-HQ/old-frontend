@@ -394,7 +394,7 @@ const SignedHeader = ({ user, profile }) => {
             </div>
           </li>
 
-          <li className="wallet">
+          {/* <li className="wallet">
             <Link href="/mywallet">
               <a>
                 <span className="dps">
@@ -482,7 +482,10 @@ const SignedHeader = ({ user, profile }) => {
                 </li>
               </ul>
             </div>
-          </li>
+          </li> */}
+          <li> </li>
+          <li> </li>
+
         </ul>
       </div>
     </header>
